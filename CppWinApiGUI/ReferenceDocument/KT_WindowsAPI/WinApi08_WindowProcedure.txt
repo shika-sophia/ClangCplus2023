@@ -1,0 +1,249 @@
+
+■ ウィンドウプロシージャ
+http://kaitei.net/winapi/window-procedures/
+
+目次
+イベントドリブンアーキテクチャ
+メッセージループ
+MSG 構造体
+ウィンドウプロシージャ
+アプリケーションの終了
+スポンサーリンク
+
+まともなウィンドウを作成する最初のプログラムです。
+このプログラムが，今後作成するプログラムのスケルトンプログラムとなります。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+    MSG msg;
+
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = WndProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    if (!RegisterClass(&wc)) return 0;
+
+    hwnd = CreateWindow(
+        szAppName, TEXT(""),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return msg.wParam;
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch (uMsg) {
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+イベントドリブンアーキテクチャ
+Windows アプリケーションは，マウス操作やキーボード操作など，ユーザやプログラムが発生させたイベント (event) を契機として，次の処理を行います。
+処理が終れば，アプリケーションは次のイベントが発生するまで待機します。
+このような方式で処理を実行するプログラムは，一般にイベント駆動型プログラム (event-driven program) と呼ばれます。
+
+イベント駆動型プログラムでは，イベントを処理する専用の関数が用意されます。
+この関数のことを，イベントハンドラ (event handler) と呼びます。
+Windows アプリケーションにおけるイベントハンドラは，ウィンドウプロシージャ (window procedure) という名前が付いています。
+
+ウィンドウプロシージャ
+
+イベントが発生すると，Windows はイベントの発生をメッセージ (message) としてアプリケーションに通知します。
+メッセージには，イベントの種類の他に，イベントの発生時刻，発生場所などといった情報が添加されます。
+メッセージは，メッセージの待ち行列であるメッセージキュー (message queue) にポスト (post) される場合と，直接ウィンドウプロシージャに送信 (send) される場合とがあります。
+
+Windows で扱われるメッセージには，例えば次のようなものがあります。
+
+メッセージコード	説明
+WM_CREATE	ウィンドウが生成される時に発生
+WM_DESTROY	ウィンドウが破棄される時に発生
+WM_MOVE	ウィンドウが移動された後に発生
+WM_SIZE	ウィンドウサイズが変更された後に発生
+WM_PAINT	ウィンドウの再描画が必要な時に発生
+WM_CLOSE	ウィンドウの終了が選択された時に発生
+WM_QUIT	PostQuitMessage 関数が実行された時に発生
+WM_KEYDOWN	非システムキーが押下された時に発生
+WM_KEYUP	非システムキーが解放された時に発生
+WM_MOUSEMOVE	マウスが移動した時に発生
+WM_LBUTTONDOWN	左マウスボタンが押下された時に発生
+WM_LBUTTONUP	左マウスボタンが解放された時に発生
+メッセージループ
+次に示す while ループは，メッセージループ (message loop) と呼ばれます。
+メッセージループには，ウィンドウを維持する役割と，メッセージを仲介する役割があります。
+
+while (GetMessage(&msg, NULL, 0, 0) > 0) {
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
+}
+メッセージループ内の 3 つの関数は，次のような仕事を行います。
+
+GetMessage: メッセージキューからメッセージを取り出す。
+TranslateMessage: キー入力メッセージを文字メッセージに変換する。
+DispatchMessage: メッセージをウィンドウプロシージャへディスパッチ (dispatch) する。
+GetMessage 関数は，メッセージキューからメッセージを取り出す関数です。
+唯一 WM_QUIT メッセージを取り出した時にだけ 0 を返し，メッセージループを終了させます。
+
+GetMessage 関数 [MSDN]
+メッセージキューからメッセージを取り出します。キューが空の場合は，新たなメッセージがポストされるまで制御を返しません。
+
+BOOL GetMessage(
+    LPMSG lpMsg,         // MSG 構造体
+    HWND hWnd,           // ウィンドウハンドル
+    UINT wMsgFilterMin,  // 取得するメッセージの最小値
+    UINT wMsgFilterMax   // 取得するメッセージの最大値
+);
+lpMsg
+MSG 構造体へのポインタを指定します (出力用)。
+hWnd
+メッセージ取得元のウィンドウを特定する際に指定します。ウィンドウを特定しない場合には NULL を指定します。
+wMsgFilterMin, wMsgFilterMax
+取得するメッセージの最小値，最大値を指定します。通常は，取得するメッセージを制限することはないので，共に 0 を指定します。
+返り値
+WM_QUIT を取得したときに 0 を，それ以外のメッセージを取得したときに 0 以外の値を返します。エラーが発生したときに -1 を返します。
+TranslateMessage 関数は，キー入力メッセージを文字メッセージに変換します。
+
+TranslateMessage 関数 [MSDN]
+BOOL TranslateMessage(
+    CONST MSG *lpmsg  // MSG 構造体
+);
+DispatchMessage 関数は，メッセージをウィンドウプロシージャへディスパッチ (dispatch) する関数です。
+
+DispatchMessage 関数 [MSDN]
+LRESULT DispatchMessage(
+    CONST MSG *lpmsg  // MSG 構造体
+);
+MSG 構造体
+MSG 構造体はメッセージのデータを表す構造体で，次のように定義されています。
+
+MSG 構造体 [MSDN]
+メッセージを表します。
+
+typedef struct tagMSG {
+   HWND hwnd;      // ウィンドウハンドル
+   UINT message;   // メッセージコード
+   WPARAM wParam;  // w-パラメータ
+   LPARAM lParam;  // l-パラメータ
+   DWORD time;     // ポストされた時刻
+   POINT pt;       // カーソル位置
+} MSG;
+hwnd
+メッセージを受け取るウィンドウプロシージャを持つウィンドウへのハンドルです。
+message
+WM_CREATE, WM_SIZE といった，メッセージの種類を表す整数値です。
+wParam, lParam
+メッセージ固有の付加情報を表します。各パラメータの意味はメッセージによって異なります。
+wParam, lParam には，キーボードのキーコード，マウスカーソルの座標など，メッセージの種類に応じた付加情報が格納されます。
+どのような情報が格納されるかは，メッセージごとに決められています。
+型はそれぞれ WPARAM 型，LPARAM 型となっていますが，これらは次表のビット長を持つ整数型です。
+
+WPARAM	LPARAM
+Win16	16 ビット	32 ビット
+Win32	32 ビット	32 ビット
+Win64	64 ビット	64 ビット
+wParam, lParam というパラメータ名の由来ですが，これは Win16 時代に wParam の型が WORD (UINT) 型，lParam の型が LONG 型だったためです。
+実際に Win16 では，ウィンドウプロシージャ (後述) を次のように書くことができました。
+
+long FAR PASCAL WndProc(HWND hwnd, UINT uMsg, WORD wParam, LONG lParam)
+ウィンドウプロシージャ
+ウィンドウプロシージャ (window procedure) は，アプリケーションに送られてきたメッセージを処理する専用の関数です。
+
+今回の作例では，WndProc という名前でウィンドウプロシージャを定義しています。
+このウィンドウプロシージャを，次のようにしてウィンドウクラスに登録しています。
+
+wc.lpfnWndProc   = WndProc;  // ウィンドウプロシージャを登録
+ウィンドウプロシージャは，次のシグネチャを持つ関数として用意します。
+ただし，関数名は必ずしも WindowProc である必要はありません。
+
+WindowProc 関数 [MSDN]
+LRESULT CALLBACK WindowProc(
+    HWND hwnd,      // ウィンドウハンドル
+    UINT uMsg,      // メッセージコード
+    WPARAM wParam,  // w-パラメータ
+    LPARAM lParam   // l-パラメータ
+);
+パラメータ hwnd, uMsg, wParam, lParam の意味は，MSG 構造体のメンバ hWnd, message, wParam, lParam に同じです。
+
+返却型 LRESULT は，Win16/Win32 では 32 ビット長，Win64 では 64 ビット長の整数型です。
+ウィンドウプロシージャの返り値の意味はメッセージによって異なりますが，返り値が特別な意味を持たないメッセージでは 0 を返すのが普通です。
+
+呼び出し規約 CALLBACK は，この関数がコールバック関数 (callback function) であることを示します。
+
+ウィンドウプロシージャは，次のように switch 文を用いて各メッセージ用の処理を記述するのが一般的です。
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch (uMsg) {
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+興味のないメッセージの処理は，既定のウィンドウプロシージャである DefWindowProc に丸投げします。
+
+DefWindowProc 関数 [MSDN]
+LRESULT DefWindowProc(
+    HWND hwnd,      // ウィンドウハンドル
+    UINT uMsg,      // メッセージコード
+    WPARAM wParam,  // w-パラメータ
+    LPARAM lParam   // l-パラメータ
+);
+アプリケーションの終了
+ウィンドウプロシージャで WM_DESTROY メッセージを受け取ったときには，PostQuitMessage 関数を実行する必要があります。
+この関数は WM_QUIT メッセージをメッセージキューにポストし，メッセージループを終了させます。
+
+PostQuitMessage 関数 [MSDN]
+VOID PostQuitMessage(
+    int nExitCode  // 終了コード
+);
+WM_DESTROY メッセージは，ウィンドウの表示が画面から消された後，ウィンドウが破棄される前に送信されます。
+
+PostQuitMessage 関数に指定した終了コードは，WM_CLOSE メッセージの wParam に格納されます。
+この値を，次のように WinMain 関数の返り値に指定します。
+
+return msg.wParam;
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

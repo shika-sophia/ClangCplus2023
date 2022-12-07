@@ -1,0 +1,135 @@
+
+■ データ型
+http://kaitei.net/winapi/data-types/
+
+目次
+型の別名
+論理型
+ハンドル型
+幾何関係の構造体
+ハンガリアン記法
+
+
+型の別名
+Windows プログラムでは，long や unsigned int といった型名の代わりに，LONG や UINT といった独自の型名が多く使われます。
+これらは主に，次のように typedef で定義されたものです。
+
+typedef long LONG;
+typedef unsigned int UINT;
+次の表に示すのは，windef.h や winnt.h で定義されている主な型の別名です。
+
+C の型	Win32 における別名
+char	CHAR
+wchar_t	WCHAR
+unsigned char	UCHAR, BYTE
+short	SHORT
+unsigned short	USHORT, WORD
+int	INT
+unsigned int	UINT
+long	LONG
+unsigned long	ULONG, DWORD
+float	FLOAT
+double	DOUBLE
+void	VOID
+ポインタ型は， P または LP という接頭辞の付いた型名となります。
+
+C の型	Win32 における別名
+unsigned char *	PUCHAR, PBYTE, LPBYTE
+short *	PSHORT
+unsigned short *	PUSHORT, PWORD, LPWORD
+int *	PINT, LPINT
+unsigned int *	PUINT
+long *	PLONG
+unsigned long *	PULONG, PDWORD, LPDWORD
+float *	PFLOAT
+void *	PVOID, LPVOID
+const void *	LPCVOID
+文字列型はかなりたくさんの別名があります。慣れるまでが大変です。
+
+C の型	Win32 における別名
+char *	PCHAR, LPCH, PCH, NPSTR, LPSTR, PSTR
+const char *	LPCCH, PCCH, LPCSTR, PCSTR
+wchar_t *	PWCHAR, LPWCH, PWCH, NWPSTR, LPWSTR, PWSTR
+const wchar_t *	LPCWCH, PCWCH, LPCWSTR, PCWSTR
+TCHAR *	PTCHAR, LPTCH, PTCH, PTSTR, LPTSTR
+const TCHAR *	LPCTCH, PCTCH, PCTSTR, LPCTSTR
+ちなみに，ポインタ型の接頭辞が P (pointer) と LP (long pointer) の 2 種類存在するのは，Win16 の名残です。
+Win16 では，near ポインタ，far ポインタというポインタの区別があり，near ポインタ型には接頭辞 P，far ポインタ型には接頭辞 LP を使用していました。
+
+論理型
+TRUE または FALSE いずれかの値を取る，論理型 BOOL および BOOLEAN が用意されています。
+型の定義は次の通りです。
+
+typedef int   BOOL;
+typedef BYTE  BOOLEAN;
+TRUE と FALSE は，次のように定義されています。
+
+#define FALSE 0
+#define TRUE  1
+返却型が BOOL であっても，関数が 0 でも 1 でもない値を返す可能性があります。
+次のようなコードは御法度です。
+
+if (IsWindow(hwnd) == TRUE) { ... }
+ハンドル型
+ハンドル (handle) とは，プログラムやファイルなどに割り当てられる，一種のポインタのことです。
+C の入門書で，きっと次みたいなプログラムを読んだことがあるでしょう。
+
+FILE *fp = fopen("hoge.txt", "r");
+このときの fp が正に (ファイルへの) ハンドルと言えます。
+
+次の表に示すのは代表的なハンドル型の例です。
+ハンドル型の型名には接頭辞 H が付きます。
+
+型	ハンドルの対象
+HINSTANCE	インスタンス (プログラム)
+HWND	ウィンドウ
+HICON	アイコン
+HCURSOR	カーソル
+HDC	デバイスコンテキスト
+HFONT	論理フォント
+HPEN	論理ペン
+HBRUSH	論理ブラシ
+幾何関係の構造体
+点の位置を表す POINT 構造体，矩形の位置を表す RECT 構造体，矩形の幅と高さを表す SIZE 構造体が，次のように定義されています。
+
+POINT 構造体 [MSDN]
+typedef struct tagPOINT {
+    LONG x;  // x 座標
+    LONG y;  // y 座標
+} POINT, *PPOINT;
+RECT 構造体 [MSDN]
+typedef struct tagRECT {
+    LONG left;    // 左上端の x 座標
+    LONG top;     // 左上端の y 座標
+    LONG right;   // 右下端の x 座標
+    LONG bottom;  // 右下端の y 座標
+} RECT, *PRECT;
+SIZE 構造体 [MSDN]
+typedef struct tagSIZE {
+    LONG cx;  // 幅
+    LONG cy;  // 高さ
+} SIZE, *PSIZE;
+ハンガリアン記法
+Windows プログラミングでは，識別子の接頭辞でその識別子の種類を表す記法が用いられます。
+例えば，ウィンドウハンドルの識別子は，ハンドルを表す接頭辞 h を付けて hWnd といった名前にします。
+こうした表記法はハンガリアン記法 (Hungarian notation) と呼ばれるものです。
+
+主な接頭辞を表にまとめました。
+
+接頭辞	説明
+h	ハンドル (handle)
+p, lp	ポインタ (pointer, long pointer)
+b, f	真理値 (boolean, flag)
+i, n	整数 (integer, number)
+fn	関数 (function)
+sz	ゼロ終端文字列 (zero-terminated string)
+Microsoft によるハンガリアン記法の説明は次のページにあります。
+
+Hungarian Notation
+http://msdn.microsoft.com/en-us/library/aa260976.aspx
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

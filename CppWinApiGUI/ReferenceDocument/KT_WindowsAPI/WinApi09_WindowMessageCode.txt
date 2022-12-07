@@ -1,0 +1,446 @@
+
+■ 主要なメッセージ
+http://kaitei.net/winapi/messages/
+
+目次
+ウィンドウの破棄
+ウィンドウの生成
+ウィンドウの移動
+ウィンドウサイズの変更
+マウス入力
+キーボード入力
+
+
+この章では，代表的なウィンドウメッセージである以下のメッセージを紹介します。
+
+メッセージコード	説明
+WM_CREATE	ウィンドウが生成される時に発生
+WM_DESTROY	ウィンドウが破棄される時に発生
+WM_MOVE	ウィンドウが移動された後に発生
+WM_SIZE	ウィンドウサイズが変更された後に発生
+WM_CLOSE	ウィンドウを閉じる操作が行われた時に発生
+WM_QUIT	PostQuitMessage 関数が実行された時に発生
+WM_KEYDOWN	非システムキーが押下されている時に発生
+WM_KEYUP	非システムキーが解放された時に発生
+WM_MOUSEMOVE	マウスが移動した時に発生
+WM_LBUTTONDOWN	左マウスボタンが押下された時に発生
+WM_LBUTTONUP	左マウスボタンが解放された時に発生
+ウィンドウの破棄
+次の作例は，ウィンドウを閉じる前に確認のダイアログを表示するプログラムです。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+    MSG msg;
+
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = WndProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    if (!RegisterClass(&wc)) return 0;
+
+    hwnd = CreateWindow(
+        szAppName, TEXT(""),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return msg.wParam;
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    int id;
+
+    switch (uMsg) {
+    case WM_CLOSE:
+        id = MessageBox(hwnd, TEXT("終了しますか?"),
+            TEXT("終了"), MB_YESNO | MB_ICONEXCLAMATION);
+        if (id == IDYES)
+            DestroyWindow(hwnd);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+このプログラムは，概ね次のように動作します。
+
+ウィンドウを閉じる操作を行う。→ WM_CLOSE メッセージが発行される。
+終了を確認するメッセージボックスを表示する。
+DestroyWindow を実行する。→ WM_DESTROY メッセージが発行される。
+PostQuitMessage を実行する。→ WM_QUIT メッセージが発行される。
+メッセージループを終了し，アプリケーションを終了する。
+プログラムの終了に関係するメッセージは，次に示す WM_CLOSE, WM_DESTROY, WM_QUIT メッセージの 3 つです。
+
+WM_CLOSE メッセージ [MSDN]
+ウィンドウを閉じる操作が行われた時に送信されます。ウィンドウの閉じるボタンがクリックされたときや，Alt+F4 が入力されたときなどに発行されます。
+
+WM_DESTROY メッセージ [MSDN]
+ウィンドウが破棄される時に送信されます。DestroyWindow 関数の実行時に送信されます。
+
+WM_QUIT メッセージ [MSDN]
+PostQuitMessage 関数が実行されたときにポストされます。
+
+wParam
+PowtQuitMessage 関数に指定された終了コードが入ります。この値は WinMain 関数の返り値に指定します。
+デフォルトウィンドウプロシージャは，WM_CLOSE メッセージを受け取ると，実際にウィンドウの破棄を行う関数である DestroyWindow 関数を実行します。
+メッセージの処理を独自に記述する場合は，自分で DestroyWindow 関数を呼び出す必要があります。
+
+DestroyWindow 関数 [MSDN]
+ウィンドウを破棄します。
+
+BOOL DestroyWindow(
+    HWND hWnd  // 破棄するウィンドウへのハンドル
+);
+DestroyWindow 関数を実行することで，次は WM_DESTROY メッセージが発行されます。
+WM_DESTROY メッセージは，ウィンドウが画面から消去された後，ウィンドウの破棄が実行される前に送信されます。
+WM_DESTROY メッセージへの応答では，PostQuitMessage 関数を呼び出す必要があります。
+
+PostQuitMessage 関数 [MSDN]
+VOID PostQuitMessage(
+    int nExitCode  // 終了コード
+);
+PostQuitMessage は WM_CLOSE をメッセージキューにポストし，メッセージループを終了させます。
+
+ウィンドウの生成
+次のプログラムは，WM_CREATE メッセージで獲得できる情報を，メッセージボックスに表示するプログラムです。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    LPCREATESTRUCT lpcs;
+    TCHAR szTemp[1024];
+
+    switch (uMsg) {
+    case WM_CREATE:
+        lpcs = (LPCREATESTRUCT) lParam;
+        wsprintf(szTemp,
+            TEXT("lpszClass: %s\nlpszName: %s\n")
+            TEXT("x: %d\ny: %d\ncx: %d\ncy: %d"),
+            lpcs->lpszClass, lpcs->lpszName,
+            lpcs->x, lpcs->y, lpcs->cx, lpcs->cy);
+        MessageBox(hwnd, szTemp, TEXT("WM_CREATE"), MB_OK);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+WM_CREATE メッセージ [MSDN]
+lParam
+CREATESTRUCT 構造体へのポインタが入ります。
+WM_CREATE メッセージは，CreateWindow 関数または CreateWindowEx 関数が呼び出されると送信されます。
+このメッセージの lParam の値は，次に示す CREATESTRUCT 構造体へのポインタです。
+
+CREATESTRUCT 構造体 [MSDN]
+typedef struct tagCREATESTRUCT {
+    LPVOID lpCreateParams;  // ウィンドウ作成データ
+    HANDLE hInstance;       // インスタンスハンドル
+    HMENU hMenu;            // メニュー
+    HWND hwndParent;        // 親ウィンドウ
+    int cy;                 // 高さ
+    int cx;                 // 幅
+    int y;                  // y 座標
+    int x;                  // x 座標
+    LONG style;             // ウィンドウスタイル
+    LPCTSTR lpszName;       // ウィンドウ名
+    LPCTSTR lpszClass;      // ウィンドウクラス名
+    DWORD dwExStyle;        // 拡張ウィンドウスタイル
+} CREATESTRUCT;
+CREATESTRUCT 構造体の各メンバは，CreateWindow(Ex) 関数のパラメータに対応しています。
+
+WM_CREATE メッセージを受け取ったウィンドウプロシージャは，普通は 0 を返します。
+ただし，-1 を返すとウィンドウを破棄することができ，CreateWindow(Ex) 関数は NULL を返すことになります。
+
+ウィンドウの移動
+次の作例は，ウィンドウを移動すると，クライアント領域の左上端の座標をタイトルバーに表示します。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    int x, y;
+    TCHAR szTemp[1024];
+
+    switch (uMsg) {
+    case WM_MOVE:
+        y = HIWORD(lParam);  // y 座標を取り出す
+        x = LOWORD(lParam);  // x 座標を取り出す
+        wsprintf(szTemp, TEXT("WM_MOVE (%d, %d)"), x, y);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+WM_MOVE メッセージ [MSDN]
+lParam
+下位ワード，上位ワードは，それぞれ移動後のクライアント領域の x 座標，y 座標を表します。
+WM_MOVE メッセージの lParam には，移動後のクライアント領域の左上端の座標が設定されます。
+lParam の下位ワード (下位 16 ビット) は x 座標，上位ワード (下位 16 ビットの次の 16 ビット) は y 座標を表します。
+例えば，移動後の座標が (x, y) = (0xab, 0xcd) であれば，lParam の値は Win32 では 0x00cd 00ab，Win64 では 0x0000 0000 00cd 00ab となります。
+lParam から x 座標，y 座標を取り出すには，次のように LOWORD, HIWORD マクロを使います。
+
+y = HIWORD(lParam);  // y 座標を取り出す
+x = LOWORD(lParam);  // x 座標を取り出す
+LOWORD, HIWORD マクロは，32 ビット値の下位ワード，上位ワードを取り出すマクロで，次のように定義されています。
+
+#define LOWORD(l)  ((WORD) (((DWORD_PTR) (l)) & 0xffff))
+#define HIWORD(l)  ((WORD) ((((DWORD_PTR) (l)) >> 16) & 0xffff))
+SetWindowText 関数は，ウィンドウのテキスト (タイトルバーに表示される文字列) を設定する関数です。
+
+SetWindowText 関数 [MSDN]
+ウィンドウのテキストを設定します。
+
+BOOL SetWindowText(
+    HWND hWnd,         // ウィンドウハンドル
+    LPCTSTR lpString   // テキスト
+);
+ウィンドウサイズの変更
+次のプログラムは，ウィンドウサイズを変更すると，サイズ変更後のクライアント領域の幅と高さをタイトルバーに表示します。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    int cx, cy;
+    TCHAR szTemp[1024];
+
+    switch (uMsg) {
+    case WM_SIZE:
+        cy = HIWORD(lParam);
+        cx = LOWORD(lParam);
+        wsprintf(szTemp, TEXT("WM_SIZE (%d, %d)"), cx, cy);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+WM_SIZE メッセージは，ウィンドウサイズが変更された時に送信されます。
+
+WM_SIZE メッセージ [MSDN]
+ウィンドウサイズが変更された時に送信されます。
+
+wParam
+サイズ変更の種類を表す次の値が入ります。SIZE_MAXSHOW, SIZE_MAXHIDE のメッセージは，すべてのポップアップウィンドウに対して送信されます。
+値	説明
+SIZE_RESTORED	サイズ変更された (最小化，最大化以外)
+SIZE_MINIMIZED	最小化された
+SIZE_MAXIMIZED	最大化された
+SIZE_MAXSHOW	他のウィンドウが非最大化された
+SIZE_MAXHIDE	他のウィンドウが最大化された
+lParam
+下位ワード，上位ワードは，それぞれサイズ変更後のクライアント領域の幅，高さを表します。
+マウス入力
+次のプログラムは，マウスの移動と左ボタンのクリックを検知し，カーソルの座標と共に表示するプログラムです。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    int x, y;
+    TCHAR szTemp[1024];
+
+    switch (uMsg) {
+    case WM_MOUSEMOVE:
+        y = HIWORD(lParam);
+        x = LOWORD(lParam);
+        wsprintf(szTemp, TEXT("WM_MOUSEMOVE (%d, %d)"), x, y);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_LBUTTONDOWN:
+        y = HIWORD(lParam);
+        x = LOWORD(lParam);
+        wsprintf(szTemp, TEXT("WM_LBUTTONDOWN (%d, %d)"), x, y);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_LBUTTONUP:
+        y = HIWORD(lParam);
+        x = LOWORD(lParam);
+        wsprintf(szTemp, TEXT("WM_LBUTTONUP (%d, %d)"), x, y);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+今回のプログラムで処理したマウス関連のメッセージは次の 3 つです。
+
+WM_MOUSEMOVE メッセージ [MSDN]
+マウスが移動した時にポストされます。
+
+WM_LBUTTONDOWN メッセージ [MSDN]
+マウスの左ボタンが押下された時にポストされます。
+
+WM_LBUTTONUP メッセージ [MSDN]
+マウスの左ボタンが解放された時にポストされます。
+
+いずれのメッセージも，lParam の下位ワード，上位ワードに，メッセージが発行された時点でのマウスカーソルの x 座標，y 座標 (クライアント座標) が格納されます。
+
+キーボード入力
+次のプログラムは，キーボードのキー入力を検知し，入力されたキーを表す値と共に表示します。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    int vkey;
+    TCHAR szTemp[1024];
+
+    switch (uMsg) {
+    case WM_KEYDOWN:
+        vkey = wParam;
+        wsprintf(szTemp, TEXT("WM_KEYDOWN (vkey: %d)"), vkey);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_KEYUP:
+        vkey = wParam;
+        wsprintf(szTemp, TEXT("WM_KEYUP (vkey: %d)"), vkey);
+        SetWindowText(hwnd, szTemp);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+今回のプログラムで処理したキーボード関連のメッセージは次の 2 つです。
+
+WM_KEYDOWN メッセージ [MSDN]
+非システムキーが押下されている時にポストされます。
+
+WM_KEYUP メッセージ [MSDN]
+非システムキーが解放された時にポストされます。
+
+WM_KEYDOWN メッセージは，キーが押されている間，何回でも発行されます。
+一方 WM_KEYUP メッセージは，キーが解放された時に 1 回だけ発行されます。
+
+いずれのメッセージも，wParam には押されたキーを表す値が設定されます。
+この値は，キーボードの種類に依存しない仮想的なキーコードであり，仮想キーコード (virtual-key code) と呼ばれます。
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net

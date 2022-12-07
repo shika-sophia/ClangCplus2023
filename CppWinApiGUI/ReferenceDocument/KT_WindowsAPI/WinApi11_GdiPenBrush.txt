@@ -1,0 +1,395 @@
+
+■ ペンとブラシ
+http://kaitei.net/winapi/pens-brushes/
+
+目次
+GDI オブジェクト
+ペンの利用
+COLORREF 型
+ブラシの利用
+ストックオブジェクト
+DC の保存
+
+
+次の図のような，青色の枠を持ち黄色で塗り潰された長方形を描画します。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+    MSG msg;
+
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = WndProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    if (!RegisterClass(&wc)) return 0;
+
+    hwnd = CreateWindow(
+        szAppName, TEXT(""),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return msg.wParam;
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+    static HPEN hpen, hpenPrev;
+    static HBRUSH hbr, hbrPrev;
+
+    switch (uMsg) {
+    case WM_CREATE:
+        // ペンとブラシを作成
+        hpen = CreatePen(PS_SOLID, 5, RGB(0x00, 0x7f, 0xff));
+        hbr = CreateSolidBrush(RGB(0xff, 0xbf, 0x00));
+        return 0;
+
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+
+        // ペンとブラシを選択
+        hpenPrev = (HPEN) SelectObject(hdc, hpen);
+        hbrPrev = (HBRUSH) SelectObject(hdc, hbr);
+
+        Rectangle(hdc, 50, 50, 200, 150);
+
+        // 元のペンとブラシを選択
+        SelectObject(hdc, hpenPrev);
+        SelectObject(hdc, hbrPrev);
+
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        // ペンとブラシを削除
+        DeleteObject(hpen);
+        DeleteObject(hbr);
+
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+GDI オブジェクト
+GDI オブジェクト
+
+長方形を描画する Rectangle 関数には，線の色や塗り潰しの色を指定するパラメータがありません。
+これらの描画属性を設定するには，線の色やスタイルを表すペン (pen)，塗り潰しの色やスタイルを表すブラシ (brush) を，デバイスコンテキストに対して関連付ける必要があります。
+
+ペンやブラシは GDI オブジェクトと呼ばれるものであり，代表的な GDI オブジェクトには次のような種類があります。
+
+ペン (pen)
+ブラシ (brush)
+フォント (font)
+ビットマップ (bitmap)
+リージョン (region)
+パス (path)
+パレット (palette)
+GDI オブジェクトを使用する代表的な手順は，ペンを例に取ると次の通りです。
+
+新しいペンを作成する (CreatePen 関数)。
+ペンをデバイスコンテキストに関連付ける (SelectObject 関数)。
+デバイスコンテキストの関連付けを元に戻す (SelectObject 関数)。
+ペンを削除する (DeleteObject 関数)。
+GDI オブジェクトを作成する関数は，CreatePen，CreateFont など，作成する GDI オブジェクトの種類ごとに用意されています。
+一方，SelectObject 関数，DeleteObject 関数は，GDI オブジェクトの種類を問わず共通して利用できます。
+
+ペンの利用
+ペンオブジェクトを作成するには，次の関数が利用できます。
+
+CreatePen
+ExtCreatePen
+CreatePenIndirect
+今回の作例で使用しているのは，次の CreatePen 関数です。
+
+CreatePen 関数 [MSDN]
+論理ペンを作成します。
+
+HPEN CreatePen(
+    int fnPenStyle,   // スタイル
+    int nWidth,       // 幅
+    COLORREF crColor  // 色
+);
+fnPenStyle
+ペンのスタイルを指定します。
+ペンスタイル [MSDN]
+値	説明
+PS_SOLID	実線 実線
+PS_DASH	破線 破線
+PS_DOT	点線 点線
+PS_DASHDOT	一点鎖線 一点鎖線
+PS_DASHDOTDOT	二点鎖線 二点鎖線
+PS_NULL	空のペン 空のペン
+PS_INSIDERFRAME	実践 実線
+
+PS_INSIDERFRAME スタイルは，幅が 2 以上のペンで長方形等を描画する場合に，線が枠内に収まるように図形を縮小します。
+次の図は，式 Rectangle(hdc, 2, 2, 12, 10) で描画される長方形を比較したものです。
+長方形の描画例
+nWidth
+ペンの幅を指定します。PS_NULL, PS_SOLID, PS_INSIDERFRAME 以外のスタイルでは 1 を指定する必要があります。
+返り値
+作成された論理ペンへのハンドルを返します。失敗時には NULL を返します。
+crColor パラメータには COLORREF 値を指定しますが，これについてはすぐ後に説明します。
+
+ペン等の GDI オブジェクトをデバイスコンテキストに関連付けるには，SelectObject 関数を呼び出します。
+
+SelectObject 関数 [MSDN]
+デバイスコンテキストに論理オブジェクトを関連付けます。同じ種類の以前の論理オブジェクトは，関連付けが解除されます。
+
+HGDIOBJ SelectObject(
+    HDC hdc,         // デバイスコンテキストへのハンドル
+    HGDIOBJ hgdiobj  // 論理オブジェクトへのハンドル
+);
+返り値
+同じ種類の以前の論理オブジェクトへのハンドルを返し，失敗時には NULL を返します。論理オブジェクトの種類がリージョンの場合には，ハンドルの代わりに次のいずれかの値を返します。
+値	説明
+SIMPLEREGION	単一の矩形
+COMPLEXREGION	複雑な形状
+NULLREGION	空のリージョン
+GDI_ERROR	関数失敗
+型 HGDIOBJ は，GDI オブジェクト全般に使えるハンドル型です。
+
+SelectObject で GDI オブジェクトを関連付けると，それまでデバイスコンテキストに関連付けられていた同じ種類のオブジェクトへのハンドルが返ります。
+新しく関連付けたオブジェクトを使い終えたら，このハンドルを使って関連付けを元に戻す必要があります。
+
+CreatePen 等の関数で作成した GDI オブジェクトは，DeleteObject 関数によって削除する必要があります。
+今回のプログラムでは，WM_CREATE への応答でペンとブラシを作成し，WM_DESTROY への応答でこれらを削除しています。
+
+DeleteObject 関数 [MSDN]
+論理オブジェクトを削除します。
+
+BOOL DeleteObject(
+    HGDIOBJ hObject  // 論理オブジェクトへのハンドル
+);
+COLORREF 型
+COLORREF 型は次のように定義された整数型で，RGB 色を表すのに使います。
+
+typedef DWORD COLORREF;
+例えば 0x00ffbb77 という COLORREF 値は，(R, G, B) = (0x77, 0xbb, 0xff) という色を表します。
+
+COLORREF 値を作るには，次の RGB マクロが便利です。
+
+#define RGB(r, g, b) \
+    ((COLORREF) (((BYTE) (r) \
+    | ((WORD)((BYTE)(g)) << 8)) \
+    | (((DWORD) (BYTE) (b)) << 16)))
+また，COLORREF 値から R, G, B 個々の値を取り出すには，GetRvalue マクロ，GetGValue マクロ，GetBValue マクロが使えます。
+
+#define GetRValue(rgb)  (LOBYTE(rgb))
+#define GetGValue(rgb)  (LOBYTE(((WORD) (rgb)) >> 8))
+#define GetBValue(rgb)  (LOBYTE((rgb) >> 16))
+ブラシの利用
+ブラシオブジェクトを作成するには，次のような関数が利用できます。
+
+CreateSolidBrush
+CreateHatchBrush
+CreatePatternBrush
+CreateDIBPatternBrush
+CreateBrushIndirect
+今回の作例では，単色のブラシを作成する CreateSolidBrush 関数を使っています。
+
+CreateSolidBrush 関数 [MSDN]
+単色の論理ブラシを作成します。
+
+HBRUSH CreateSolidBrush(
+    COLORREF crColor  // 色
+);
+CreateHatchBrush 関数を使えば，ハッチパターン (網掛けパターン) を持つブラシを作成できます。
+
+CreateHatchBrush 関数 [MSDN]
+ハッチブラシを作成します。
+
+HBRUSH CreateHatchBrush(
+  int fnStyle,     // ハッチスタイル
+  COLORREF clrref  // 色
+);
+fnStyle
+ブラシのハッチスタイルを次のいずれかから指定します。
+ハッチスタイル [MSDN]
+値	説明
+HS_HORIZONTAL	HS_HORIZONTAL
+HS_VERTICAL	HS_VERTICAL
+HS_FDIAGONAL	HS_FDIAGONAL
+HS_BDIAGONAL	HS_BDIAGONAL
+HS_CROSS	HS_CROSS
+HS_DIAGCROSS	HS_DIAGCROSS
+ストックオブジェクト
+システムが定義済の GDI オブジェクトのことを，ストックオブジェクト (stock object) といいます。
+GetStockObject 関数を使うことで，ストックオブジェクトを取得できます。
+
+GetStockObject 関数 [MSDN]
+ストックオブジェクトを取得します。この関数で取得したオブジェクトは削除する必要はありません。
+
+HGDIOBJ GetStockObject(
+    int fnObject
+);
+GetStockObject
+ストックオブジェクトのタイプを指定します。
+ストックオブジェクト [MSDN]
+値 (ブラシ)	説明
+WHITE_BRUSH	白色のブラシ
+LTGRAY_BRUSH	薄い灰色のブラシ
+GRAY_BRUSH	灰色のブラシ
+DKGRAY_BRUSH	濃い灰色のブラシ
+BLACK_BRUSH	白色のブラシ
+NULL_BRUSH
+HOLLOW_BRUSH	空のブラシ
+値 (ペン)	説明
+WHITE_PEN	白色のペン
+BLACK_PEN	黒色のペン
+NULL_PEN	空のペン
+値 (フォント)	説明
+OEM_FIXED_FONT	OEM 固定幅フォント
+ANSI_FIXED_FONT	ANSI 固定幅フォント
+ANSI_VAR_FONT	ANSI 可変幅フォント
+SYSTEM_FONT	システムフォント
+DEVICE_DEFAULT_FONT	デバイスの既定のフォント
+DEFAULT_GUI_FONT	既定の GUI フォント
+値 (パレット)	説明
+DEFAULT_PALETTE	既定のカラーパレット
+今回の作例におけるペンとブラシにストックオブジェクトを使用するなら，ウィンドウプロシージャは次のようになるでしょう。
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+    static HPEN hpen, hpenPrev;
+    static HBRUSH hbr, hbrPrev;
+
+    switch (uMsg) {
+    case WM_CREATE:
+        hpen = (HPEN) GetStockObject(BLACK_PEN);
+        hbr = (HBRUSH) GetStockObject(GRAY_BRUSH);
+        return 0;
+
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+        hpenPrev = (HPEN) SelectObject(hdc, hpen);
+        hbrPrev = (HBRUSH) SelectObject(hdc, hbr);
+        Rectangle(hdc, 50, 50, 200, 150);
+        SelectObject(hdc, hpenPrev);
+        SelectObject(hdc, hbrPrev);
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        // ストックオブジェクトの削除は不要
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+DC の保存
+デバイスコンテキストの状態を保存する関数 SaveDC，復元する関数 RestoreDC を利用すると，GDI オブジェクトの関連付けを元に戻す操作の負担を軽減できます。
+
+SaveDC 関数 [MSDN]
+デバイスコンテキストの現在の状態 (オブジェクトの関連付けやグラフィックモード) を保存します。
+
+int SaveDC(
+    HDC hdc   // デバイスコンテキストへのハンドル
+);
+返り値
+保存された状態を一意に示す値を返します。失敗時に 0 を返します。
+RestoreDC 関数 [MSDN]
+デバイスコンテキストの状態を復元します。
+
+BOOL RestoreDC(
+    HDC hdc,       // デバイスコンテキストへのハンドル
+    int nSavedDC   // 状態の識別値
+);
+nSavedDC
+復元すべき状態を示す識別値または負の値を指定します。負の値 -n (≤ -1) を指定すると n 回前に保存された状態を復元します。
+パラメータ nSavedDC には，SaveDC 関数の返り値か，負の値を指定します。
+最後に SaveDC を実行した時点の状態を復元するには，値 -1 を指定します。
+
+SaveDC 関数，RestoreDC 関数を用いると，今回のプログラムは次のように書き換えることができます。
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+    static HPEN hpen;
+    static HBRUSH hbr;
+
+    switch (uMsg) {
+    case WM_CREATE:
+        hpen = CreatePen(PS_SOLID, 5, RGB(0x00, 0x7f, 0xff));
+        hbr = CreateSolidBrush(RGB(0xff, 0xbf, 0x00));
+        return 0;
+
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+        SaveDC(hdc);         // 状態を保存
+        SelectObject(hdc, hpen);
+        SelectObject(hdc, hbr);
+        Rectangle(hdc, 50, 50, 200, 150);
+        RestoreDC(hdc, -1);  // 状態を復元
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        DeleteObject(hpen);
+        DeleteObject(hbr);
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

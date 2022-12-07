@@ -1,0 +1,192 @@
+
+■ メッセージボックス
+http://kaitei.net/winapi/message-boxes/
+
+目次
+MessageBox 関数
+MessageBoxIndirect 関数
+スポンサーリンク
+
+メッセージボックスを表示し，選択されたボタンを判別するプログラムを作ります。
+
+作例-1 作例-2
+
+#include <windows.h>
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                   LPSTR lpszCmdLine, int nCmdShow)
+{
+    int id;
+
+    id = MessageBox(NULL, TEXT("ボタンを押して下さい。"),
+        TEXT(""), MB_OKCANCEL | MB_ICONQUESTION);
+
+    switch (id)
+    {
+    case IDOK:
+        MessageBox(NULL, TEXT("[OK] が押されました。"),
+            TEXT("結果"), MB_ICONINFORMATION);
+        break;
+    case IDCANCEL:
+        MessageBox(NULL, TEXT("[キャンセル] が押されました。"),
+            TEXT("結果"), MB_ICONINFORMATION);
+        break;
+    }
+
+    return 0;
+}
+MessageBox 関数
+MessageBox 関数はメッセージボックスを表示する関数です。
+
+MessageBox 関数 [MSDN]
+メッセージボックスを表示します。
+
+int MessageBox(
+    HWND hWnd,          // オーナーウィンドウへのハンドル
+    LPCTSTR lpText,     // テキスト
+    LPCTSTR lpCaption,  // キャプション
+    UINT uType          // メッセージボックスのタイプ
+);
+uType
+メッセージボックスのタイプを指定します。ボタン，アイコン等はビット論理和で組み合わせて指定できます。
+値 (ボタン)	説明
+MB_OK	OK (既定)
+MB_OKCANCEL	OK，キャンセル
+MB_ABORTRETRYIGNORE	中止，再試行，無視
+MB_YESNOCANCEL	はい，いいえ，キャンセル
+MB_YESNO	はい，いいえ
+MB_RETRYCANCEL	再試行，キャンセル
+MB_CANCELTRYCONTINUE	キャンセル，再実行，継続
+値 (アイコン)	説明
+MB_ICONHAND
+MB_ICONSTOP
+MB_ICONERROR	 エラー
+MB_ICONQUESTION	 問合せ
+MB_ICONEXCLAMATION
+MB_ICONWARNING	 警告
+MB_ICONASTERISK
+MB_ICONINFORNATION	 情報
+他に，既定のボタン，モーダル状態などのオプションを指定することもできます (MSDN 参照)。
+返り値
+どのボタンが選択されたかを表す値が返ります。
+値	説明
+IDOK	OK
+IDCANCEL	キャンセル
+IDABORT	中止
+IDRETRY	再試行
+IDIGNORE	無視
+IDYES	はい
+IDNO	いいえ
+IDTRYAGAIN	再実行
+IDCONTINUE	継続
+ここでは紹介を割愛しますが，MessageBox 関数を拡張した MessageBoxEx 関数 [MSDN] も提供されています。
+
+第 1 引数の hWnd には，オーナーウィンドウとするウィンドウを指定します。
+今回は NULL を指定して，オーナーウィンドウを持たないメッセージボックスを作成しました。
+
+第 2，第 3 引数は，それぞれメッセージボックスのテキスト，キャプションを指定します。
+
+第 4 引数の uType には，メッセージボックスのタイプを表す整数値を指定します。
+ここで指定する値には，winuser.h で定義されている次のような値が使えます。
+
+// ボタンの種類
+#define MB_OK                       0x00000000L  // OK
+#define MB_OKCANCEL                 0x00000001L  // OK, キャンセル
+#define MB_ABORTRETRYIGNORE         0x00000002L  // 中止，再試行，無視
+#define MB_YESNOCANCEL              0x00000003L  // はい，いいえ，キャンセル
+#define MB_YESNO                    0x00000004L  // はい，いいえ
+#define MB_RETRYCANCEL              0x00000005L  // 再試行，キャンセル
+#define MB_CANCELTRYCONTINUE        0x00000006L  // キャンセル，再実行，継続
+
+// アイコンの種類
+#define MB_ICONHAND                 0x00000010L  // エラー
+#define MB_ICONQUESTION             0x00000020L  // 問合せ
+#define MB_ICONEXCLAMATION          0x00000030L  // 警告
+#define MB_ICONASTERISK             0x00000040L  // 情報
+Windows プログラミングではこのような大文字の識別子が大量に出現しますが，それらは #define で定義された記号定数やマクロ (型の場合は typedef で定義された別名) です。
+記号定数の多くは MB_ のような接頭辞が付いていて，その記号定数の使途を表しています (MB は message box の意)。
+今回の uType の値はビットフィールドになっていて，ビット単位の論理和演算子 | で組み合わせることができます。
+例えば，次のように書くと MB_YESNOCANCEL と MB_ICONEXCLAMATION の組合せを表現できます。
+
+MessageBox(NULL, TEXT("..."), TEXT("..."),
+           MB_YESNOCANCEL | MB_ICONEXCLAMATION);
+MessageBoxIndirect 関数
+メッセージボックスの属性を表す構造体を用意しておいて，その構造体を元にメッセージボックスを作成する方法があります。
+回りくどい方法ですが，1 度作成した構造体が再利用できることから，何回も同じ種類のメッセージボックスを作成する場合などに便利です。
+
+構造体を利用してメッセージボックスを作成するには，MessageBoxIndirect 関数を使います。
+次のプログラムは，MessageBoxIndirect 関数を用いてメッセージボックスを表示する例です。
+
+作例
+
+#include <windows.h>
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+                   LPSTR lpszCmdLine, int nCmdShow)
+{
+    MSGBOXPARAMS mbp;
+
+    // 構造体をゼロクリア
+    ZeroMemory(&mbp, sizeof mbp);
+
+    // 構造体に属性を設定
+    mbp.cbSize = sizeof mbp;
+    mbp.hInstance = hInstance;
+    mbp.lpszCaption = TEXT("Test");
+    mbp.lpszText = TEXT("Hello, world!");
+    mbp.dwStyle = MB_OK | MB_ICONASTERISK;
+
+    // メッセージボックスを表示
+    MessageBoxIndirect(&mbp);
+
+    return 0;
+}
+MessageBoxIndirect のプロトタイプは，次の通りです。
+
+MessageBoxIndirect 関数 [MSDN]
+メッセージボックスを表示します。
+
+int MessageBoxIndirect(
+    LPMSGBOXARAMS lpmbp  // MSGBOXPARAMS 構造体
+);
+返り値
+どのボタンが選択されたかを表す値が返ります (MessageBox 関数に同じ)。
+メッセージボックスの属性を格納する MSGBOXPARAMS 構造体は，次のように定義されています。
+
+MSGBOXPARAMS 構造体 [MSDN]
+メッセージボックスの属性を表します。
+
+typedef struct tagMSGBOXPARAMS
+{
+    UINT        cbSize;         // 構造体のサイズ
+    HWND        hwndOwner;      // オーナーウィンドウ
+    HINSTANCE   hInstance;      // インスタンス
+    LPCTSTR     lpszText;       // テキスト
+    LPCTSTR     lpszCaption;    // キャプション
+    DWORD       dwStyle;        // メッセージボックスの種類
+    LPCSTR      lpszIcon;       // アイコン
+    DWORD_PTR   dwContextHelpId;  // ヘルプコンテキスト識別子
+    MSGBOXCALLBACK lpfnMsgBoxCallback;  // コールバック関数
+    DWORD       dwLanguageId;   // 言語識別子
+} MSGBOXPARAMS;
+dwStyle
+MessageBox 関数の uType 引数と同様の値を指定します。
+この構造体のすべてのメンバについて理解する必要はありません。
+今回最初に構造体をゼロクリアし，興味のないメンバは何も値を設定していません。
+構造体の最初のメンバ cbSize には，構造体のサイズをバイト数で指定します。
+一見冗長に見えるこのメンバは，将来の構造体の拡張に備えて設けられています。
+
+構造体のゼロクリアに用いたのは，Windows API に含まれる ZeroMemory マクロです。
+
+ZeroMemory マクロ [MSDN]
+メモリ領域をゼロクリアします。
+
+void ZeroMemory(
+    void *Destination,  // 始点アドレス
+    size_t Length       // 長さ
+);
+スポンサーリンク
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

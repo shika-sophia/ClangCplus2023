@@ -1,0 +1,207 @@
+
+■ Windows API について
+http://kaitei.net/winapi/overview/
+
+目次
+Windows API
+Windows API の種類
+他の選択肢
+Visual C++ 2010 Express
+Visual Studio 2012 Express for Windows Desktop
+
+
+◆Windows API
+Windows API (Windows Application Programming Interface) は，
+C やその他の言語から利用できる Windows の機能のセット (別の言い方をすれば，関数のセット) です。
+Windows API を利用することで，Windows に用意されている様々な機能を呼び出すことができます。
+
+C の標準ライブラリには，コンソールアプリケーションを作成できる程度の関数しか用意されていませんが，
+Windows API には，次の MessageBox 関数のように GUI を実現するための関数が用意されています。
+
+C の標準関数でテキストを表示
+printf("Hello, world!\n");
+
+C の標準関数でテキストを表示	Windows API 関数でテキストを表示
+MessageBox(NULL,
+    "Hello, world!", "Test", NULL);
+Windows API 関数でテキストを表示
+また，ファイルを開く C の標準関数 fopen はパラメータ数が 2 個なのに対し，
+Windows API 関数 CreateFile は 7 個ものパラメータを持ちます。
+このように，Windows API を直接利用することで，Windows の機能をフルに活用したプログラムが作れるようになります。
+
+fp = fopen("hoge.txt", "r");
+
+C の標準関数でファイルを開く	
+hFile = CreateFile("hoge.txt",
+    GENERIC_READ, 0, NULL, OPEN_EXISTING,
+    FILE_ATTRIBUTE_NORMAL, NULL);
+Windows API 関数でファイルを開く
+ファイルを開くだけで 7 個もパラメータが必要なのは驚きですが，
+Windoows API にはこの程度のパラメータ数の関数はたくさんあります。
+本書の序盤でウィンドウの作成方法を紹介しますが，そこでは 11 個ものパラメータを持つ関数が登場します。
+
+
+◆Windows API の種類
+Windows API には，次のようなバージョンが存在します。
+
+Win16: 初期の Windows から Windows 9x 系まで利用された，16 ビット版の API。
+Win32: Windows NT 系で導入された，32 ビット版の API。
+Win32c: Windows 9x 系に移植したもの。文字 c は compatibility の意。
+Win32s: Windows 3.1 に移植したもの。文字 s は subset の意。
+Win64: Windows XP から導入された，64 ビット版の API。
+また，Win16 を Win32 環境で，Win32 を Win64 環境でエミュレートする，WOW, WOW64 と呼ばれる技術があります。
+
+WOW (Windows-On-Windows): Win32 環境で Win16 をエミュレート。
+WOW64 (Windows-On-Windows 64-bit): Win64 環境で Win32 をエミュレート。
+
+
+◆他の選択肢
+Windows API は Windows のネイティブの機能を直接呼び出せるため，
+痒いところに手の届くアプリケーションを開発できますが，
+API が たいへん複雑なため簡単なアプリケーションの開発でも たいへんな苦労を伴います。 
+ここでは，これから Windows アプリケーションを作ろうとしている読者の方が途方に暮れないように，
+取り掛かりやすい他の方法で Windows アプリケーションを作る方法を紹介しておきます。
+
+Windows アプリケーションを作成するため方法には，Windows API の他にも，
+Windows フォーム，WPF，MFC，Visual Basic，Delphi といった選択肢があります。
+学習コストや開発するアプリケーションの性質に照らして，適切な方法を検討することが重要です。
+
+
+＊Windows API: Windows が提供する API を直接使用する方法です。
+開発言語には C を使用します。
+簡単なアプリケーションの作成でも複雑な API をこねくり回す必要があるため，学習コストと開発コストが高めです。
+ネイティブの API を直接使用するため，Windows の細かい制御を行うアプリケーションの開発に適しています。
+
+＊Windows フォーム: .NET Framework を利用する方法です。
+開発言語には C# や VB.NET などの .NET ファミリの言語を使用します。VB6 のフォームの後継にあたります。
+
+＊WPF: こちらも .NET Framework を利用する方法です。
+開発言語には，C# や VB.NET などの .NET ファミリの言語を使用するほか，
+UI を記述するための XML ベースの言語である XAML も併用します。
+
+＊MFC: Windows API を Visual C++ のクラスでカプセル化したライブラリを使用する方法です。
+
+＊Visual Basic: BASIC ベースの言語である Visual Basic を使用する方法です。
+VB6 の後に大幅な言語仕様の変更があり，現在は後継の VB.NET に取って代わられています。
+
+＊Delphi: Borland が提供する開発環境を使用する方法で，開発言語には Object Pascal を使用します。
+ネイティブコードを生成することから，性能を気にするケースでも使用できます。
+初学者向けの筆者のお勧めは，Windows フォームや WPF による Windows アプリケーションの開発です。
+C# や VB.NET を知らない方は新しく言語を習得する必要がありますが，
+C# に関しては Java や C++ に触ったことがあれば習得は容易いはずです。
+単にウィンドウを出すだけのプログラムであれば，次のように非常に簡単に書けてしまいます (Windows フォームの例)。
+
+using System.Windows.Forms;
+
+class MainForm : Form
+{
+    static void Main()
+    {
+        Application.Run(new MainForm());
+    }
+}
+
+
+◆Visual C++ 2010 Express
+Visual C++ 2010 Express について
+Microsoft Visual 2010 Express は，Visual Studio 2010 の無償版です。
+強力なコード補完機能，デバッガ機能などが利用できます。
+
+作例
+
+次のサイトからダウンロード可能です。
+
+Microsoft Visual Studio
+http://www.visualstudio.com/downloads/download-visual-studio-vs
+インストール
+デフォルトの設定でインストールを行えば OK です。
+
+プロジェクトの作成
+プログラムは [スタート] - [すべてのプログラム] - [Microsoft Visual Studio 2010 Express]
+ - [Microsoft Visual C++ 2010 Express] から立ち上げます。
+
+プロジェクトを新規作成するには，次のように操作します。
+
+[ファイル] - [新規作成] - [プロジェクト] を選択します。
+左側で [Visual C++] - [Win32] を選択し，右側で [Win32 プロジェクト] を選択します。
+プロジェクトの名前を入力して，[OK] を選択します。
+プロジェクトの作成-1
+
+ウィザードは [空のプロジェクト] にチェックを入れて，完了させます。
+プロジェクトの作成-2
+
+これで，新しいプロジェクトとソリューション(*1) が作成されました。
+次に，ソースファイルをプロジェクトに追加します。
+ソリューションエクスプローラにて [ソースファイル] フォルダを右クリック - [追加] - [新しい項目] を選択します。
+プロジェクトの作成-3
+
+[C++ ファイル] を選択し，ファイルの名前を入力して，[追加] を選択します。
+プロジェクトの作成-4
+
+プログラムのソースコードは，今の手順で追加したファイルの中に記述します。
+なお，ヘッダファイルも同様の手順でプロジェクトに追加できます
+。
+(*1) Visual Studio では，1 つの EXE/DLL/LIB ファイルを出力する単位をプロジェクト (project)，
+プロジェクトの集合をソリューション (solution) と呼んでいます。
+今回の手順で新しいプロジェクトを作成すると，同時に新しいソリューションも作成されます。
+
+ビルド
+プログラムをビルド (コンパイル) するには，[デバッグ] - [ソリューションのビルド] を選択します。
+
+実行
+プログラムを実行するには，[デバッグ] - [デバッグ開始] を選択します。
+この方法でプログラムを実行した場合は，デバッガが利用できます。
+プログラムを実行中に強制終了するには，[デバッグ] - [デバッグの停止] を選択します。
+
+
+◆Visual Studio 2012 Express for Windows Desktop
+Visual Studio 2012 Express for Windows Desktop について
+Microsoft Visual 2012 Express は，Visual Studio 2012 の無償版です。
+強力なコード補完機能，デバッガ機能などが利用できます。
+
+作例""
+
+次のサイトからダウンロード可能です。
+
+Microsoft Visual Studio
+http://www.visualstudio.com/downloads/download-visual-studio-vs
+インストール
+デフォルトの設定でインストールを行えば OK です。
+
+プロジェクトの作成
+プログラムは [スタート] - [すべてのプログラム] - [Microsoft Visual Studio 2012 Express] 
+- [VS Express for Windows Desktop] から立ち上げます。
+
+プロジェクトを新規作成するには，次のように操作します。
+
+[ファイル] - [新しいプロジェクト] を選択します。
+左側で [Visual C++] - [Win32] を選択し，右側で [Win32 プロジェクト] を選択します。
+プロジェクトの名前を入力して，[OK] を選択します。
+プロジェクトの作成-1
+ウィザードは [空のプロジェクト] にチェックを入れて，完了させます。
+プロジェクトの作成-2
+これで，新しいプロジェクトとソリューション(*1) が作成されました。
+次に，ソースファイルをプロジェクトに追加します。
+
+ソリューションエクスプローラにて [ソースファイル] フォルダを右クリック - [追加] - [新しい項目] を選択します。
+プロジェクトの作成-3
+[C++ ファイル] を選択し，ファイルの名前を入力して，[追加] を選択します。
+プロジェクトの作成-4
+プログラムのソースコードは，今の手順で追加したファイルの中に記述します。
+なお，ヘッダファイルも同様の手順でプロジェクトに追加できます。
+(*1) Visual Studio では，1 つの EXE/DLL/LIB ファイルを出力する単位をプロジェクト (project)，プロジェクトの集合をソリューション (solution) と呼んでいます。
+今回の手順で新しいプロジェクトを作成すると，同時に新しいソリューションも作成されます。
+
+ビルド
+プログラムをビルド (コンパイル) するには，[ビルド] - [ソリューションのビルド] を選択します。
+
+実行
+プログラムを実行するには，[デバッグ] - [デバッグ開始] を選択します。
+この方法でプログラムを実行した場合は，デバッガが利用できます。
+プログラムを実行中に強制終了するには，[デバッグ] - [デバッグの停止] を選択します。
+
+
+目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

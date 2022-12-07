@@ -1,0 +1,328 @@
+
+■ ウィンドウの作成
+http://kaitei.net/winapi/creating-windows/
+
+目次
+ウィンドウ作成の概要
+作例
+ウィンドウクラスの登録
+ウィンドウの作成
+ウィンドウの表示
+
+
+ウィンドウ作成の概要
+ウィンドウの作成は，次のようなステップで行います。
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 1. ウィンドウの雛型を登録する
+
+    // 2. 雛型を元にウィンドウを作成する
+
+    // 3. ウィンドウを表示する
+
+    // 4. ウィンドウを維持管理する
+}
+ステップ 1－3 は，次の関数の呼び出しが対応します。
+
+RegisterClass 関数
+CreateWindow 関数
+ShowWindow 関数，UpdateWindow 関数
+ステップ 4 の部分には，メッセージループと呼ばれる while ループを記述します。
+
+今回は手始めに，ステップ 1－3 だけを行うプログラムを作成します。
+
+作例
+ウィンドウを作成する最初のプログラムです。
+
+作例
+
+#include <windows.h>
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+
+    // ウィンドウクラスの属性を設定
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = DefWindowProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    // ウィンドウクラスを登録
+    if (!RegisterClass(&wc)) return 0;
+
+    // ウィンドウを作成
+    hwnd = CreateWindow(
+        szAppName, TEXT("Title"),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    // ウィンドウを表示
+    ShowWindow(hwnd, nCmdShow);
+
+    // ウィンドウを再描画
+    UpdateWindow(hwnd);
+
+    MessageBox(hwnd, TEXT("ウィンドウを生成しました。"), TEXT(""), MB_OK);
+
+    return 0;
+}
+最後のメッセージボックスがストッパーの役割をしており，メッセージボックスを閉じればすぐにウィンドウは消えてしまいます。
+ウィンドウを継続的に表示するには，次の章で紹介するメッセージループを導入する必要があります。
+
+ウィンドウクラスの登録
+ウィンドウを作成するのに先立って，ウィンドウクラス (window class) と呼ばれる，ウィンドウの雛型を Windows に登録する必要があります。
+
+ウィンドウクラスの登録自体は RegisterClass 関数の呼び出しという簡単なお仕事です。
+
+RegisterClass 関数 [MSDN]
+ウィンドウクラスを登録します。
+
+ATOM RegisterClass(
+    CONST WNDCLASS *lpwc  // WNDCLASS 構造体
+);
+返り値
+登録されたウィンドウクラスを一意に示す整数値が返ります。クラスの登録に失敗すると 0 が返ります。
+RegisterClass 関数を実行するためには，WNDCLASS 構造体にウィンドウクラスの属性を設定する必要があります。
+
+WNDCLASS 構造体 [MSDN]
+ウィンドウクラスの属性を表します。
+
+typedef struct tagWNDCLASS {
+    UINT    style;          // スタイル
+    WNDPROC lpfnWndProc;    // ウィンドウプロシージャ
+    int     cbClsExtra;     // 追加領域
+    int     cbWndExtra;     // 追加領域
+    HANDLE  hInstance;      // インスタンスハンドル
+    HICON   hIcon;          // アイコン
+    HCURSOR hCursor;        // カーソル
+    HBRUSH  hbrBackground;  // 背景
+    LPCTSTR lpszMenuName;   // メニュー名
+    LPCTSTR lpszClassName;  // クラス名
+} WNDCLASS;
+style
+ウィンドウクラスのスタイルを指定します。次の表に示す値はビット論理和で組み合わせることができます。
+ウィンドウクラススタイル [MSDN]
+値	説明
+CS_VREDRAW	垂直方向のサイズが変更されたとき再描画
+CS_HREDRAW	水平方向のサイズが変更されたとき再描画
+CS_DBLCLKS	ダブルクリックを使用
+CS_OWNDC	各ウィンドウが独自のデバイスコンテキストを所有
+CS_CLASSDC	ウィンドウクラスがデバイスコンテキストを所有
+CS_PARENTDC	子ウィンドウを親ウィンドウ上で描画
+CS_NOCLOSE	閉じるボタンを無効化
+CS_SAVEBITS	ウィンドウにより隠される部分をビットマップに保存
+CS_BYTEALIGNCLIENT	クライアント領域をバイト境界に配置 (水平方向)
+CS_BYTEALIGNWINDOW	ウィンドウをバイト境界に配置 (水平方向)
+CS_GLOBALCLASS	アプリケーショングローバルクラスとする
+lpfnWndProc
+ウィンドウプロシージャと呼ばれる関数を指定します。→ ウィンドウプロシージャ で説明
+cbClsExtra
+ウィンドウクラス構造体の後に確保する領域のバイト数を指定します。
+cbWndExtra
+ウィンドウインスタンスの後に確保する領域のバイト数を指定します。
+hInstance
+lpfnWndProc で指定した関数が含まれるインスタンスへのハンドルを指定します。
+hIcon
+アイコンへのハンドルを指定します。
+NULL を指定した場合，既定のアイコンが適用されます。
+例えば，LoadIcon(NULL, ○○○) の形で，次のようなシステム定義のアイコンを指定できます。
+システムアイコン [MSDN]
+値	説明
+IDI_APPLICATION	アプリケーション既定
+IDI_HAND
+IDI_ERROR	エラー
+IDI_QUESTION	問合せ
+IDI_EXCLAMATION
+IDI_WARNING	警告
+IDI_ASTERISK
+IDI_INFORMATION	情報
+IDI_WINLOGO	Windows ロゴ
+IDI_SHIELD	シールド
+hCursor
+マウスカーソルへのハンドルを指定します。
+NULL を指定した場合，マウスカーソルの描画はアプリケーションの責任となります。
+例えば，LoadCursor(NULL, ○○○) の形で，次のようなシステム定義のカーソルを指定できます。
+システムカーソル [MSDN]
+値	説明
+IDC_ARROW	矢印 矢印
+IDC_IBEAM	アイビーム アイビーム
+IDC_WAIT	砂時計 砂時計
+IDC_CROSS	十字 十字
+IDC_UPARROW	上向き矢印 上向き矢印
+IDC_SIZENWSE	左上/右下向き矢印 左上/右下向き矢印
+IDC_SIZENESW	右上/左下向き矢印 右上/左下向き矢印
+IDC_SIZEWE	左右向き矢印 左右向き矢印
+IDC_SIZENS	上下向き矢印 上下向き矢印
+IDC_SIZEALL	全方向向き矢印 全方向向き矢印
+IDC_NO	禁止 禁止
+IDC_HAND	手 手
+IDC_APPSTARTING	矢印と砂時計 矢印と砂時計
+IDC_HELP	矢印と疑問符 矢印と疑問符
+hbrBackground
+ウィンドウの背景を描画するブラシへのハンドル，もしくはシステムカラーを表す値を指定します。
+NULL を指定した場合，背景の描画はアプリケーションの責任となります。
+システムカラーを指定するには，(HBRUSH) (○○○ + 1) のように記述します。システムカラーを指定する際には，定数に 1 を加えた値を指定しなければなりません。
+システムカラー [MSDN]
+値	説明
+COLOR_SCROLLBAR	スクロールバーの軸
+COLOR_BACKGROUND	デスクトップ
+COLOR_ACTIVECAPTION	アクティブウィンドウのタイトルバー
+COLOR_INACTIVECAPTION	非アクティブウィンドウのタイトルバー
+COLOR_MENU	メニューの背景
+COLOR_WINDOW	ウィンドウの背景
+COLOR_WINDOWFRAME	ウィンドウの枠
+COLOR_MENUTEXT	メニューのテキスト
+COLOR_WINDOWTEXT	ウィンドウのテキスト
+COLOR_CAPTIONTEXT	タイトルバーのテキスト
+COLOR_ACTIVEBORDER	アクティブウィンドウの境界
+COLOR_INACTIVEBORDER	インアクティブウィンドウの境界
+COLOR_APPWORKSPACE	MDI アプリケーションの背景
+COLOR_HIGHLIGHT	選択項目
+COLOR_HIGHLIGHTTEXT	選択項目のテキスト
+COLOR_BTNFACE	ボタンの表面
+COLOR_BTNSHADOW	ボタンの影
+COLOR_GRAYTEXT	無効状態のテキスト
+COLOR_BTNTEXT	ボタンのテキスト
+lpszMenuName
+メニューのリソース名を指定します。
+メニューを用意しない場合は NULL を指定します。
+lpszClassName
+ウィンドウクラスに割り当てる名前，もしくはアトム値を指定します。
+hbrBackground にシステムカラーを指定する際には，定数に 1 を加えた値を指定しなければなりません。
+これは，定数 COLOR_SCROLLBAR の値が 0 であり，NULL と区別できないためです。
+だったらシステムカラーを 1 始まりにすればよかったと思うのですが，修正が効かなかったのでしょう。
+
+ウィンドウの作成
+CreateWindow 関数は，メモリ上にウィンドウを作成する関数です。
+
+CreateWindow 関数 [MSDN]
+ウィンドウを作成します。
+
+HWND CreateWindow(
+    LPCTSTR lpClassName,   // ウィンドウクラス名
+    LPCTSTR lpWindowName,  // ウィンドウの名称
+    DWORD dwStyle,         // ウィンドウスタイル
+    int x,                 // 横方向の位置
+    int y,                 // 縦方向の位置
+    int nWidth,            // ウィンドウの幅
+    int nHeight,           // ウィンドウの高さ
+    HWND hWndParent,       // 親ウィンドウのハンドル
+    HMENU hMenu,           // メニューハンドル
+    HANDLE hInstance,      // インスタンスハンドル
+    LPVOID lpParam         // ウィンドウ作成データ
+);
+lpClassName
+ウィンドウクラスの名前を指定します。
+lpWindowName
+ウィンドウの名前を指定します。この名前はウィンドウのタイトルバーに表示されます。。
+dwStyle
+ウィンドウの表示スタイルを指定します。次の表に示す値はビット論理和で組み合わせることができます。
+ウィンドウスタイル [MSDN]
+値 (基本的なスタイル)	説明
+WS_OVERLAPPED
+WS_TILED	オーバーラップウィンドウ
+WS_POPUP	ポップアップウィンドウ
+WS_CHILD
+WS_CHILDWINDOW	子ウィンドウ
+WS_OVERLAPPEDWINDOW
+WS_TILEDWINDOW	オーバーラップウィンドウ (WS_OVERLAPPED, WS_CAPTION, WS_SYSMENU, WS_THICKFRAME, WS_MINIMIZEBOX, WS_MAXIMIZEBOX の組合せ)
+WS_POPUPWINDOW	ポップアップウィンドウ (WS_POPUP, WS_BORDER, WS_SYSMENU の組合せ)
+値 (構成要素)	説明
+WS_BORDER	境界を持つウィンドウ
+WS_DLGFRAME	ダイアログボックスの枠を持つウィンドウ
+WS_CAPTION	タイトルバーを持つウィンドウ (WS_BORDER, WS_DLGFRAME の組合せ)
+WS_VSCROLL	垂直スクロールバーを持つウィンドウ
+WS_HSCROLL	水平スクロールバーを持つウィンドウ
+WS_SYSMENU	システムメニューを持つウィンドウ
+WS_THICKFRAME
+WS_SIZEBOX	サイズ変更境界を持つウィンドウ
+WS_MINIMIZEBOX	最小化ボタンを持つウィンドウ
+WS_MAXIMIZEBOX	最大化ボタンを持つウィンドウ
+値 (その他)	説明
+WS_MINIMIZE
+WS_ICONIC	最小化されたウィンドウ
+WS_MAXIMIZE	最大化されたウィンドウ
+WS_VISIBLE	初期状態で可視化されたウィンドウ
+WS_DISABLED	無効化されたウィンドウ
+WS_CLIPSIBLINGS	
+WS_CLIPCHILDREN	
+WS_GROUP	コントロールグループの最初のコントロール
+WS_TABSTOP	タブキーで移動可能なコントロール
+x, y
+ウィンドウ左上端の x 座標，y 座標を指定します。既定の位置を使うには CW_USEDEFAULT を指定します。
+nWidth, nHeight
+ウィンドウの幅，高さを指定します。既定の大きさを使うには CW_USEDEFAULT を指定します。
+hWndParent
+親ウィンドウへのハンドルを指定します。メインウィンドウを作成する場合には NULL を指定します。
+hMenu
+子ウィンドウ以外の場合: メニューハンドルを指定します。メニューを提供しない場合や，ウィンドウクラスのメニューを使用する場合には NULL を指定します。
+子ウィンドウの場合: 子ウィンドウ識別子とする整数値を指定します。
+hInstnance
+このウィンドウを生成するプログラムのインスタンスハンドルを指定します。
+lpParam
+返り値
+生成されたウィンドウへのハンドルを返します。失敗時 NULL を返します。
+拡張ウィンドウスタイルが適用可能な，CreateWindowEx 関数もあります。
+最初に引数が 1 つ追加されていますが，後は CreateWindow 関数と同じです。
+
+ウィンドウの表示
+ShowWindow 関数は，ウィンドウの表示状態を設定するための関数です。
+
+ShowWindow 関数 [MSDN]
+ウィンドウの表示状態を設定します。
+
+BOOL ShowWindow(
+    HWND hWnd,    // ウィンドウハンドル
+    int nCmdShow  // 表示状態
+);
+nCmdShow
+ウィンドウの表示状態を表す値を指定します。
+ウィンドウの表示状態 [MSDN]
+値	説明
+SW_HIDE	非表示にして，他のウィンドウをアクティブ化
+SW_SHOWNORMAL
+SW_NORMAL	アクティブ化して，普通のサイズで表示
+SW_SHOWMINIMIZED	アクティブ化して，最小化
+SW_SHOWMAXIMIZED
+SW_MAXIMIZE	アクティブ化して，最大化
+SW_SHOWNOACTIVATE	アクティブ化せずに，以前の位置とサイズで表示
+SW_SHOW	アクティブ化して，現在の位置とサイズで表示
+SW_MINIMIZE	最小化して，他のウィンドウをアクティブ化
+SW_SHOWMINNOACTIVE	アクティブ化せずに，以前の位置とサイズで表示
+SW_SHOWNA	アクティブ化せずに，現在の位置とサイズで表示
+SW_RESTORE	アクティブ化して，普通の大きさで表示
+SW_SHOWDEFAULT	STARTUPINFO 構造体で指定された値を使う
+ShowWindow 関数の第 2 引数には，WinMain 関数の第 4 引数である nCmdShow の値を渡します。
+
+UpdateWindow 関数は，ウィンドウの描画を直ちに行うために呼び出します。
+
+UpdateWindow 関数 [MSDN]
+無効領域がある場合に，ウィンドウを直ちに再描画します。
+
+BOOL UpdateWindow(
+    HWND hWnd  // ウィンドウハンドル
+);
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net

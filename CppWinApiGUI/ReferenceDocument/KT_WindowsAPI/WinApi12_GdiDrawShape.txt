@@ -1,0 +1,381 @@
+
+■ 図形と曲線の描画
+http://kaitei.net/winapi/drawing-shapes/
+
+目次
+図形の描画関数
+長方形の描画
+曲線の描画関数
+直線の描画
+円弧の描画
+
+
+図形の描画関数
+図形の描画関数には次のようなものがあります。
+表の中の図は，青色のペン，黄色のブラシの時の描画例です。
+
+関数	図形の種類	描画例
+Rectangle	長方形	長方形
+FillRect	長方形 (輪郭なし)	長方形 (輪郭なし)
+FrameRect	長方形 (輪郭のみ)	長方形 (輪郭のみ)
+Ellipse	楕円	楕円
+RoudRect	角の丸い長方形	角の丸い長方形
+Pie	パイ形	パイ形
+Chord	弦形	弦形
+Polygon, PolyPolygon	多角形，複数の多角形	多角形，複数の多角形
+長方形の描画
+次のような長方形を描画するプログラムを作ります。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+    MSG msg;
+
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = WndProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    if (!RegisterClass(&wc)) return 0;
+
+    hwnd = CreateWindow(
+        szAppName, TEXT(""),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return msg.wParam;
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+
+    switch (uMsg) {
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);       // 描画開始
+        Rectangle(hdc, 50, 50, 200, 150);  // 描画
+        EndPaint(hwnd, &ps);               // 描画終了
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+長方形の描画に用いた関数は，次の Rectangle 関数です。
+
+Rectangle 関数 [MSDN]
+長方形を描画します。
+
+BOOL Rectangle(
+    HDC hdc,    // デバイスコンテキストへのハンドル
+    int left,   // 左上端の x 座標
+    int top,    // 左上端の y 座標
+    int right,  // 右下端の x 座標
+    int bottom  // 右下端の y 座標
+);
+第 1 引数の hdc には，BeginPaint 関数などで取得したデバイスコンテキストへのハンドルを指定します。
+
+第 2 引数以降には，長方形の左上端，右下端の座標をクライアント座標で指定します。
+
+クライアント座標系
+
+次の図は，式 Rectangle(hdc, 2, 2, 8, 6) によって描画される長方形です。
+このように，GDI 関数で描画される図形は，始点を含み終点を含みません。
+
+長方形の例
+
+曲線の描画関数
+曲線の描画関数には次のようなものがあります。
+
+関数	曲線の種類	描画例
+LineTo	直線	直線
+Polyline, PolylineTo	複数の直線	複数の直線
+PolyPolyline	複数の複数の直線	複数の複数の直線
+Arc, ArcTo, AngleArc	円弧	円弧
+PolyBezier, PolyBezierTo	複数のベジェ曲線	複数のベジェ曲線
+直線の描画
+次のような図を描画するプログラムを作ります。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    TCHAR szAppName[] = TEXT("TestApp");
+    WNDCLASS wc;
+    HWND hwnd;
+    MSG msg;
+
+    wc.style         = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc   = WndProc;
+    wc.cbClsExtra    = 0;
+    wc.cbWndExtra    = 0;
+    wc.hInstance     = hInstance;
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH) (COLOR_WINDOW + 1);
+    wc.lpszMenuName  = NULL;
+    wc.lpszClassName = szAppName;
+
+    if (!RegisterClass(&wc)) return 0;
+
+    hwnd = CreateWindow(
+        szAppName, TEXT(""),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL,
+        hInstance, NULL);
+
+    if (!hwnd) return 0;
+
+    ShowWindow(hwnd, nCmdShow);
+    UpdateWindow(hwnd);
+
+    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    return msg.wParam;
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+
+    switch (uMsg) {
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+        MoveToEx(hdc, 50, 50, NULL);   // (50, 50) まで移動
+        LineTo(hdc, 150, 50);   // (150, 50) まで直線を描画
+        LineTo(hdc, 50, 150);   // (50, 150) まで直線を描画
+        LineTo(hdc, 150, 150);  // (150, 150) まで直線を描画
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+このプログラムでは，現在位置 (current position) を移動する関数 MoveToEx と，直線を描画する関数 LineTo が使われています。
+
+MoveToEx 関数 [MSDN]
+現在位置を設定します。
+
+BOOL MoveToEx(
+    HDC hdc,      // デバイスコンテキストへのハンドル
+    int X,        // x 座標
+    int Y,        // y 座標
+    LPPOINT lppt  // 以前の現在位置 (出力用)
+);
+lppt
+更新前の現在位置を取得する場合に，POINT 構造体へのポインタを指定します。不要な場合は NULL を指定します。
+LineTo 関数 [MSDN]
+現在位置を始点として，指定の終点までの直線を描画をします。また，現在位置を終点に移動します。
+
+BOOL LineTo(
+    HDC hdc,  // デバイスコンテキストへのハンドル
+    int x,    // 終点の x 座標
+    int y     // 終点の y 座標
+);
+また，連続した複数の直線 (ポリライン) を描画する Polyline 関数，PolylineTo 関数があります。
+
+Polyline 関数 [MSDN]
+連続した複数の直線を描画します。現在位置は使用しません。
+
+BOOL Polyline(
+    HDC hdc,           // デバイスコンテキストへのハンドル
+    CONST POINT *apt,  // 端点の配列
+    int cpt            // 配列内の点の数
+);
+PolylineTo 関数 [MSDN]
+現在位置を始点として，連続した複数の直線を描画します。また，現在位置を終点に移動します。
+
+BOOL PolylineTo(
+    HDC hdc,           // デバイスコンテキストへのハンドル
+    CONST POINT *apt,  // 端点の配列
+    int cpt            // 配列内の点の数
+);
+現在位置 (50, 50), 端点の配列 apt = { { 100, 50 }, { 50, 100 }, { 100, 100 } }, 配列内の点の数 cpt = 3 のとき，Polyline, PolylineTo 関数で描画される図形は次の通りです。
+
+描画例
+
+さらに，複数のポリラインを描画する PolyPolyline という関数もあります。
+
+PolyPolyline 関数 [MSDN]
+複数のポリラインを描画します。現在位置は使用しません。
+
+BOOL PolyPolyline(
+    HDC hdc,           // デバイスコンテキストへのハンドル
+    CONST POINT *apt,  // 端点の配列
+    CONST DWORD *asz,  // ポリラインごとの端点数からなる配列
+    DWORD csz          // ポリラインの数
+);
+円弧の描画
+次のような円弧を描画するプログラムを作ります。
+
+作例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+
+    switch (uMsg) {
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+        Arc(hdc, 50, 50, 150, 150, 100, 200, 0, 100);
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+円弧を描画するには，Arc 関数，ArcTo 関数，AngleArc 関数のいずれかを利用します。
+このうち Arc 関数，ArcTo 関数のプロトタイプは次の通りです。
+
+Arc 関数 [MSDN]
+楕円の弧を描画します。現在位置は使用しません。
+
+BOOL Arc(
+    HDC hdc,         // デバイスコンテキストへのハンドル
+    int x1, int y1,  // 矩形の左上端の座標
+    int x2, int y2,  // 矩形の右下端の座標
+    int x3, int y3,  // 放射直線の端点の座標
+    int x4, int y4   // 放射直線の端点の座標
+);
+ArcTo 関数 [MSDN]
+現在位置から弧の始点までの直線と，楕円の弧を描画します。また，現在位置を弧の終点に移動します。
+
+BOOL ArcTo(
+    HDC hdc,         // デバイスコンテキストへのハンドル
+    int x1, int y1,  // 矩形の左上端の座標
+    int x2, int y2,  // 矩形の右下端の座標
+    int x3, int y3,  // 放射直線の端点の座標
+    int x4, int y4   // 放射直線の端点の座標
+);
+各関数のパタメータは，次の図に示すように指定します。
+
+パラメータの説明
+
+次のプログラムは，AngleArc 関数を使って図のような円弧を描画します。
+
+描画例
+
+#include <windows.h>
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+int WINAPI WinMain(
+    HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdLine, int nCmdShow)
+{
+    // 省略
+}
+
+LRESULT CALLBACK WndProc(
+    HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+    HDC hdc;
+    PAINTSTRUCT ps;
+
+    switch (uMsg) {
+    case WM_PAINT:
+        hdc = BeginPaint(hwnd, &ps);
+        MoveToEx(hdc, 100, 100, NULL);
+        AngleArc(hdc, 100, 100, 50, 45, 270);
+        EndPaint(hwnd, &ps);
+        return 0;
+
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    }
+
+    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+AngleArc 関数 [MSDN]
+現在位置から円弧の始点までの直線と，円弧を描画します。また，現在位置を円弧の終点に移動します。
+
+BOOL AngleArc(
+    HDC hdc,            // デバイスコンテキストへのハンドル
+    int x,              // 中心の x 座標
+    int y,              // 中心の y 座標
+    DWORD r,            // 半径
+    FLOAT eStartAngle,  // 開始角
+    FLOAT eSweepAngle   // 描画角
+);
+この関数のパタメータは，次の図に示すように指定します。
+
+パラメータの説明
+
+
+« 前のページ 目次 次のページ »
+サイト概要 | お問合せ | プライバシーポリシー
+© 2018 kaitei.net
+

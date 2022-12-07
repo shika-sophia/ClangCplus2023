@@ -1,0 +1,54 @@
+/**
+*@title ClangCplus2023 / ClangC11Console / ReferenceDocument
+*@class VisualStudioClangSetting.txt
+*@content How to build Clang Console Project in Visual Studio 2019
+*@author shika
+*@date 2022-12-07
+*/
+
+■ How to build Clang Console Project in Visual Studio 2019
+◆Install [C++ Desktop Application] in VS Installer
+  ・Terms: [Start View] or [.sln] Solution (Mouse Right Click) -> [new Project], [Add new Project]
+    -> [the Others if there are not any Project which you want]
+    -> WorkLoad -> [C++ Desktop Application] -> [Install]
+    -> (required about 10 minutes to complete install)
+
+    -> [new Project] -> Language[All], Application[Console], [Desktop]
+    -> [C++ Console Application] (C++, Windows, Console)
+    -> [OK]
+
+    ・Column [Application] 
+      Need choose [Console], [Desktop], or else. 
+      Or Project Name [C++ Console Application] is disappeared.
+
+    ・Only [ C language] Project is not existed, so [C++] Project build and use it in this.
+
+    ・If there are over two Projects in this Solution,
+      require [Set this to Startup Project].
+
+      Terms: [Menu] -> [Project] -> [Set this to Startup Project] or
+             [Project] (Mouse Right Click) -> [Set this to Startup Project]
+
+    ・Need not setting of "Environment Path" to Windows OS,
+      on only the case of Excuse by Visual Studio.
+
+    ◆Without Visual Studio, there are the methods of C language Compile 
+      by Windows Command Prompt, Linux Terminal.
+
+    ◆Compiler
+    ・Clang:
+      "Clang" is compiler name, made from "C Language".
+      It is developed from original compiler "gcc"(?), by Microsoft?, Mac, Google.
+      Visual Studio use "clang" and excuse in virtual Console,
+      which is already set "Environment Path" of C compiler and C Header.
+
+      [[Command]] of Windows Command Prompt
+      > cl [Options] [FileName] /link [LinkOptions] 
+
+    ・gcc:
+      "gcc" is compiler name. Linux has it defaultly.
+
+◆[Memo]
+  ・Solution: ClangCplus2023.sln
+      └ Project:  ClangC11Console.proj
+      └ Project:  CppWinApiGUI 
