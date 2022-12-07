@@ -17,38 +17,38 @@
     -> [C++ Console Application] (C++, Windows, Console)
     -> [OK]
 
-    ・Column [Application] 
+  ・Column [Application] 
       Need choose [Console], [Desktop], or else. 
       Or Project Name [C++ Console Application] is disappeared.
 
-    ・Only [ C language] Project is not existed, so [C++] Project build and use it in this.
+  ・Only [ C language] Project is not existed, so [C++] Project build and use it in this.
 
-    ・If there are over two Projects in this Solution,
-      require [Set this to Startup Project].
+  ・If there are over two Projects in this Solution,
+    require [Set this to Startup Project].
 
-      Terms: [Menu] -> [Project] -> [Set this to Startup Project] or
-             [Project] (Mouse Right Click) -> [Set this to Startup Project]
+    Terms: [Menu] -> [Project] -> [Set this to Startup Project] or
+           [Project] (Mouse Right Click) -> [Set this to Startup Project]
 
-    ・Need not setting of "Environment Path" to Windows OS,
-      on only the case of Excuse by Visual Studio.
+  ・Need not setting of "Environment Path" to Windows OS,
+    on only the case of Excuse by Visual Studio.
 
-    ◆Without Visual Studio, there are the methods of C language Compile 
-      by Windows Command Prompt, Linux Terminal.
+◆Without Visual Studio, there are the methods of C language Compile 
+  by Windows Command Prompt, Linux Terminal.
 
-    ◆Compiler
-    ・Clang:
-      "Clang" is compiler name, made from "C Language".
-      It is developed from original compiler "gcc"(?), by Microsoft?, Mac, Google.
-      Visual Studio use "clang" and excuse in virtual Console,
-      which is already set "Environment Path" of C compiler and C Header.
+◆Compiler
+ ・Clang:
+  "Clang" is compiler name, made from "C Language".
+  It is developed from original compiler "gcc"(?), by Microsoft?, Mac, Google.
+  Visual Studio use "clang" and excuse in virtual Console,
+  which is already set "Environment Path" of C compiler and C Header.
 
-      [[Command]] of Windows Command Prompt
-      > cl [Options] [FileName] /link [LinkOptions] 
+    [[Command]] of Windows Command Prompt
+    > cl [Options] [FileName] /link [LinkOptions] 
 
-    ・gcc:
-      "gcc" is compiler name. Linux has it defaultly.
+ ・gcc:
+  "gcc" is compiler name. Linux has it defaultly.
 
 ◆[Memo]
-  ・Solution: ClangCplus2023.sln
-      └ Project:  ClangC11Console.proj
-      └ Project:  CppWinApiGUI 
+ ・Solution: ClangCplus2023.sln
+     └ Project:  ClangC11Console.proj
+    (└ Project:  CppWinApiGUI.proj)
