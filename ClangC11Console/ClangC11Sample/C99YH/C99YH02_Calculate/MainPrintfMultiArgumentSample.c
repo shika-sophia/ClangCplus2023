@@ -8,15 +8,16 @@
 *@content C99YH ëÊÇQèÕ åvéZ p33 
 *@summary ÅEprintf("%d", value)
 *           => ÅkC99YH01_ConsoleOutput\MainPrintfSample.cÅl
+* 
 *         ÅEmulti arguments
 *             printf("%d, %d", value1, value2, ...)
+* 
 *         ÅEcalc order priority
 *             ( )    High
 *             * / %  
 *             + -    Low
 *             
 *         ÅEShow Åu%Åv
-*@subject 
 *
 *@see
 *@author shika
