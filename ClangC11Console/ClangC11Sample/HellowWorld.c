@@ -15,8 +15,19 @@
 *@see
 *@author shika
 *@date
+*/ 
+/*
+#include <stdio.h>
+
+int main(void) {
+//int mainXxxx(void) {
+
+    return 0;
+}//main()
+
 */
 
+//==== HelloWorld.c ====
 /*
 *@title ClangCplus2023 / ClangC11Console / ClanC11Sample
 *@class hello.c
@@ -48,15 +59,14 @@
 *@date 2022-12-06
 */
 
-//#include <stdio.h>
-
-//int main(void);
+#include <stdio.h>
 
 //int main(void) {
-//	printf("Hello World, Clang.");
-//
-//	return 0;
-//}//main()
+int mainHelloWorld(void) {
+	printf("Hello World, Clang.");
+
+	return 0;
+}//main()
 
 /*
 //==== Result ====
