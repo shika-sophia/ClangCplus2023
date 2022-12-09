@@ -31,6 +31,7 @@
 *         ・print format の略
 *         ・文字コード UNIX系(Mac, Linux): UTF-8
 *                     Windows default:    Shift_JIS
+*         ・改行  "\n"
 * 
 *         ◆printf() の書式文字列 〔C99YH 付録 p446〕
 *         ＊書式文字列 format
