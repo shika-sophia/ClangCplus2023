@@ -19,16 +19,17 @@
 *@date
 */
 
-//#include <stdio.h>
-//
+#include <stdio.h>
+
 //int main(void) {
-//    //---- Practice 1-1 ----
-//    printf("プログラミングは 面白い。\n");
-//    printf("\n");
-//    printf("Programming is interestead.\n");
-//
-//    return 0;
-//}//main()
+int mainPracticeC99YH01(void) {
+    //---- Practice 1-1 ----
+    printf("プログラミングは 面白い。\n");
+    printf("\n");
+    printf("Programming is interestead.\n");
+
+    return 0;
+}//main()
 
 /*
 //==== Result ====

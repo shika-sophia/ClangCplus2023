@@ -9,7 +9,7 @@
 *@summary #include 
 *         <stdio.h>
 *         int   main(void)
-*         void  printf(string [, int length])
+*         void  printf()
 *
 *@subject #include <stdio.h>
 *         #xxxx         //ディレクティブ: プリプロセッサ(=コンパイル前の処理)への命令
@@ -26,12 +26,13 @@
 *         ・引数 void 他もある
 *         ・戻値 int。return 0; で　0 が返ると プログラムが終了する。
 * 
-*@subject void  printf(string [, int length])
+*@subject void  printf(string format [, T value1] [, T value2] ...)
+*                 └ T: intなど数値型, char, string
 *         ・print format の略
 *         ・文字コード UNIX系(Mac, Linux): UTF-8
 *                     Windows default:    Shift_JIS
 * 
-*         ◆printf(string format [, int length]) の書式文字列 〔C99YH 付録 p446〕
+*         ◆printf() の書式文字列 〔C99YH 付録 p446〕
 *         ＊書式文字列 format
 *         % [フラグ] [最小フィールド幅] [. 精度] [長さ指定子]
 *
@@ -109,18 +110,16 @@
 *@date 2022-12-08
 */
 
-//#include <stdio.h>
+#include <stdio.h>
 
-//class MainPrintfSample { };
-//int main(void);
-//
-//int main(void) {
-//	printf("Hello World.\n");
-//	printf("Hello Japan.\n");
-//	printf("はじめまして、Ｃ言語さん。\n");
-//
-//	return 0;
-//}//main()
+//int main(void){
+int mainPrintfSample(void) {
+	printf("Hello World.\n");
+	printf("Hello Japan.\n");
+	printf("はじめまして、Ｃ言語さん。\n");
+
+	return 0;
+}//main()
 
 /*
 //====== Result ======
