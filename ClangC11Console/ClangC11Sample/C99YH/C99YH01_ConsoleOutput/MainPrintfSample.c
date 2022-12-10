@@ -9,7 +9,7 @@
 *@summary #include 
 *         <stdio.h>
 *         int   main(void)
-*         void  printf()
+*         int   printf()
 *
 *@subject #include <stdio.h>
 *         #xxxx         //ディレクティブ: プリプロセッサ(=コンパイル前の処理)への命令
@@ -26,8 +26,10 @@
 *         ・引数 void 他もある
 *         ・戻値 int。return 0; で　0 が返ると プログラムが終了する。
 * 
-*@subject void  printf(string format [, T value1] [, T value2] ...)
-*                 └ T: intなど数値型, char, string
+*@subject <stdio.h>
+*           └ int  printf(char format [, T value1] [, T value2] ...)
+*                   └ T: intなど数値型, char, string
+* 
 *         ・print format の略
 *         ・文字コード UNIX系(Mac, Linux): UTF-8
 *                     Windows default:    Shift_JIS
