@@ -1,20 +1,20 @@
 //==== Template ====
 
 /**
-*@title ClangC11Console / ClanC11Sample / C99YH / C99YH00_
-*@class Main.c
+*@directory ClangC11Console / ClanC11Sample / C99YH / C99YH00_
+*@fileName  Main.c
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH p /
+*@content C99YH 第章 / List - / p
 *@summary
 *
 *@subject
 *
-*@see
+*@see 
 *@author shika
-*@date
+*@date 2023-
 */ 
 /*
 #include <stdio.h>
