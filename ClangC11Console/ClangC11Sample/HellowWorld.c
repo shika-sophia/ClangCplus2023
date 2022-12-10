@@ -44,7 +44,8 @@ int main(void) {
 *         solution ClangCplus2023
 *            └ project ClangC11Console
 *                └ ClanC11Sample
-*                    └ hello.c
+*                    └ HelloWorld.c
+* 
 *           (└ Debug  -- whole view mode ONLY )
 *                └ ClangC11Console.tlog
 *                    └ 「linkcommand.1.tlog」「link.read.1.tlog」「link.write.1.tlog」など
@@ -52,7 +53,22 @@ int main(void) {
 *                └ ClangC11Console.ilk
 *                └ ClangC11Console.log
 *                └ ClangC11Console.obj
-*                └ hello.obj など
+*                └ HelloWorld.obj 
+*                    :
+* 
+*@subject Windows Command Prompt for developer 
+*         (this appeared after installing C++ liblaray into Visual Studio 2019) 
+* 
+*         Windows -> [Start] ->
+*
+*         [x86_x64 Cross Tools Command Prompt for VS 2019]
+*         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community>
+* 
+*         > clang --version
+*         clang version 12.0.0
+*         Target: i686-pc-windows-msvc
+*         Thread model: posix
+*         InstalledDir: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\Llvm\bin
 *
 *@see
 *@author shika
