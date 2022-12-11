@@ -29,8 +29,8 @@ int main(void) {
 
 //==== HelloWorld.c ====
 /*
-*@title ClangCplus2023 / ClangC11Console / ClanC11Sample
-*@class hello.c
+*@directory ClangCplus2023 / ClangC11Console / ClanC11Sample
+*@fileName  HelloWorld.c
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
@@ -59,10 +59,9 @@ int main(void) {
 *@subject Windows Command Prompt for developer 
 *         (this appeared after installing C++ liblaray into Visual Studio 2019) 
 * 
-*         Windows -> [Start] ->
-*
-*         [x86_x64 Cross Tools Command Prompt for VS 2019]
-*         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community>
+*         Procedure:  Windows -> [Start] ->
+*           [x86_x64 Cross Tools Command Prompt for VS 2019]
+*           C:\Program Files (x86)\Microsoft Visual Studio\2019\Community>
 * 
 *         > clang --version
 *         clang version 12.0.0
