@@ -89,8 +89,8 @@
 #include <stdint.h>
 #include <float.h>
 
-int main(void) {
-//int mainNumericTypeRange(void) {
+//int main(void) {
+int mainNumericTypeRange(void) {
     printf("ÅüRange of Integer Type (in this Compiler)\n");
     printf("Åñchar  : %d Å` %d\n", CHAR_MIN, CHAR_MAX);
     printf("Åñshort : %d Å` %d\n", SHRT_MIN, SHRT_MAX);
