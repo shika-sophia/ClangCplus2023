@@ -7,24 +7,46 @@
 *
 *@content C99YH 第３章 変数 | Chapter 3 Variable / List 3-5 / p71
 *@summary Console Input
+*         ・#define 
+*         ・<stdio.h>
+*             └ stdin
+*             └ Function fgets()
+*         ・<stdlib.h>
+*             └ Function atoi()
+*         ・Array
 *
 *@subject #define 
 *           Directive: order to Preprocessor, which operate before Compile.
 *                      it is described with prefix "#".
 *           #define:   definition of constant value, 
 *                      it is described as whole Upper case and under bar "_".
-* 
-*@subject <stdlib.h>
-*            └ stdin
+
+*@subject <stdio.h>
+*            └ stdin  (= Standard Input) 標準入力
 *            └ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
+*
+*@subject <stdlib.h>
 *            L int    atoi(const char *_String)
 *
-*@subject Standard Input (= Console Input) / 標準入力, コンソールからの入力
+*@subject Function fgets()  File Get Strings
+*           ・Standard Input (= Console Input as default)
+*           ・if 'Redirect', the Standard Input can be changed to File Input. 〔Chapter 12 File〕
+*           ・'\0': ナル文字: 文字列の終端を表す
+*           ・NULL: 値が存在しないことを表す
+* 
 *         char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 * 
 *         [Example]
 *         char* inputAry = fgets(buffer, bufferSize, stdin);
-*         
+*         if
+*
+*@subject Function atoi()  ASCII to Integer 
+*           ・It change Strings to Integer
+* 
+*         int    atoi(const char *_String)
+* 
+*@subject Array 〔Chapter 9〕
+* 
 *@see
 *@author shika
 *@date 2022-12-12
