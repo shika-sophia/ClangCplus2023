@@ -19,7 +19,7 @@
 *            └ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 *            L int    atoi(const char *_String)
 *
-*@subject Standard Input (= Console Input) / 標準入力, コンソールから入力
+*@subject Standard Input (= Console Input) / 標準入力, コンソールからの入力
 *         char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 * 
 *         [Example]
