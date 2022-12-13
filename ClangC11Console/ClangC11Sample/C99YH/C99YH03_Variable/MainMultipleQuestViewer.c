@@ -24,7 +24,7 @@
 *
 *@NOTEÅyConsiderationÅzC++ ?
 *      The already defined Function saved Object File [Debug/xxxx.obj].
-*      duplicate definitions in this file are thrown comipile error.
+*      duplicate definitions in this file are thrown compile error.
 * 
 *@see
 *@author shika
