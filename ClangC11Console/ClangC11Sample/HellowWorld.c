@@ -7,7 +7,7 @@
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第章 / List - / p
+*@content C99YH 第章  / List - / p
 *@summary
 *
 *@subject
@@ -29,7 +29,7 @@ int main(void) {
 
 //==== HelloWorld.c ====
 /*
-*@directory ClangCplus2023 / ClangC11Console / ClanC11Sample
+*@directory ClangCplus2023 / ClangC11Console / ClanC11Sample / 
 *@fileName  HelloWorld.c
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
