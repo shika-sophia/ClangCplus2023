@@ -20,7 +20,10 @@
 *                      it is described with prefix "#".
 *           #define:   definition of constant value, 
 *                      it is described as whole Upper case and under bar "_".
-
+*          yNOTEz    not necessary: Type, "=", ";" (if existed, be thrown compile error)
+* 
+*           [Example]  #define BUFFER_SIZE 256
+* 
 *@subject <stdio.h>
 *            „¤ stdin  (= Standard Input) •W€“ü—Í
 *            „¤ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
