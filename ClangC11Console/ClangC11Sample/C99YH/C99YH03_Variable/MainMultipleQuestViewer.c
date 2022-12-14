@@ -9,6 +9,12 @@
 *@summary MainMultipleQuestViewer
 *         ランダムな１桁どうしの掛け算を10問出題し、回答を求め、正答率を出すViewer
 *
+*@subject <stdio.h>
+*           └ #define stdin
+*           └ char*   fgets(char* _Buffer, int _MaxCount, FILE _Stream)
+*           └ #define stdout
+*           └ void    fflush(FILE _Stream)  即時出力を促す。入力待機で出力遅延するのを防ぐ
+* 
 *@subject <stdlib.h>
 *           └ int     atoi(char*)  ASCII to Integer 〔MainConsoleInputSample.c〕
 *           └ #define RAND_MAX 32767 
@@ -16,6 +22,7 @@
 *                       rand() % 9 + 1  =>  [1 ~ 9] の疑似乱数
 *           └ void    srand(unsigned int _Seed)  
 *                       乱数の種 random seed: 固定値を入れると、いつも同じ順の疑似乱数となる。
+*                                            固定値は Debug の際に利用する
 * 
 *@subject <time.h>
 *           └ time_t  time(time_t const _Time)
@@ -38,13 +45,11 @@
 #define MAX_QUEST 10
 #define BUFFER_SIZE 256
 
-//int main(void);
-int mainMultipleQuestViewer(void);
 int multipleQuest(int);        //self defined
 void consoleInput(char*, int); //already defined in MainConsoleInputSample.c
 
-//int main(void) {
-int mainMultipleQuestViewer(void) {
+int main(void) {
+//int mainMultipleQuestViewer(void) {
     int correctNum = 0;
     double correctRate = 0.0;
     srand((unsigned int) time(NULL));
@@ -70,6 +75,7 @@ int multipleQuest(int i) {
     int answer = x * y;
 
     printf("《 Q %2d 》 %d ＊ %d = ", i + 1, x, y);
+    fflush(stdout);
     consoleInput(buffer, BUFFER_SIZE);
     int input = atoi(buffer);
 

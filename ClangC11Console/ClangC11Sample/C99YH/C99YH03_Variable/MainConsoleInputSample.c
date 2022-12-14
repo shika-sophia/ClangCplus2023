@@ -11,6 +11,7 @@
 *         ÅE<stdio.h>
 *             Ñ§ stdin
 *             Ñ§ Function fgets()
+* 
 *         ÅE<stdlib.h>
 *             Ñ§ Function atoi()
 *         ÅEArray
@@ -59,9 +60,9 @@
 #include <stdlib.h>
 
 #define BUFFER_SIZE 256
+
 void consoleInput(char* buffer, int bufferSize); //self defined
 
-//int main(void) {
 int mainConsoleInputSample(void) {
     char buffer[BUFFER_SIZE];
     int age;
