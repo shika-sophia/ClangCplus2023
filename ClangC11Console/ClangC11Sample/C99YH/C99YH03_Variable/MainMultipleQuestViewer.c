@@ -48,8 +48,8 @@
 int multipleQuest(int);        //self defined
 void consoleInput(char*, int); //already defined in MainConsoleInputSample.c
 
-int main(void) {
-//int mainMultipleQuestViewer(void) {
+//int main(void) {
+int mainMultipleQuestViewer(void) {
     int correctNum = 0;
     double correctRate = 0.0;
     srand((unsigned int) time(NULL));

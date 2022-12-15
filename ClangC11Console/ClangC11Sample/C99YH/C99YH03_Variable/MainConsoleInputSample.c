@@ -7,13 +7,16 @@
 *
 *@content C99YH ‘æ‚RÍ •Ï” | Chapter 3 Variable / List 3-5 / p71
 *@summary Console Input
-*         E#define 
+*         E#define Directive
 *         E<stdio.h>
-*             „¤ stdin
-*             „¤ Function fgets()
+*             „¤ #define stdin
+*             „¤ #define stdout
+*             „¤ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 * 
 *         E<stdlib.h>
-*             „¤ Function atoi()
+*             „¤ int    atoi(const char *_String)
+*             „¤ double atof(const char *_String)
+* 
 *         EArray
 *
 *@subject #define 
@@ -21,16 +24,18 @@
 *                      it is described with prefix "#".
 *           #define:   definition of constant value, 
 *                      it is described as whole Upper case and under bar "_".
-*          yNOTEz    not necessary: Type, "=", ";" (if existed, be thrown compile error)
+*          yNOTEz    [~] don't describe: Type, "=", ";" (if existed, be thrown compile error)
 * 
 *           [Example]  #define BUFFER_SIZE 256
 * 
 *@subject <stdio.h>
-*            „¤ stdin  (= Standard Input) •W€“ü—Í
+*            „¤ #define stdin  (= Standard Input) •W€“ü—Í
+*            „¤ #define stdout
 *            „¤ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 *
 *@subject <stdlib.h>
-*            L int    atoi(const char *_String)
+*            L int    atoi(const char *_String)  •¶š—ñ‚©‚ç int Œ^‚É•ÏŠ·
+*            „¤ double atof(const char *_String)  •¶š—ñ‚©‚ç double Œ^‚É•ÏŠ·
 *
 *@subject Function fgets()  File Get Strings
 *           EStandard Input (= Console Input as default)
@@ -71,7 +76,7 @@ int mainConsoleInputSample(void) {
     consoleInput(buffer, BUFFER_SIZE);
     printf("Hello, %s.\n", buffer);
     printf("\n");
-
+    
     printf("Please input your age. > ");
     consoleInput(buffer, BUFFER_SIZE);
     age = atoi(buffer);

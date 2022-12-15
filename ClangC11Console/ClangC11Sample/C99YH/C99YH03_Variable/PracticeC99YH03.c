@@ -1,6 +1,6 @@
 /**
-*@directory ClangC11Console / ClanC11Sample / C99YH / C99YH00_
-*@fileName  Main.c
+*@directory ClangC11Console / ClanC11Sample / C99YH / C99YH03_Variable
+*@fileName  PracticeC99YH03.c
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
@@ -24,6 +24,29 @@
 *@subject Practice 3-2  Make Program as below
 *         It ask two persons name and age.
 *         It output the average of two person's ages.
+*
+*NOTE【Problem】エラー LNK2019
+*     未解決の外部シンボル _main が関数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) で参照されました
+*     ClangCplus2023\ClangC11Console\MSVCRTD.lib(exe_main.obj)	1	
+*
+*     ↑ Prototype 'int main(void);'　を 前コード 'MainMultipleQuestViewer.c'で付記したところ、
+*     以後のビルドで、このエラーが出て、新規コンパイルを受付なくなった。
+*     コンパイルは通るが「.obj」「.exe」を生成せず。
+*     新規ファイルに int main(void)があっても、それを認識せず、上記のエラーとなる。
+*     これ以前にビルドしたファイル内に 空の int main(void) { } を用意すると、
+*     上記エラーを抑制できるが、新規ファイルのビルドはできない。
+*     仕方なく、[Windows Command Prompt for VS2019]でコンパイルし、実行〔下記〕
+* 
+*     => VSから、このファイルのビルドを除外されているので、
+*        [このファイルのプロパティ] 
+*        [全般] ビルドから除外:  はい     -> いいえ
+*               種類:           テキスト -> C/C++コンパイラ
+*        に変更すると、ビルド時に、このファイルも含まれ、VSで実行可能。
+*        「.obj」も /Debug内に生成される。
+*        (ただし [.c]ファイルではなく、[C++]ファイルとして認識されている)
+* 
+*     => ファイル作成時 [テキスト.txt]ではなく、
+*        [C++ファイル.cpp] -> [.c]に変更して作成すれば、デフォルトで '種類: C/C++コンパイラ' になっている。
 * 
 *@see
 *@author shika
@@ -35,31 +58,30 @@
 
 #define BUFFER_SIZE 256
 
-void consoleInput(char* buffer, int bufferSize);  //already definied in MainConsoleInputSample.c
+//int main(void);
+void consoleInput(char*, int);  //already definied in MainConsoleInputSample.c
 
 //int main(void) {
 int mainPracticeC99YH03(void) {
     char buffer[BUFFER_SIZE];
-    char *name1;
-    char *name2;
+    char name1[BUFFER_SIZE];
+    char name2[BUFFER_SIZE];
     int age1;
     int age2;
     double average;
     
     printf("◆Please tell me two person's name and age\n");
     printf("＊First person's name > ");
-    consoleInput(buffer, BUFFER_SIZE);
-    name1 = buffer;
+    consoleInput(name1, BUFFER_SIZE);
 
-    printf("＊First person's age > ");
+    printf("＊%s's age > ", name1);
     consoleInput(buffer, BUFFER_SIZE);
     age1 = atoi(buffer);
 
     printf("＊Second person's name > ");
-    consoleInput(buffer, BUFFER_SIZE);
-    name2 = buffer;
+    consoleInput(name2, BUFFER_SIZE);
 
-    printf("＊Second person's age > ");
+    printf("＊%s's age > ", name2);
     consoleInput(buffer, BUFFER_SIZE);
     age2 = atoi(buffer);
 
@@ -67,7 +89,7 @@ int mainPracticeC99YH03(void) {
 
     printf("---- Result ----\n");
     printf("We preciate your corporation.\n");
-    printf("The average of %s san and %s san ages is %.2f \n", name1, name2, average);
+    printf("The average of %s and %s ages is %.2f \n", name1, name2, average);
 
     return 0;
 }//main()
@@ -91,17 +113,7 @@ int mainPracticeC99YH03(void) {
 
 /*
 //====== Command Prompt ======
->cl PracticeC99YH03.c
-Microsoft(R) C/C++ Optimizing Compiler Version 19.29.30147 for x86
-Copyright (C) Microsoft Corporation.  All rights reserved.
-
-PracticeC99YH03.c
-PracticeC99YH03.c(44): error C2059: 構文エラー: ' 型'
-PracticeC99YH03.c(59): error C2065: 'name2': 定義 されていない識別子です。
-PracticeC99YH03.c(59): warning C4047: '=': 間接参 照のレベルが 'int' と 'char *' で異なっています。
-PracticeC99YH03.c(69): error C2065: 'name2': 定義 されていない識別子です。
-PracticeC99YH03.c(69): warning C4477: 'printf' :  書式文字列 '%s' には、型 'char *' の引数が必要ですが、可変個引数 2 は型 'int' です
-
+>cd c:\ ... \C99YH\C99YH03_Variable
 >cl PracticeC99YH03.c
 Microsoft(R) C/C++ Optimizing Compiler Version 19.29.30147 for x86
 Copyright (C) Microsoft Corporation.  All rights reserved.
@@ -113,11 +125,20 @@ PracticeC99YH03.obj
 >PracticeC99YH03
 ◆Please tell me two person's name and age
 ＊First person's name > shika
-＊First person's age > 50
+＊shika's age > 50
 ＊Second person's name > sophia
-＊Second person's age > 24
-
+＊sophia's age > 24
 ---- Result ----
 We preciate your corporation.
-The average of 24 san and 24 san ages is 37.00
+The average of shika and sophia ages is 37.00
+
+//====== VS Execution ======
+◆Please tell me two person's name and age
+＊First person's name > Mitoma
+＊Mitoma's age > 25
+＊Second person's name > Yuri
+＊Yuri's age > 24
+---- Result ----
+We preciate your corporation.
+The average of Mitoma and Yuri ages is 24.50
 */
