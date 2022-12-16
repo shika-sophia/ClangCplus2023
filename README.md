@@ -1,4 +1,4 @@
-# ClangCplus2023<br />
+# ClangCplus2023
 Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visual Studio // [CONTENTS] C language basic<br />
 <br />
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019 <br />
