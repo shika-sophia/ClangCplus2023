@@ -18,12 +18,51 @@
 */ 
 /*
 #include <stdio.h>
+#include <stdlib.h>
+
+#define BUFFER_SIZE 256
+
+void consoleInput(char*, int);
 
 int main(void) {
 //int mainXxxx(void) {
+    char buffer[BUFFER_SIZE];
+    int canInput = 0; // as boolean (default false)
+
+    //---- Loop Question ----
+    while (!canInput) {
+        printf("");
+        consoleInput(buffer, BUFFER_SIZE);
+        
+        //---- Validate Input ----
+        if () {
+            canInput = 1;  // to break while()
+        }
+        else {
+            printf("<I> should be input in range [ - ].\n");
+            continue;
+        }
+    }//while
 
     return 0;
 }//main()
+
+//====== already defined in C99YH03_Variable/MainConsoleInputSample.c ======
+//void consoleInput(char* buffer, int bufferSize) {
+//    char* inputAry = fgets(buffer, bufferSize, stdin);
+//
+//    if (inputAry == NULL) {
+//        buffer[0] = '\0';
+//        return;
+//    }
+//
+//    for (int i = 0; i < bufferSize; i++) {
+//        if (buffer[i] == '\n') {
+//            buffer[i] = '\0';
+//            return;
+//        }
+//    }//for
+//}//consoleInput()
 
 */
 
