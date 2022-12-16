@@ -7,7 +7,7 @@
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第章  / List - / p
+*@content C99YH 第章  | Chapter  / List - / p
 *@summary
 *
 *@subject
