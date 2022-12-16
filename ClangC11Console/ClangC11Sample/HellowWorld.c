@@ -39,7 +39,7 @@ int main(void) {
             canInput = 1;  // to break while()
         }
         else {
-            printf("<I> should be input in range [ - ].\n");
+            printf("<I> it should be input in range [ - ].\n");
             continue;
         }
     }//while
