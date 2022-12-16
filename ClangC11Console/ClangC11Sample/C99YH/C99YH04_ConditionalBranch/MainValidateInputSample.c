@@ -9,6 +9,11 @@
 *@summary ValidateInputSample.c
 *         Validate input / “ü—Í’l‚ÌŒŸØ
 * 
+*@English [‰p] conditional branch:  ğŒ•ªŠò
+*         [‰p] validate:    ŒŸØ‚·‚é
+*         [‰p] expression:  ®, •\Œ»
+*         [‰p] operator:    ‰‰Zq
+* 
 *@subject if sentence
 *         Eif () { }
 *         Eif - else
@@ -36,7 +41,15 @@
 *         ||: logical or
 *         &&: logical and
 *         ! : not
+* 
+*@subject True or False value in C language
+*         true:   not 0
+*         false:  0
 *
+*         if ( 1 )    <=>  if (true) 
+*         if ( 123 )  <=>  if (true)  
+*         if ( 0 )    <=>  if (false) 
+* 
 *@see
 *@author shika
 *@date 2022-12-15
