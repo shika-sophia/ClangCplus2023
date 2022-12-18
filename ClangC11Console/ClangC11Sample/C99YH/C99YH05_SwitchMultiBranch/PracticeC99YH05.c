@@ -7,12 +7,22 @@
 *
 *@content C99YH ëÊÇTèÕ ó˚èKñ‚ëË | Chapter 5 / List A5-1 / p145
 *@subject Practice 5-1  Make the program below.
-*         It ask integer in range [1 - 6].
+*         It ask integer in range [1 - 7].
 *         It show 1: Sunday, 2: Monday, ...
 *         
 *         -> [My Answer] below
 *         -> [Book Answer] ArrayPointer Version
 *            seeÅkMainArrayPointerVersion.cÅl
+* 
+*@subject char* 
+*         String type doesn't exist in [C language].
+*         But 'char*' is like String type in [Java, C#].
+* 
+*         [Example]
+*           char* message;  
+*           message = "Sunday";
+*           message = "Monday";
+*             :
 * 
 *@subject Practice 5-2
 *         What does it output, when executed 'n = 1; switch(2 * n + 1) { ... }' ?
@@ -38,7 +48,7 @@
 *         25:    'defoult'                 -> 'default'
 *         => ÅZ Correct all
 * 
-*@see
+*@see MainArrayPointerVersion.c
 *@author shika
 *@date 2022-12-18
 */

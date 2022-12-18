@@ -19,8 +19,9 @@
 *         
 *         Å¶ When it is defined in Field, it should be described 
 *           'char *week[] = { ... };'.
+*           I don't find the reason yet.
 * 
-*@see
+*@see PracticeC99YH05.c
 *@author shika
 *@date 2022-12-17
 */
@@ -106,7 +107,7 @@ int mainArrayPointerVersion(void) {
 ÅüPlease input in range [ 1 - 7 ] > 2.5
 2: Monday  // [Å~] unexpected result
 ÅüPlease input in range [ 0 - 8 ] > 8   // Array index: 7
-8: (null)  // when max value is 8, It seems to throw ArrayIndexOutOfRangeException in [java, C#].
+8: (null)  // when max value is 8, It seems to throw ArrayIndexOutOfRangeException in [Java, C#].
 
 ÅyAnalysisÅz
  Array index start from 0. 
