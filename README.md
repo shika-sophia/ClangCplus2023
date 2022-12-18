@@ -13,10 +13,10 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 *@reference CppDS  高橋航平『独習 C++ 新版』翔泳社, 2019 <br />
 　　　　　　　　　TAKAHASHI Kouhei『Self Learn C++ (new Edition)』Shoueisha, 2019 <br />
 <br />
-*@reference GoF    
-　authors:          Erich Gamma / Richard Helm / Ralfh Johnson / John Vissidess <br />
+*@reference GoF <br />
+　Authors:          Erich Gamma / Richard Helm / Ralfh Johnson / John Vissidess <br />
 　English Edition: 『Design Patterns』Addison Wesley Longman, 1995, as original <br />
 　Japanese Editon:  本位田真一 / 吉田和樹 訳『オブジェクト指向における再利用のためのデザインパターン 改訂版』SB Creative, 1999 <br />
-　　　　　　　　　Translated by MOTOIDA Shinichi / YOSHIDA Kazuki
+　　　　　　　　　Translated by MOTOIDA Shinichi / YOSHIDA Kazuki <br />
 　　　　　(meaning)『Design Patterns Elements of Reusable Object-Oriented Software (Revision Edition)』SB Creative, 1999 <br />
 <br />
