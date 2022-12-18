@@ -28,18 +28,22 @@ int main(void) {
 //int mainXxxx(void) {
     char buffer[BUFFER_SIZE];
     int canInput = 0; // as boolean (default false)
+    int input;
+    int min = 1;
+    int max = 7;
 
     //---- Loop Question ----
     while (!canInput) {
-        printf("");
+        printf("ŸPlease input in range [ %d - %d ] > ", min, max");
         consoleInput(buffer, BUFFER_SIZE);
+        input = atoi(buffer);
         
         //---- Validate Input ----
-        if () {
+        if (min <= input && input <= max) {
             canInput = 1;  // to break while()
         }
         else {
-            printf("<I> it should be input in range [ - ].\n");
+            printf("<I> It should be input in range [ %d - %d ].\n", min, max);
             continue;
         }
     }//while
