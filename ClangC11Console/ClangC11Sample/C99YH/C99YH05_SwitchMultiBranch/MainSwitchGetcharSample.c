@@ -52,6 +52,8 @@ int mainSwitchGetcharSample(void) {
         break;
     }//switch
     printf("\n");
+
+    return 0;
 }//main()
 
 /*
