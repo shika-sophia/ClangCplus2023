@@ -28,12 +28,12 @@
 *        yNotationzAfter execution, Remove above setting argument for another executions.
 *
 *@subject Windows Command Prompt execution
-*         >cd (set current account)                              //Change Directory
-*         (current account) >cl MainCommandLineArgumentSample.c  //Compile and Output this object file
-*         (current account) >MainCommandLineArgumentSample 1 2 3 //Execute [.exe] with each argument delimited by white-space. 
+*         >cd (set current directory)                              //Change Directory
+*         (current directory) >cl MainCommandLineArgumentSample.c  //Compile and Output this object file
+*         (current directory) >MainCommandLineArgumentSample 1 2 3 //Execute [.exe] with each argument delimited by white-space. 
 *
 *@subject UNIX Terminal execution kC99YH p5, p7, p172l
-*         $ cd (set current account)
+*         $ cd (set current directory)
 *         $ gcc -o MainCommandLineArgumentSample ./MainCommandLineArgumentSample.c
 *         $ MainCommandLineArgumentSample 1 2 3
 * 
@@ -68,7 +68,7 @@ argv[5] = argument.
 //---- Windows Command Prompt for VS2019 execution ----
 >cd (Paste full path of this file without file name)
 
-(current account) >cl MainCommandLineArgumentSample.c
+(current directory) >cl MainCommandLineArgumentSample.c
 
 Microsoft(R) C/C++ Optimizing Compiler Version 19.29.30147 for x86
 Copyright (C) Microsoft Corporation.  All rights reserved.
@@ -80,7 +80,7 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 /out:MainCommandLineArgumentSample.exe
 MainCommandLineArgumentSample.obj
 
-(current account) >MainCommandLineArgumentSample 1 2 3
+(current directory) >MainCommandLineArgumentSample 1 2 3
 Argument Num: 4
 argv[0] = MainCommandLineArgumentSample
 argv[1] = 1
