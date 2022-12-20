@@ -41,7 +41,7 @@
 *         => List E6-3 can execute and do infinity loop as unexpected.
 *            (It is not verified by C compiler.)
 * 
-*         => [Another Answer] 
+*         => [Another Answer] from C99
 *            The 'int i, j;' should be defined at initialize expression in 'for()'.
 *            The modification can prevent that unexpected behavior.
 * 
