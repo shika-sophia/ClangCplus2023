@@ -5,12 +5,13 @@
 *@reference CAnsi  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
 *@reference C11DS  arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
-*@content C99YH ‘æ‚UÍ ForItration | Chapter 6 / List 6-2‰ü, 6-3, 6-4 / p155
-*@summary List 6-2RV Iteration
-*         List 6-3 Squre Power, Cube Power
-*         List 6-5 Nested 'for' 
+*@content C99YH ‘æ‚UÍ ForItration | Chapter 6 / List 6-2RV, 6-3, 6-4 / p155
+*@summary List 6-2-Revision  Iteration
+*         List 6-3           Squre Power, Cube Power
+*         List 6-5           Nested 'for' 
 * 
 *@English [‰p] itration: ŒJ‚è•Ô‚µA”½•œAˆ—
+*         [‰p] revision: ‰ü, RV / revise: ‰ü‚ß‚é
 *         [‰p] squre: ‚QŸ
 *         [‰p] cube:  ‚RŸ
 *         [‰p] power: —İæ
