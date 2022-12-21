@@ -7,7 +7,10 @@
 *
 *@content C99YH ‘æ‚VÍ WhileIteration | Chapter 7 / List 7-4 / p198
 *@summary MainWhileEOF_withFileLoad.c
-*
+*         <stdio.h>
+*            „¤ int  putchar(int character) kMainWhileIterationSample.cl
+*            „¤ #define EOF -1              kMainWhileIterationSample.cl
+* 
 *@subject ŸVisual Studio Execution 
 *        yNotationzIt need be finished by [Ctrl] + [C].
 * 
