@@ -12,7 +12,7 @@
 *@subject <stdio.h>
 *           Ñ§ int  getchar(void)  //can get user inputs without fgets(), definition of buffer, BUFFER_SIZE.
 *                                 //seeÅyAnalysisÅzbelow.
-*
+*                                 //seeÅkC99YH07_WhileIteration\MainWhileIterationSample.cÅl
 *@see MainSwitchAtoiSample.c
 *@author shika
 *@date 2022-12-17
