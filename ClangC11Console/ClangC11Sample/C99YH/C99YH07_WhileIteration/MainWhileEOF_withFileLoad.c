@@ -36,7 +36,7 @@
 *@subject Lorem ipsum
 *         ÅEIt is non-sence document for dammy,
 *           described by blending Latina and English.
-*         ÅEIt often is used to confirm Web page design.
+*         ÅEIt is often used to confirm Web page design.
 *         ÅEThere is a web-blog article which forthly translated it to Japanese.Åkbelow AppendixÅl
 * 
 *@see
