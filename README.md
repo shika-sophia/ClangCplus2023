@@ -17,6 +17,6 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 　Authors:　　　　 Erich Gamma / Richard Helm / Ralph Johnson / John Vlissidess <br />
 　English Edition:　『Design Patterns』Addison Wesley Longman, 1995, as original <br />
 　Japanese Editon:　本位田真一 / 吉田和樹 訳『オブジェクト指向における再利用のためのデザインパターン 改訂版』SB Creative, 1999 <br />
-　　　　　　　　　 Translated by HON･IDEN Shinchi / YOSHIDA Kazuki <br />
+　　　　　　　　　 Translated by HON･IDEN Shin･ichi / YOSHIDA Kazuki <br />
 　　　　(meaning) 『Design Patterns Elements of Re-usable Object-Oriented Software (Revision Edition)』SB Creative, 1999 <br />
 <br />
