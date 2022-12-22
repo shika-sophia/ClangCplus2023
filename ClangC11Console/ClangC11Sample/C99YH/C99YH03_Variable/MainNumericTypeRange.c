@@ -5,7 +5,7 @@
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第２章 計算, 第３章 変数 / List 2-7 / p49, p67
+*@content C99YH 第２章 計算, 第３章 変数 / List 2-7, 7-7 / p49, p67, p206
 *         数値型の有効範囲を表示
 * 
 *@English [英] numeric:  数値の
@@ -20,17 +20,25 @@
 *         ＊double:      倍精度浮動小数点数型    有効桁数 15 / 値範囲 -1.7 * 10 ^ 308 ～ 1.7 * 10 ^ 308
 *         ＊long double: 拡張精度浮動小数点数型  有効桁数 19 / 値範囲 -1.1 * 10 ^ 4932 ～ 1.1 * 10 ^ 4932
 * 
-*@subject <limits.h>  整数型の有効範囲を定義 (コンパイラによって異なる) 〔C99YH p49〕
+*@subject <limits.h>  整数型の有効範囲を定義 (コンパイラによって異なる) 〔C99YH p49, p206〕
 *                     int と long int に違いはない
 *         #define
 *           └ char:           CHAR_MIN, CHAR_MAX
+*           └ singed char:    SCHAR_MIN, SCHAR_MAX
+*           └ unsigned char:  0, UCHAR_MAX
 *           └ short:          SHRT_MIN, SHRT_MAX
+*           └ unsigned short: 0, USHRT_MAX
 *           └ int:            INT_MIN, INT_MAX
+*           └ unsigned int:   0, UINT_MAX
 *           └ long int:       LONG_MIN, LONG_MAX
+*           └ unsigned long int: 0UL, ULONG_MAX
 *           └ long long int:  LLONG_MIN, LLONG_MAX, 
+*           └ unsignedlong long int:  0ULL, ULLONG_MAX, 
 * 
 *         ◆Range of Integer Type (in this Compiler)
-*         ＊char  : -128 ～ 127
+*         ＊char  :       -128 ～ 127
+*         ＊singed char:  -128 ～ 127
+*         ＊unsinged char: 0 ～ 255
 *         ＊short : -32768 ～ 32767
 *         ＊int   : -2147483648 ～ 2147483647
 *         ＊long  : -2147483648 ～ 2147483647
