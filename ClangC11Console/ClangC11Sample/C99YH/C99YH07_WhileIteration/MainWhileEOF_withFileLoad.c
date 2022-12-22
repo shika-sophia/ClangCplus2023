@@ -5,7 +5,7 @@
 *@reference CAnsi  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
 *@reference C11DS  arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
-*@content C99YH ‘æ‚VÍ WhileIteration | Chapter 7 / List 7-4 / p198
+*@content C99YH ‘æ‚VÍ WhileIteration | Chapter 7 / List 7-4, 7-6 / p198, p204
 *@summary MainWhileEOF_withFileLoad.c
 *         <stdio.h>
 *            „¤ int  putchar(int character) kMainWhileIterationSample.cl
@@ -15,6 +15,7 @@
 *        yNotationzIt need be finished by [Ctrl] + [C].
 * 
 *@subject ŸCommand Prompt Execution with File Load and Save kC99YH p201l
+*         –Redirect of Standard IO
 *         EWhen execute, '<' means to change standard-input to following file. 
 *         EWhen execute, '>' means to change standard-output to following file. 
 *         EBy this execution, we can read only plain text files as like [.txt], [.c],
@@ -33,6 +34,13 @@
 *         $./xxxx < yyyy.txt
 *         $./xxxx < yyyy.txt > zzzz.txt
 *
+*@subject The reason why variable 'c' is defined as 'int', not 'char'.
+*         EBecause of to recognize 'EOF' exactly, whose value is -1.
+*         EIf 'c' is defined as 'char', and if '\xFF' character is in the document,
+*           most significant digit of bit does sign-expand, changes to -1, 
+*           and it is recognized as 'EOF' unexactly, the document is cut off where is not end of file.
+*         => see kC99YH p199l
+* 
 *@subject Lorem ipsum
 *         EIt is non-sence document for dammy,
 *           described by blending Latina and English.
@@ -49,10 +57,16 @@
 //int main(void) {
 int mainWhileEOF_withFileLoad(void) {
     int c;
+    long long lineNum = 0LL;
 
     while ((c = getchar()) != EOF) {
         putchar(c);
+        
+        if (c == '\n') { lineNum++; }
     }//while
+    printf("[EOF]\n\n");
+
+    printf("Number of the Lines: %lli \n", lineNum);
 
     return 0;
 }//main()
@@ -76,7 +90,9 @@ irure dolor in reprehenderit in voluptate velit esse cillum
 dolore eu fugiat nulla pariatur.  Excepteur sint occaecat
 cupidatat non proident, sunt in culpa qui officia deserunt mollit
 anim id est laborum.
+[EOF]
 
+Number of the Lines: 8
 
 //====== Appendix ======
 ŸHIROTA YANO Blog

@@ -63,7 +63,7 @@ int mainWhileIterationSample(void) {
     //---- List 7-2 ----
     char c = 0;
     int index = 0;
-    char inputAry[BUFFER_SIZE];
+    char inputAry[BUFFER_SIZE];  // 'int putchar(int c)' can be instead of this. => seekMainWhileEOF_withFileLoad.cl
 
     printf("ŸHit any key [END: . ] > ");
     while(c != '.') {
