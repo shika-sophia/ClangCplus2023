@@ -7,7 +7,38 @@
 *
 *@content C99YH ëÊÇWèÕ ä÷êî | Chapter 8 Function / List 8-2, 8-3, 8-4 / p221
 *@summary MainSelfDefinedFunctionSample.c
-*
+*         ÅEDeclaration Prototype
+*         ÅEDefinition  Function
+*         ÅEList 8-2, 8-3, 8-4
+* 
+*@English [âp] declare:  êÈåæÇ∑ÇÈ
+*         [âp] define:   íËã`Ç∑ÇÈ
+*         [âp] notify:   í ímÇ∑ÇÈ
+*         [âp] append:   í«â¡Ç∑ÇÈ
+*         [âp] reliability:     êMóäê´
+*         [âp] maintainability: ï€éÁê´
+* 
+*@subject Declaration Prototype:  
+*           ÅEThe declaration is described return-type, function name, argument type on file-top under #directives,
+*             not necessary argument name, because of notificaton to Compiler.
+*                                 
+*           ÅEIn case of using self-defined function, the declaration must be done,
+*             if not, you are thrown Compile Error.
+* 
+*           ÅEIn case of using standard funcion, although it seems not to exist,
+*             the declaration already has been done in Header file,
+*             as like 'printf()' in <stdio.h>, 'atoi()' in <stdlib.h>.
+*           
+*           ÅEThe declaration of Prototype should be described at one place,
+*             because of reliability, maintainability, and preventing conflicts of multi-place description.
+* 
+*           [Example]  int getAdd(int, int);
+* 
+*@subject Definition  Function:   
+*           The definition is the body of function, 
+*           which is described argument name, function operation, (return-value),
+*           appending to the declaration above.
+* 
 *@subject List 8-2  Calculate addition
 *         int  getAdd(int a, int b)     //self defined
 *
@@ -17,7 +48,6 @@
 *@subject List 8-4  Calculate the power
 *         int  getPower(int base, int power)  //self defined
 *                                             //return base ^ power
-* 
 *@see
 *@author shika
 *@date 2022-12-23
