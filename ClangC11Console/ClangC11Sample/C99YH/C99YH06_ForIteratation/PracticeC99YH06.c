@@ -55,9 +55,26 @@
 
 #include <stdio.h>
 
+void drawSqureGraph(int, int);
+
 //int main(void) {
 int mainPracticeC99YH06(void) {
-    for (int i = -10; i <= 10; i++) {
+    int min = -10;
+    int max = 10;
+
+    drawSqureGraph(min, max);
+
+    return 0;
+}//main()
+
+void drawSqureGraph(int min, int max) {
+    if (max < min) {
+        int temp = min;
+        min = max;
+        max = temp;
+    }
+
+    for (int i = min; i <= max; i++) {
         printf("%3d: ", i);
 
         for (int j = 0; j < (i * i); j++) {
@@ -66,9 +83,7 @@ int mainPracticeC99YH06(void) {
 
         printf("\n");
     }//for i
-
-    return 0;
-}//main()
+}//drawSqureGraph()
 
 /*
 //====== Result ======
