@@ -85,21 +85,22 @@ int mainConsoleInputSample(void) {
     return 0;
 }//main()
 
-void consoleInput(char* buffer, int bufferSize) {
-    char* inputAry = fgets(buffer, bufferSize, stdin);
-
-    if (inputAry == NULL) {
-        buffer[0] = '\0';
-        return;
-    }
-
-    for (int i = 0; i < bufferSize; i++) {
-        if (buffer[i] == '\n') {
-            buffer[i] = '\0';
-            return;
-        }
-    }//for
-}//consoleInput()
+//====== already defined in C99YH08_Function\DividedCompile_consoleInputBody.c ======
+//void consoleInput(char* buffer, int bufferSize) {
+//    char* inputAry = fgets(buffer, bufferSize, stdin);
+//
+//    if (inputAry == NULL) {
+//        buffer[0] = '\0';
+//        return;
+//    }
+//
+//    for (int i = 0; i < bufferSize; i++) {
+//        if (buffer[i] == '\n') {
+//            buffer[i] = '\0';
+//            return;
+//        }
+//    }//for
+//}//consoleInput()
 
 /*
 //====== Result ======
