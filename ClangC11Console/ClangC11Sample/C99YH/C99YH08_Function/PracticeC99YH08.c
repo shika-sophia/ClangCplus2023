@@ -6,6 +6,7 @@
 *@reference C11DS  arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
 *@content C99YH ‘æ‚WÍ —ûK–â‘è | Chapter 8 Practice / List E8-4 / p242
+*
 *@subject Practice 8-1  Seek the reason of Compile Error:
 *         Using List 8-3, someone wants to output ten '*' and describes 'Print_graph(10)';'.
 *         Then it was thrown Compile Error. Why?
