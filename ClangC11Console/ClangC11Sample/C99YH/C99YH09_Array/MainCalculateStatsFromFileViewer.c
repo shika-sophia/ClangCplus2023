@@ -61,19 +61,34 @@
 *               min = dataAry[i];
 *            }
 *         }//for
+*
+*@subject Algorithm to exchange values each other
+*         Values in two variable cannot exchange directly.
+*         because when substitute one to the other, the other value is absolutely deleted by the substitution.
+*         [Å~][Example] When a == 2, b == 3  ->  Substitute a = b (as same a = 3) & b = a (b = a == 3 ['a' has already substituted 3])  ->  a == 3, b == 3  [Å~] not exchange 
+* 
+*         Therefore, when exchange values each other, prepare a temporary variable as same type.
+*         At first, one value substitute to the temporary variable, 
+*         and the other value do to the former (= one) variable,
+*         and then temp value do to the later (= the other) variable, as [Example] below.
+* 
+*         [Example]
+*         int temp = a;
+*         a = b;
+*         b = temp;
 * 
 *@subject Algorithm to sort array values as ascending
-*         ÅEmidium value: central value of the array
+*         ÅEmedium value: central value of the array
 * 
 *         ÅEAt first, sort array values as ascending.
 *         ÅEGet value of index 'i' and next value of index 'j'.
 *           ('for i' iteration continues until 'dataSize - 1' so that 'for i' is not over index range.)          
 *         
 *         ÅEComparing dataAry[i] and dataAry[j], if [i] is higher than [j],
-*           exchange the values (= exchange the indexes).
+*           exchange the values (= exchange the indexes), using Algorithm to exchange ÅkaboveÅl.
 * 
 *         ÅETo continue to check that whole elements, the sort as ascending is completed.
-*         ÅEAnd then, get the midium value at 'dataSize / 2'.
+*         ÅEAnd then, get the medium value at 'dataSize / 2'.
 *           Array index is required 'int' type, 
 *           and the divide calculation is done by both int types, so it returns int type.
 *           (Therefore, actually it is not necessary to change type cast '(int)'.)
@@ -83,14 +98,14 @@
 *         for (int i = 0; i < dataSize - 1; i++) {
 *            for (int j = i + 1; j < dataSize; j++) {
 *                if (dataAry[i] > dataAry[j]) {
-*                    double temp = dataAry[i];
+*                    double temp = dataAry[i];       <- Algorithem to exchange ÅkaboveÅl
 *                    dataAry[i] = dataAry[j];
 *                    dataAry[j] = temp;
 *                }
 *            }//for j
 *         }//for i
 *
-*         midium = dataAry[(int)(dataSize / 2)];
+*         medium = dataAry[(int)(dataSize / 2)];
 * 
 *@see
 *@author shika
@@ -112,7 +127,7 @@ double sum;
 double average;
 double max;
 double min;
-double midium;
+double medium;
 
 //====== Prototype Declarations ======
 //int main(void);
@@ -176,7 +191,7 @@ void calcData(void) {
         }
     }//for
 
-    //---- sort array values as ascending and seek midium ----
+    //---- sort array values as ascending and seek medium ----
     for (int i = 0; i < dataSize - 1; i++) {
         for (int j = i + 1; j < dataSize; j++) {
             if (dataAry[i] > dataAry[j]) {
@@ -187,7 +202,7 @@ void calcData(void) {
         }//for j
     }//for i
 
-    midium = dataAry[(int)(dataSize / 2)];
+    medium = dataAry[(int)(dataSize / 2)];
 }//calcData()
 
 void outputData(void) {
@@ -196,7 +211,7 @@ void outputData(void) {
     printf("Average:   %0.1f \n", average);
     printf("Maximum:   %0.1f \n", max);
     printf("Minimum:   %0.1f \n", min);
-    printf("Midium:    %0.1f \n", midium);
+    printf("Medium:    %0.1f \n", medium);
 }//outputData()
 
 /*

@@ -18,7 +18,7 @@
 *         [英] string:      文字列 (= text)、弦
 * 
 *@subject array[i] != '\0': conditional expression in 'for' sentence
-*         ・'\0': Nall Character: It is a character which indicates the end of string text.
+*         ・'\0': NUL Character: It is a character which indicates the end of string text.
 *         ・This [Example] below represents an Iteration from first to end of string text.
 * 
 *         [Example]
@@ -43,7 +43,7 @@
 *
 *@subject definition of string text
 *         ・When Array is defined, it can be substituted the string by "",
-*           in this case, it is not necessary '\0' Nall Character, 
+*           in this case, it is not necessary '\0' NUL Character, 
 *           '\0' is automatically inserted by Compiler.
 * 
 *         [Example]

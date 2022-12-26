@@ -42,8 +42,8 @@
 #define SUBJECT_NUM 5
 #define STUDENT_NUM 3
 
-int main(void) {
-//int mainTwoDimensionArraySample(void) {
+//int main(void) {
+int mainTwoDimensionArraySample(void) {
     int examinPointAry[STUDENT_NUM][SUBJECT_NUM] = {
         { 64, 90, 75, 45, 80 },
         { 85, 100, 95, 82, 90 },
