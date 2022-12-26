@@ -11,12 +11,28 @@
 *         ・operator 'sizeof()'
 * 
 *@subject Initialize Array
+*         ・(1) need the argument of arrayLength.
+*         ・(2) can define initial elements of the same type as defined, when it is initialized only.
+*           It is automatically caluculated array length from the number of elements,
+*           so that '[]' can be empty still.
+*         ・【Detail Notation】
+*            It need be put ';' after '{ ... }'.
+*            It can be delimited by ',' -- if elements are multiple.
+* 
+*         [Format] Initialize Array
+*         (1) Type  (arrayName)[int  arrayLength]; 
+*         (2) Type  (arrayName)[] = { ... }; 
 * 
 *         [Example]
 *         int  pointAry[] = { 65, 90, 72, };
 *
 *@subject operator 'sizeof()'
+*         int  sizeof( T )    return int how bytes the argument T has 
 * 
+*         ・Array length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
+*         
+*         [Example]
+*         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 * 
 *@see MainArrayAverageSample.c
 *@author shika
@@ -43,6 +59,10 @@ int mainArraySizeofSample(void) {
 
     printf("Summary: %d\n", sum);
     printf("Average: %.2f\n", average);
+    printf("\n");
+    printf("Array Bytes:   %d\n", sizeof(pointAry));
+    printf("Element Bytes: %d\n", sizeof(pointAry[0]));
+    printf("Array Length:  %d\n", length);
 
     return 0;
 }//main()
@@ -53,4 +73,7 @@ Points:  65, 90, 72,
 Summary: 227
 Average: 75.67
 
+Array Bytes:   12
+Element Bytes: 4
+Array Length:  3
 */
