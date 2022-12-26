@@ -18,6 +18,16 @@
 */ 
 /*
 #include <stdio.h>
+
+int main(void) {
+//int mainXxxx(void) {
+   
+    return 0;
+}//main()
+
+
+//====== Loop Quest for Console Input ======
+
 #include <stdlib.h>
 
 #define BUFFER_SIZE 256
@@ -26,6 +36,7 @@ void consoleInput(char*, int);
 
 int main(void) {
 //int mainXxxx(void) {
+
     char buffer[BUFFER_SIZE];
     int canInput = 0; // as boolean (default false)
     int input;
@@ -37,7 +48,7 @@ int main(void) {
         printf("ŸPlease input in range [ %d - %d ] > ", min, max");
         consoleInput(buffer, BUFFER_SIZE);
         input = atoi(buffer);
-        
+
         //---- Validate Input ----
         if (min <= input && input <= max) {
             canInput = 1;  // to break while()
