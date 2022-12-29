@@ -53,14 +53,19 @@
 *            „¤ char*   fgets(char* _Buffer, int _MaxCount, FILE* _Stream)
 *
 *@subject <string.h>
+*            „¤ int     strcpy(char* _Destination, const char* _Source)
 *            „¤ errno_t strcpy_s(char* _Destination, int _SizeInBytes, const char* _Source)
 *            „¤ int     sscanf(const char* _Buffer, const char* _Format, T value ...)
+*            „¤ int     sscanf_s(const char* _Buffer, const char* _Format, T value ...)
 *            „¤ size_t  strlen(const char* _Str)
 * 
 *@subject void sortById(void);
+*         Esort as ascending of ID
 *@subject void sortByTotal(void);
+*         Esort as descending of totalIndividual
 *@subject void showSchoolmateGrade(void);
 *@subject void showCaluclatedStats(void);
+* 
 *@NOTE yCompile Errorzin VS Execution ONLY
 *       C4996	'sscanf': 
 *       This function or variable may be unsafe. 
@@ -163,6 +168,7 @@ int inputSchoolmate(void) {
             &mateP->scoreAry[2],
             &mateP->scoreAry[3],
             &mateP->scoreAry[4]
+   
         );
 
         //Check loaded data type
