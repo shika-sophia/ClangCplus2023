@@ -30,7 +30,11 @@
 *         int  sizeof( T )    return int how bytes the argument T has 
 * 
 *         ÅEArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
-*         
+* 
+*         ÅEÅyNotationÅzin the case of including 2 bytes character as like Japanese:
+*            The size of one element can be variable.
+*            Therefore, Array Length cannot be calculated correctly by above expression.
+* 
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 * 
