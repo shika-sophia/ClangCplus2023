@@ -5,7 +5,11 @@
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第10章 構造体 | Chapter 10  Struct / List 10-1, 10-2, 10-3, 10-4 / p293-
+*@content C99YH 第10章 構造体 | Chapter 10  Struct / List 10-1 ～ 10-5, 10-8 / p293-
+*@English [英] quailifier:   修飾子
+*         [英] abbreviation: 省略
+*         [英] alias:        別名
+* 
 *@summary MainStructSchoolmateSample.c
 *        【struct】構造体
 *         ・Declaration of 'struct'
@@ -17,6 +21,7 @@
 *         ・Initialize 'struct'
 *         ・'struct' Array
 *         ・'struct' Array with Intialization
+*         ・'typedef'
 *         ・<string.h> -- strcpy()
 *         ・NOTE【Compile Error】'strcpy' in VS
 *         ・String Array
@@ -85,12 +90,33 @@
 *         ・Combination of 'Initialze　struct' and 'struct Array' above two.
 *         ・In this case, 'variableName' of 'struct' is not necessary, it is instead to 'mateAry[i]'.
 * 
-*         [Example]
+*         [Example] List 10-5
 *         struct Schoolmate mateAry[] = {
 *             { 10, "Alice", 100, 85, 60, 95, 73 },
 *             { 12, "Bobby", 99, 85, 60, 95, 73 },
 *             { 17, "David", 45, 32, 67, 92, 12 },
 *         };
+*
+*@subject qualifier? 'typedef' = abbreviation of type defininition
+*         ・It can rename any type to self-defined alias,
+*           for not only 'struct' but also any other type.
+* 
+*         [Format]
+*         typedef (type) (aliasName)
+* 
+*         [Example] List 10-8
+*         ＊Declaration
+*         typedef struct SchoolmateWithArray {
+*             int id;
+*             char name[NAME_MAX];
+*             int pointAry[SUBJECT_MAX];
+*         } STUDENT;
+* 
+*         ＊Definition
+*         STUDENT chris;  <=>  struct SchoolmateWithArray chris;
+* 
+*         ＊Argument Type
+*         void showSchoolmateWithArray(STUDENT);  <=>  void showSchoolmateWithArray(struct SchoolmateWithArray);
 * 
 *@subject <string.h>
 *            └ char*    strcpy(char* _Destinations, const char* _Source)    [※] Compile Error〔below〕
@@ -146,7 +172,7 @@
 #define MATE_MAX 3
 
 void showSchoolmate(struct Schoolmate);
-void showSchoolmateWithArray(struct SchoolmateWithArray);
+void showSchoolmateWithArray(STUDENT);
 
 struct Schoolmate {
     int id;
@@ -158,17 +184,18 @@ struct Schoolmate {
     int society;
 };
 
-struct SchoolmateWithArray {
+typedef struct SchoolmateWithArray {
     int id;
     char name[NAME_MAX];
     int pointAry[SUBJECT_MAX];
-};
+} STUDENT;
 
 //int main(void) {
 int mainStructSchoolmateSample(void) {
     struct Schoolmate alice;
     struct Schoolmate bobby;
-    struct SchoolmateWithArray chris;
+    //struct SchoolmateWithArray chris;
+    STUDENT chris;
     struct Schoolmate david = {
         17, "David", 45, 32, 67, 92, 12
     };
@@ -229,7 +256,7 @@ void showSchoolmate(struct Schoolmate mate) {
     printf("\n");
 }//showSchoolmate()
 
-void showSchoolmateWithArray(struct SchoolmateWithArray mateWithArray) {
+void showSchoolmateWithArray(STUDENT mateWithArray) {
     char subjectNameAry[SUBJECT_MAX][NAME_MAX] = {
         "Japanese","English", "Mathematics", "Science", "Society"
     };

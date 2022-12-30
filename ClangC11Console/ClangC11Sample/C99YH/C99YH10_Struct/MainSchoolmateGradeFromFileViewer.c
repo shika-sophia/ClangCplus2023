@@ -73,7 +73,18 @@
 *       To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
 *       See online help for details.
 *       ClangC11Console  C:\...\C99YH10_Struct\MainSchoolmateGradeFromFileViewer.c	151	
-*
+*           ||
+*@NOTE 【Warning】 MainSchoolmateGradeFromFileViewer.c(163):
+*       warning C4477: 'sscanf_s' : 書式文字列 '%s' には、型 'unsigned int' の引数が必要ですが、可変個引数 3 は型 'int *' です
+*       note: この引数はバッファー サイズとして使用されます
+*       warning C4473: 'sscanf_s': 書式文字列として渡された引数が 不足しています
+*       note: プレースホルダーとそのパラメーターには 8 の可変個引数が必要ですが、7 が指定されています。
+*       note: 不足している可変個引数 8 が書式文字列 '%d' に必要です
+* 
+*       => (unsolved) 
+*          In temporary, 'sscanf_s()' is instead of 'sscanf()', for applicating to VS Compile.
+*          When Command Prompt execute this code, change comment-out of 'sscanf()' alive.
+* 
 *@CopyRight YUUKI Hiroshi who is author of Book C99YH above.
 *@author of modified the code: (for individual learnings) shika
 *@date 2022-12-29
@@ -91,10 +102,10 @@
 
 //====== Struct Declaration ======
 struct Schoolmate {
-    int id;                    // ID
-    char name[NAME_MAX];       // Name
-    int scoreAry[SUBJECT_MAX]; // score Array of whole subjects
-    double totalIndividual;    // totalIndividual of whole subjects
+    int id;                      // ID
+    char name[NAME_MAX];         // Name
+    int scoreAry[SUBJECT_MAX];   // score Array of whole subjects
+    double totalIndividual;      // totalIndividual of whole subjects
 };
 
 //====== Global Variable ======
@@ -160,15 +171,15 @@ int inputSchoolmate(void) {
         struct Schoolmate* mateP = &mateAry[n];  
 
         //Parse load data by Function 'sscanf()'
-        int dataNum = sscanf(buffer, "%d %s %d %d %d %d %d\n",
+        //int dataNum = sscanf(buffer, "%d %s %d %d %d %d %d\n",  //when Command Prompt execute
+        int dataNum = sscanf_s(buffer, "%d %s %d %d %d %d %d\n",  //when VS Compile
             &mateP->id,
             &nameBuffer[0],
             &mateP->scoreAry[0],
             &mateP->scoreAry[1],
             &mateP->scoreAry[2],
             &mateP->scoreAry[3],
-            &mateP->scoreAry[4]
-   
+            &mateP->scoreAry[4] 
         );
 
         //Check loaded data type
