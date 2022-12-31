@@ -59,8 +59,8 @@ double distance(double, double);
 double calcArea(RECT);
 
 //====== Fuction Definition ======
-int main(void) {
-//int mainCalculateRectangleArea(void) {
+//int main(void) {
+int mainCalculateRectangleArea(void) {
     RECT rect;
     double area;
 
