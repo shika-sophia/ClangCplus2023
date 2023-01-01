@@ -57,6 +57,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define BUFFER_SIZE 256
 
@@ -84,7 +85,7 @@ int mainValidateInputSample(void) {
     return 0;
 }//main()
 
-//====== already defined in C99YH03_Variable/MainConsoleInputSample.c ======
+//====== already defined in C99YH08_Function\DividedCompile_consoleInputBody.c ======
 //void consoleInput(char* buffer, int bufferSize) {
 //    char* inputAry = fgets(buffer, bufferSize, stdin);
 //
