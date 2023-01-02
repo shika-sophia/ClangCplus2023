@@ -7,7 +7,9 @@
 *
 *@content C99YH ‘æ11Í Pointer | Chapter 11 / List - / p343
 *@summary MainPointerBasic.c
-*@English 
+*@English [‰p] assign:     Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é
+*         [‰p] substitute: ‘ã“ü‚·‚éA“ü‚ê‘Ö‚¦‚é
+* 
 *@subject ¡ Pointer
 *         pointer: The variable which has address of the other variable.
 *                  Therefore, it called "pointer" which indicates something.
@@ -43,6 +45,34 @@
 *         printf("%p \n", p);   // show the address value which Pointer is having. 
 *         printf("%d \n", *p);  // show the value of the variable which Pointer is having its address.
 *                               // yNotationzthe format use '%d' because the variable 'x' ,indicated by Pointer, is int type.
+* 
+*@subject NULL Pointer kC99YH p364l
+*         <stdio.h>
+*            „¤ #define NULL 0
+*
+*         E'NULL': A symbol meaning "nothing of reference".
+*         ENULL Pointer: Pointer can be assigned '0'.  0 means NULL.
+*         ENULL Pointer is used to express end of link, when Liner List or Tree Data Structure.
+*         EYou can assign NULL to any Pointer.
+*         EYou cannot assign any value to NULL Pointer
+*         EYou cannot refer to value of NULL Pointer.
+*         ENULL Check: Before operate 'p', it is necessary to check if p is NULL or not.
+* 
+*         [Example]
+*         int *p;
+*         p = NULL;
+* 
+*         [~] *p = 123;  -> Compile Error: NULL pointer assignment,
+*                          -> or output unexpected value, or do unexpeted behavior,
+*                          -> or enforcely exited by OS.
+* 
+*         [~] printf("%p \n", p);  // when 'p = NULL'
+* 
+*         [Example] NULL Check
+*         if (p != NULL) {
+*             // write operation: assginment or reference, about 'p' here.
+*         }
+* 
 *@subject <string.h>
 *            „¤ int  strlen(char*)
 * 
