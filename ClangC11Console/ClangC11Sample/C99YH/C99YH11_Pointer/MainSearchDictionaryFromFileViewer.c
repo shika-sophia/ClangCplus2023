@@ -5,7 +5,7 @@
 *@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第11章 Pointer | Chapter 11   / List 11-2 / p369
+*@content C99YH 第11章 Pointer | Chapter 11 / List 11-2 / p369
 *@summary Search Dictionary from [.txt] file
 *         This program wait user to input English word ,search it from dictionary [.txt] file,
 *         and output the search-word, the Japanese meaning.
@@ -38,11 +38,11 @@
 *         ・Search & Output
 * 
 *@subject int  loadDictionary(FILE* fileP) //self-defined
-*         
+*         (Editing...)
 * 
-*@subject <stdlib.h>
-*            └ #define stdin
-*            └ #define stdout
+*@subject <stdlib.h> ?
+*            └ #define stdin   // = strndard input
+*            └ #define stdout  // = standard output
 *            └ #define stderr  // = standard error
 *            |
 *        [×] └ FILE*  fopen(const char _FileName, const char _Mode)  // = file open
@@ -181,6 +181,7 @@ int loadDictionary(FILE* fileP) {
 //###### Appendix ######
 //====== 11dictionary.txt ======
 >type 11dictionary.txt
+
 dictionary 辞書
 English 英語
 foreign 外国の
