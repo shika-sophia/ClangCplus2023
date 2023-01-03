@@ -10,8 +10,9 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 *@reference C11DS  arton『独習 C 新版』翔泳社, 2018<br />
 (meaning) arton『Self Learn C (new Edition)』Shoueisha, 2018 <br />
 <br />
-*@reference CppDS  高橋航平 / επιστημη『独習 C++ 新版』翔泳社, 2019 <br />
-(meaning) TAKAHASHI Kouhei / Episthmh『Self Learn C++ (new Edition)』Shoueisha, 2019 <br />
+*@reference CppDS  高橋航平 著 / επιστημη 監修『独習 C++ 新版』翔泳社, 2019 <br />
+(meaning) author: TAKAHASHI Kouhei / director: Episthmh『S
+elf Learn C++ (new Edition)』Shoueisha, 2019 <br />
 <br />
 *@reference GoF <br />
 　Authors:　　　　 Erich Gamma / Richard Helm / Ralph Johnson / John Vlissidess <br />
