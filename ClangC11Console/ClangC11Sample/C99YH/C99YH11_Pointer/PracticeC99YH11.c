@@ -8,18 +8,21 @@
 *@content C99YH ‘æ11Í Pointer | Chapter 11  Practice / List E11-1 / p376
 *@summary PracticeC99YH11.c
 *@English
-*@subject Practice 11-1  Read the code behavior
+*@subject Practice 11-1:  Read Behavior
 *         What will it show to execute List E11-1 as below ?
 * 
 *         [My Answer]
 *         main 1: A, B
 *         quiz 1: A, B
-*         quiz 2: C, P
-*         main 2: A, P
+*         quiz 2: C, P -> c, p are assigned new value in quizC99YH11()
+*         main 2: A, P -> Though 'c' is assigned above, 'main()' does not refer 'c',
+*                         because of [Call by Value] as C language specification.
+*                         But it can do Pointer 'p' assignment, 
+*                         because of [Call by Reference] in case of Pointer Argument.
 * 
 *         => Correct
-* 
-*@subject Practice 11-2  Make Function
+*         
+*@subject Practice 11-2:  Make Function
 *         Make self-defined Function 'scanChar(char* p, char c)',
 *         which verlify to include one character 'char c' in string 'char* p'.
 *         If including, it shows the whole word.
@@ -35,7 +38,7 @@
 * 
 *         [My Answer] below
 * 
-*@subject Practice 11-3
+*@subject Practice 11-3:  Make Function
 * 
 *@see
 *@author shika
