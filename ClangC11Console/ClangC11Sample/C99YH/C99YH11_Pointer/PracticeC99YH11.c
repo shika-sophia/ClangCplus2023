@@ -86,13 +86,13 @@ int counter (char* stringP, int* lengthP)
 }
 
 @subjectÅyNotationÅz'(*length)++' and '*length++'
-         They are different meanings, because of the priority of operator.
+         They are different meanings, because of the priority.
          '(*length)++': increment int value 'length' which Pointer '*length' indicate.
-         '*(length++)': At first, increment Pointer '&length' address, and then get the value which Pointer indicate.
+         '*(length++)': At first, increment Pointer address '&length', and then get the value there.
 
          The priority of Substitute and Increment operator '++' is superior than Pointer Redirect operator '*'.
          Simple '*length++' means '*(length++)'.
-         Therefore when increment value indicated by Pointer, it is required priority blanket '()'.
+         Therefore when increment value indicated by Pointer, it is required priority-blanket '()'.
 
 *@see
 *@author shika
