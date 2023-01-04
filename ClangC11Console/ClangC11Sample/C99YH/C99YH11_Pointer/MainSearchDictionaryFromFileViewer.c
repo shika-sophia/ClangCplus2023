@@ -1,16 +1,19 @@
 /**
 *@directory ClangC11Console / ClanC11Sample / C99YH / C99YH11_Pointer
 *@fileName  MainSearchDictionaryFromFileViewer.c
-*@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
-*@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
-*@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
+*@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *
 *@content C99YH 第11章 Pointer | Chapter 11 / List 11-2 / p369
 *@summary Search Dictionary from [.txt] file
 *         This program wait user to input English word ,search it from dictionary [.txt] file,
 *         and output the search-word, the Japanese meaning.
 * 
-*@English
+*@English [英] verify:       検証する、確かめる
+*         [英] equivalence:  等価
+*         [英] equality:     平等 
+* 
 *@subject ◆Requirement Definition / 要件定義
 *         ・(above)
 * 
@@ -26,7 +29,12 @@
 *             11dictionary.txt:  dictionary file
 *             xxxx:              search word
 *
-*@subject int  main(int argc, char argv[]) 
+*         ＊【Notation】for [Windows Command Prompt for VS2019] Execution
+*         ・To execute correctly, this code need be substituted two parts of commnt-out.
+*           Row 177: fopen_s() -> fopen()
+*           Row 224: sscanf_s() -> sscanf()
+* 
+*@subject int  main(int argc, char* argv[]) 
 *         ◆Entry Point
 *         ・Validate Command Line Argument
 *         ・Local Variable Definition
@@ -38,7 +46,10 @@
 *         ・Search & Output
 * 
 *@subject int  loadDictionary(FILE* fileP) //self-defined
-*         (Editing...)
+*         ・Load the data from dictionary file given by Command Line Argument.
+*         ・[Argument] FILE* fileP: Pointer of dictionary file defined in 'main()'.
+*         ・[Return]   int   over 0: return correctly the number of loaded words.
+*                           -1:      return uncorrectly to happen load error. 
 * 
 *@subject <stdlib.h> ?
 *            └ #define stdin   // = strndard input
@@ -62,23 +73,53 @@
 *                [Argument]
 *                FILE* _Stream:        // in this case: 'stderr'
 * 
-*@subject <string.h>
+*@subject Compare both String texts 〔C99YH p374〕
+*         ・[×] To compare String or to verify equivalence, you cannot use operator '==' as like [str == "Hello"].
+*         ・so need 'strcmp()' below.
+* 
+*         <string.h>  
 *            └ int  strcmp(const char* _Str1, const char* _Str2)  // = string compare
 *                [Argument]
 *                const char* _Str1:
 *                const char* _Str2:
-*
-*@NOTE【Compile Error】in clang of VS2019
+* 
+*                [Return] 0:     equal in dicionary order
+*                         plus:  first argument is former of dictionary order than second one.
+*                         minus: first argument is latter of dictionary order than second one.
+* 
+*@NOTE【Compile Error】in clang of VS2019 Execution
 *      C4996 'fopen':
 *      This function or variable may be unsafe. 
 *      Consider using fopen_s instead. 
 *      To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
 *      See online help for details.
 *      ClangC11Console:	C:\...\C99YH11_Pointer\MainSearchDictionaryFromFileViewer.c	138	
+*
+*      => No problem to execute by [Windows Command Prompt for VS2019]
+*      => In Temporary to prevent Compile Error for another Code,
+*         I modified 'fileP = fopen(dicFile, "r");'
+*         -> 'fileP = fopen_s(stdin, dicFile, "r");'
+* 
+*@NOTE【Compile Error】in clang of VS2019 Execution
+*      C4996 'sscanf':
+*      This function or variable may be unsafe.
+*      Consider using sscanf_s instead. 
+*      To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
+*      See online help for details.
+*      ClangC11Console:	C:\...\C99YH11_Pointer\MainSearchDictionaryFromFileViewer.c	197	
+*
+*      => No problem to execute by [Windows Command Prompt for VS2019]
+*      => In Temporary to prevent Compile Error for another Code,
+*         I modified 'sscanf()' -> 'sscanf_s()'.
+*         
+*@NOTE【Warning】in clang of VS2019 Execution
+*      ・警告C6054 文字列 'englishBuffer' は 0 で終了しない可能性があります。
+*      ・警告C6054 文字列 'japaneseBuffer' は 0 で終了しない可能性があります。
+*      => I modified adding 'if (englishBuffer != 0 && ...) '
 * 
 *@see
 *@author shika
-*@date 2023-01-03
+*@date 2023-01-03, 01-04
 */
 
 #include <stdio.h>
@@ -87,7 +128,7 @@
 
 //====== Define constant ======
 #define BUFFER_SIZE 256
-#define DIC_SIZE 100
+#define DIC_MAX 100
 #define ENGLISH_SIZE 50
 #define JAPANESE_SIZE 50
 
@@ -116,15 +157,15 @@ typedef struct wordPair {
 } PAIR;
 
 //====== Global Variable ======
-PAIR dicAry[DIC_SIZE];
+PAIR dicAry[DIC_MAX];
 int dicSize = 0;
 
 //====== Prototype Declaration ======
 int loadDictionary(FILE*);
 
 //====== Function Definition ======
-int main(int argc, char argv[]) {
-//int mainSearchDictionaryFromFileViewer(void) {
+//int main(int argc, char* argv[]) {
+int mainSearchDictionaryFromFileViewer(int argc, char* argv[]) {
 
     //---- Validate Command Line Argument ----
     if (argc != 3) {
@@ -143,7 +184,8 @@ int main(int argc, char argv[]) {
     char* searchWord = argv[2];
 
     //---- Open Dictionary File ----
-    fileP = fopen_s(stdin, dicFile, "r");
+    //fileP = fopen(dicFile, "r");        //for [Windows Command Prompt for VS2019] Execution
+    fileP = fopen_s(stdin, dicFile, "r"); //in temporary for another Compile. This could output unexpectedly.
 
     if (fileP == NULL) {
         fprintf(stderr, 
@@ -174,7 +216,57 @@ int main(int argc, char argv[]) {
 }//main()
 
 int loadDictionary(FILE* fileP) {
+    char buffer[BUFFER_SIZE];
+    char englishBuffer[ENGLISH_SIZE];
+    char japaneseBuffer[JAPANESE_SIZE];
 
+    //---- Load Dictionary File ----
+    dicSize = 0;
+
+    while (fgets(buffer, BUFFER_SIZE, fileP) != NULL) {
+        if (dicSize >= DIC_MAX) {
+            fprintf(stderr, "<！> Too much to load words. [MAX: %d ] \n", DIC_MAX);
+            fclose(fileP);
+            return -1;
+        }
+
+        //---- Parse Dictinary Data using 'sscanf()' ----
+        //int num = sscanf(buffer, "%s %s\n",   
+        //    englishBuffer, japaneseBuffer);   //for [Windows Command Prompt for VS2019] Execution
+        int num = sscanf_s(buffer, "%s %s\n",   
+            englishBuffer, japaneseBuffer);     //in temporary for another Compile.
+
+        if (num != 2) {
+            fprintf(stderr, "<！> Invalid Format in row %d.\n", dicSize + 1);  // +1: index -> row number
+            fprintf(stderr, "%s\n", buffer);
+            return -1;
+        }
+
+        //---- Check English word length to prevent Overflow ----
+        if (englishBuffer != 0 && strlen(englishBuffer) + 1 > ENGLISH_SIZE) {   // +1: '\0'
+            fprintf(stderr, "Too long English word in %d row.\n", dicSize + 1); // +1: array index -> row number
+            fprintf(stderr, "[MAX %d Byte] \n", ENGLISH_SIZE - 1);              // -1: '\0'
+            return -1;
+        }
+
+        //---- Copy English word ----
+        strcpy_s(dicAry[dicSize].englishWord, ENGLISH_SIZE, englishBuffer);
+
+        //---- Check Japanese word length to prevent Overflow ----
+        if (japaneseBuffer != 0 && strlen(japaneseBuffer) + 1 > ENGLISH_SIZE) {                 // +1: '\0'
+            fprintf(stderr, "Too long Japanese word in %d row.\n", dicSize + 1);  // +1: array index -> row number
+            fprintf(stderr, "[MAX %d Byte] \n", JAPANESE_SIZE - 1);      // -1: '\0'
+            return -1;
+        }
+
+        //---- Copy Japanese word ----
+        strcpy_s(dicAry[dicSize].japaneseWord, JAPANESE_SIZE, japaneseBuffer);
+
+        //---- increment ----
+        dicSize++;
+    }//while
+
+    return dicSize;
 }//loadDictionary()
 
 /*
@@ -189,7 +281,37 @@ home 家
 end 終了
 
 //====== Execute: [Windows Command Prompt for VS2019] =======
+>cd C:\...\C99YH\C99YH11_Pointer
+>cl MainSearchDictionaryFromFileViewer.c
+
+MainSearchDictionaryFromFileViewer.c
+/out:MainSearchDictionaryFromFileViewer.exe
+MainSearchDictionaryFromFileViewer.obj
+
+>MainSearchDictionaryFromFileViewer 11dictionary.txt home
 
 //====== Result ======
+Search Word: home | Meaning: 家
 
+//---- Test Invalid Format Execution ----
+>MainSearchDictionaryFromFileViewer
+
+<！> Execution Error: Invalid Argument.
+Name:
+-- Search Dictionary Viewer --
+Format:
+>MainSearchDictionaryFromFileViewer (dictionary file) (search word)
+Description:
+This program wait to input English word ,
+search it from dictionary[.txt] file,
+and output the searched word, the Japanese meaning.
+[Dictionary Example]
+  dictionary 辞書
+  English 英語
+  foreign 外国の
+  home 家
+  end 終了
+Author:
+結城浩
+Copyright (C) 1994, 2018 by YUUKI Hiroshi
 */
