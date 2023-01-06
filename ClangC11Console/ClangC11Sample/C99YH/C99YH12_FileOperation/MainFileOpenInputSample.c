@@ -26,10 +26,12 @@
 *         ÅüPlease input File Name > ..\\C99YH07_WhileIteration\\lorem.txt
 *
 *@subject <stdio.h>
-*            Ñ§ #define FILENAME_MAX 260
-*            Ñ§ int    fgetc(char)
-*        [Å~] Ñ§ FILE*  fopen(const char* _FileName, const char* _Mode)
-*            Ñ§ int    fclose(FILE* _Stream)
+*            Ñ§ #define FILENAME_MAX 260 //The maximum number of character as file name including directory path
+*            Ñ§ #define FOPEN_MAX 20     //The maximum number which OS of user environment can open files at same time
+*        [Å~] Ñ§ FILE*   fopen(const char* _FileName, const char* _Mode)
+*            Ñ§ int     fclose(FILE* _Stream)
+*            Ñ§ int     fgetc(FILE*)     // It gets 'char' one by one Byte, from Pointer of the file which has already opend by 'fopen()'.
+*            Ñ§ int?    ferror(FILE*)    // It can verify to be error, or not (= reached EOF).
 * 
 *@subject ÅüFile Open
 *         Open:  The operation that Function 'fopen()' asks OS of user environment, "From now, I will open the file, Can I ?".
@@ -80,10 +82,42 @@
 *          
 *         [Example]
 *         (void)func(x, y);
+*
+*@subject ÅüFile Close
+*         ÅEDon't forget file close, 
+*           because FOPEN_MAX the maximum number which OS of user environment can open files at same time, is limited 20 (defined in <stdio.h>). 
+*         ÅE(Depending on OS), when you open file, expect to write something there, and remain to open (= do not close),
+*           if you reset PC, the file record could be deleted, though you have already written it, but un-saved because of 'not close'.
+*           
+*         int  fclose(FILE* _Stream)
+*         [Argument]  FILE* -Stream:  File Pointer which have already opened.
+*         [Return]    int (as bool)
+*            0:      correctly
+*            EOF -1: uncorrectly
 * 
-*@see
+*            [Example] If Conditional Expression were not 0, True. 
+*            [Å~] if (fclose(fileP) != 0) { ... }   //The if-statement means "if fclose() returns true, condition is true".
+*                 ||                               //Therefore you can write more simplely: 'if (fclose())'.
+*                 ||                               //ÅüShould not compare both boolean values
+*                 ||                               // => see if-statmentÅkC99YH04_ConditionalBranch\MainValidateInputSample.cÅl
+*            [ÅZ] if (fclose(fileP)) { ... }
+*
+*@subject ÅüGet char ÅkC99YH p391Ål
+* 
+*         <stdio.h>
+*         int  fgetc(FILE* fileP)   // It gets 'char' one by one Byte, from Pointer of the file which has already opend by 'fopen()'.
+*                                   // The operation is continued to read by 'while'-statement, so that whole of file contents can read.
+*         [Argument] FILE* fileP    // Pointer of the file which has already opend by 'fopen()'.
+*         [Return]   int c          // defined as 'int', not as 'char', because EOF can be recieved too.
+*                      n:      If success to read 'char', it returns the ASCII code (= character code).
+*                      EOF -1: End of File, or Error while File Read  -> ferror()
+*
+*@subject ÅüVerify to be error or not
+          int?    ferror(FILE*)    // It can verify to be error, or not (= reached EOF without error).
+
+*@see                 
 *@author shika
-*@date 2023-01-06
+*@date 2023-01-06, 01-07
 */
 
 #include <stdio.h>
@@ -103,7 +137,7 @@ int mainFileOpenInputSample(void) {
     FILE* fileP = fopen_s(stdout, fileName, "r"); 
         // In temporary, 'fopen_s()' is active, for another code compile. This shows nothing still now.
         // When execute, Exchange comment-out of 'fopen()' and 'fopen_s()'.
-
+    
     if (fileP == NULL) {
         printf("<ÅI> Not Found this file [%s]. \n", fileName);
         return -1;
