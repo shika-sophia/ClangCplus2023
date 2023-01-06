@@ -13,6 +13,8 @@
 *         [‰p] validate:    ŒŸØ‚·‚é
 *         [‰p] expression:  ®, •\Œ»
 *         [‰p] operator:    ‰‰Zq
+*         [‰p] boolean:     ^‹U’l
+*         [‰p] credibility: M—Š«
 * 
 *@subject if sentence
 *         Eif () { }
@@ -50,7 +52,31 @@
 *         if ( 123 )  <=>  if (true)  
 *         if ( 0 )    <=>  if (false) 
 * 
-*@see
+*@subject ŸShould not compare both boolean values kC99YH p129, p391l
+*         because conditional expression 'x == TRUE' can be false as below [Example].
+*         EA if-statement recognize '0' as false and 'not 0' as true.
+*           Conditional expression 'x == 0' can be false, though 'not 0' value should be true.
+*         EGenerally, the code which verify to equal both boolean values, 
+*           is to be low credibility.
+* 
+*         [~][Example]
+*         #define TRUE 1
+*         
+*         int x = 2;
+*         if (x == TRUE) { ... }  -> false, though 'not 0' value should be true.
+* 
+*         [~][Example]
+*         int x = 2;
+*         if (x == 0) { ... }     -> false, though 'not 0' value should be true.
+* 
+*@subject <stdbool.h>
+*            „¤ #define true  !0
+*            „¤ #define false 0
+* 
+*         [~][Example]
+*         if (x == true) { ... }  -> dengerous code because above.
+* 
+*@see     
 *@author shika
 *@date 2022-12-15
 */
