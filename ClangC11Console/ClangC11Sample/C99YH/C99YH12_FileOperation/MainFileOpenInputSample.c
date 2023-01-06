@@ -90,8 +90,8 @@
 
 void consoleInput(char*, int);
 
-int main(void) {
-//int mainFileOpenInputSample(void) {
+//int main(void) {
+int mainFileOpenInputSample(void) {
     char fileName[FILENAME_MAX];
         // = { "..\\C99YH07_WhileIteration\\lorem.txt" };
         // <stdio.h> -- #define FILENAME_MAX 260
