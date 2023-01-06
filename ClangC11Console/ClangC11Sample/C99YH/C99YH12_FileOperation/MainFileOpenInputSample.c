@@ -2,7 +2,7 @@
 *@directory ClangC11Console / ClanC11Sample / C99YH / C99YH12_FileOperation
 *@fileName  MainFileOpenInputSample.c
 *@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
-*@reference CAnsiTH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *
 *@content C99YH 第12章 FileOperation | Chapter 12 / List 12-1 / p384
