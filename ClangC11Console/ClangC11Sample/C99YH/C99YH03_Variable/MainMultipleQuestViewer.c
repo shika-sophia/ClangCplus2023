@@ -8,13 +8,16 @@
 *@content C99YH ‘æ‚RÍ Variable / List 3-7 / p85
 *@summary MainMultipleQuestViewer
 *         ƒ‰ƒ“ƒ_ƒ€‚È‚PŒ…‚Ç‚¤‚µ‚ÌŠ|‚¯Z‚ğ10–âo‘è‚µA‰ñ“š‚ğ‹‚ßA³“š—¦‚ğo‚·Viewer
-*
-*@subject <stdio.h>
+*         This program is to ask 10 questions of multiple-calculation both one digits at random,
+*         to wait your answer, to show [correct or wrong] and the correct solution, 
+*         and finally to show your correct rate.
+* 
+*@subject <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
 *           „¤ #define stdin
 *           „¤ char*   fgets(char* _Buffer, int _MaxCount, FILE _Stream)
 *           „¤ #define stdout
 *           „¤ void    fflush(FILE _Stream)  ‘¦o—Í‚ğ‘£‚·B“ü—Í‘Ò‹@‚Åo—Í’x‰„‚·‚é‚Ì‚ğ–h‚®
-* 
+*                                           It lets OS to output immediately, to prevent late for waiting user input.
 *@subject <stdlib.h>
 *           „¤ int     atoi(char*)  ASCII to Integer kMainConsoleInputSample.cl
 *           „¤ #define RAND_MAX 32767 

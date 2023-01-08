@@ -8,7 +8,7 @@
 *@content C99YH ëÊÇRèÕ ïœêî | Chapter 3 Variable / List 3-5 / p71
 *@summary Console Input
 *         ÅE#define Directive
-*         ÅE<stdio.h>
+*         ÅE<stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
 *             Ñ§ #define stdin
 *             Ñ§ #define stdout
 *             Ñ§ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
@@ -28,26 +28,29 @@
 * 
 *           [Example]  #define BUFFER_SIZE 256
 * 
-*@subject <stdio.h>
-*            Ñ§ #define stdin  (= Standard Input) ïWèÄì¸óÕ
-*            Ñ§ #define stdout
+*@subject <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
+*            Ñ§ #define stdin  (= Standard Input)   //It usually means "input by key board", can be changed by 'fgets()' Redirect Operation.
+*            Ñ§ #define stdout (= Standard Output)  //It usually means "output to Console", can be changed by 'fgets()' Redirect Operation.
 *            Ñ§ char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 *
 *@subject <stdlib.h>
-*            L int    atoi(const char *_String)  ï∂éöóÒÇ©ÇÁ int å^Ç…ïœä∑
-*            Ñ§ double atof(const char *_String)  ï∂éöóÒÇ©ÇÁ double å^Ç…ïœä∑
+*            L int    atoi(const char *_String)    //It convert type 'char[]' as numeric string text to 'int'.
+*            Ñ§ float  atof(const char *_String)    //It convert type 'char[]' as numeric string text to 'float'
 *
-*@subject Function fgets()  File Get Strings
+*@subject Function fgets()  File Get String
 *           ÅEStandard Input (= Console Input as default)
-*           ÅEif 'Redirect', the Standard Input can be changed to File Input. ÅkChapter 12 FileÅl
-*           ÅE'\0': ÉiÉãï∂éö: ï∂éöóÒÇÃèIí[Çï\Ç∑
-*           ÅENULL: ílÇ™ë∂ç›ÇµÇ»Ç¢Ç±Ç∆Çï\Ç∑
+*           ÅEIf 'Redirect', the Standard Input can be changed to File Input. 
+*                =>ÅkC99YH12_FileOperation/MainFileCopyStringViewer.cÅl
+*           ÅE'\0': NULL Character  // It express the termination of String text. 
+*           ÅENULL:                 // It express no reference or NULL Pointer, defined in <stdio.h>.
 * 
 *         char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
 * 
 *         [Example]
-*         char* inputAry = fgets(buffer, bufferSize, stdin);
-*         if
+*         char* inputP = fgets(buffer, bufferSize, stdin);
+*         while (inputP != NULL) { ... }
+*
+*         while (fgets(buffer, bufferSize, stdin) != NULL) { ... }
 *
 *@subject Function atoi()  ASCII to Integer 
 *           ÅEIt change Strings to Integer
