@@ -51,7 +51,7 @@
 *         ÅE[Return]   int   over 0: return correctly the number of loaded words.
 *                           -1:      return uncorrectly to happen load error. 
 * 
-*@subject <stdlib.h> ?
+*@subject <stdlio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
 *            Ñ§ #define stdin   // = strndard input
 *            Ñ§ #define stdout  // = standard output
 *            Ñ§ #define stderr  // = standard error
@@ -61,7 +61,7 @@
 *                const char _FileName:  
 *                const char _Mode:
 * 
-*            Ñ§ FILE*  fopen_s(FILE* _Stream, const char _FileName, const char _Mode)
+*            Ñ§ errno_t  fopen_s(FILE* _Stream, const char _FileName, const char _Mode)
 * 
 *            Ñ§ int    fprintf(FILE* _Stream, const char* _Format, T ... value);
 *                [Argument]

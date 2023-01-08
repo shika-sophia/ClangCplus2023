@@ -46,8 +46,8 @@
 *         printf("%d \n", *p);  // show the value of the variable which Pointer is having its address.
 *                               // yNotationzthe format use '%d' because the variable 'x' ,indicated by Pointer, is int type.
 * 
-*@subject NULL Pointer kC99YH p364l
-*         <stdio.h>
+*@subject ŸNULL Pointer kC99YH p364l
+*         <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
 *            „¤ #define NULL 0
 *
 *         E'NULL': A symbol meaning "nothing of reference".
@@ -72,6 +72,8 @@
 *         if (p != NULL) {
 *             // write operation: assginment or reference, about 'p' here.
 *         }
+* 
+*         => copy tokC99YH12_FileOperation/MainFileOpenInputSample.cl
 * 
 *@subject <string.h>
 *            „¤ int  strlen(char*)
