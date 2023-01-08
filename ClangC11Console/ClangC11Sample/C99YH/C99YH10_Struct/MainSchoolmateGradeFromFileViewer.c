@@ -49,7 +49,7 @@
 *         ÅE[Return] over 0: the number of loaded Schoolmate records
 *                    -1:     Error of Load Data
 *
-*@subject <stdio.h>
+*@subject <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
 *            Ñ§ char*   fgets(char* _Buffer, int _MaxCount, FILE* _Stream)
 *
 *@subject <string.h>
