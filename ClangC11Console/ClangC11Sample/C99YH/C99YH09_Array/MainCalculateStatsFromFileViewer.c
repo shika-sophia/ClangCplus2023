@@ -26,7 +26,7 @@
 *         [‰p] ascending:  ¸‡  <-> descending ~‡
 *         [‰p] algorithm:  ƒAƒ‹ƒSƒŠƒYƒ€, vlè‡
 *
-*@subject <stdio.h> 
+*@subject <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
 *            „¤ #define stdin
 *            „¤ fgets(char* buffer, int maxCount, FILE *_Stream)
 * 
