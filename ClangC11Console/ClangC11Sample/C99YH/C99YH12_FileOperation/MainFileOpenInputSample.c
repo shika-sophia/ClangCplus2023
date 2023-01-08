@@ -25,16 +25,98 @@
 *         ÅE(Return back whole of changes for another Compile, after execution here.)
 * 
 *         [Example]
-*         ÅüPlease input File Name > ..\\C99YH07_WhileIteration\\lorem.txt
+*         Please input File Name > ..\\C99YH07_WhileIteration\\lorem.txt
 *
-*@subject <stdio.h>
+*@subject <stdio.h>  [INDEX]
+*            Ñ§ #define stdin  (= Standard Input)   
+*                          //It usually means "input by key board", can be changed by 'fgets()' Redirect Operation.
+*                          =>ÅkC99YH03_Variable\MainMultipleQuestViewer.cÅl
+*            Ñ§ #define stdout (= Standard Output) 
+*                          //It usually means "output to Console", can be changed by 'fgets()' Redirect Operation.
+*                          =>ÅkC99YH03_Variable\MainMultipleQuestViewer.cÅl
+*            Ñ§ #define stderr
 *            Ñ§ #define FILENAME_MAX 260 //The maximum number of character as file name including directory path and '\0' NULL Character
 *            Ñ§ #define FOPEN_MAX 20     //The maximum number which OS of user environment can open files at same time
-*        [Å~] Ñ§ FILE*   fopen(const char* _FileName, const char* _Mode)
-*            Ñ§ int     fclose(FILE* _Stream)
-*            Ñ§ int c   fgetc(FILE*)        // It gets 'char' one by one Byte, from Pointer of the file which has already opend by 'fopen()'.
-*            Ñ§ int     fputc(int c, FILE*) // It put 'char' one by one Byte from Pointer given argument, to Console or Save File.
+*            Ñ§ #define NULL 0           //It means no reference or NULL PointerÅkbelowÅl
+*            Ñ§ #define EOF -1           //End of File
+*                          =>ÅkC99YH07_WhileIteration\MainWhileIterationSample.cÅl
+*
+*            Ñ§ int     printf(char format [, T value1] [, T value2] ...) 
+*                          => ÅkC99YH01_ConsoleOutput\MainPrintfSample.cÅl
+*        [Å~] Ñ§ FILE*   fopen(const char* _FileName, const char* _Mode)  ÅkbelowÅl
+*            Ñ§ errno_t fopen_s(FILE* _Stream, const char _FileName, const char _Mode) //(Editing...)
+* 
+*            Ñ§ int     fclose(FILE* _Stream)  ÅkbelowÅl
+*            Ñ§ int     getchar(void)
+*                          If user input multi number of characters, 'while { }' turn continuously as same as the number.
+*                          Inputing return-key when user has done the inputs, is recognized one character, white-space too.
+*                          The 'return character' is added 'char* inputAry[]' as one char and output as line feed when 'printf()'.
+*                          =>ÅkC99YH07_WhileIteration\MainWhileIterationSample.cÅl
+*            Ñ§ int     putchar(int character) // output character
+*                          =>ÅkC99YH07_WhileIteration\MainWhileIterationSample.cÅl                          
+*            Ñ§ int c   fgetc(FILE*)        // It gets 'char' one by one Byte, from Pointer of the file which has already opend by 'fopen()'. ÅkbelowÅl
+*            Ñ§ int     fputc(int c, FILE*) // It put 'char' one by one Byte from Pointer given argument, to Console or Save File. ÅkbelowÅl
+*            Ñ§ char*   fgets(const char* _Buffer, int _MaxCount, FILE* _Stream)
+*                          // It gets string text one by one line, not one Byte, from Pointer of copy-file to 'char[] *buffer'.
+*                          =>ÅkC99YH03_Variable\MainConsoleInputSample.cÅl
+*            Ñ§ int     fputs(const char* _Buffer, FILE* _Stream)
+*                          // It puts string text one by one line, not one Byte, from argument of 'char[] *buffer' to Pointer of save-file.
+* 
+*            Ñ§ int     fprintf(FILE* _Stream, const char* _Format, T ... value);
+*                          =>ÅkC99YH11_Pointer\MainSearchDictionaryFromFileViewer.cÅl
+*            Ñ§ void    fflush(FILE _Stream)  
+*                          //It lets OS to output immediately, to prevent late for waiting user input.
+*                          =>ÅkC99YH03_Variable\MainMultipleQuestViewer.cÅl
 *            Ñ§ int?    ferror(FILE*)       // It can verify to be error, or not (= reached EOF).
+*
+*@subject ÅüThe reason why variable 'c' is defined as 'int', not 'char'.
+*         ÅEBecause it can recognize 'EOF' exactly, whose value is -1.
+*         ÅEIf 'c' is defined as 'char', and if '\xFF' character is in the document,
+*           most significant digit of bit does sign-expand, changes to -1,
+*           and it is recognized as 'EOF' unexactly, the document is cut off where is not end of file.
+*         => see ÅkC99YH p199Ål
+*         => copy from ÅkC99YH07_WhileIteration\MainWhileEOF_withFileLoad.cÅl
+*
+*@subject ÅüLine Feed Character (Depending on Text Editor Settings)
+*         ÅEwhen read, '\n' -> divide CR [Carriage Return], LF [Line Feed] -> '\x0D', '\x0A'
+*         ÅEwhen write, '\x0D', '\x0A' -> CR, LF -> '\n'
+*         ÅE'\x1A' [Ctrl + Z] is recognized as 'EOF' [End of File]
+*
+*@subject ÅüNULL Pointer ÅkC99YH p364Ål
+*         <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
+*            Ñ§ #define NULL 0
+*
+*         ÅE'NULL': A symbol meaning "nothing of reference".
+*         ÅENULL Pointer: Pointer can be assigned '0'.  0 means NULL.
+*         ÅENULL Pointer is used to express end of link, when Liner List or Tree Data Structure.
+*         ÅEYou can assign NULL to any Pointer.
+*         ÅEYou cannot assign any value to NULL Pointer
+*         ÅEYou cannot refer to value of NULL Pointer.
+*         ÅENULL Check: Before operate 'p', it is necessary to check if p is NULL or not.
+*
+*         [Example]
+*         int *p;
+*         p = NULL;
+*
+*         [Å~] *p = 123;  -> Compile Error: NULL pointer assignment,
+*                          -> or output unexpected value, or do unexpeted behavior,
+*                          -> or enforcely exited by OS.
+*
+*         [Å~] printf("%p \n", p);  // when 'p = NULL'
+*
+*         [Example] NULL Check
+*         if (p != NULL) {
+*             // write operation: assginment or reference, about 'p' here.
+*         }
+*
+*         => copy fromÅkC99YH11_Pointer\MainPointerBasic.cÅl
+*
+*@subject ÅüVoid Cast
+*         If program need not check NULL or else Errors, in sense of telling it obviously,
+*         you can explicitly add '(void)' before the function calling, as meaning to ignore the return-value.
+*
+*         [Example]
+*         (void)func(x, y);
 * 
 *@subject ÅüFile Open
 *         Open:  The operation that Function 'fopen()' asks OS of user environment, "From now, I will open the file, Can I ?".
@@ -73,18 +155,6 @@
 *                      Image File [.jpg][.gif][.png], Music File [.mp3][.wav], Movie File [.mp4][.mpeg] etc...
 *         Read:  Program <- File
 *         Write: Program -> File
-* 
-*@subject ÅüLine Feed Character (Depending on Text Editor Settings)
-*         ÅEwhen read, '\n' -> divide CR [Carriage Return], LF [Line Feed] -> '\x0D', '\x0A'
-*         ÅEwhen write, '\x0D', '\x0A' -> CR, LF -> '\n'
-*         ÅE'\x1A' [Ctrl + Z] is recognized as 'EOF' [End of File]
-* 
-*@subject ÅüVoid Cast
-*         If program need not check NULL or else Errors, in sense of telling it obviously,
-*         you can explicitly add '(void)' before the function calling, as meaning to ignore the return-value.
-*          
-*         [Example]
-*         (void)func(x, y);
 *
 *@subject ÅüFile Close
 *         ÅEDon't forget file close, 
