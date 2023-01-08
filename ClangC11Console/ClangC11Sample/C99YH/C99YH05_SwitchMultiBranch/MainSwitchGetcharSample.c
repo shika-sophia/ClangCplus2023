@@ -9,7 +9,7 @@
 *@content C99YH ‘æ‚TÍ Switch | Chapter 5 getchar() / List 5-2, 5-3 / p140
 *@summary MainSwitchGetcharSample
 *
-*@subject <stdio.h>
+*@subject <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
 *           „¤ int  getchar(void)  //can get user inputs without fgets(), definition of buffer, BUFFER_SIZE.
 *                                 //seeyAnalysiszbelow.
 *                                 //seekC99YH07_WhileIteration\MainWhileIterationSample.cl
