@@ -26,7 +26,7 @@
 *         ・引数 void 他もある
 *         ・戻値 int。return 0; で　0 が返ると プログラムが終了する。
 * 
-*@subject <stdio.h>
+*@subject <stdio.h> => 〔C99YH12_FileOperation\MainFileOpenInputSample.c〕
 *           └ int  printf(char format [, T value1] [, T value2] ...)
 *                   └ T: intなど数値型, char, string
 * 
