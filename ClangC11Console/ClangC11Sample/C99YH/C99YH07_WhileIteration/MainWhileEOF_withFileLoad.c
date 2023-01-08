@@ -7,7 +7,7 @@
 *
 *@content C99YH ëÊÇVèÕ WhileIteration | Chapter 7 / List 7-4, 7-6 / p198, p204
 *@summary MainWhileEOF_withFileLoad.c
-*         <stdio.h>
+*         <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
 *            Ñ§ int  putchar(int character) ÅkMainWhileIterationSample.cÅl
 *            Ñ§ #define EOF -1              ÅkMainWhileIterationSample.cÅl
 * 
@@ -34,14 +34,15 @@
 *         $./xxxx < yyyy.txt
 *         $./xxxx < yyyy.txt > zzzz.txt
 *
-*@subject The reason why variable 'c' is defined as 'int', not 'char'.
-*         ÅEBecause of to recognize 'EOF' exactly, whose value is -1.
+*@subject ÅüThe reason why variable 'c' is defined as 'int', not 'char'.
+*         ÅEBecause it can recognize 'EOF' exactly, whose value is -1.
 *         ÅEIf 'c' is defined as 'char', and if '\xFF' character is in the document,
 *           most significant digit of bit does sign-expand, changes to -1, 
 *           and it is recognized as 'EOF' unexactly, the document is cut off where is not end of file.
 *         => see ÅkC99YH p199Ål
+*         => copy to ÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
 * 
-*@subject Lorem ipsum
+*@subject ÅüLorem ipsum
 *         ÅEIt is non-sence document for dammy,
 *           described by blending Latina and English.
 *         ÅEIt is often used to confirm Web page design.

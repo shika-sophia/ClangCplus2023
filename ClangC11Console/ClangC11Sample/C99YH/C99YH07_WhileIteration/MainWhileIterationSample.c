@@ -25,7 +25,7 @@
 *         => see <stdio.h> [Example] kbelowl
 *         => seekMainWhileEOF_withFileLoad.cl
 * 
-*@subject <stdio.h>
+*@subject <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
 *            „¤ int  getchar(void)  
 *                If user input multi number of characters, 'while { }' turn continuously as same as the number.
 *                Inputing return-key when user has done the inputs, is recognized one character, white-space too.
