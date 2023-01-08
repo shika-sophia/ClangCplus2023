@@ -15,7 +15,7 @@
 *         EChange comment-out of 'main()' to active.
 *         EChange comment-out of 'fopen()' to active and 'fopen_s()' to negative in From-File and To-File.
 *         EExecute by [Windows Command Prompt for VS2019]
-*           (because, executed by Visual Studio, it throws Compile Error by cause of 'fopen() unsafe'.)
+*           (because, C11-compiled by Visual Studio, it throws Compile Error by cause of 'fopen() unsafe'.)
 *          
 *           >cd (current directory)
 *           >cl MainFileCopyCommandLineArgumentViewer.c

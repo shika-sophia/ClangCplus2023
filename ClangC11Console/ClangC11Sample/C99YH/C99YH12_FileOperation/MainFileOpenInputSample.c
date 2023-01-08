@@ -20,7 +20,7 @@
 *         ・Change comment-out of 'consoleInput()' definition to active.
 *         ・Change comment-out of 'fopen()' to active and 'fopen_s()' to negative.
 *         ・Execute by [Windows Command Prompt for VS2019]
-*           (because, executed by Visual Studio, it throws Compile Error by cause of 'fopen() unsafe'.)
+*           (because, C11-compiled by Visual Studio, it throws Compile Error by cause of 'fopen() unsafe'.)
 *         ・It asks file name ,and then Paste the file name and [Enter] Key.
 *         ・(Return back whole of changes for another Compile, after execution here.)
 * 
