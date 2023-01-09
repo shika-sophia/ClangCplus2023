@@ -20,6 +20,6 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 　　　　　　　　　 Translated by HON･IDEN Shin･ichi / YOSHIDA Kazuki <br />
 　　　　(meaning) 『Design Patterns Elements of Re-usable Object-Oriented Software (Revision Edition)』SB Creative, 1999 <br />
 <br />
-@reference AlgoOH 奥村晴彦『Ｃ言語による標準アルゴリズム事典 改訂新版』技術評論社, 2018 <br />
+*@reference AlgoOH 奥村晴彦『Ｃ言語による標準アルゴリズム事典 改訂新版』技術評論社, 2018 <br />
 (meaning) OKUMURA Haruhiko『C-language standard Algorithm Dictionary (Revision New Edition)』Gijyutuhyouron-sha(= Technology Analysis Company), 2018 <br />
 <br />
