@@ -37,14 +37,34 @@
 *            L int    atoi(const char *_String)    //It convert type 'char[]' as numeric string text to 'int'.
 *            Ñ§ float  atof(const char *_String)    //It convert type 'char[]' as numeric string text to 'float'
 *
-*@subject Function fgets()  File Get String
+*@subject Function fgets()  File Get String ÅkC99YH p73, p401Ål
 *           ÅEStandard Input (= Console Input as default)
 *           ÅEIf 'Redirect', the Standard Input can be changed to File Input. 
 *                =>ÅkC99YH12_FileOperation/MainFileCopyStringViewer.cÅl
 *           ÅE'\0': NULL Character  // It express the termination of String text. 
 *           ÅENULL:                 // It express no reference or NULL Pointer, defined in <stdio.h>.
 * 
-*         char*  fgets(char *_Buffer, int _MaxCount, FILE _Stream)
+*         char*  fgets(const char *_Buffer, int _MaxCount, FILE _Stream)
+*         
+*         [Argument]
+*         char* _Buffer:  Pointer of 'char' Array which storage one line of file contents,
+*         (as contatnt)   The Array size is required over the value of second argument 'int _MaxCount'.
+* 
+*         int _MaxCount:  maximum Bytes + 1 of buffer size to read line. +1 is for '\0' NULL character.
+* 
+*         FILE* _Stream:  ÅEPointer of file to read, which need be open by 'fopen()' with Mode "r" as to read, before this operation.
+*                         ÅE[Redirect] Instead of Pointer of file, you can set 'stdin' defined in <stdio.h> as standard input (= usually Console input from Key Board).
+* 
+*         [Return]
+*         char*: Pointer of buffer array which was given by argument, and storaged file contents.
+*                or NULL Pointer when it reached 'EOF'.
+* 
+*         [Behavior] in case of File Pointer:
+*         When execute 'fgets(), it reads charaters from File Pointer, and storages them to buffer array.
+*         If it reads '\n' Line Feed Character, it adds '\0' NULL Character as end of string text, to buffer array.
+*         If it reads (maximum Bytes - 1) before '\n', it stop to read file and add \0'.
+*         Then it returns Pointer of the buffer array.
+*         If it has already finish to read, it returns 'NULL' Pointer.
 * 
 *         [Example]
 *         char* inputP = fgets(buffer, bufferSize, stdin);
@@ -52,6 +72,8 @@
 *
 *         while (fgets(buffer, bufferSize, stdin) != NULL) { ... }
 *
+*         => copy toÅkC99YH12_FileOperation\MainFileOpenInputSample.cÅl
+* 
 *@subject Function atoi()  ASCII to Integer 
 *           ÅEIt change Strings to Integer
 * 
