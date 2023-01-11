@@ -7,7 +7,7 @@
 *@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第12章 FileOperation | Chapter 12 / List 12-3 / p
+*@content C99YH 第12章 FileOperation | Chapter 12 / List 12-3 / p398
 *@summary File Copy -- Command Line Argument Version --
 *@English
 *@subject ◆Execute Procedure

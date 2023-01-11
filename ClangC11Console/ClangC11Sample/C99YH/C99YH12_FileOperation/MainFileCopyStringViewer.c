@@ -13,7 +13,8 @@
 *         ÅECopy String text one by one Line, not one Byte.
 *         ÅEIn this way, NULL Character '\0' cannot read,
             therefore this program can read Text File only, cannot Binary File,
-            so that File Open Mode is "r" and "w" only.
+            File Open Mode is "r" or "w" only.
+
 *@English
 *@subject ÅüExecute Procedure
 *         ÅECopy the execution format [ MainFileCopyStringViewer ..\\C99YH07_WhileIteration\\lorem.txt loremCopy.txt ].
@@ -30,11 +31,36 @@
 * 
 *         ÅE(Return back whole of changes for another Compile, after execution here.)
 *
-*@subject <stdio.h> => ÅkMainFileOpenInputSample.cÅl
+*@subject <stdio.h> => INDEXÅkMainFileOpenInputSample.cÅl
 *            Ñ§ char*  fgets(const char* _Buffer, int _MaxCount, FILE* _Stream)
 *            Ñ§ int    fputs(const char* _Buffer, FILE* _Stream)
 *
-*@see
+*@subject ÅüDifferent Arguments of 'fgets() and 'fputs()' ÅkC99YH p402Ål
+*         The reason why fgets() has 'int _MaxCount':
+*         Because Byte size of one line is unknown, to prevent OverFlow which it read beyond array size,
+*         It need notify the Maximum Byte Size of buffer array.
+*         By this, fgets() can stop reading before OverFlow.
+* 
+*         Other side, fputs() has alrady had the elements of buffer array to write, 
+*         it knows the Byte size within buffer array size,
+*         it only continue to write the elements until '\0'.
+* 
+*         => copy toÅkC99YH12_FileOperation\MainFileOpenInputSample.cÅl
+* 
+*@subject ÅüDifferent Terminal Conditions of While-Iteration with 'fgetc() fputc()' and 'fgets() fputs()':
+*         [Example] List 12-3 ÅkMainFileCopyCommandLineArgumenViewer.cÅl
+*         while ((c = fgetc(fromFileP)) != EOF) {
+*             fputc(c, toFileP);
+*         }//while
+* 
+*         [Example] List 12-4 ÅkthisÅl
+*         while (fgets(buffer, BUFFER_SIZE, fromFileP) != NULL) {
+*            fputs(buffer, toFileP);
+*         }//while
+* 
+*         => copy toÅkC99YH12_FileOperation\MainFileOpenInputSample.cÅl
+* 
+*@see MainFileOpenInputSample.c
 *@author shika
 *@date 2023-01-09
 */
@@ -43,8 +69,8 @@
 
 #define BUFFER_SIZE 256
 
-int main(int argc, char* argv[]) {
-//int mainFileCopyStringViewer(int argc, char* argv[]) {
+//int main(int argc, char* argv[]) {
+int mainFileCopyStringViewer(int argc, char* argv[]) {
     printf("Å° This program is to copy file to file.\n");
 
     if (argc != 3) {
@@ -57,8 +83,8 @@ int main(int argc, char* argv[]) {
     char* toFileName = argv[2];
 
     //---- From-File to copy ----
-    FILE* fromFileP = fopen(fromFileName, "r");
-    //FILE* fromFileP = fopen_s(stdin, fromFileName, "r");
+    //FILE* fromFileP = fopen(fromFileName, "r");
+    FILE* fromFileP = fopen_s(stdin, fromFileName, "r");
 
     if (fromFileP == NULL) {
         printf("<ÅI> Not Found the file [ %s ].", fromFileName);
@@ -66,8 +92,8 @@ int main(int argc, char* argv[]) {
     }
 
     //---- To-File to save ----   
-    FILE* toFileP = fopen(toFileName, "w");
-    //FILE* toFileP = fopen_s(stdout, toFileName, "w");
+    //FILE* toFileP = fopen(toFileName, "w");
+    FILE* toFileP = fopen_s(stdout, toFileName, "w");
 
     if (toFileP == NULL) {
         printf("<ÅI> Cannot create the file [ %s ].", toFileName);
@@ -97,3 +123,18 @@ int main(int argc, char* argv[]) {
     printf("(The copy has done.)");
     return 0;
 }//main()
+
+/*
+//====== Execute by [Windows Command Prompt for VS2019] ======
+>cd C:\...\C99YH\C99YH12_FileOperation
+
+>cl MainFileCopyStringViewer.c
+MainFileCopyStringViewer.c
+/out:MainFileCopyStringViewer.exe
+MainFileCopyStringViewer.obj
+
+>MainFileCopyStringViewer ..\\C99YH07_WhileIteration\\lorem.txt loremCopy.txt
+Å° This program is to copy file to file.
+(The copy has done.)
+
+*/

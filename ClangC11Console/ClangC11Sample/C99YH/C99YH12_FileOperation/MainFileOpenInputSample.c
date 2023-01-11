@@ -13,6 +13,7 @@
 *         [P]  LF: line feed       ‰üs
 *         [‰p] correspond:     ‘Î‰‚·‚éA‘Š“–‚·‚éAˆê’v‚·‚éA’²˜a‚·‚éA’ÊM‚·‚é
 *         [‰p] explicit:       –¾¦“I  <-> implicit ˆÃ–Ù“I
+*         [‰p] abbreviation:   È—ªA’Zk
 * 
 *@subject ŸExecute Procedure
 *         ECopy the file name as relative path [ ..\\C99YH07_WhileIteration\\lorem.txt ].
@@ -27,7 +28,7 @@
 *         [Example]
 *         Please input File Name > ..\\C99YH07_WhileIteration\\lorem.txt
 *
-*@subject <stdio.h>  [INDEX]
+*@subject <stdio.h>  [INDEX] integrated whole C99YH
 *            „¤ #define stdin  (= Standard Input)   
 *                          //It usually means "input by key board", can be changed by 'fgets()' Redirect Operation.
 *                          =>kC99YH03_Variable\MainMultipleQuestViewer.cl
@@ -58,10 +59,10 @@
 *            „¤ int     fputc(int c, FILE*) // It put 'char' one by one Byte from Pointer given argument, to Console or Save File. kbelowl
 *            „¤ char*   fgets(const char* _Buffer, int _MaxCount, FILE* _Stream)
 *                          // It gets string text one by one line, not one Byte, from Pointer of copy-file to 'char[] *buffer'.
-*                          =>kC99YH03_Variable\MainConsoleInputSample.cl
+*                          => kbelowl,copy fromkC99YH03_Variable\MainConsoleInputSample.cl
 *            „¤ int     fputs(const char* _Buffer, FILE* _Stream)
 *                          // It puts string text one by one line, not one Byte, from argument of 'char[] *buffer' to Pointer of save-file.
-* 
+*                          => kbelowl
 *            „¤ int     fprintf(FILE* _Stream, const char* _Format, T ... value);
 *                          =>kC99YH11_Pointer\MainSearchDictionaryFromFileViewer.cl
 *            „¤ void    fflush(FILE _Stream)  
@@ -118,7 +119,7 @@
 *         [Example]
 *         (void)func(x, y);
 * 
-*@subject ŸFile Open
+*@subject ŸFunction fopen()  = abbreviation of File Open kC99YH p387l
 *         Open:  The operation that Function 'fopen()' asks OS of user environment, "From now, I will open the file, Can I ?".
 *         Close: The operation that Function 'fclose()' tells OS of user environment, "I will not use the file any more."
 *
@@ -156,7 +157,7 @@
 *         Read:  Program <- File
 *         Write: Program -> File
 *
-*@subject ŸFile Close
+*@subject ŸFunction fclose()  = abbreviation of File Close kC99YH p390l
 *         EDon't forget file close, 
 *           because FOPEN_MAX the maximum number which OS of user environment can open files at same time, is limited 20 (defined in <stdio.h>). 
 *         E(Depending on OS), when you open file, expect to write something there, and remain to open (= do not close),
@@ -175,7 +176,7 @@
 *                 ||                               // => see if-statmentkC99YH04_ConditionalBranch\MainValidateInputSample.cl
 *            [Z] if (fclose(fileP)) { ... }
 *
-*@subject ŸGet char kC99YH p391l
+*@subject ŸFunction fgetc()  = abbreviation of File Get char kC99YH p391l
 *         Efgetc() get 'char' one by one Byte, from Pointer of the file which has already opend by 'fopen()' with Mode "r" or "rb".
 *         EThe operation is continued to read by 'while'-statement, so that whole of file contents can read.
 * 
@@ -187,7 +188,7 @@
 *                      n:      If success to read 'char', it returns the ASCII code (= character code).
 *                      EOF -1: End of File, or Error while File Read  -> ferror()
 *
-*@subject ŸPut char kC99YH p394l
+*@subject ŸFunction fputc()  = abbreviation of File Put char kC99YH p394l
 *         Efputc() put 'char' one by one Byte from Pointer given argument, to Console or Save File.
 *         
 *         <stdio.h>
@@ -200,8 +201,92 @@
 *            //yNotationzfopen() with Mode "w' or "wb"
 *            // If the same name file has already existed, the file contents will be deleted, exactly the file size is to be 0.
 *            // Be careful confirm if the same name file exist or not.
+*
+*@subject ŸFunction fgets()  = abbreviation of File Get String kC99YH p73, p401l
+*         EStandard Input (= Console Input as default)
+*         EIf 'Redirect', the Standard Input can be changed to File Input.
+*              =>kC99YH12_FileOperation/MainFileCopyStringViewer.cl
+*         E'\0': NULL Character  // It express the termination of String text.
+*         ENULL:                 // It express no reference or NULL Pointer, defined in <stdio.h>.
 *         
-*@subject ŸVerify to be error or not  kC99YH p392l
+*         [Function]
+*         char*  fgets(const char *_Buffer, int _MaxCount, FILE _Stream)
+*
+*         [Argument]
+*         char* _Buffer:  Pointer of 'char' Array which storage one line of file contents,
+*         (as contatnt)   The Array size is required over the value of second argument 'int _MaxCount'.
+* 
+*         int _MaxCount:  maximum Bytes + 1 of buffer size to read line. +1 is for '\0' NULL character.
+*
+*         FILE* _Stream:  EPointer of file to read, which need be open by 'fopen()' with Mode "r" as to read, before this operation.
+*                         E[Redirect] Instead of Pointer of file, you can set 'stdin' defined in <stdio.h> as standard input (= usually Console input from Key Board).
+*
+*         [Return]
+*         char*: Pointer of buffer array which was given by argument, and storaged file contents.
+*                or NULL Pointer when it reached 'EOF'.
+*
+*         [Behavior] in case of File Pointer:
+*         When execute 'fgets(), it reads charaters from File Pointer, and storages them to buffer array.
+*         If it reads '\n' Line Feed Character, it adds '\0' NULL Character as end of string text, to buffer array.
+*         If it reads (maximum Bytes - 1) before '\n', it stop to read file and add \0'.
+*         Then it returns Pointer of the buffer array.
+*         If it has already finish to read, it returns 'NULL' Pointer.
+*
+*         [Example]
+*         char* inputP = fgets(buffer, bufferSize, stdin);
+*         while (inputP != NULL) { ... }
+*
+*         while (fgets(buffer, bufferSize, stdin) != NULL) { ... }
+*
+*         => copy fromkC99YH03_Variable\MainConsoleInputSample.cl
+*
+*@subject ŸFunction fputs()  = abbreviation of File Put StringkC99YH p401l
+*         EIt continues to write elements of buffer array to the output file,
+*           until element of this is '\0' NULL Character.
+*         ETherefore, if buffer array includes '\0' at middle of the documents,
+*           it cannot write whole of document.
+* 
+*         int  fputs(const char* _Buffer, FILE* _Stream)
+* 
+*         [Argument]
+*         const char* _Buffer: Pointer of 'char' Array
+*         FILE* _Stream:       EPointer of file to write, which need be open by 'fopen()' with Mode "w" as to write, before this operation.
+*                              E[Redirect] 'stdout' as standard output (= Console output).
+*         
+*         [Return]
+*         plus value: correctly behave
+*         EOF -1:     uncorrectly behave (= happen error) or correctly finished to write because of EOF 'End of File'.
+*                     If you want to know which above, need check by 'ferror()'.
+*
+*@subject ŸDifferent Arguments of 'fgets() and 'fputs()' kC99YH p402l
+*         The reason why fgets() has 'int _MaxCount':
+*         Because Byte size of one line is unknown, to prevent OverFlow which it read beyond array size,
+*         It need notify the Maximum Byte Size of buffer array.
+*         By this, fgets() can stop reading before OverFlow.
+*
+*         Other side, fputs() has alrady had the elements of buffer array to write,
+*         it knows the Byte size within buffer array size,
+*         it only continue to write the elements until '\0'.
+*
+*         => copy fromkMainFileCopyStringViewer.cl
+*
+*@subject ŸDifferent Terminal Conditions of While-Iteration with 'fgetc() fputc()' and 'fgets() fputs()':
+* 
+*         [Example] List 12-3 kMainFileCopyCommandLineArgumenViewer.cl
+*         while ((c = fgetc(fromFileP)) != EOF) {
+*             fputc(c, toFileP);
+*         }//while
+*
+*         [Example] List 12-4 kMainFileCopyStringViewer.cl
+*         while (fgets(buffer, BUFFER_SIZE, fromFileP) != NULL) {
+*            fputs(buffer, toFileP);
+*         }//while
+*
+*         => copy fromkMainFileCopyStringViewer.cl
+*
+*@subject ŸFunction ferror()  = abbreviation of File Error   kC99YH p392l
+*         EIt verify to be error or not
+* 
 *         <stdio.h>
 *         int?    ferror(FILE*)    // It can verify to be error, or not (= reached EOF without error).
 *
