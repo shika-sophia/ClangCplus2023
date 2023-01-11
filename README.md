@@ -23,7 +23,7 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 @reference MathYH 結城浩『プログラマの数学 第２版』SB Creative, 2018 <br />
 (meaning) YUUKI Hiroshi『Mathematics for Programmer (2nd Edition)』SB Creative, 2018 <br />
 <br />
-@rerference AlgoMath 米田優峻『問題解決のためのアルゴリズム数学が基礎からしっかりみにつく本』技術評論社, 2022 <br />
+@rerference AlgoMath 米田優峻『問題解決のためのアルゴリズム数学が基礎からしっかり身につく本』技術評論社, 2022 <br />
 (meaning) YONEDA Masataka『Book for steady learning from basic about Algorithm Mathematics to resolve problems』<br />
 　　Gijyutuhyouron-sha (= Technology Analysis Company), 2022 <br />
 <br />
