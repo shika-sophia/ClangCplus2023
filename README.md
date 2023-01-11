@@ -19,6 +19,7 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 　Japanese Editon:　本位田真一 / 吉田和樹 訳『オブジェクト指向における再利用のためのデザインパターン 改訂版』SB Creative, 1999 <br />
 　　　　　　　　　 Translated by HON･IDEN Shin･ichi / YOSHIDA Kazuki <br />
 　　　　(meaning) 『Design Patterns Elements of Re-usable Object-Oriented Software (Revision Edition)』SB Creative, 1999 <br />
+<br />
 @reference MathYH 結城浩『プログラマの数学 第２版』SB Creative, 2018 <br />
 (meaning) YUUKI Hiroshi『Mathematics for Programmer (2nd Edition)』SB Creative, 2018 <br />
 <br />
