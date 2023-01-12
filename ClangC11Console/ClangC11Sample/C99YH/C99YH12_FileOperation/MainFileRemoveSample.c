@@ -58,7 +58,7 @@
 #include <stdio.h>
 
 //int main(int argc, char* argv[]) {
-int MainFileRemoveSample(int argc, char* argv[]) {
+int mainFileRemoveSample(int argc, char* argv[]) {
     char* fileName[FILENAME_MAX];
 
     printf("Å° This program will delete the file which you set the file name in Command Line Argument.\n");
