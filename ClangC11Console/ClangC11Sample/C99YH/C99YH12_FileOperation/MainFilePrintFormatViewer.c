@@ -64,7 +64,7 @@
 #define BUFFER_SIZE 1024
 
 //int main(int argc, char* argv[]) {
-int mainFileCopyStringViewer(int argc, char* argv[]) {
+int mainFilePrintFormatViewer(int argc, char* argv[]) {
     printf("Å° This program is to read file and to write file with line number.\n");
 
     if (argc != 3) {
