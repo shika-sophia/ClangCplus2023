@@ -32,6 +32,8 @@
 *         ÅE(Return back whole of changes for another Compile, after execution here.)
 *
 *@subject <stdio.h> => INDEXÅkMainFileOpenInputSample.cÅl
+*            Ñ§ FILE*  fopen(const char* _FileName, const char* _Mode)
+*            Ñ§ int    fclose(FILE* _Stream)
 *            Ñ§ char*  fgets(const char* _Buffer, int _MaxCount, FILE* _Stream)
 *            Ñ§ int    fputs(const char* _Buffer, FILE* _Stream)
 *
@@ -84,7 +86,7 @@ int mainFileCopyStringViewer(int argc, char* argv[]) {
 
     //---- From-File to copy ----
     //FILE* fromFileP = fopen(fromFileName, "r");
-    FILE* fromFileP = fopen_s(stdin, fromFileName, "r");
+    FILE* fromFileP = fopen_s(stdin, fromFileName, "r");  //In Temporary active -> When execute, switch Comment-out above.
 
     if (fromFileP == NULL) {
         printf("<ÅI> Not Found the file [ %s ].", fromFileName);
@@ -93,7 +95,7 @@ int mainFileCopyStringViewer(int argc, char* argv[]) {
 
     //---- To-File to save ----   
     //FILE* toFileP = fopen(toFileName, "w");
-    FILE* toFileP = fopen_s(stdout, toFileName, "w");
+    FILE* toFileP = fopen_s(stdout, toFileName, "w");  //In Temporary active -> When execute, switch Comment-out above.
 
     if (toFileP == NULL) {
         printf("<ÅI> Cannot create the file [ %s ].", toFileName);

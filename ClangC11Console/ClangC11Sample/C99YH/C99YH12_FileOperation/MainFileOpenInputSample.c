@@ -42,7 +42,7 @@
 *            Ñ§ #define EOF -1           //End of File
 *                          =>ÅkC99YH07_WhileIteration\MainWhileIterationSample.cÅl
 *
-*            Ñ§ int     printf(char format [, T value1] [, T value2] ...) 
+*            Ñ§ int     printf(const char format [, T value1] [, T value2] ...) 
 *                          => ÅkC99YH01_ConsoleOutput\MainPrintfSample.cÅl
 *        [Å~] Ñ§ FILE*   fopen(const char* _FileName, const char* _Mode)  ÅkbelowÅl
 *            Ñ§ errno_t fopen_s(FILE* _Stream, const char _FileName, const char _Mode) //(Editing...)
@@ -63,12 +63,13 @@
 *            Ñ§ int     fputs(const char* _Buffer, FILE* _Stream)
 *                          // It puts string text one by one line, not one Byte, from argument of 'char[] *buffer' to Pointer of save-file.
 *                          => ÅkbelowÅl
-*            Ñ§ int     fprintf(FILE* _Stream, const char* _Format, T ... value);
-*                          =>ÅkC99YH11_Pointer\MainSearchDictionaryFromFileViewer.cÅl
+*            Ñ§ int     fprintf(FILE* _Stream, const char* _Format, T ... value) ÅkbelowÅl
+*            Ñ§ int     remove(const char* _FileName) ÅkbelowÅl
+*            Ñ§ int     rename(const char* _OldFileName, const char* _NewFileName) ÅkbelowÅl
 *            Ñ§ void    fflush(FILE _Stream)  
 *                          //It lets OS to output immediately, to prevent late for waiting user input.
 *                          =>ÅkC99YH03_Variable\MainMultipleQuestViewer.cÅl
-*            Ñ§ int?    ferror(FILE*)       // It can verify to be error, or not (= reached EOF).
+*            Ñ§ int?    ferror(FILE*)       // It can verify to be error, or not (= reached EOF). ÅkbelowÅl
 *
 *@subject ÅüThe reason why variable 'c' is defined as 'int', not 'char'.
 *         ÅEBecause it can recognize 'EOF' exactly, whose value is -1.
@@ -284,11 +285,48 @@
 *
 *         => copy fromÅkMainFileCopyStringViewer.cÅl
 *
+*@subject ÅüFunction fprintf()  =abbreviation of File Print Format ÅkC99YH p402Ål
+*         ÅEIt is used, instead of 'fputs(buffer, toFileP);'
+*         ÅEFunction 'printf()' write to Console with Format as Standard Output,
+            Function 'fprintf()' write to File with Format.
+*         ÅEArgument Format and Value as same printf().
+*           =>ÅkC99YH01_ConsoleOutput\MainPrintfSample.cÅl
+*
+*         int  fprintf(FILE* _Stream, const char _Format, [T value ...])
+*         [Argument]
+*         FILE* _Stream:      Pointer of file which is opened by 'fopen()' with Mode 'w' to write, before this operation.
+*                             or 'stdout' defined in <stdio.h> as Standard Output (= Console output), which behave as same 'printf()'.
+*                             or 'stderr' definrd in <stdio.h> as Standard Error  (= Console Output), for example =>ÅkC99YH11_Pointer\MainSearchDictionaryFromFileViewer.cÅl
+*         const char _Format: as same printf().
+*         [T value ...]:      as same printf().
+*
+*         => copy fromÅkC99YH12_FileOperation\MainFilePrintFormatViewer.cÅl
+*
+*@subject Function remove()  ÅkC99YH p405Ål
+*         int  remove(const char* _FileName)
+*         [Argument] const char* _FileName
+*         [Return]   0:     correctly delete the file
+*                    not 0: cannot delete because of not exist or else error.
+*           ÅyNotationÅz To success returns false value '0'.
+*                        To fail    retruns true value 'not 0'
+*
+*         [Example]
+*         *fileName = argv[1];
+*
+*         if (remove(*fileName) != 0) {
+*             printf("<ÅI> The file [ %s ] cannot be deleted or is not existed.", *fileName);
+*             return -1;
+*         }
+*
+*         printf("<ÅZ> The file [ %s ] has deleted.", *fileName);
+*
+*         => copy fromÅkMainFileRemoveSample.cÅl
+*
 *@subject ÅüFunction ferror()  = abbreviation of File Error   ÅkC99YH p392Ål
 *         ÅEIt verify to be error or not
 * 
 *         <stdio.h>
-*         int?    ferror(FILE*)    // It can verify to be error, or not (= reached EOF without error).
+*         int?    ferror(FILE*)    // It can verify the code to be error, or not (= reached EOF without error).
 *
 *@see                 
 *@author shika
