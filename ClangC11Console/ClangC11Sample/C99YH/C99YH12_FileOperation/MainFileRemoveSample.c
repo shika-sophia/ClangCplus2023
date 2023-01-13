@@ -13,7 +13,7 @@
 * 
 *@English
 *@subject ÅüExecute Procedure
-*         ÅEChange comment-out of 'main() to active.
+*         ÅEChange comment-out of 'main()' to active.
 *         ÅEOpen [Windows Command Prompt for VS2019].
 *         ÅEChange current directory to here.
 *           >cd (current directory)
@@ -33,10 +33,10 @@
 *@subject Function remove()  ÅkC99YH p405Ål
 *         int  remove(const char* _FileName)
 *         [Argument] const char* _FileName
-*         [Return]   0:     correctly delete the file
-*                    not 0: cannot delete because of not exist or else error.
-*           ÅyNotationÅz To success returns false value '0'.
-*                        To fail    retruns true value 'not 0'
+*         [Return]   int 0:     correctly delete the file
+*                        not 0: cannot delete because of not exist or else error.
+*        ÅyNotationÅz To success returns false value '0'.
+*                     To fail    retruns true value 'not 0'.
 * 
 *         [Example]
 *         *fileName = argv[1];

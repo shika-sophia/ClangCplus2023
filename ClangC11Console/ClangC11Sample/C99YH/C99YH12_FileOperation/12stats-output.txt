@@ -1,0 +1,27 @@
+== Schoolmate Count ==
+6 persons
+
+== Schoolmates in order of ID ==
+(  1) ID: 101 Name: 佐藤花子       |  65  90 100  80  73  | Total: 408.00 Average: 81.60 
+(  2) ID: 102 Name: 阿部和馬       |  82  75  63  21  45  | Total: 286.00 Average: 57.20 
+(  3) ID: 103 Name: 伊藤光一       |  74  31  41  59  38  | Total: 243.00 Average: 48.60 
+(  4) ID: 104 Name: 佐藤太郎       | 100  95  98  82  65  | Total: 440.00 Average: 88.00 
+(  5) ID: 105 Name: 村松真治       |  55  48  79  90  88  | Total: 360.00 Average: 72.00 
+(  6) ID: 106 Name: 進東三太郎     |  74  45  59  27  38  | Total: 243.00 Average: 48.60 
+
+== Schoolmates in order of individual Total Score ==
+(  1) ID: 104 Name: 佐藤太郎       | 100  95  98  82  65  | Total: 440.00 Average: 88.00 
+(  2) ID: 101 Name: 佐藤花子       |  65  90 100  80  73  | Total: 408.00 Average: 81.60 
+(  3) ID: 105 Name: 村松真治       |  55  48  79  90  88  | Total: 360.00 Average: 72.00 
+(  4) ID: 102 Name: 阿部和馬       |  82  75  63  21  45  | Total: 286.00 Average: 57.20 
+(  5) ID: 103 Name: 伊藤光一       |  74  31  41  59  38  | Total: 243.00 Average: 48.60 
+(  6) ID: 106 Name: 進東三太郎     |  74  45  59  27  38  | Total: 243.00 Average: 48.60 
+
+== Culculated Stats of each subjects and whole subjects ==
+Subject 1: Maximum: 100 / Minimum:  55 / Average: 75.00 
+Subject 2: Maximum:  95 / Minimum:  31 / Average: 64.00 
+Subject 3: Maximum: 100 / Minimum:  41 / Average: 73.33 
+Subject 4: Maximum:  90 / Minimum:  21 / Average: 59.83 
+Subject 5: Maximum:  88 / Minimum:  38 / Average: 57.83 
+Average of Total: 330.00 
+

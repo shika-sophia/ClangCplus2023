@@ -66,11 +66,13 @@
 *            Ñ§ int     fprintf(FILE* _Stream, const char* _Format, T ... value) ÅkbelowÅl
 *            Ñ§ int     remove(const char* _FileName) ÅkbelowÅl
 *            Ñ§ int     rename(const char* _OldFileName, const char* _NewFileName) ÅkbelowÅl
-*            Ñ§ void    fflush(FILE _Stream)  
+*            Ñ§ int     fflush(FILE _Stream)  
 *                          //It lets OS to output immediately, to prevent late for waiting user input.
 *                          =>ÅkC99YH03_Variable\MainMultipleQuestViewer.cÅl
-*            Ñ§ int?    ferror(FILE*)       // It can verify to be error, or not (= reached EOF). ÅkbelowÅl
-*
+*            Ñ§ int     ferror(FILE*)       // It can verify to be error, or not (= reached EOF). ÅkbelowÅl
+*/
+//====== Reference of File Functions ======
+/*
 *@subject ÅüThe reason why variable 'c' is defined as 'int', not 'char'.
 *         ÅEBecause it can recognize 'EOF' exactly, whose value is -1.
 *         ÅEIf 'c' is defined as 'char', and if '\xFF' character is in the document,
@@ -305,10 +307,10 @@
 *@subject Function remove()  ÅkC99YH p405Ål
 *         int  remove(const char* _FileName)
 *         [Argument] const char* _FileName
-*         [Return]   0:     correctly delete the file
-*                    not 0: cannot delete because of not exist or else error.
-*           ÅyNotationÅz To success returns false value '0'.
-*                        To fail    retruns true value 'not 0'
+*         [Return]   int 0:     correctly delete the file
+*                        not 0: cannot delete because of not exist or else error.
+*        ÅyNotationÅzTo success returns false value '0'.
+*                    To fail    retruns true value 'not 0'
 *
 *         [Example]
 *         *fileName = argv[1];
@@ -322,12 +324,39 @@
 *
 *         => copy fromÅkMainFileRemoveSample.cÅl
 *
+*@subject ÅüFunction rename()  ÅkC99YH p406Ål
+*         int  rename(const char* _OldFileName, const char* _NewFileName)
+*         
+*         [Argument]
+*         const char* _OldFileName
+*         const char* _NewFileName
+*
+*         [Return]
+*         int  0:     success
+*         not 0: failure
+*
+*        ÅyNotationÅz
+*         To success returns false value '0'.
+*         To fail    returns true value  'not 0'.
+*
+*         [Example]
+*         if (rename(argv[1], argv[2]) != 0) {
+*             printf("<ÅI> Old File [ %s ] cannot rename or is not existed.\n", argv[1]);
+*             return -1;
+*         }
+*
+*         printf("<ÅZ> Old File Name [%s] renamed to New File Name [ %s ].\n",
+*             argv[1], argv[2]);
+*
+*         => copy fromÅkMainFileRenameSample.cÅl
+*
 *@subject ÅüFunction ferror()  = abbreviation of File Error   ÅkC99YH p392Ål
 *         ÅEIt verify to be error or not
 * 
 *         <stdio.h>
-*         int?    ferror(FILE*)    // It can verify the code to be error, or not (= reached EOF without error).
-*
+*         int    ferror(FILE*)    // It can verify the code to be error, or not (= reached EOF without error).
+*/
+/*
 *@see                 
 *@author shika
 *@date 2023-01-06, 01-07
@@ -345,7 +374,7 @@ int mainFileOpenInputSample(void) {
 
     printf("ÅüPlease input File Name > ");
     consoleInput(fileName, FILENAME_MAX);
-
+    
     //FILE* fileP = fopen(fileName, "r");
     FILE* fileP = fopen_s(stdout, fileName, "r"); 
         // In temporary, 'fopen_s()' is active, for another code compile. This shows nothing still now.
@@ -361,7 +390,7 @@ int mainFileOpenInputSample(void) {
     while ((c = fgetc(fileP)) != EOF) {
         putchar(c);
     }//while
-
+    
     if (fclose(fileP)) {
         printf("<ÅI> Closing Error: [%s]", fileName);
         return -1;
