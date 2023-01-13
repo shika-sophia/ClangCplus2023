@@ -8,16 +8,25 @@
 *@content C99YH 第10章 構造体 | Chapter 10  Struct / List 10-7 / p319
 *@summary MainSchoolmateGradeFromFileViewer.c
 * 
-*@prepare 10stats-input.txt 〔below〕
+*@prepare 10stats-input.txt 〔Appendix below〕
+*         ・Deploy this file in the current directory here.
 *         ・This file can be copied from Sample Code in Publisher Web page.
 * 
-*@execute [Windows Command Prompt for VS2019]
-*         >cd (current directory)
-*         >cl MainSchoolmateGradeFromFileViewer.c
-*         >MainSchoolmateGradeFromFileViewer < 10stats-input.txt
+*@execute ◆Execute Procedure
+*         ・Change comment-out of 'main()' to active.
+*         ・Change comment-out of 'sscanf()' to active, 'sscanf_s() to negative
+*           in 'inputSchoolmate(void)' 〔below〕.
+*         ・Open [Windows Command Prompt for VS2019]
+*           (because Funciton 'sscanf()' is thrown Error of 'unsafe' by C11 Compiler of VS Execution.)
 * 
-*@subject Requirements Definition / 要件定義
-*         ＊[Input Data] from file '10stats-input.txt' as standard input
+*          >cd (current directory)
+*          >cl MainSchoolmateGradeFromFileViewer.c
+*          >MainSchoolmateGradeFromFileViewer < 10stats-input.txt
+* 
+*         ・(Return back whole of changes for another Compile, after execution here.)
+* 
+*@subject ◆Requirements Definition / 要件定義
+*         ＊[Input Data] from file '10stats-input.txt' as Redirect file
 *         ・ID
 *         ・Name
 *         ・Score of each subject (max 5 subjects)
@@ -28,6 +37,8 @@
 *         ・Average, Maximum, Minimum of each subjects
 *         ・Average of whole students
 *
+*         => copy to〔C99YH12_FileOperation\MainSchoolmateGradeViewer2_FromFileToFile.c〕
+* 
 *@subject int main(void)
 *         ・check mateAry records is if existed.
 *         ・Load Schoolmate data
@@ -53,11 +64,13 @@
 *            └ char*   fgets(char* _Buffer, int _MaxCount, FILE* _Stream)
 *
 *@subject <string.h>
-*            └ int     strcpy(char* _Destination, const char* _Source)
+*        [×] └ int     strcpy(char* _Destination, const char* _Source)
 *            └ errno_t strcpy_s(char* _Destination, int _SizeInBytes, const char* _Source)
-*            └ int     sscanf(const char* _Buffer, const char* _Format, T value ...)
+*        [×] └ int     sscanf(const char* _Buffer, const char* _Format, T value ...)
 *            └ int     sscanf_s(const char* _Buffer, const char* _Format, T value ...)
 *            └ size_t  strlen(const char* _Str)
+* 
+*        [×]: C11 Compile Error, because of 'unsafe'.
 * 
 *@subject void sortById(void);
 *         ・sort as ascending of ID
@@ -84,9 +97,10 @@
 *       => (unsolved) 
 *          In temporary, 'sscanf_s()' is instead of 'sscanf()', for applicating to VS Compile.
 *          When Command Prompt execute this code, change comment-out of 'sscanf()' alive.
-* 
+*
+*@see C99YH12_FileOperation\MainSchoolmateGradeViewer2_FromFileToFile.c
 *@CopyRight YUUKI Hiroshi who is author of Book C99YH above.
-*@author of modified the code: (for individual learnings) shika
+*@author of the modified code: (for individual learnings) shika
 *@date 2022-12-29
 */
 
@@ -303,7 +317,7 @@ void showCaluclatedStats(void) {
                 max[i] = mateP->scoreAry[i];
             }
 
-            if (min[i] < mateP->scoreAry[i]) {
+            if (min[i] > mateP->scoreAry[i]) {
                 min[i] = mateP->scoreAry[i];
             }
 
@@ -325,7 +339,7 @@ void showCaluclatedStats(void) {
 }//showCaluclatedStats()
 
 /*
-//====== Appendix ======
+//###### Appendix ######
 //====== 10stats-input.txt ======
 101 佐藤花子 65 90 100 80 73
 102 阿部和馬 82 75 63 21 45
@@ -366,10 +380,10 @@ MainSchoolmateGradeFromFileViewer.obj
 (  6) ID: 106 Name: 進東三太郎     |  74  45  59  27  38  | Total: 243.00 Average: 48.60
 
 == Culculated Stats of each subjects and whole subjects ==
-Subject 1: Maximum: 100 / Minimum: 100 / Average: 75.00
-Subject 2: Maximum:  95 / Minimum:  95 / Average: 64.00
-Subject 3: Maximum: 100 / Minimum: 100 / Average: 73.33
-Subject 4: Maximum:  90 / Minimum:  90 / Average: 59.83
-Subject 5: Maximum:  88 / Minimum:  88 / Average: 57.83
+Subject 1: Maximum: 100 / Minimum:  55 / Average: 75.00
+Subject 2: Maximum:  95 / Minimum:  31 / Average: 64.00
+Subject 3: Maximum: 100 / Minimum:  41 / Average: 73.33
+Subject 4: Maximum:  90 / Minimum:  21 / Average: 59.83
+Subject 5: Maximum:  88 / Minimum:  38 / Average: 57.83
 Average of Total: 330.00
 */
