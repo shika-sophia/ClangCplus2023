@@ -1,16 +1,18 @@
 /**
 *@directory ClangC11Console / ClanC11Sample / C99YH / C99YH06_ForIteration
 *@fileName  MainCommandLineArgumentSample.c
-*@reference C99YH  結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
-*@reference CAnsi  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
-*@reference C11DS  arton  『独習 C 新版』翔泳社, 2018
+*@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *
-*@content C99YH 第６章 ForIteration | Chapter 6 / List 6-5 / p172
+*@content C99YH 第６章 ForIteration  | Chapter 6  / List 6-5 / p172
+*@content C99YH 第12章 FileOperation | Chapter 12 / List  -  / p419
+* 
 *@subject ◆Command Line Argument / コマンドライン引数
 *         int  main(int argc, char* argv[])
 *           └ [Argument]
-*             int   argc:   argument count
-*             char* argv[]: Array of argument values as char*
+*             int   argc:   argument count = [×] not element count of argv[] = element count - 1
+*             char* argv[]: Pointer Array of argument values
 *               └ argv[0]:  Command Name (=[.exe] file name)
 *               └ argv[i]:  argument value 
 *                  :
@@ -19,7 +21,7 @@
 * 
 *         => '*' detail〔Chapter 11 Pointer〕
 * 
-*@subject Settings of Visual Studio execution
+*@subject Settings of Visual Studio Execution
 *         [Project] Mouse Right click -> [Property] -> [Debug] Tab ->
 *         [Command Line Argument] -> (Edit each argument with white-space delimiter) -> [ OK ]
 *                                      └ in this case: "This is command line argument."
@@ -27,7 +29,7 @@
 * 
 *        【Notation】After execution, Remove above setting argument for another executions.
 *
-*@subject Windows Command Prompt execution
+*@subject [Windows Command Prompt for VS2019] Execution (= Visual Studio 2019 Developer Command Prompt)
 *         >cd (set current directory)                              //Change Directory
 *         (current directory) >cl MainCommandLineArgumentSample.c  //Compile and Output this object file
 *         (current directory) >MainCommandLineArgumentSample 1 2 3 //Execute [.exe] with each argument delimited by white-space. 
@@ -36,10 +38,27 @@
 *         $ cd (set current directory)
 *         $ gcc -o MainCommandLineArgumentSample ./MainCommandLineArgumentSample.c
 *         $ MainCommandLineArgumentSample 1 2 3
+*
+*@subject ◆Expression 'char* argv[]' -- Which Array or Pointer ? --〔C99YH p419〕
+*         It can be recognized as Pointer Array which indicate char.
+*         It can be recognized as Pointer of Pointer which indicate char, too.
+*         Both are correct.
+* 
+*         In C language, both are the same sense, 'argv[0]' as Array and '*argv' as Pointer.
+*         Actually, the Expression 'argv[i]' means the abbreviation of '*(argv + i)'.
+*         
+*         And, 'char* argv[]' gives main() not-whole of array 'argv[]'.
+*         It gives only one of array-element: one address of Pointer.
+*         When Operator 'sizeof()' measure amount of the Memory Byte,
+*         'sizeof(argv)' measure not-whole Bytes of array 'argv[]', but Byte of one array element (=address) only.
+*         Therefore, sizeof(argv) == sizeof(**argv).
+*
+*         (I don't steadily understand that yet. 
+*          It is for me the subject of Future Challenge on learning C.)
 * 
 *@see
 *@author shika
-*@date 2022-12-19
+*@date 2022-12-19, 2023-01-14
 */
 
 #include <stdio.h>
