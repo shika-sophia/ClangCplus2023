@@ -164,8 +164,9 @@
 *         ÅEDon't forget file close, 
 *           because FOPEN_MAX the maximum number which OS of user environment can open files at same time, is limited 20 (defined in <stdio.h>). 
 *         ÅE(Depending on OS), when you open file, expect to write something there, and remain to open (= do not close),
-*           if you reset PC, the file record could be deleted, though you have already written it, but un-saved because of 'not close'.
-*           
+*           if you reset PC, the file record could be deleted, though you have already written it, but un-saved because of 'not close'.           
+*         ÅEIt is not necessary to close file, if 'fopen()' returns NULL.
+* 
 *         int  fclose(FILE* _Stream)
 *         [Argument]  FILE* -Stream:  File Pointer which have already opened.
 *         [Return]    int (as bool)
