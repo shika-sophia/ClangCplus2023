@@ -3,7 +3,7 @@
 *@fileName  DividedCompile_consoleInputBody.c
 *@see       consoleInput.h
 *@see       MainDividedCompileSample.c
-*@copyFrom  C99YH03_Variable / MainConsoleInputSample.c
+*@copyFrom  C99YH03_Variable / MainConsoleInputSample.c     
 *@author shika
 *@date 2022-12-24
 */

@@ -7,7 +7,7 @@
 *
 *@content C99YH ‘æ‚WÍ ŠÖ” | Chapter 8  Function / List 8-5a, 8-5b, 8-5c / p237
 *
-*@summary ŸDividied Compile   / •ªŠ„ƒRƒ“ƒpƒCƒ‹
+*@summary ŸDevidied Compile   / •ªŠ„ƒRƒ“ƒpƒCƒ‹
 *           Declaration Prototype: =>kconsoleInput.hl
 *              ª  ª  (Reference)
 *           Definition  Function:  =>kDividedCompile_consoleInputBody.cl
@@ -62,6 +62,7 @@
 * 
 *@see    consoleInput.h
 *@see    DividedCompile_consoleInputBody.c
+*@see    CAnsiYH01_Introduction\Reference_CAnsiYH01.txt
 *@author shika
 *@date 2022-12-24
 */
@@ -72,7 +73,7 @@
 #define BUFFER_SIZE 256
 
 //int main(void) {
-int mainDevidedCompileSample(void) {
+int mainDividedCompileSample(void) {
     char buffer[BUFFER_SIZE];
 
     printf("ŸPlease input your name > ");
