@@ -36,9 +36,9 @@
 *                including ASCII, 2Bytes Character, Japanese, Arabic, Hebrew, Greek, or Kiril etc...
 * 
 *         ECU:   (Latin1): 
-*                Character code for UNIX: alphabet, numeric, symbol charater only.
-*                Probably, Git-Hub Character-Code may be ECU. It might change Non-Character and Japanese to [?].
-*                Visual Studio shows correctly.
+*                Character code for UNIX: alphabet, numeric, symbol charater only, but including accent-character of European language .
+*                Probably, Git-Hub automatically may judge Character-Code as ECU. It might change Non-Character and Japanese to [?].
+*                Visual Studio (UTF-8) shows correctly.
 * 
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
