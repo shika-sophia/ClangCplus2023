@@ -1,6 +1,7 @@
 /**
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
 *@fileName  MainAsciiCharacterViewer.c
+*           (It is changed Character-Code only here. I don't know why.)
 *@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
@@ -9,7 +10,7 @@
 *@summary MainAsciiCharacterViewer.c
 *@English
 *@subject ASCII Code Chart〔C99YH 0A〕
-*         I drew it as similar below.
+*         I drew it as similar, below.
 *         It is opposite Horizontal and Vertical Axis to Chart of〔C99YH 0A〕
 * 
 *         The usage of Chart that you can know this charater code value (16-decimal), 
@@ -36,8 +37,10 @@
 *                including ASCII, 2Bytes Character, Japanese, Arabic, Hebrew, Greek, or Kiril etc...
 * 
 *         ECU:   (Latin1): 
-*                Character code for UNIX: alphabet, numeric, symbol charater only, but including accent-character of European language .
-*                Probably, Git-Hub automatically may judge Character-Code as ECU. It might change Non-Character and Japanese to [?].
+*                Character code for UNIX: alphabet, numeric, symbol charater only, 
+*                but including pronounce-characters and accent-characters of European languages.
+*                Probably, Git-Hub automatically may judge Character-Code as ECU. 
+*                It might change Non-Characters and Japanese to [?].
 *                Visual Studio (UTF-8) shows correctly.
 * 
 *         Shift-JIS: (windows-31J, CP932):
@@ -94,7 +97,7 @@ int mainAsciiCharacterViewer(void) {
     printf("| 00 |");
     for (int c = 0; c < 256; c++) {
 
-        //Replace non charcters to white-space
+        //Replace Non-Characters to white-space
         if (0 <= c && c <= 31) {  
             if (c == 16) {    
                 printf("\n");
