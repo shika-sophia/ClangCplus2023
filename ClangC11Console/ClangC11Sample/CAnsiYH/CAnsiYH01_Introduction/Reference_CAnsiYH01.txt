@@ -14,7 +14,9 @@
           [E] shortage:      不足、足りないこと
           [P] operator:      演算子
           [P] qualifier:     修飾子
-          [E] implicit:      暗黙的   <->  explicit:  明示的
+          [E] implicit:      暗黙的  <->  explicit:  明示的
+          [M] modulus:       剰余  reminder, rest
+          [M] Logarithm:     対数  log
 
 *@subject ◆Compile  〔CAnsiYH p2〕
 *         ＊File
@@ -99,7 +101,7 @@
 
           [Example]
           /* (multi-lines) */    before [C ANCI]
-          // (one line)          after  [C99]-
+          // (one line)          after  [C99][C++]
 
 *@subject ◆Variable =>〔C99YH03_Variable\MainNumericTypeRange.c〕
           ＊Type
@@ -154,16 +156,16 @@
           ＊Jump               -- goto, named-label
 
 *@subject ◆Expression: A minimum unit of calculation
-          ＊Type-Change impicitly
+          ＊Type-Change impicitly 
             
           ＊Calculation of Add, Subtract, Multiple, Divide,and Modulus (= rest of Divide calculation),
-            expressed by [ + ] [ - ] [ * ] [ / ] [ % ].
+            expressed by Operator [ + ] [ - ] [ * ] [ / ] [ % ].
 
-          ＊Caluculation of Bit,
-            expressed by [ | ] [ & ] [ ^ ] [ ~ ]
-
-          ＊Logic Operator for calculaton of logic
-            expressed by [ || ] [ && ] [ ! ]
+          ＊Caluculation of Bit
+            expressed by Operator:  OR [ | ],  AND [ & ], exclusive OR [ ^ ],  NOT [ ~ ]
+                                                           └ (A OR B) - (A AND B)
+          ＊Judgement of Logic
+            expressed by Logical Operator: Logical OR [ || ], Logical AND [ && ], Logical NOT [ ! ]
 
           ＊<math.h>
               The Standard Header File which define Triangle Function, Logarithm, or else Matematical Functions.
