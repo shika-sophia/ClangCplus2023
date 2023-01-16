@@ -37,6 +37,8 @@
 * 
 *         ECU:   (Latin1): 
 *                Character code for UNIX: alphabet, numeric, symbol charater only.
+*                Probably, Git-Hub Character-Code may be ECU. It might change Non-Character and Japanese to [?].
+*                Visual Studio shows correctly.
 * 
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
