@@ -9,7 +9,7 @@
 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
 *@summary MainAsciiCharacterViewer.c
-*@English [M] exponete:  éwêî
+*@English [M] exponente:  éwêî
 
 *@subject ÅüASCII Code ChartÅkC99YH 0AÅl
 *         I drew it as similar, below.
@@ -101,7 +101,7 @@
 *                Character code for Japanese, as Windows default in Japan.
 *
 
-*@content CAnsiYH Chapter 2  Basic |  / List - / p13-
+*@content CAnsiYH Chapter 2  Basic / p13-
 *@summary Reference_CAnsiYH02.txt
 *@subject ÅüNot using characters in C language
           $, @, ` (back Quate)
@@ -112,7 +112,7 @@
           e, E:  Floating-point numbers (Exponential Expression), as like '1,17e+306
           l, L:  long int, long double (Å¶below)
           (Prefix) L: wide-character as like 2 Bytes character, as like L'äø', L'éö'.
-          u, U:  unsigned 
+          u, U:  unsigned (= not defined '+', '-' )
 
           [Å~] d, D:  (not existed for double suffix). It should be defined as like 'double d = 0.0;'
 
@@ -135,7 +135,7 @@
           (Excluding "Å@" Blank of 2 Bytes character)
 
 *@subject ÅüConnector [ \ ] of two Lines
-          At termination of the line, if you write with '\',
+          If you write with '\' at termination of the line,
           Compiler recognize two lines of previous and next '\', as one line.
           
           [Example] ÅkCAnsiYH p253Ål
@@ -146,3 +146,5 @@
           }
 
 *@subject Åü
+
+(Editing...)
