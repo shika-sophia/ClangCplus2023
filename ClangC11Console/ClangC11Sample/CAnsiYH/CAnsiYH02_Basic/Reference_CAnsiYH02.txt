@@ -77,7 +77,7 @@
 [1F] ( 31) US:  Unit Separetor   (= Delimiter)
 [20] ( 32) SP:  white-space
   :
-[7F] (127) DEL  Delete [DEL]
+[7F] (127) DEL: Delete [DEL]
 
 *@subject ÅüCharacter Code ÅkMainAsciiCharacterViewer.cÅl
 *         It is defined corresponding Binary which is recognaizable for Machine, to Character which is recognizable for Human.
