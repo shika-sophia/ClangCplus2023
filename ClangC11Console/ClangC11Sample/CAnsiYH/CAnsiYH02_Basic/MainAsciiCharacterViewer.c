@@ -7,8 +7,8 @@
 *@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
-*@reference ■ 電脳産物
-*           ◆C言語：ASCIIコード表（アスキーコード表）
+*@reference ■ 電脳産物 (= Electlic Brain Product) by dennou-san
+*           ◆C言語：ASCIIコード表（C language: ASCII Code Chart）
 *           https://dianxnao.com/c%e8%a8%80%e8%aa%9e%ef%bc%9aascii%e3%82%b3%e3%83%bc%e3%83%89%e8%a1%a8/
 *           => 〔ReferenceDocument\Article_AsciiCode_Clanguage.txt〕
 * 
