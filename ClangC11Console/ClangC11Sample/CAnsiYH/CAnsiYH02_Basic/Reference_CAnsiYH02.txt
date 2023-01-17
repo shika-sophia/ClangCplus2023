@@ -110,10 +110,11 @@
 *@subject ÅüSuffix (and Prefix) for expessing the Literal type
           f, F:  Floating-point numbers (10-decimal Expression),  as like '3.1415'
           e, E:  Floating-point numbers (Exponential Expression), as like '1,17e+306
-      [Å~] d, D:  (not existed for double suffix) It should be defined as like 'double d = 0.0;'
           l, L:  long int, long double (Å¶below)
           (Prefix) L: wide-character as like 2 Bytes character, as like L'äø', L'éö'.
           u, U:  unsigned 
+
+          [Å~] d, D:  (not existed for double suffix). It should be defined as like 'double d = 0.0;'
 
           Å¶ "l, 1, I, i, | " are likely to be confused. So should use 'L', not 'l'.
 
