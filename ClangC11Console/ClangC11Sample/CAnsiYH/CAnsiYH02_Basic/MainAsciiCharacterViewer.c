@@ -1,15 +1,21 @@
 /**
+*ÅyNotationÅzIt is changed Character-Code only here. I don't know why.
+*            => see the Edited VersionÅkReference_CAnsiYH02.txtÅl
+* 
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
 *@fileName  MainAsciiCharacterViewer.c
-*           (It is changed Character-Code only here. I don't know why.)
 *@reference C99YH    åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ì¸ñÂï“] ëÊÇRî≈ÅxSB Creative, 2019
 *@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
 *@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
-*
+*@reference Å° ìdî]éYï®
+*           ÅüCåæåÍÅFASCIIÉRÅ[Éhï\ÅiÉAÉXÉLÅ[ÉRÅ[Éhï\Åj
+*           https://dianxnao.com/c%e8%a8%80%e8%aa%9e%ef%bc%9aascii%e3%82%b3%e3%83%bc%e3%83%89%e8%a1%a8/
+*           => ÅkReferenceDocument\Article_AsciiCode_Clanguage.txtÅl
+* 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
 *@summary MainAsciiCharacterViewer.c
 *@English
-*@subject ASCII Code ChartÅkC99YH 0AÅl
+*@subject ÅüASCII Code ChartÅkC99YH 0AÅlÅkMainAsciiCharacterViewer.cÅl
 *         I drew it as similar, below.
 *         It is opposite Horizontal and Vertical Axis to Chart ofÅkC99YH 0AÅl
 * 
@@ -53,7 +59,7 @@
 *         
 *         In Chart case, Non-Characters don't show as well, so I replaced them to white-space.
 *
-*@see
+*@copyTo  Reference_CAnsiYH02.txt
 *@author  shika
 *@date    2023-01-16
 */
@@ -135,43 +141,44 @@ for (int c = 0; c < 256; c++) {
 }//for
 
 //====== Show 16-decimal, 10-decimal, char Value ======
-[00] (  0)     // NUL NULL Character '\0'
-[01] (  1)    // SOH
-[02] (  2)    // STX
-[03] (  3)    // ETX
-[04] (  4)    // EOT
-[05] (  5)    // ENQ
-[06] (  6)    // ACK
-[07] (  7)     // BEL Beep           '\a'
-[08] (  8)     // BS  Back Space     '\b'
-[09] (  9)     // HT  Horizontal Tab '\t'
-[0A] ( 10)     // LF  Line Feed      '\n' (new line)
-[0B] ( 11)    // VT  Vertical Tab   '\v'
-[0C] ( 12)    // FF  Form Feed      '\f' (new page)
-[0D] ( 13)     // CR  Carrige Return '\r' (return left)
-[0E] ( 14)    // SO
-[0F] ( 15)    // SI
-[10] ( 16)    // DLE
-[11] ( 17)    // DC1
-[12] ( 18)    // DC2
-[13] ( 19)    // DC3
-[14] ( 20)    // DC4
-[15] ( 21)    // NAK
-[16] ( 22)    // SYN
-[17] ( 23)    // ETB
-[18] ( 24)    // CAN  Cancel
-[19] ( 25)    // EM
-[1A] ( 26)     // SUB
+ÅkC99YH 0AÅlÅkReferenceDocument\Article_AsciiCode_Clanguage.txtÅl
+[00] (  0)     // NUL: NULL Character '\0'
+[01] (  1)    // SOH: Start of Header
+[02] (  2)    // STX: Start of Text
+[03] (  3)    // ETX: End of Text
+[04] (  4)    // EOT: End of Transfer
+[05] (  5)    // ENQ: End of Quatation (= Reference from others)
+[06] (  6)    // ACK: Accept OK
+[07] (  7)     // BEL: Bell (= Beep)  '\a'
+[08] (  8)     // BS:  Back Space     '\b'
+[09] (  9)     // HT:  Horizontal Tab '\t'
+[0A] ( 10)     // LF:  Line Feed      '\n' (new line)
+[0B] ( 11)    // VT:  Vertical Tab   '\v'
+[0C] ( 12)    // FF:  Form Feed      '\f' (new page)
+[0D] ( 13)     // CR:  Carrige Return '\r' (return left)
+[0E] ( 14)    // SO:  Shift out
+[0F] ( 15)    // SI:  Shift in
+[10] ( 16)    // DLE: Data Link Escape
+[11] ( 17)    // DC1: Device Control 1
+[12] ( 18)    // DC2: Device Control 2
+[13] ( 19)    // DC3: Device Control 3
+[14] ( 20)    // DC4: Device Control 4
+[15] ( 21)    // NAK: NG Accept (= Failure of Accept)
+[16] ( 22)    // SYN: Synchronaize
+[17] ( 23)    // ETB: End of Transfer Block
+[18] ( 24)    // CAN: Cancel
+[19] ( 25)    // EM:  End of Media
+[1A] ( 26)     // SUB: Substitute
                   somewhy, the one charater as like '->' (actually not two) maybe behave as 'EOF' ?
                   If it is existed, VS throw Compile Error, because "Not closed comment-out yet". 
                   So I deleted it, in temporary for another Compile.
-[1B] ( 27)     // ESC  Escape [ESC]
- ] ( 28)      // FS
+[1B] ( 27)     // ESC: Escape [ESC]
+ ] ( 28)      // FS:  Form Separetor (= Delimiter)
                   somewhy, broken value, expected [1C] of printf("%02x", c).
-[1D] ( 29)    // GS
-[1E] ( 30)    // RS
-[1F] ( 31)    // US
-[20] ( 32)     // SP  white-space
+[1D] ( 29)    // GS:  Group Separetor (= Delimiter)
+[1E] ( 30)    // RS:  Record Separetor (= Delimiter)
+[1F] ( 31)    // US:  Unit Separetor (= Delimiter)
+[20] ( 32)     // SP:  white-space
 [21] ( 33) !
 [22] ( 34) "
 [23] ( 35) #

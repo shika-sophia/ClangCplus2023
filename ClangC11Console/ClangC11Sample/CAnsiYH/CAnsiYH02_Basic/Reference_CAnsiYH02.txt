@@ -1,0 +1,107 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
+*@fileName  Reference_CAnsiYH02.txt
+*@reference C99YH    åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ì¸ñÂï“] ëÊÇRî≈ÅxSB Creative, 2019
+*@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
+*@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
+*@reference Å° ìdî]éYï®
+*          ÅüCåæåÍÅFASCIIÉRÅ[Éhï\ÅiÉAÉXÉLÅ[ÉRÅ[Éhï\Åj
+*          https://dianxnao.com/c%e8%a8%80%e8%aa%9e%ef%bc%9aascii%e3%82%b3%e3%83%bc%e3%83%89%e8%a1%a8/
+*          => ÅkReferenceDocument\Article_AsciiCode_Clanguage.txtÅl
+*
+*@content CAnsiYH Chapter 2  Basic |  / List - / p13
+*@summary Reference_CAnsiYH02.txt
+*@English 
+*@subject ÅüASCII Code ChartÅkC99YH 0AÅl
+*         I drew it as similar, below.
+*         It is opposite Horizontal and Vertical Axis to Chart ofÅkC99YH 0AÅl
+* 
+*         The usage of Chart that you can know this charater code value (16-decimal), 
+*         by adding both value of Horizontal and Vertical.
+* 
+*         You can output to Console, by using 'printf()'
+* 
+*         [Example]
+*         int c;             It should be defined as 'int', not 'char'.
+*         printf("%X", c);   %X or %x show 16-decimal value.
+*         printf("%d", c);   %d show 10-decimal value.
+*         printf("%c", c);   %c show character.
+
+ÅüASCII Code Chart (Edited)ÅkMainAsciiCharacterViewer.cÅl
+--------------------------------------------------------------------------------------
+| -- | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0E | 0F |
+|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| 00 | NUL| SOH| STX| ETX| EOT| ENQ| ACK| BEL| BS | HT | LF | VF | FF | CR | SO | SI |
+| 10 | DLE| DC1| DC2| DC3| DC4| NAK| SYN| ETB| CAN| EM | SUB| ESC| FS | GS | RS | US |
+| 20 |    |  ! |  " |  # |  $ |  % |  & |  ' |  ( |  ) |  * |  + |  , |  - |  . |  / |
+| 30 |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  : |  ; |  < |  = |  > |  ? |
+| 40 |  @ |  A |  B |  C |  D |  E |  F |  G |  H |  I |  J |  K |  L |  M |  N |  O |
+| 50 |  P |  Q |  R |  S |  T |  U |  V |  W |  X |  Y |  Z |  [ |  \ |  ] |  ^ |  _ |
+| 60 |  ` |  a |  b |  c |  d |  e |  f |  g |  h |  i |  j |  k |  l |  m |  n |  o |
+| 70 |  p |  q |  r |  s |  t |  u |  v |  w |  x |  y |  z |  { |  | |  } |  ~ | DEL|
+--------------------------------------------------------------------------------------
+
+ÅüNon-Characters (Edited)ÅkMainAsciiCharacterViewer.cÅl
+  ÅkReferenceDocument\Article_AsciiCode_Clanguage.txtÅl
+[00] (  0) NUL: NULL Character '\0'
+[01] (  1) SOH: Start of Header
+[02] (  2) STX: Start of Text
+[03] (  3) ETX: End of Text
+[04] (  4) EOT: End of Transfer
+[05] (  5) ENQ: End of Quatation (= Reference from others)
+[06] (  6) ACK: Accept OK
+[07] (  7) BEL: Bell (= Beep)  '\a'
+[08] (  8) BS:  Back Space     '\b'
+[09] (  9) HT:  Horizontal Tab '\t'
+[0A] ( 10) LF:  Line Feed      '\n' (new line)
+[0B] ( 11) VT:  Vertical Tab   '\v'
+[0C] ( 12) FF:  Form Feed      '\f' (new page)
+[0D] ( 13) CR:  Carrige Return '\r' (return left)
+[0E] ( 14) SO:  Shift out
+[0F] ( 15) SI:  Shift in
+[10] ( 16) DLE: Data Link Escape
+[11] ( 17) DC1: Device Control 1
+[12] ( 18) DC2: Device Control 2
+[13] ( 19) DC3: Device Control 3
+[14] ( 20) DC4: Device Control 4
+[15] ( 21) NAK: NG Accept (= Failure of Accept)
+[16] ( 22) SYN: Synchronaize
+[17] ( 23) ETB: End of Transfer Block
+[18] ( 24) CAN: Cancel
+[19] ( 25) EM:  End of Media
+[1A] ( 26) SUB: Substitute
+[1B] ( 27) ESC: Escape [ESC]
+[1C] ( 28) FS:  Form Separetor   (= Delimiter)
+[1D] ( 29) GS:  Group Separetor  (= Delimiter)
+[1E] ( 30) RS:  Record Separetor (= Delimiter)
+[1F] ( 31) US:  Unit Separetor   (= Delimiter)
+[20] ( 32) SP:  white-space
+  :
+[7F] (127) DEL  Delete [DEL]
+
+*@subject ÅüCharacter Code ÅkMainAsciiCharacterViewer.cÅl
+*         It is defined corresponding Binary which is recognaizable for Machine, to Character which is recognizable for Human.
+*         There are some kinds of Character Code as below.
+* 
+*         ASCII: Character code default-defined by the specification of C language,
+*                depending on Compiler.
+* 
+*         UTF-8: (Unicode):
+*                Character code of most popular in the world,
+*                which almost supports main languages;
+*                including ASCII, 2Bytes Character, Japanese, Arabic, Hebrew, Greek, or Kiril etc...
+* 
+*         ECU:   (Latin1): 
+*                Character code for UNIX: alphabet, numeric, symbol charater only, 
+*                but including pronounce-characters and accent-characters of European languages.
+*                Probably, Git-Hub automatically may judge Character-Code as ECU. 
+*                It might change Non-Characters and Japanese to [?].
+*                Visual Studio (UTF-8) shows correctly.
+* 
+*         Shift-JIS: (windows-31J, CP932):
+*                Character code for Japanese, as Windows default in Japan.
+*
+*@copyFrom MainAsciiCharacterViewer.c
+*@author  shika
+*@date    2023-01-17
+*/ 
