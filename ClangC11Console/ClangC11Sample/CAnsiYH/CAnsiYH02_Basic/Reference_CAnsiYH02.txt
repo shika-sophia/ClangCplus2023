@@ -7,9 +7,10 @@
 *@date      2023-01-17
 */ 
 
-*@content CAnsiYH Chapter 2  Basic |  / List - / p13
-*@summary Reference_CAnsiYH02.txt
-*@English 
+*@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
+*@summary MainAsciiCharacterViewer.c
+*@English [M] exponete:  éwêî
+
 *@subject ÅüASCII Code ChartÅkC99YH 0AÅl
 *         I drew it as similar, below.
 *         It is opposite Horizontal and Vertical Axis to Chart ofÅkC99YH 0AÅl
@@ -63,7 +64,7 @@
 [13] ( 19) DC3: Device Control 3
 [14] ( 20) DC4: Device Control 4
 [15] ( 21) NAK: NG Accept (= Failure of Accept)
-[16] ( 22) SYN: Synchronaize
+[16] ( 22) SYN: Synchronize
 [17] ( 23) ETB: End of Transfer Block
 [18] ( 24) CAN: Cancel
 [19] ( 25) EM:  End of Media
@@ -78,7 +79,7 @@
 [7F] (127) DEL: Delete [DEL]
 
 *@subject ÅüCharacter Code ÅkMainAsciiCharacterViewer.cÅl
-*         It is defined corresponding Binary which is recognaizable for Machine, to Character which is recognizable for Human.
+*         It is defined corresponding Binary which is recognizable for Machine, to Character which is recognizable for Human.
 *         There are some kinds of Character Code as below.
 * 
 *         ASCII: Character code default-defined by the specification of C language,
@@ -91,11 +92,56 @@
 * 
 *         ECU:   (Latin1): 
 *                Character code for UNIX: alphabet, numeric, symbol charater only, 
-*                but including pronounce-characters and accent-characters of European languages.
-*                Probably, Git-Hub automatically may judge Character-Code as ECU. 
+*                but including pronounce-characters and accent-characters of European languages, Euro currency mark too.
+*                Probably, Git-Hub automatically may judge Character-Code as ECU.
 *                It might change Non-Characters and Japanese to [?].
 *                Visual Studio (UTF-8) shows correctly.
 * 
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
 *
+
+*@content CAnsiYH Chapter 2  Basic |  / List - / p13-
+*@summary Reference_CAnsiYH02.txt
+*@subject ÅüNot using characters in C language
+          $, @, ` (back Quate)
+          @: sometimes use to express an unique extended specification.
+
+*@subject ÅüSuffix (and Prefix) for expessing the Literal type
+          f, F:  Floating-point numbers (10-decimal Expression),  as like '3.1415'
+          e, E:  Floating-point numbers (Exponential Expression), as like '1,17e+306
+      [Å~] d, D:  (not existed for double suffix) It should be defined as like 'double d = 0.0;'
+          l, L:  long int, long double (Å¶below)
+          (Prefix) L: wide-character as like 2 Bytes character, as like L'äø', L'éö'.
+          u, U:  unsigned 
+
+          Å¶ "l, 1, I, i, | " are likely to be confused. So should use 'L', not 'l'.
+
+          Å¶ Font [ Consolas ] in Windows default Font, can obviously distiguish these confusable characters,
+             as like [0 o O] [l 1 I i, |] [. , ; :].  ( <- After changing Font of your environment, See here.)
+             It seems for me to be appropriate for a Programmer Font, I usually use this.
+             But if you use [Consolas] with 2 Bytes characters, because it is based on ECU (Latin1),
+             2 Bytes characters are expressed as MS-Gothic, which cannot distinguish wide-characters of [0 O] [ÇO Çn] as well.
+
+*@subject ÅüWhite-Space: Compiler recognize these as white-space.
+          ÅEwhite-space
+          ÅELine Feeds  '\n', '\r', '\f'
+          ÅETab         '\t', '\v'
+          ÅEComment-out /* */, //
+
+          (Excluding white-space in constant value of 'char', it is used as delimiter.)
+          (Excliding white-space in String text expressed with "")
+          (Excluding "Å@" Blank of 2 Bytes character)
+
+*@subject ÅüConnector [ \ ] of two Lines
+          At termination of the line, if you write with '\',
+          Compiler recognize two lines of previous and next '\', as one line.
+          
+          [Example] ÅkCAnsiYH p253Ål
+          #define DPRINT(x) \
+          if (debug) { \
+              printf( ... ); \
+              printf( ... ); \
+          }
+
+*@subject Åü

@@ -31,7 +31,7 @@
 *         printf("%c", c);   %c show character.
 * 
 *@subject ÅüCharacter Code
-*         It is defined corresponding Binary which is recognaizable for Machine, to Character which is recognizable for Human.
+*         It is defined corresponding Binary which is recognizable for Machine, to Character which is recognizable for Human.
 *         There are some kinds of Character Code as below.
 * 
 *         ASCII: Character code default-defined by the specification of C language,
@@ -44,7 +44,7 @@
 * 
 *         ECU:   (Latin1): 
 *                Character code for UNIX: alphabet, numeric, symbol charater only, 
-*                but including pronounce-characters and accent-characters of European languages.
+*                but including pronounce-characters and accent-characters of European languages, Euro currency mark too.
 *                Probably, Git-Hub automatically may judge Character-Code as ECU. 
 *                It might change Non-Characters and Japanese to [?].
 *                Visual Studio (UTF-8) shows correctly.
@@ -164,7 +164,7 @@ for (int c = 0; c < 256; c++) {
 [13] ( 19)    // DC3: Device Control 3
 [14] ( 20)    // DC4: Device Control 4
 [15] ( 21)    // NAK: NG Accept (= Failure of Accept)
-[16] ( 22)    // SYN: Synchronaize
+[16] ( 22)    // SYN: Synchronize
 [17] ( 23)    // ETB: End of Transfer Block
 [18] ( 24)    // CAN: Cancel
 [19] ( 25)    // EM:  End of Media
