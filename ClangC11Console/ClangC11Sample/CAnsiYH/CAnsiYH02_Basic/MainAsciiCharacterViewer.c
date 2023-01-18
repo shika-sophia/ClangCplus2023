@@ -1,23 +1,23 @@
-/**
-*yNotationzIt is changed Character-Code only here. I don't know why.
-*            => see the Edited VersionkReference_CAnsiYH02.txtl
+ï»¿/**
+*ã€Notationã€‘It is changed Character-Code only here. I don't know why.
+*            => see the Edited Versionã€”Reference_CAnsiYH02.txtã€•
 * 
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
 *@fileName  MainAsciiCharacterViewer.c
-*@reference C99YH    Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [“ü–å•Ò] ‘æ‚R”ÅxSB Creative, 2019
-*@reference CAnsiYH  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
-*@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
-*@reference ¡ “d”]Y•¨ (= Electlic Brain Product) by dennou-san
-*           ŸCŒ¾ŒêFASCIIƒR[ƒh•\iC language: ASCII Code Chartj
+*@reference C99YH    çµåŸ æµ© ã€Cè¨€èªãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ãƒ¬ãƒƒã‚¹ãƒ³ [å…¥é–€ç·¨] ç¬¬ï¼“ç‰ˆã€SB Creative, 2019
+*@reference CAnsiYH  çµåŸ æµ© ã€Cè¨€èªãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ãƒ¬ãƒƒã‚¹ãƒ³ [æ–‡æ³•ç·¨] æ–°ç‰ˆã€  SB Creative, 2006
+*@reference C11DS    arton  ã€ç‹¬ç¿’ C æ–°ç‰ˆã€ç¿”æ³³ç¤¾, 2018
+*@reference â–  é›»è„³ç”£ç‰© (= Electlic Brain Product) by dennou-san
+*           â—†Cè¨€èªï¼šASCIIã‚³ãƒ¼ãƒ‰è¡¨ï¼ˆC language: ASCII Code Chartï¼‰
 *           https://dianxnao.com/c%e8%a8%80%e8%aa%9e%ef%bc%9aascii%e3%82%b3%e3%83%bc%e3%83%89%e8%a1%a8/
-*           => kReferenceDocument\Article_AsciiCode_Clanguage.txtl
+*           => ã€”ReferenceDocument\Article_AsciiCode_Clanguage.txtã€•
 * 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
 *@summary MainAsciiCharacterViewer.c
 *@English
-*@subject ŸASCII Code ChartkC99YH 0AlkMainAsciiCharacterViewer.cl
+*@subject â—†ASCII Code Chartã€”C99YH 0A | p435ã€•ã€”MainAsciiCharacterViewer.cã€•
 *         I drew it as similar, below.
-*         It is opposite Horizontal and Vertical Axis to Chart ofkC99YH 0Al
+*         It is opposite Horizontal and Vertical Axis to Chart ofã€”C99YH 0Aã€•
 * 
 *         The usage of Chart that you can know this charater code value (16-decimal), 
 *         by adding both value of Horizontal and Vertical.
@@ -30,7 +30,7 @@
 *         printf("%d", c);   %d show 10-decimal value.
 *         printf("%c", c);   %c show character.
 * 
-*@subject ŸCharacter Code
+*@subject â—†Character Code ã€”C99YH p266ã€•
 *         It is defined corresponding Binary which is recognizable for Machine, to Character which is recognizable for Human.
 *         There are some kinds of Character Code as below.
 * 
@@ -40,7 +40,7 @@
 *         UTF-8: (Unicode):
 *                Character code of most popular in the world,
 *                which almost supports main languages;
-*                including ASCII, 2Bytes Character, Japanese, Arabic, Hebrew, Greek, or Kiril etc...
+*                including ASCII, 2 Bytes character (= wide character), Japanese, Arabic, Hebrew, Greek, or Kiril etc...
 * 
 *         ECU:   (Latin1): 
 *                Character code for UNIX: alphabet, numeric, symbol charater only, 
@@ -52,10 +52,10 @@
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
 *
-*@Note   yConsiderationz
-*         I expected output of alphabet, numeric, symbol character only, as ASCII Code ChartkC99YH 0Al.
+*@Note   ã€Considerationã€‘
+*         I expected output of alphabet, numeric, symbol character only, as ASCII Code Chartã€”C99YH 0Aã€•.
 *         But VS C11 Compiler might probably define them, 
-*         there are some gridlines, picture character (as like emoji), 2 Bytes character, Control, Japanese Kana character as addition to above.
+*         there are some gridlines, picture character (as like emoji), 2 Bytes character (= wide character), Control, Japanese Kana character as addition to above.
 *         
 *         In Chart case, Non-Characters don't show as well, so I replaced them to white-space.
 *
@@ -141,13 +141,13 @@ for (int c = 0; c < 256; c++) {
 }//for
 
 //====== Show 16-decimal, 10-decimal, char Value ======
-kC99YH 0AlkReferenceDocument\Article_AsciiCode_Clanguage.txtl
+ã€”C99YH 0A | p435ã€•ã€”ReferenceDocument\Article_AsciiCode_Clanguage.txtã€•
 [00] (  0)     // NUL: NULL Character '\0'
 [01] (  1)    // SOH: Start of Header
 [02] (  2)    // STX: Start of Text
 [03] (  3)    // ETX: End of Text
 [04] (  4)    // EOT: End of Transfer
-[05] (  5)    // ENQ: End of Quatation (= Reference from others)
+[05] (  5)    // ENQ: End of Quote (= Reference from others)
 [06] (  6)    // ACK: Accept OK
 [07] (  7)     // BEL: Bell (= Beep)  '\a'
 [08] (  8)     // BS:  Back Space     '\b'
@@ -172,7 +172,7 @@ for (int c = 0; c < 256; c++) {
                   somewhy, the one charater as like '->' (actually not two) maybe behave as 'EOF' ?
                   If it is existed, VS throw Compile Error, because "Not closed comment-out yet". 
                   So I deleted it, in temporary for another Compile.
-[1B] ( 27)     // ESC: Escape [ESC]
+[1B] ( 27)     // ESC: Escape Character  '\' (UNIX) or 'Â¥' (Windows)
  ] ( 28)      // FS:  Form Separetor (= Delimiter)
                   somewhy, broken value, expected [1C] of printf("%02x", c).
 [1D] ( 29)    // GS:  Group Separetor (= Delimiter)
@@ -275,134 +275,134 @@ for (int c = 0; c < 256; c++) {
 [7E] (126) ~
 [7F] (127)    // DEL  Delete [DEL]
 
-[80] (128) €
-[81] (129) E
-[82] (130) E
-[83] (131) E
-[84] (132) E
-[85] (133) E
-[86] (134) E
-[87] (135) E
-[88] (136) E
-[89] (137) E
-[8A] (138) E
-[8B] (139) E
-[8C] (140) E
-[8D] (141) E
-[8E] (142) E
-[8F] (143) E
-[90] (144) E
-[91] (145) E
-[92] (146) E
-[93] (147) E
-[94] (148) E
-[95] (149) E
-[96] (150) E
-[97] (151) E
-[98] (152) E
-[99] (153) E
-[9A] (154) E
-[9B] (155) E
-[9C] (156) E
-[9D] (157) E
-[9E] (158) E
-[9F] (159) E
-[A0] (160)  
-[A1] (161) ¡
-[A2] (162) ¢
-[A3] (163) £
-[A4] (164) ¤
-[A5] (165) ¥
-[A6] (166) ¦
-[A7] (167) §
-[A8] (168) ¨
-[A9] (169) ©
-[AA] (170) ª
-[AB] (171) «
-[AC] (172) ¬
-[AD] (173) ­
-[AE] (174) ®
-[AF] (175) ¯
-[B0] (176) °
-[B1] (177) ±
-[B2] (178) ²
-[B3] (179) ³
-[B4] (180) ´
-[B5] (181) µ
-[B6] (182) ¶
-[B7] (183) ·
-[B8] (184) ¸
-[B9] (185) ¹
-[BA] (186) º
-[BB] (187) »
-[BC] (188) ¼
-[BD] (189) ½
-[BE] (190) ¾
-[BF] (191) ¿
-[C0] (192) À
-[C1] (193) Á
-[C2] (194) Â
-[C3] (195) Ã
-[C4] (196) Ä
-[C5] (197) Å
-[C6] (198) Æ
-[C7] (199) Ç
-[C8] (200) È
-[C9] (201) É
-[CA] (202) Ê
-[CB] (203) Ë
-[CC] (204) Ì
-[CD] (205) Í
-[CE] (206) Î
-[CF] (207) Ï
-[D0] (208) Ğ
-[D1] (209) Ñ
-[D2] (210) Ò
-[D3] (211) Ó
-[D4] (212) Ô
-[D5] (213) Õ
-[D6] (214) Ö
-[D7] (215) ×
-[D8] (216) Ø
-[D9] (217) Ù
-[DA] (218) Ú
-[DB] (219) Û
-[DC] (220) Ü
-[DD] (221) İ
-[DE] (222) Ş
-[DF] (223) ß
-[E0] (224) E
-[E1] (225) E
-[E2] (226) E
-[E3] (227) E
-[E4] (228) E
-[E5] (229) E
-[E6] (230) E
-[E7] (231) E
-[E8] (232) E
-[E9] (233) E
-[EA] (234) E
-[EB] (235) E
-[EC] (236) E
-[ED] (237) E
-[EE] (238) E
-[EF] (239) E
-[F0] (240) E
-[F1] (241) E
-[F2] (242) E
-[F3] (243) E
-[F4] (244) E
-[F5] (245) E
-[F6] (246) E
-[F7] (247) E
-[F8] (248) E
-[F9] (249) E
-[FA] (250) E
-[FB] (251) E
-[FC] (252) E
-[FD] (253) ı
-[FE] (254) ş
-[FF] (255) ÿ
+[80] (128) Â€
+[81] (129) ãƒ»
+[82] (130) ãƒ»
+[83] (131) ãƒ»
+[84] (132) ãƒ»
+[85] (133) ãƒ»
+[86] (134) ãƒ»
+[87] (135) ãƒ»
+[88] (136) ãƒ»
+[89] (137) ãƒ»
+[8A] (138) ãƒ»
+[8B] (139) ãƒ»
+[8C] (140) ãƒ»
+[8D] (141) ãƒ»
+[8E] (142) ãƒ»
+[8F] (143) ãƒ»
+[90] (144) ãƒ»
+[91] (145) ãƒ»
+[92] (146) ãƒ»
+[93] (147) ãƒ»
+[94] (148) ãƒ»
+[95] (149) ãƒ»
+[96] (150) ãƒ»
+[97] (151) ãƒ»
+[98] (152) ãƒ»
+[99] (153) ãƒ»
+[9A] (154) ãƒ»
+[9B] (155) ãƒ»
+[9C] (156) ãƒ»
+[9D] (157) ãƒ»
+[9E] (158) ãƒ»
+[9F] (159) ãƒ»
+[A0] (160) ï£°
+[A1] (161) ï½¡
+[A2] (162) ï½¢
+[A3] (163) ï½£
+[A4] (164) ï½¤
+[A5] (165) ï½¥
+[A6] (166) ï½¦
+[A7] (167) ï½§
+[A8] (168) ï½¨
+[A9] (169) ï½©
+[AA] (170) ï½ª
+[AB] (171) ï½«
+[AC] (172) ï½¬
+[AD] (173) ï½­
+[AE] (174) ï½®
+[AF] (175) ï½¯
+[B0] (176) ï½°
+[B1] (177) ï½±
+[B2] (178) ï½²
+[B3] (179) ï½³
+[B4] (180) ï½´
+[B5] (181) ï½µ
+[B6] (182) ï½¶
+[B7] (183) ï½·
+[B8] (184) ï½¸
+[B9] (185) ï½¹
+[BA] (186) ï½º
+[BB] (187) ï½»
+[BC] (188) ï½¼
+[BD] (189) ï½½
+[BE] (190) ï½¾
+[BF] (191) ï½¿
+[C0] (192) ï¾€
+[C1] (193) ï¾
+[C2] (194) ï¾‚
+[C3] (195) ï¾ƒ
+[C4] (196) ï¾„
+[C5] (197) ï¾…
+[C6] (198) ï¾†
+[C7] (199) ï¾‡
+[C8] (200) ï¾ˆ
+[C9] (201) ï¾‰
+[CA] (202) ï¾Š
+[CB] (203) ï¾‹
+[CC] (204) ï¾Œ
+[CD] (205) ï¾
+[CE] (206) ï¾
+[CF] (207) ï¾
+[D0] (208) ï¾
+[D1] (209) ï¾‘
+[D2] (210) ï¾’
+[D3] (211) ï¾“
+[D4] (212) ï¾”
+[D5] (213) ï¾•
+[D6] (214) ï¾–
+[D7] (215) ï¾—
+[D8] (216) ï¾˜
+[D9] (217) ï¾™
+[DA] (218) ï¾š
+[DB] (219) ï¾›
+[DC] (220) ï¾œ
+[DD] (221) ï¾
+[DE] (222) ï¾
+[DF] (223) ï¾Ÿ
+[E0] (224) ãƒ»
+[E1] (225) ãƒ»
+[E2] (226) ãƒ»
+[E3] (227) ãƒ»
+[E4] (228) ãƒ»
+[E5] (229) ãƒ»
+[E6] (230) ãƒ»
+[E7] (231) ãƒ»
+[E8] (232) ãƒ»
+[E9] (233) ãƒ»
+[EA] (234) ãƒ»
+[EB] (235) ãƒ»
+[EC] (236) ãƒ»
+[ED] (237) ãƒ»
+[EE] (238) ãƒ»
+[EF] (239) ãƒ»
+[F0] (240) ãƒ»
+[F1] (241) ãƒ»
+[F2] (242) ãƒ»
+[F3] (243) ãƒ»
+[F4] (244) ãƒ»
+[F5] (245) ãƒ»
+[F6] (246) ãƒ»
+[F7] (247) ãƒ»
+[F8] (248) ãƒ»
+[F9] (249) ãƒ»
+[FA] (250) ãƒ»
+[FB] (251) ãƒ»
+[FC] (252) ãƒ»
+[FD] (253) ï£±
+[FE] (254) ï£²
+[FF] (255) ï£³
 
 //---- out of definition ----
 [100] (256)
@@ -419,14 +419,14 @@ for (int c = 0; c < 256; c++) {
 | 50 |  P |  Q |  R |  S |  T |  U |  V |  W |  X |  Y |  Z |  [ |  \ |  ] |  ^ |  _ |
 | 60 |  ` |  a |  b |  c |  d |  e |  f |  g |  h |  i |  j |  k |  l |  m |  n |  o |
 | 70 |  p |  q |  r |  s |  t |  u |  v |  w |  x |  y |  z |  { |  | |  } |  ~ |   |
-| 80 |  € |  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|
-| 90 |  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|
-| A0 |    |  ¡ |  ¢ |  £ |  ¤ |  ¥ |  ¦ |  § |  ¨ |  © |  ª |  « |  ¬ |  ­ |  ® |  ¯ |
-| B0 |  ° |  ± |  ² |  ³ |  ´ |  µ |  ¶ |  · |  ¸ |  ¹ |  º |  » |  ¼ |  ½ |  ¾ |  ¿ |
-| C0 |  À |  Á |  Â |  Ã |  Ä |  Å |  Æ |  Ç |  È |  É |  Ê |  Ë |  Ì |  Í |  Î |  Ï |
-| D0 |  Ğ |  Ñ |  Ò |  Ó |  Ô |  Õ |  Ö |  × |  Ø |  Ù |  Ú |  Û |  Ü |  İ |  Ş |  ß |
-| E0 |  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|
-| F0 |  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  E|  ı |  ş |  ÿ |
+| 80 |  Â€ |  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|
+| 90 |  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|
+| A0 |  ï£° |  ï½¡ |  ï½¢ |  ï½£ |  ï½¤ |  ï½¥ |  ï½¦ |  ï½§ |  ï½¨ |  ï½© |  ï½ª |  ï½« |  ï½¬ |  ï½­ |  ï½® |  ï½¯ |
+| B0 |  ï½° |  ï½± |  ï½² |  ï½³ |  ï½´ |  ï½µ |  ï½¶ |  ï½· |  ï½¸ |  ï½¹ |  ï½º |  ï½» |  ï½¼ |  ï½½ |  ï½¾ |  ï½¿ |
+| C0 |  ï¾€ |  ï¾ |  ï¾‚ |  ï¾ƒ |  ï¾„ |  ï¾… |  ï¾† |  ï¾‡ |  ï¾ˆ |  ï¾‰ |  ï¾Š |  ï¾‹ |  ï¾Œ |  ï¾ |  ï¾ |  ï¾ |
+| D0 |  ï¾ |  ï¾‘ |  ï¾’ |  ï¾“ |  ï¾” |  ï¾• |  ï¾– |  ï¾— |  ï¾˜ |  ï¾™ |  ï¾š |  ï¾› |  ï¾œ |  ï¾ |  ï¾ |  ï¾Ÿ |
+| E0 |  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|
+| F0 |  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ãƒ»|  ï£± |  ï£² |  ï£³ |
 --------------------------------------------------------------------------------------
 (EXIT_SUCCESS)
 */

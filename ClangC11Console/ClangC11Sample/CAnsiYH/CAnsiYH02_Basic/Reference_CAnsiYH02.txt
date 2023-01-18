@@ -1,4 +1,4 @@
-/**
+﻿/**
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
 *@fileName  Reference_CAnsiYH02.txt
 *@copyFrom  MainAsciiCharacterViewer.c
@@ -9,11 +9,18 @@
 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
 *@summary MainAsciiCharacterViewer.c
-*@English [M] exponente:  �w��
+*@English [M] exponent:   指数
+          [M] integer:    整数
+          [P] floating-point number: 浮動小数点数
+          [M] fraction:   小数分数, 割合, わずか, 端数, 小数, 一部分
+          [E] opposite:   反対の
+          [E] similar:    似ている、同じような
+          [E] correspond: 対応する、一致する
 
-*@subject ��ASCII Code Chart�kC99YH 0A�l
+*@subject ■ Character
+*         ◆ASCII Code Chart〔C99YH 0A | p435〕
 *         I drew it as similar, below.
-*         It is opposite Horizontal and Vertical Axis to Chart of�kC99YH 0A�l
+*         It is opposite Horizontal and Vertical Axis to Chart of〔C99YH 0A〕
 * 
 *         The usage of Chart that you can know this charater code value (16-decimal), 
 *         by adding both value of Horizontal and Vertical.
@@ -26,7 +33,7 @@
 *         printf("%d", c);   %d show 10-decimal value.
 *         printf("%c", c);   %c show character.
 
-��ASCII Code Chart (Edited)�kMainAsciiCharacterViewer.c�l
+◆ASCII Code Chart (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
 --------------------------------------------------------------------------------------
 | -- | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0E | 0F |
 |----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
@@ -40,14 +47,14 @@
 | 70 |  p |  q |  r |  s |  t |  u |  v |  w |  x |  y |  z |  { |  | |  } |  ~ | DEL|
 --------------------------------------------------------------------------------------
 
-��Non-Characters (Edited)�kMainAsciiCharacterViewer.c�l
-  �kReferenceDocument\Article_AsciiCode_Clanguage.txt�l
+◆Non-Characters (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
+  〔ReferenceDocument\Article_AsciiCode_Clanguage.txt〕
 [00] (  0) NUL: NULL Character '\0'
 [01] (  1) SOH: Start of Header
 [02] (  2) STX: Start of Text
 [03] (  3) ETX: End of Text
 [04] (  4) EOT: End of Transfer
-[05] (  5) ENQ: End of Quatation (= Reference from others)
+[05] (  5) ENQ: End of Quote (= Reference from others)
 [06] (  6) ACK: Accept OK
 [07] (  7) BEL: Bell (= Beep)  '\a'
 [08] (  8) BS:  Back Space     '\b'
@@ -69,7 +76,7 @@
 [18] ( 24) CAN: Cancel
 [19] ( 25) EM:  End of Media
 [1A] ( 26) SUB: Substitute
-[1B] ( 27) ESC: Escape [ESC]
+[1B] ( 27) ESC: Escape Character  '\' (UNIX) or '¥' (Windows)
 [1C] ( 28) FS:  Form Separetor   (= Delimiter)
 [1D] ( 29) GS:  Group Separetor  (= Delimiter)
 [1E] ( 30) RS:  Record Separetor (= Delimiter)
@@ -78,7 +85,7 @@
   :
 [7F] (127) DEL: Delete [DEL]
 
-*@subject ��Character Code �kMainAsciiCharacterViewer.c�l
+*@subject ◆Character Code 〔C99YH p266〕〔MainAsciiCharacterViewer.c〕
 *         It is defined corresponding Binary which is recognizable for Machine, to Character which is recognizable for Human.
 *         There are some kinds of Character Code as below.
 * 
@@ -100,51 +107,175 @@
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
 *
-
-*@content CAnsiYH Chapter 2  Basic / p13-
+*
+*@content CAnsiYH Chapter 2  Basic / p13-p32
 *@summary Reference_CAnsiYH02.txt
-*@subject ��Not using characters in C language
+*@subject ◆Not using characters in C language. 〔CAnsiYH p15〕
           $, @, ` (back Quate)
           @: sometimes use to express an unique extended specification.
 
-*@subject ��Suffix (and Prefix) for expessing the Literal type
-          f, F:  Floating-point numbers (10-decimal Expression),  as like '3.1415'
-          e, E:  Floating-point numbers (Exponential Expression), as like '1,17e+306
-          l, L:  long int, long double (��below)
-          (Prefix) L: wide-character as like 2 Bytes character, as like L'��', L'��'.
-          u, U:  unsigned (= not defined '+', '-' )
-
-          [�~] d, D:  (not existed for double suffix). It should be defined as like 'double d = 0.0;'
-
-          �� "l, 1, I, i, | " are likely to be confused. So should use 'L', not 'l'.
-
-          �� Font [ Consolas ] in Windows default Font, can obviously distiguish these confusable characters,
-             as like [0 o O] [l 1 I i, |] [. , ; :].  ( <- After changing Font of your environment, See here.)
-             It seems for me to be appropriate for a Programmer Font, I usually use this.
-             But if you use [Consolas] with 2 Bytes characters, because it is based on ECU (Latin1),
-             2 Bytes characters are expressed as MS-Gothic, which cannot distinguish wide-characters of [0 O] [�O �n] as well.
-
-*@subject ��White-Space: Compiler recognize these as white-space.
-          �Ewhite-space
-          �ELine Feeds  '\n', '\r', '\f'
-          �ETab         '\t', '\v'
-          �EComment-out /* */, //
+*@subject ◆White-Space: Compiler recognize these as white-space. 〔CAnsiYH p15〕
+          ・white-space
+          ・Line Feeds  '\n', '\r', '\f'
+          ・Tab         '\t', '\v'
+          ・Comment-out /* */, //
 
           (Excluding white-space in constant value of 'char', it is used as delimiter.)
           (Excliding white-space in String text expressed with "")
-          (Excluding "�@" Blank of 2 Bytes character)
+          (Excluding "　" Blank of 2 Bytes character (= wide character))
 
-*@subject ��Connector [ \ ] of two Lines
+*@subject ◆Connector [ \ ] of two Lines 〔CAnsiYH p15〕
           If you write with '\' at termination of the line,
           Compiler recognize two lines of previous and next '\', as one line.
           
-          [Example] �kCAnsiYH p253�l
+          [Example] 〔CAnsiYH p253〕
           #define DPRINT(x) \
           if (debug) { \
               printf( ... ); \
               printf( ... ); \
           }
 
-*@subject ��
+*@subject ◆Comment-out 〔CAnsiYH p6, p16〕
+          ・Compiler recognize comment as white-space.
+          ・It do not '/*' or '*/' in char constant or String text, as comment. 
+          ・Don't nest comments, it do '*/' as end of comment.
+          ・By using '#if' Directive, you can make them out of program, even including comment-out.
+            In this way, Pre-processor replase them from # to #, to white-space.
+          ・Don't forget terminating comment '*/', that sometimes can be serious bug as like eternal-loop.
+
+          [Format]
+          /* (multi-lines) */            // before [C ANCI]
+          // (one line)                  // after  [C99][C++]
+          #if 0  (multi-lines)  #endif   
+
+          [×] /* 123 /* 456 */ 789 */   Because first '*/' means end of comment, the '789' is out of comment,
+                                        second '*/' is thrown Compile Error.
+
+*@subject ◆Token 〔CAnsi p17〕
+          Token: A minimum unit, 
+          which Compiler divide source code of program to the unit
+          and it operate the unit one by one. 
+
+          Token categorize them:
+          ・Operator as like [+ - * / % += &&] etc..
+          ・Delimiter as like () {} . ; etc..
+          ・Constant Value as like 123, '\n'.
+          ・String Literal as like "Hello".
+          ・Identifer as name of Function, Variable and Struct.
+          ・Reserved words by specification of C language. => 〔C99YH 0C | p442〕
+
+*@subject ◆Suffix (and Prefix) for expessing the Literal type 〔CAnsiYH p15〕, see below〔◆Constant Value〕
+          f, F:  Floating-point numbers (10-decimal Expression),  as like '3.1415'
+          e, E:  Floating-point numbers (Exponential Expression), as like '1,17e+306
+          l, L:  'long int' with integer, 'long double' with fruction.  (※ below)
+          u, U:  unsigned (= not defined '+', '-' )
+          (Prefix) L: wide-character 'wchar_t' as like 2 Bytes character (= wide character), as like L'漢', L'字'.
+
+          [×] d, D:  (not existed for double suffix). It should be defined as like 'double d = 0.0;'
+
+          ※ "l, 1, I, i, | " are likely to be confused. So should use 'L', not 'l'.
+
+          ※ Font [ Consolas ] in Windows default Font, can obviously distiguish these confusable characters,
+             as like [0 o O] [l 1 I i, |] [. , ; :].  ( <- After changing Font of your environment, See here.)
+             It seems for me to be appropriate for a Programmer Font, I usually use this.
+             But if you use [Consolas] with 2 Bytes character (= wide character)s, because it is based on ECU (Latin1),
+             2 Bytes character (= wide character)s are expressed as MS-Gothic, which cannot distinguish wide-characters of [0 O] [０ Ｏ] as well.
+
+*@subject ■ Constant Value (= Literal)〔CAnsiYH p18〕
+          ＊[Integer constant]
+          ・Literal of Integer can be written as 16-decimal (hexa-decimal), 10-decimal (decimal), 8-decimal (octa-decimal) in C language.
+          ・2-decimal (binary) cannot be written.
+          ・Each are expressed as:
+            16-decimal: Literal with Prefix '0x' as like 0xFF. 
+            10-decimal: Literal with no Prefix   as like 255.
+            8-decimal:  Literal with Prefix '0'  as like 030.
+          ・Therefore, '0' is always expessed as 8-decimal.
+          ・In 16-decimal case, we can write with extra-'0' before value,
+            for expressing some sense or being readable, as like 0x001C.
+          ・But in 10-decimal case, if you write with extra-'0' before value, the Literal change its value,
+            because Prefix '0' means 8-decimal as above.
+          ・Suffix 'U' or 'L' means 'unsigned' or 'long' as above 〔◆Suffix〕
+
+          ＊[Floating-point Number conatant]
+          ・Integer part or Fraction part can be omited either one of them.
+          ・[ . ] or [ e ] can be ommited either one of them.
+          ・Suffix express each types: (and see above 〔◆Suffix〕)
+            f, F:        float
+            (no Suffix): double
+            l, L:        long double
+
+          [Format]
+          (integer part) . (fraction part) e (exponent part) [Suffix]
+
+          [Example] Their values express the same value.
+          123e2, 123E2, 123.e2, 1.23e4, 0.123e5, .123e5
+
+          ＊[Chararcter constant]
+          ・One character Literal is expressed enclosing by single quote [' '] .
+          ・Multi-character Literal as String text is expressed enclosing by double quote [" "]. (see below〔◆String text〕)
+          ・Eacape-Sequence are char Literal below, too.
+
+          ＊[Wide Extended Character constant] (depending on Comiler)
+          ・Type 'wchar_t' means this expressed by Suffix L'漢'.
+          ・But the author of CAnsiYH said, "I ever have not much seen that".
+          
+*@subject ◆Eacape-Sequence 〔CAnsiYH p20〕〔C99YH 0D | p436〕
+          ＊ASCII corresponding them:
+          [0x00] (  0) NUL: NULL Character   '\0'
+          [0x07] (  7) BEL: Bell (= Beep)    '\a' (alert, alarm)
+          [0x08] (  8) BS:  Back Space       '\b' (※ below)
+          [0x09] (  9) HT:  Horizontal Tab   '\t'
+          [0x0A] ( 10) LF:  Line Feed        '\n' (new line)
+          [0x0B] ( 11) VT:  Vertical Tab     '\v'
+          [0x0C] ( 12) FF:  Form Feed        '\f' (new page)
+          [0x0D] ( 13) CR:  Carrige Return   '\r' (return left)
+          [0x1B] ( 27) ESC: Escape Character '\'  (UNIX) or '¥' (Windows) | 033 (8-decimal)
+
+          ＊To express literal
+          ASCII
+          [0x5C] \\: back slash as one character literal
+          [0x27] \': single quote as literal
+          [0x22] \": double quate as literal, especially used in format string of 'printf()'.
+          [0x3F] \?: question mark as literal, which often use for operator at another context.
+         
+          ＊For decimal value
+          \ooo: One to three numbers with Escape-Character '\', express 8-decimal Literal.
+          \x00: 16-decimal Literal
+
+*@subject ◆Back-Space '\b' 〔CAnsiYH p21〕
+          If you push [Backspace] on Keyboard, Cursol go back and delete one character there.
+          But if you want to express backspace by using '\b', Cursol go back only, often do not delete,
+          depending on your PC environment.
+          In this case, author of CAnsiYH said, "Try to write '\b \b', and may do well".
+          
+*@subject ◆String text Litral 〔CAnsiYH p21〕
+          ・Multi-character Literal as String text is expressed enclosing by double quote [" "].
+          ・String Type in [Java][C#], is not existed in C.
+          ・String text defined as static char array in C, for example below.
+          ・'\0' NULL Character express the end of String text, automatically inserted by Compiler 
+
+          [Example] These express the same sense Literal.
+          char* name = "Sophia";
+          static char name[] = { 'S', 'o', 'p', 'h', 'i', 'a', '\0' };
+
+          [Example] String text can include white-space and Escape-Sequence in double quote " ".
+          char* str = "She is a girl.\n";
+          char* str2 = "She is a girl whose name is \"Sophia\".\n";
+
+*@subject ◆Concat multi String texts
+          ・We can concat two String texts by " " or doing line feed only. 
+          ・Compiler recognize one String Literal and the neighbour String Literal as one.
+          ・It is not necessary to write with "+", as [Java][C#].
+          ・One String Literal combined two, is automatically inserted '\0' at the termination.
+
+          [Example]
+          printf("She is a girl. "
+            "Her name is Sophia.\n"
+          );
+
+*@subject ◆Enumeration constant => 〔CAnsiYH p44 | Chapter 3〕
+
+*@subject ■ Identifer (= name of Function, Variable) 〔CAnsiYH p23〕
 
 (Editing...)
+
