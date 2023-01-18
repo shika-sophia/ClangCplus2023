@@ -96,13 +96,6 @@
            Header File is refered from multi-files by using '#include'.
            Therefore, we should not write Definiton of them in Header File to prevent Memory shortage.
 
-*@subject ŸComment-out
-          Compiler recognize them as white-space.
-
-          [Example]
-          /* (multi-lines) */    before [C ANCI]
-          // (one line)          after  [C99][C++]
-
 *@subject ŸVariable =>kC99YH03_Variable\MainNumericTypeRange.cl
           –Type
           Echar:  character, String text is defined as array of char 'char[]'.
