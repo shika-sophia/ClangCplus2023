@@ -9,13 +9,22 @@
 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
 *@summary MainAsciiCharacterViewer.c
+
 *@English [M] exponent:   指数
           [M] integer:    整数
           [P] floating-point number: 浮動小数点数
           [M] fraction:   小数分数, 割合, わずか, 端数, 小数, 一部分
           [E] opposite:   反対の
           [E] similar:    似ている、同じような
+          [E] quote:      引用する
           [E] correspond: 対応する、一致する
+          [E] specification: 仕様
+          [P] identifier: 識別子
+          [P] operator:   演算子
+          [P] qualifier:  修飾子
+          [P] declaration: プロトタイプ宣言
+          [P] definition:  定義 (関数、変数など)
+          [P] concealment: 隠蔽
 
 *@subject ■ Character
 *         ◆ASCII Code Chart〔C99YH 0A | p435〕
@@ -25,7 +34,7 @@
 *         The usage of Chart that you can know this charater code value (16-decimal), 
 *         by adding both value of Horizontal and Vertical.
 * 
-*         You can output to Console, by using 'printf()'
+*         You can do output to Console, by using 'printf()'
 * 
 *         [Example]
 *         int c;             It should be defined as 'int', not 'char'.
@@ -49,6 +58,8 @@
 
 ◆Non-Characters (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
   〔ReferenceDocument\Article_AsciiCode_Clanguage.txt〕
+ASCII
+[16-decimal] (10-decimal) Abbreviation: Meaning [''] Escape-Sequence
 [00] (  0) NUL: NULL Character '\0'
 [01] (  1) SOH: Start of Header
 [02] (  2) STX: Start of Text
@@ -106,8 +117,8 @@
 * 
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
-*
-*
+
+
 *@content CAnsiYH Chapter 2  Basic / p13-p32
 *@summary Reference_CAnsiYH02.txt
 *@subject ◆Not using characters in C language. 〔CAnsiYH p15〕
@@ -255,7 +266,7 @@
           ・'\0' NULL Character express the end of String text, automatically inserted by Compiler 
 
           [Example] These express the same sense Literal.
-          char* name = "Sophia";
+          char* nameP = "Sophia";
           static char name[] = { 'S', 'o', 'p', 'h', 'i', 'a', '\0' };
 
           [Example] String text can include white-space and Escape-Sequence in double quote " ".
@@ -264,9 +275,9 @@
 
 *@subject ◆Concat multi String texts
           ・We can concat two String texts by " " or doing line feed only. 
-          ・Compiler recognize one String Literal and the neighbour String Literal as one.
+          ・Compiler concat a String Literal and the neighbour String Literal, and recognize them as one.
           ・It is not necessary to write with "+", as [Java][C#].
-          ・One String Literal combined two, is automatically inserted '\0' at the termination.
+          ・One String Literal concated two, is automatically inserted '\0' at the last termination.
 
           [Example]
           printf("She is a girl. "
@@ -275,7 +286,116 @@
 
 *@subject ◆Enumeration constant => 〔CAnsiYH p44 | Chapter 3〕
 
-*@subject ■ Identifer (= name of Function, Variable) 〔CAnsiYH p23〕
+*@subject ■ Identifier 〔CAnsiYH p23〕
+          ・Identifier: name of Function, Variable, or Struct
+          ・These are available characters on Identifier:
+          |  A |  B |  C |  D |  E |  F |  G |  H |  I |  J |  K |  L |  M |
+          |  N |  O |  P |  Q |  R |  S |  T |  U |  V |  W |  X |  Y |  Z |
+          |  a |  b |  c |  d |  e |  f |  g |  h |  i |  j |  k |  l |  m |
+          |  n |  o |  p |  q |  r |  s |  t |  u |  v |  w |  x |  y |  z |
+          |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |
+          |  _ |
 
-(Editing...)
+          ・Numeric characters cannot be used at top of Identifier, but can do middle or bottom.
+          ・[ _ ] under-score should not be used at top of Identifier, 
+            because it is often used as reserved words of external library or extending specification of C;
+            at middle, it can be used as delimiter of word for being readable.
+          ・That the first 31 characters (96 Bytes?) can be identified at least, is ensured by specification of C.
+            The maximum character number of Identifier depends on Compiler which you use.
 
+          ★As a programming custom, name of Function and Variable is often written by lower-case first.
+          ★As same, name of constant value defined by '#define' Directive, is often written by upper-case whole.
+          ★Identifier should be name obviously to make sense of straging type or value.
+
+*@subject ◆Reserved Words (This is often called "Keyword" in C.) 〔CAnsiYH p25〕〔C99YH 0C | p442〕
+          Reserved Word already has been defined and used by the specification of C.
+          It cannot be used as Identifier (= name).
+          If you use it, you will be thrown Compile Error. 
+
+*@subject ■ Scope
+          ・Scope: A recognizable and referable range of Variable.
+          ・It is the range about name (= Identifier), not about value of Variable.
+          ・If same names are conflicted, the priority of Variable is superior of inner than outer.
+            The inner Variable cover and hide outer, it is called "concealment".
+            so that the consealment can be easy to manage the program, but be worse readable.
+          ★Therefore, as a basic art of programming, it is told that "Define as inner as possible",
+            to prevent to be consealed by else Variable.
+
+          [Scope Kinds]
+          ・File Scope:      The definition which be made out of Block, Function, Argument, 
+                             can be recognized and refered in whole file after there.
+          ・Block Scope:     The definition which be made in Block, Function, Argument,
+                             can be recognized and refered only in the Block after there;
+                             expressed by bracket '{ }' as Block delimitter.
+                             In nested Block as like '{ { } }' case, the definition in inner can do only inner after there,
+                             for example: 'for', while', 'if', 'switch' statement.
+
+          ・Prototype Scope: The Argument name of Function or Stuct Declaration can do only in Block whole,
+                             as similar to Block Scope.
+
+          ・Function Scope: (Label Scope):
+                            Label: A named Label expressed by 'xxxx:', is the target place of 'go to' statement.
+                            It can do in the Function whole, not only after location of Label also before there.
+
+*@subject ■ Linkage
+          ・Linkage: A qualifier expressing relation between Variables or Function names,
+                     to prevent to conflict them across files, as like 'main.c' and 'print.c'.
+
+          ・When another files compile each, link them, and yield one Execute File;
+            A Variable 'foo' used in them, need be the same one. 
+            For that, each Identifier 'foo' in each files, need have External Linkage,
+            If either of them have Internal Linkage, the 'foo' is different Variable, even if the name is same.
+
+          [Linkage Kinds]
+          External Linkage: The Identifier of Variable and Function with qualifier of this, 
+                            can be recognized and refered in whole of Program (includeing another files).
+          Internal Linkage: They with this, can do in the File only.
+
+          [Qualifier] The usage is to write this additionally, before Identifier or Return Type of Function.
+          extern: qualifier expressed External Linkage, of cause out of the Block, even if in the Block.
+
+          static: qualifier expressed Internal Linkage. of cause in the Block, even if out of the Block.
+
+          (No Qualifier): 
+            If the Identifier is defined out of the Block, it always has External Linkage, excepting 'static'.
+            If it is done in the Block, it has usually Internal Linkage, excepting 'extern' or next.
+
+            Though it is declarated as 'extern' somewhere, if the definition as No Qualifier in the Block,
+            it has no Linkage, and it will be thrown Compile Error, because of "Unresolved externals" below.
+
+            "Unresolved externals":
+            Declaration 'extern' is done, so that you tell Compiler to use the Identifier which is defined somewhere out of there.
+            Nevertheless, when Linker in Compiler do link to the Definition, there is it nowhere.
+            So Liker said "The Declaration 'extern' is unreloved, where is the Definition ? ".
+
+            The often reason of "Unresolved externals":
+            ・Because you mistake the spelling of Identifier.
+            ・Because when Compile, you do without link of necessary file or library. 
+            ・Because you forget to change comment-out of the Definition to alive.
+
+*@subject ■ Various Name
+          Label: A named Label expressed by 'xxxx:', is the target place of 'go to' statement.
+                 Label need add with statement.
+                 if you want to jump to before '}', named Label put empty statement.
+
+                 [Example]
+                 void function() {
+                 
+                    end: 
+                 }
+                 
+          Name-space: Group of namespace
+                      If a Identifier is in the same scope and in different namespace,
+                      you can use the same Identifier.
+                      Of cause, if it is in the same scope and namespace, you cannot use it.
+
+          [Namespace Kinds]
+          ・Name of Variable, Function, Alius defined by 'typedef()', and constant value in enum.
+          ・Name of Label as the target place of 'go to' statement.
+          ・Name of Tag (struct, union, enum) and Member of 'struct', 'union'.
+             └ In addition, 
+               Tag and Tag need be different names, even if these type are different as like 'struct' and 'union'.
+               Tag and Member need be different names, even which these Block are same or different.
+               Member and Member of different Block, can be the same name.
+
+    [EOF]
