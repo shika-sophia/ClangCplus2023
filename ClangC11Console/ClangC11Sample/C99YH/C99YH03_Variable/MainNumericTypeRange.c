@@ -6,50 +6,65 @@
 *@reference C11DS  arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
 *@content C99YH ‘æ‚QÍ ŒvZ, ‘æ‚RÍ •Ï” / List 2-7, 7-7 / p49, p67, p206
-*         ”’lŒ^‚Ì—LŒø”ÍˆÍ‚ğ•\¦
+*         This program shows the effective range of numeric Types.
 * 
-*@English [‰p] numeric:  ”’l‚Ì
-*         [‰p] range:    ”ÍˆÍ
-* 
-*@subject ‘Û•W€‹KŠi IEC60559kC99YH p49, p67l
+*@English [E] numeric:   (adj)  ”’l‚Ì
+*         [E] range:     (n)    ”ÍˆÍ
+*         [M] precision: (n)    ¸“xAŒ…”
+*         [P] define     (v):      ’è‹`‚·‚é
+*         [P] declarate  (v):      éŒ¾‚·‚é
+*         [P] transplantable (adj):  ˆÚA«‚ª‚ ‚é  =:= portable  ‰^‚Ñ‚â‚·‚¢
+
+*@directory ClangC11Console / ClanC11Sample / C99YH / C99YH03_Valiable
+*@fileName  MainNumericTypeRange.c
+*@subject IEC 60559 (= International Electrotechnical Commission) kC99YH p49, p67l
 *         –char:         8 bit = 2 ^  8 = 256
 *         –short:       16 bit = 2 ^ 16 = 65536
 *         –int:         32 bit = 2 ^ 32 = 4294967296
 *         –long long:   64 bit = 2 ^ 64 = 18446744073709551617
-*         –float:       ’P¸“x•‚“®¬”“_”Œ^    —LŒøŒ…”  6 / ’l”ÍˆÍ -3.4 * 10 ^ 38 ` 3.4 * 10 ^ 38
-*         –double:      ”{¸“x•‚“®¬”“_”Œ^    —LŒøŒ…” 15 / ’l”ÍˆÍ -1.7 * 10 ^ 308 ` 1.7 * 10 ^ 308
-*         –long double: Šg’£¸“x•‚“®¬”“_”Œ^  —LŒøŒ…” 19 / ’l”ÍˆÍ -1.1 * 10 ^ 4932 ` 1.1 * 10 ^ 4932
-* 
-*@subject <limits.h>  ®”Œ^‚Ì—LŒø”ÍˆÍ‚ğ’è‹` (ƒRƒ“ƒpƒCƒ‰‚É‚æ‚Á‚ÄˆÙ‚È‚é) kC99YH p49, p206l
-*                     int ‚Æ long int ‚Éˆá‚¢‚Í‚È‚¢
+*         –float:       Single-Precision Floating-Point Number:   effective precision:  6 | value range: -3.4 * 10 ^ 38 ` 3.4 * 10 ^ 38
+*         –double:      Double-Precision Floating-Point Number:   effective precision: 15 | value range: -1.7 * 10 ^ 308 ` 1.7 * 10 ^ 308
+*         –long double: Extended-Precision Floating-Point Number: effective precision: 19 | value range: -1.1 * 10 ^ 4932 ` 1.1 * 10 ^ 4932
+*
+*@subject <limits.h> kCAnsi p39, p272lkC99YH 10 | p49, p206l
+          EThis is a Standard Header File default-defined by specification of C language.
+          EIt define the maximum and minimum constant value of Primitive Types.
+          EBecause they are often different, depending on Compiler;
+            by using these constant values defined in it, a program is to be more transplantable.
+
+          yNotationzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+           It is no difference between 'int' and 'long'. (= the same range)
+
+           => copy from kCAnsiYH03_Type\Reference_CAnsiYH03.txtl
+
+*         <limits.h>
 *         #define
 *           „¤ char:           CHAR_MIN, CHAR_MAX
-*           „¤ singed char:    SCHAR_MIN, SCHAR_MAX
-*           „¤ unsigned char:  0, UCHAR_MAX
 *           „¤ short:          SHRT_MIN, SHRT_MAX
-*           „¤ unsigned short: 0, USHRT_MAX
 *           „¤ int:            INT_MIN, INT_MAX
-*           „¤ unsigned int:   0, UINT_MAX
 *           „¤ long int:       LONG_MIN, LONG_MAX
-*           „¤ unsigned long int: 0UL, ULONG_MAX
-*           „¤ long long int:  LLONG_MIN, LLONG_MAX, 
-*           „¤ unsignedlong long int:  0ULL, ULLONG_MAX, 
-* 
+*           „¤ long long int:  LLONG_MIN, LLONG_MAX,
+*
 *         ŸRange of Integer Type (in this Compiler)
-*         –char  :       -128 ` 127
-*         –singed char:  -128 ` 127
-*         –unsinged char: 0 ` 255
+*         –char  : -128 ` 127
 *         –short : -32768 ` 32767
 *         –int   : -2147483648 ` 2147483647
 *         –long  : -2147483648 ` 2147483647
 *         –llong : -9223372036854775808 ` 9223372036854775807
 *
-*@subject <stdint.h>  •„†‚È‚µ®”Œ^‚Ì—LŒø”ÍˆÍ‚ğ’è‹` (ƒRƒ“ƒpƒCƒ‰‚É‚æ‚Á‚ÄˆÙ‚È‚é) kC11DS p76l
-*                     printf("%d", T value) 
-*                       -> %d: int / %lld: long long / %f: float
-*                       -> %i: int / %lli: long long / %u: uint / %llu: unsiged long long
-*                     Œ^‚Ì—LŒø”ÍˆÍ‚ğ’´‚¦‚éê‡‚Í -1 ‚Æ•\¦‚³‚ê‚é
-*                     unsigned ‚Ì MIN ‚Í 0 ‚È‚Ì‚ÅA’è‹`‚³‚ê‚Ä‚¢‚È‚¢B
+*@subject <stdint.h> kC11DS p76l
+*         It define the maximum and minimum constant values of Integer Types,
+*         depending on Compiler.
+*
+*         [Example]
+*         printf("%d", T value)
+*           -> %d: int / %lld: long long / %f: float
+*           -> %i: int / %lli: long long / %u: uint / %llu: unsiged long long
+*
+*         It shows -1, if value is beyond the Type range.
+*         The minimum of unsigned Types is not defined, because its value is obviously 0.
+*
+*         <stdint.h>
 *         #define
 *           „¤ int8_t:   INT8_MIN, INT8_MAX
 *           „¤ uint8_t:  UINT8_MAX
@@ -59,8 +74,8 @@
 *           „¤ uint32_t: UINT32_MAX
 *           „¤ int64_t:  INT64_MIN, INT64_MAX
 *           „¤ uint64_t: UINT64_MAX
-* 
-*         ŸRange of Unsigned Integer defined by <stdint.h>
+*
+*         ŸRange of Integer Types defined by <stdint.h>
 *         –int8_t  : -128 ` 127
 *         –uint8_t : 0    ` 255
 *         –int16_t : -32768 ` 32767
@@ -69,27 +84,33 @@
 *         –uint32_t: 0           ` 4294967295
 *         –int64_t : -9223372036854775808 `  9223372036854775807
 *         –uint64_t: 0                    ` 18446744073709551616
-* 
-*@subject <float.h>  •‚“®¬”“_”Œ^‚Ì—LŒø”ÍˆÍ‚ğ’è‹` (ƒRƒ“ƒpƒCƒ‰‚É‚æ‚Á‚ÄˆÙ‚È‚é)  kC99YH p68l
-*                    double ‚Æ long double ‚Éˆá‚¢‚Í‚È‚¢
+*
+*@subject <float.h> kC99YH p68l
+*         It define the maximum and minimum constant values of Floating-Point Number Types,
+*         depending on Compiler.
+*
+*        yNotationzIn this Compiler case: (Compiler is clang-C11 of Visual Studio 2019)
+*         It is no difference between 'double' and 'long double'. (= the same range)
+*
+*         <float.h>
 *         #define
 *           „¤ float:       FLT_MIN, FLT_MAX
 *           „¤ double:      DBL_MIN, DBL_MAX
 *           „¤ long double: LDBL_MIN, LDBL_MAX
-* 
+*
 *         ŸRange of Float Double (in this Compiler)
 *         –float : 0.0000000000000000000000000000000000000118 ` 340282346638528859811704183484516925440.000000
 *         –float :  1.17549435082228750797e-38 ` 3.40282346638528859812e+38
 *         –double: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000223
 *                  ` 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000
 *         –double:  2.22507385850720138309e-308 ` 1.79769313486231570815e+308
-*         –long double: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000223 
+*         –long double: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000223
 *                  ` 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000
 *         –long double:  2.22507385850720138309e-308 ` 1.79769313486231570815e+308
-* 
+*
 *@copyTo ReferenceDocument\ReferenceNumericTypeRange.txt
 *@author shika
-*@date 2022-12-10
+*@date 2022-12-10, 2023-01-20
 */
 
 #include <stdio.h>
