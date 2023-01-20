@@ -1,0 +1,101 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH03_Type
+*@fileName  Reference_CAnsiYH03.txt
+*@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
+*
+*@content CAnsiYH Chapter 3  Type / p39-
+*@summary Reference_CAnsiYH03.txt
+
+*@English [E] primitive (adj):    原始的、基本的
+          [E] derive    (v):      派生する、導く、由来する
+          [E] specification (n):  仕様、規格
+          [E] implicitly (adv):   暗黙的  <->  explicitly  明示的
+          [E] classify   (v):     分類する、区分する、気密に分類する
+          [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく
+          [E] strict    (adj):    厳密, 厳しく, 固く, 厳格, 厳重, あくまで
+          [E] opportunity (n):    機会
+
+          [P] define    (v):      定義する
+          [P] declarate (v):      宣言する
+          [P] transplantable (adj):  移植性がある  =:= portable  運びやすい
+          [P] operator  (n):      演算子
+          [P] qualifier (n):      修飾子
+          [P] identifier(n):      識別子、名前
+          [P] initializer(n):     初期化子 { }
+          [P] iterate   (v):      繰り返し処理する
+          [M] precision (n):      精度、桁数
+          [M] recursive (adj):    再帰的 (= 自分自身と同じ構造のものを繰り返すこと) | recursion (n), recurse (v)
+          [M] dimension (n):      次元
+
+*@see     ReferenceDocument\Reference_NumericTypeRange.txt
+*@author  shika
+*@date    2023-01-20
+*/ 
+
+*@subject ■ Type  〔p39〕
+          Type: ・Data kinds of Variable value
+                ・Compiler decide how to operate the value by Type.
+                ・When calculate different Types, Compiler do Type-Change implicitly (= automatically) in necessary.
+                ・How Bytes or Bits each Types have in Memory, depend on Comiler,
+                  They are moderately specified by C. more strictly by C++.
+
+          [Kinds of Types]
+          ・Primitive Type: Types default-defined by specification of C language; such as char, int, float, double, and void.
+          ・Derived Type:   Types self-defined by programmer; such as Array, Function, Pointer, Struct, Union.
+
+*@subject <limits.h> 〔CAnsi p39, p272〕〔C99YH 10 | p49, p206〕
+          ・This is a Standard Header File default-defined by specification of C language.
+          ・It define the maximum and minimum constant value of Primitive Types.
+          ・Because they are often different, depending on Compiler;
+            by using these constant values defined in it, a program is to be more transplantable.
+
+          【Notation】in this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+           It is no difference between 'int' and 'long'. (= the same range)
+
+          => see another Headers and more detail.〔ReferenceDocument\Reference_NumericTypeRange.txt〕
+
+*@subject ◆Type name
+          The opportunity of using Type name:
+          ・When you declarate a Global Varianle.
+          ・When you define a Local Variable.
+          ・When you expilcitly change Type by using Operator Cast expressed as '(Type)'.
+          ・When you use Operator 'sizeof(Type)', as its Argument.
+
+*@subject ◆Primitive Types: default-defined by specification of C language
+          ・Whole of Types in C is based on this and yielded from this.
+
+          ＊char:   Character
+          ＊int:    Integer
+          ＊float:  Single-Precision Floating-Point Number
+          ＊double: Double-Precision Floating-Point Number
+          ＊void:   Type expressing empty.
+
+*@subject ◆Derived Types: self-defined by programmer
+          ＊Array
+          ＊Function
+          ＊Pointer
+          ＊Struct
+          ＊Union
+          
+*advanced ◎Recursive Definition 〔p41〕
+          [Math] recursion (n):  To iterate as same structure as itself.
+                                 -> recurse (v), recursive (adj)
+
+          Derived Types is available recursively.
+          It is able to create many numbers of new Types, by recursively defining of Deriverd Type.
+
+          [Example]
+          T-Type:                    Asumming there were T-Type, T-Type is a new Type.
+          Array of T-Type:           If you define as a array, 'T[]' is created as a new Type more.
+          Array of Array of T-Type:  As same, this is created as a new Type too, it is called "2-Dimension Array" T[][].
+            :
+          (countless)
+
+*@subject ◆Integer Types
+
+(Editing...)
+
+
+[EOF]
