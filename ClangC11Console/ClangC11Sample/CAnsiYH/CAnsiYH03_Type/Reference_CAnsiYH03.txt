@@ -88,7 +88,7 @@
 
           [Example]
           T-Type:                    Asumming there were T-Type, T-Type is a new Type.
-          Array of T-Type:           If you define as a array, 'T[]' is created as a new Type more.
+          Array of T-Type:           If you define as a array 'T[]', it is created as a new Type more.
           Array of Array of T-Type:  As same, this is created as a new Type too, it is called "2-Dimension Array" T[][].
             :
           (countless)
