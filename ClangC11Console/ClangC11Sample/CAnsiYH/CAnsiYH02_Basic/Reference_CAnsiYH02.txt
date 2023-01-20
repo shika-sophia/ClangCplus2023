@@ -3,6 +3,9 @@
 *@fileName  Reference_CAnsiYH02.txt
 *@copyFrom  MainAsciiCharacterViewer.c
 *@copyFrom 
+*@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *@author    shika
 *@date      2023-01-17
 */ 
@@ -321,7 +324,7 @@ ASCII
           ★Therefore, as a basic art of programming, it is told that "Define as inner as possible",
             to prevent to be consealed by else Variable.
 
-          [Scope Kinds]
+          [Kinds of Scope]
           ・File Scope:      The definition which be made out of Block, Function, Argument, 
                              can be recognized and refered in whole file after there.
           ・Block Scope:     The definition which be made in Block, Function, Argument,
@@ -346,7 +349,7 @@ ASCII
             For that, each Identifier 'foo' in each files, need have External Linkage,
             If either of them have Internal Linkage, the 'foo' is different Variable, even if the name is same.
 
-          [Linkage Kinds]
+          [Kinds of Linkage]
           External Linkage: The Identifier of Variable and Function with qualifier of this, 
                             can be recognized and refered in whole of Program (includeing another files).
           Internal Linkage: They with this, can do in the File only.
@@ -389,7 +392,7 @@ ASCII
                       you can use the same Identifier.
                       Of cause, if it is in the same scope and namespace, you cannot use it.
 
-          [Namespace Kinds]
+          [Kinds of Namespace]
           ・Name of Variable, Function, Alius defined by 'typedef()', and constant value in enum.
           ・Name of Label as the target place of 'go to' statement.
           ・Name of Tag (struct, union, enum) and Member of 'struct', 'union'.
