@@ -16,6 +16,8 @@
           [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく
           [E] strict    (adj):    厳密, 厳しく, 固く, 厳格, 厳重, あくまで
           [E] opportunity (n):    機会
+          [E] omit       (n/v):   抜かす、省く
+          [E] abbreviate (v):     省略する、短縮する  abbreviation (n) 省略形
 
           [P] define    (v):      定義する
           [P] declarate (v):      宣言する
@@ -25,9 +27,11 @@
           [P] identifier(n):      識別子、名前
           [P] initializer(n):     初期化子 { }
           [P] iterate   (v):      繰り返し処理する
-          [M] precision (n):      精度、桁数
+
+          [M] precision (n):      精度、桁数   = digit (n)
           [M] recursive (adj):    再帰的 (= 自分自身と同じ構造のものを繰り返すこと) | recursion (n), recurse (v)
           [M] dimension (n):      次元
+          [M] numeric (n/adj):    数値、数字の
 
 *@see     ReferenceDocument\Reference_NumericTypeRange.txt
 *@author  shika
@@ -48,8 +52,8 @@
 *@subject <limits.h> 〔CAnsi p39, p272〕〔C99YH 10 | p49, p206〕
           ・This is a Standard Header File default-defined by specification of C language.
           ・It define the maximum and minimum constant value of Primitive Types.
-          ・Because they are often different, depending on Compiler;
-            by using these constant values defined in it, a program is to be more transplantable.
+          ・Because they depend on Compiler, they are sometimes different.
+          ★By using these constant values defined in it, a program is to be more transplantable.
 
           【Notation】in this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
@@ -79,7 +83,7 @@
           ＊Struct
           ＊Union
           
-*advanced ◎Recursive Definition 〔p41〕
+*@advance ◎Recursive Definition 〔p41〕
           [Math] recursion (n):  To iterate as same structure as itself.
                                  -> recurse (v), recursive (adj)
 
@@ -93,9 +97,70 @@
             :
           (countless)
 
-*@subject ◆Integer Types
+*@subject ◆Integer Types 〔p41〕
+          ・The specification of Compiler adjust each Types range to easily use for the device.
+          ・Depending on Compiler, short or long sometimes don't have the range as below.
 
-(Editing...)
+          [Kinds of Integer Types]
+          ＊char:              8 bit = 2 ^  8 = 256
+          ＊short [int]:      16 bit = 2 ^ 16 = 65536
+          ＊int:              32 bit = 2 ^ 32 = 4294967296
+          ＊long [int]:   
+          ＊long long [int]:  64 bit = 2 ^ 64 = 18446744073709551617
+          ※ [int] can be omited.
 
+          + signed:    The keyword is used by adding before Type above,
+                       to tell Compiler that the Type have signs, such as '+' or '-'.
+                       It is omittable, in that case (= no keyword), it means 'signed'.
+          + unsigned:  The keyword is used by adding before Type above,
+                       to tell Compiler that the Type have no signs, and plus value only.
+
+          => see Range of Integer Types〔ReferenceDocument\Reference_NumericTypeRange.txt〕
+
+*@subject ◆Character Types 'char' 〔p42〕
+          ・'char' storages one character code value as numeric value, expressed with single quote [ ' ' ].
+          ・char '0' is different from int 0. / '0' value is 48 as if ASCII.
+          ・char 'a' is different from "a". / 'a' is char constant value. / "a" is String text.
+          
+          ・String text is defined as Array of 'char' Type. 
+            While [Java][C#] have String Type, but [C][C++] don't have it.
+          ・'char' Type is a sort of Integer Types, because the value is storaged as numeric value in Memory.
+            Therefore 'char' can be calculated as like Integer.
+          ・'char' can be added keywords 'signed' or 'unsigned' before Type.
+          
+          ・In case of input excepting chatacter, which the value is minus or not, depend on Compiler.
+          ・In case of wide-character, as same.
+          ・In case of comparing values high or low, it is important difference with 'signed' or 'unsigned'.
+          ★Programmer should describe 'signed' or 'unsigned' explicitly.
+          
+*@advance ◎well-known Failure
+          ・In case of using Function 'getchar()', The value should be storaged in 'int' Type, not 'char';
+            because conatant value of 'EOF' which express end of file, is defined as -1,
+            it is important to ensurely operate 'EOF' gotton by 'getchar()'.
+          ・That is well-known Failure for programmer.
+     
+          [Example]
+          int c;   // <- Here, not 'char'.
+
+          while ((c == getchar()) != EOF) {
+              putchar(c);
+          }
+
+*@subject ◆String text 〔p44〕
+          ・String text is defined as Array of 'char' Type. 
+            While [Java][C#] have String Type, but [C][C++] don't have it.
+          ・It is expressed with double quote [ " " ].
+
+          [Example]
+          ＊These are the same meaning.
+          char  strAry[] = "ABC";                 // In this case, '\0' NULL Character is automatically inserted by Compiler.
+          char  strAry[] = {'A', 'B', 'C', '\0'}; // using Initializer '{ }' 
+
+          ＊These are the same behavior, which shows "ABC".
+          printf("%s\n", "ABC");
+          printf("%s\n", strAry);
+          printf("%s\n", &strAry[0]);    // [ & ] is Address Operetor of Pointer〔below〕
+
+*@subject ◆Enum Type
 
 [EOF]
