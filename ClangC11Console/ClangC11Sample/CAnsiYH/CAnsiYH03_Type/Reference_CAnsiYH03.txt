@@ -18,7 +18,16 @@
           [E] opportunity (n):    機会
           [E] omit       (n/v):   抜かす、省く
           [E] abbreviate (v):     省略する、短縮する  abbreviation (n) 省略形
+          [E] enumerate  (v):     数える、列挙する    enumeration  (n) 列挙
+          [E] correspond (v):     相当する、一致する、対応する
+          [E] sequence   (n):     一連、連続、数列、文字列、列、順序
+          [E] orthodox   (n):     正統、正統派
+          [E] conclusion (n):     結論  =:= consequence (n) 結果
+          [E] grammar / grammour  (n) 文法   grammatical (adj)
+          [E] intention  (n):     意図　　intend (v) | contemplate (v) 意図する、企図する、熟視する
+          [E] appropriate (adj):  適した、適切
 
+          ＊Programming
           [P] define    (v):      定義する
           [P] declarate (v):      宣言する
           [P] transplantable (adj):  移植性がある  =:= portable  運びやすい
@@ -26,12 +35,16 @@
           [P] qualifier (n):      修飾子
           [P] identifier(n):      識別子、名前
           [P] initializer(n):     初期化子 { }
+          [P] enumerator (n):     列挙子
           [P] iterate   (v):      繰り返し処理する
+          [P] alias     (n):      別名、エイリアス
 
+          ＊Mathematics
           [M] precision (n):      精度、桁数   = digit (n)
           [M] recursive (adj):    再帰的 (= 自分自身と同じ構造のものを繰り返すこと) | recursion (n), recurse (v)
           [M] dimension (n):      次元
           [M] numeric (n/adj):    数値、数字の
+          [M] set / subset (n):   集合 / 部分集合
 
 *@see     ReferenceDocument\Reference_NumericTypeRange.txt
 *@author  shika
@@ -161,6 +174,123 @@
           printf("%s\n", strAry);
           printf("%s\n", &strAry[0]);    // [ & ] is Address Operetor of Pointer〔below〕
 
-*@subject ◆Enum Type
+*@subject ◆Enum Type 〔p45〕
+          enum: The keyword of 'enum' Type, which enumerate constant Identifer (= called "Enumerator"), 
+                corresponding with the int value, and delimitted by [ , ].
+                It is used at declaration of 'enum' Type.
+                (In Pascal which is a prorgram language, the Partial Range Type is similar with this, because it is self-defined as a subset of Integer Types.
+                 But it of Pascal is defined with setting of ranges between maximum and minimum, it is different from 'enum' of C)
+
+          [Format] Declaration
+          enum tag_name { enumerator1, enumerator2, enumerator3 ... };
+
+          typedef enum tag_name  { 
+              enumerator1, enumerator2, enumerator3, ... 
+          } alias;
+
+          ・tag_name:  It is Identifier of 'enum' name, and it is omitable.
+
+          ・enumerator1, enumerator2 ... :
+              The Enumerator name need be unique, and need be diffenent from any Identifiers in the same scope.
+              The sequece of Enumerator or 'enumerator = constant expression', is delimitted by [ , ].
+              By declaration, each Enumerator automatially have int value, such as 0, 1, 2 ... .
+              Or these enum 'int' values can be self-defined by describing 'enumerator = constant expression'. => see〔＊self-assign the value〕
+
+          ・alias:  Operator 'typedef' can define alias name to Type.
+
+          [Format] Definition and Assignment of enum value 
+          enum tag_name Variable_name = enum_value;
+
+          [Example]
+          -- Declaration and Definition --
+          enum EnumColorRGB {
+              RED, GREEN, BLUE
+          };
+
+          enum EnumColorRGB colorR = RED; 
+          enum EnumColorRGB colorG = GREEN; 
+          enum EnumColorRGB colorB = BLUE;
+          
+          -- Declaration and Definition at the same time --
+          enum EnumColorRGB { RED, GREEN, BLUE } colorR = RED;
+
+          -- Declaration and Definition using 'typedef' --
+          typedef enum EnumColorRGB {
+              RED, GREEN, BLUE
+          } Color;
+
+          Color colorR = RED;
+
+*@subject ＊'#define' instead of 'enum' definition
+          #define: One of Directive for Pre-processor, expressed by '#'.
+                   It define constant Identifier with the constant value.
+                   =>〔CAnsiYH01_Introduction\Reference_CAnsiYH01.txt〕
+
+          ・To use '#define' instead of 'enum' definiition:
+            It is almost similar as orthodox 'enum' definition, but see below.
+
+          [Example]
+          #define RED 0
+          #define GREEN 1
+          #define BLUE 2
+          ----
+          int colorR = RED;
+
+         ・The "almost" means that: 
+         Using '#define', it define the Token as Identifier only.
+         Pre-processor operation will replace the Token to calling a Function which return the constant value.
+         Before Compiler will parse and grammatically validate by C language, the replacement will have been done;
+         so that Compiler cannot find out grammatical errors in the source code, and
+         so that Symbolic-Debuger cannot refer the Symbol name.
+   
+         ★[Conclusion] 
+         Programmers had better use orthodox 'enum' definition than '#define' way.
+
+*@subject ＊'const' instead of 'enum' definition
+          const: The keyword which define consatant Identifier with the constant value,
+                 and after definition, It prevent to be assigned some values by user. 
+
+         ・It is almost similar as orthodox 'enum' definition.
+           But not using 'enum' definition, it is weaken with Programmer's intention that
+           these Identifiers are concerned each other, one value of the same symbol.
+
+         [Example]
+         const int RED = 0;
+         const int GREEN = 1;
+         const int BLUE = 2;
+
+*@subject ＊self-assign the int values 
+          ・The enum 'int' values can be self-defined by describing 'enumerator = constant expression'.
+          ・They are omitable, in this case, automatically assigned such as [ 0, 1, 2, ... ].
+          ・They can be assigned the same value with different Enumerators, 
+            so that you can express that different Enumerators do the same behavior, as Alias,
+            but so that it maybe not appropriate with 'enum' intention.
+
+          [Format]
+          enum tag_name { 
+              enumerator1 = constant_expression1,
+              enumerator2 = constant_expression2,
+              enumerator3 = constant_expression3,
+                :
+          };
+
+          [Example]
+          enum ErrorCode {
+              MEMBER_ERROE = 10,
+              CALC_ERROR = 11,
+              UNKOWN = 12,
+          };
+
+          ・If the values are incremental by +1, you can describe the first value only, as same meaning.
+          [Example]
+          enum ErrorCode {
+              MEMBER_ERROE = 10,
+              CALC_ERROR,
+              UNKOWN,
+          };
+
+*@subject ◆Floating-Point Number Types〔p47〕
+
+(Editing...)
 
 [EOF]
