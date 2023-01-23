@@ -210,7 +210,7 @@ ASCII
             because Prefix '0' means 8-decimal as above.
           ・Suffix 'U' or 'L' means 'unsigned' or 'long' as above 〔◆Suffix〕
 
-          ＊[Floating-point Number conatant]
+          ＊[Floating-point Number constant]
           ・Integer part or Fraction part can be omited either one of them.
           ・[ . ] or [ e ] can be ommited either one of them.
           ・Suffix express each types: (and see above 〔◆Suffix〕)
