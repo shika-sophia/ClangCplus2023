@@ -27,13 +27,16 @@
 *         Åñdouble:      Double-Precision Floating-Point Number:   effective precision: 15 | value range: -1.7 * 10 ^ 308 Å` 1.7 * 10 ^ 308
 *         Åñlong double: Extended-Precision Floating-Point Number: effective precision: 19 | value range: -1.1 * 10 ^ 4932 Å` 1.1 * 10 ^ 4932
 * 
+*         => copy to ÅkCAnsiYH02_Basic\Reference_CAnsiYH02.txtÅl
+*         => copy to ÅkCAnsiYH03_Type\Reference_CAnsiYH03.txtÅl
+*
 *@subject <limits.h> ÅkCAnsi p39, p272ÅlÅkC99YH 10 | p49, p206Ål
           ÅEThis is a Standard Header File default-defined by specification of C language.
           ÅEIt define the maximum and minimum constant value of Primitive Types.
           ÅEBecause they depend on Compiler, they are sometimes different.
           ÅöBy using these constant values defined in it, a program is to be more transplantable.
 
-          ÅyNotationÅzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+          ÅyNotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
            => copy from ÅkCAnsiYH03_Type\Reference_CAnsiYH03.txtÅl
@@ -46,12 +49,15 @@
 *           Ñ§ long int:       LONG_MIN, LONG_MAX
 *           Ñ§ long long int:  LLONG_MIN, LLONG_MAX, 
 * 
-*         ÅüRange of Integer Type (in this Compiler)
+*         ÅüRange of Integer Type (in this Compiler [Clang-C11 of Visual Studio 2019])
 *         Åñchar  : -128 Å` 127
 *         Åñshort : -32768 Å` 32767
 *         Åñint   : -2147483648 Å` 2147483647
 *         Åñlong  : -2147483648 Å` 2147483647
 *         Åñllong : -9223372036854775808 Å` 9223372036854775807
+*
+*         => copy to ÅkCAnsiYH02_Basic\Reference_CAnsiYH02.txtÅl
+*         => copy to ÅkCAnsiYH03_Type\Reference_CAnsiYH03.txtÅl
 *
 *@subject <stdint.h> ÅkC11DS p76Ål
 *         It define the maximum and minimum constant values of Integer Types,
@@ -76,7 +82,7 @@
 *           Ñ§ int64_t:  INT64_MIN, INT64_MAX
 *           Ñ§ uint64_t: UINT64_MAX
 * 
-*         ÅüRange of Integer Types defined by <stdint.h>
+*         ÅüRange of Integer Types defined by <stdint.h>, in case of [Clang-C11 of Visual Studio 2019]
 *         Åñint8_t  : -128 Å` 127
 *         Åñuint8_t : 0    Å` 255
 *         Åñint16_t : -32768 Å` 32767
@@ -90,7 +96,7 @@
 *         It define the maximum and minimum constant values of Floating-Point Number Types,
 *         depending on Compiler.
 *
-*        ÅyNotationÅzIn this Compiler case: (Compiler is clang-C11 of Visual Studio 2019)
+*        ÅyNotationÅzIn this Compiler case: (Compiler is Clang-C11 of Visual Studio 2019)
 *         It is no difference between 'double' and 'long double'. (= the same range)
 *
 *         <float.h> 
@@ -99,7 +105,7 @@
 *           Ñ§ double:      DBL_MIN, DBL_MAX
 *           Ñ§ long double: LDBL_MIN, LDBL_MAX
 * 
-*         ÅüRange of Float Double (in this Compiler)
+*         ÅüValue Range of Floating-Point Number Types (in this Compiler [Clang-C11 of Visual Studio 2019])
 *         Åñfloat : 0.0000000000000000000000000000000000000118 Å` 340282346638528859811704183484516925440.000000
 *         Åñfloat :  1.17549435082228750797e-38 Å` 3.40282346638528859812e+38
 *         Åñdouble: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000223
@@ -109,3 +115,4 @@
 *                  Å` 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000
 *         Åñlong double:  2.22507385850720138309e-308 Å` 1.79769313486231570815e+308
 * 
+
