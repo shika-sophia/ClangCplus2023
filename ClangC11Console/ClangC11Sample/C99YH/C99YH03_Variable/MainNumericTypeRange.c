@@ -32,7 +32,7 @@
           ÅEBecause they depend on Compiler, they are sometimes different.
           ÅöBy using these constant values defined in it, a program is to be more transplantable.
 
-          ÅyNotationÅzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+          ÅyNotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
            => copy from ÅkCAnsiYH03_Type\Reference_CAnsiYH03.txtÅl
@@ -45,7 +45,7 @@
 *           Ñ§ long int:       LONG_MIN, LONG_MAX
 *           Ñ§ long long int:  LLONG_MIN, LLONG_MAX,
 *
-*         ÅüRange of Integer Type (in this Compiler)
+*         ÅüRange of Integer Type (in this Compiler [Clang-C11 of Visual Studio 2019])
 *         Åñchar  : -128 Å` 127
 *         Åñshort : -32768 Å` 32767
 *         Åñint   : -2147483648 Å` 2147483647
@@ -75,7 +75,7 @@
 *           Ñ§ int64_t:  INT64_MIN, INT64_MAX
 *           Ñ§ uint64_t: UINT64_MAX
 *
-*         ÅüRange of Integer Types defined by <stdint.h>
+*         ÅüRange of Integer Types defined by <stdint.h>, in case of [Clang-C11 of Visual Studio 2019]
 *         Åñint8_t  : -128 Å` 127
 *         Åñuint8_t : 0    Å` 255
 *         Åñint16_t : -32768 Å` 32767
@@ -89,7 +89,7 @@
 *         It define the maximum and minimum constant values of Floating-Point Number Types,
 *         depending on Compiler.
 *
-*        ÅyNotationÅzIn this Compiler case: (Compiler is clang-C11 of Visual Studio 2019)
+*        ÅyNotationÅzIn this Compiler case: (Compiler is Clang-C11 of Visual Studio 2019)
 *         It is no difference between 'double' and 'long double'. (= the same range)
 *
 *         <float.h>
@@ -98,7 +98,7 @@
 *           Ñ§ double:      DBL_MIN, DBL_MAX
 *           Ñ§ long double: LDBL_MIN, LDBL_MAX
 *
-*         ÅüRange of Float Double (in this Compiler)
+*         ÅüValue Range of Floating-Point Number Types (in this Compiler [Clang-C11 of Visual Studio 2019]
 *         Åñfloat : 0.0000000000000000000000000000000000000118 Å` 340282346638528859811704183484516925440.000000
 *         Åñfloat :  1.17549435082228750797e-38 Å` 3.40282346638528859812e+38
 *         Åñdouble: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000223
