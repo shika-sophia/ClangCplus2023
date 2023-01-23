@@ -24,7 +24,7 @@ Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visua
 (meaning) YUUKI Hiroshi『Mathematics for Programmer (2nd Edition)』SB Creative, 2018 <br />
 <br />
 @rerference AlgoMath 米田優峻『問題解決のためのアルゴリズム数学が基礎からしっかり身につく本』技術評論社, 2022 <br />
-(meaning) YONEDA Masataka『Book for steady learning from basic about Algorithm Mathematics to resolve problems』<br />
+(meaning) YONEDA Masataka『Book for steady learning from basic about Algorithm Mathematics to solve problems』<br />
 　　Gijyutuhyouron-sha (= Technology Analysis Company), 2022 <br />
 <br />
 *@reference AlgoOH 奥村晴彦『Ｃ言語による標準アルゴリズム事典 改訂新版』技術評論社, 2018 <br />
