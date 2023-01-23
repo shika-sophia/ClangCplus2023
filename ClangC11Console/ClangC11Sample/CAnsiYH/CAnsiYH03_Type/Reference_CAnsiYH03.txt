@@ -10,22 +10,26 @@
 
 *@English [E] primitive (adj):    原始的、基本的
           [E] derive    (v):      派生する、導く、由来する
-          [E] specification (n):  仕様、規格
+          [E] specification (n):  指定、仕様、規格
           [E] implicitly (adv):   暗黙的  <->  explicitly  明示的
           [E] classify   (v):     分類する、区分する、気密に分類する
           [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく
           [E] strict    (adj):    厳密, 厳しく, 固く, 厳格, 厳重, あくまで
+          [E] subtle    (adj):    微妙, 繊細, 巧妙, 些細 subtlety (n)  subtly (adv)
           [E] opportunity (n):    機会
           [E] omit       (n/v):   抜かす、省く
           [E] abbreviate (v):     省略する、短縮する  abbreviation (n) 省略形
           [E] enumerate  (v):     数える、列挙する    enumeration  (n) 列挙
           [E] correspond (v):     相当する、一致する、対応する
+                correspond to:    一致する
+                correspond with:  相互作用がある
           [E] sequence   (n):     一連、連続、数列、文字列、列、順序
           [E] orthodox   (n):     正統、正統派
           [E] conclusion (n):     結論  =:= consequence (n) 結果
           [E] grammar / grammour  (n) 文法   grammatical (adj)
           [E] intention  (n):     意図　　intend (v) | contemplate (v) 意図する、企図する、熟視する
           [E] appropriate (adj):  適した、適切
+          [E] regard     (v):     点, 考えて, みなす, 見なす, に関して, 敬意
 
           ＊Programming
           [P] define    (v):      定義する
@@ -45,6 +49,10 @@
           [M] dimension (n):      次元
           [M] numeric (n/adj):    数値、数字の
           [M] set / subset (n):   集合 / 部分集合
+          [M] fraction  (n):      分数, 割合, わずか, 端数, 小数, 一部分, 分別
+          [M] exponent  (n):      指数、累乗
+          [M] Arithmetic (n):     算術, 演算, 算数, 算術演算, 算数科  arithmetical (adj)
+          [M] Statistics (n):     統計学   Statistical (adj), stats (n)
 
 *@see     ReferenceDocument\Reference_NumericTypeRange.txt
 *@author  shika
@@ -290,7 +298,90 @@
           };
 
 *@subject ◆Floating-Point Number Types〔p47〕
+          ・Floating-Point Number: The Number of not only fractional such as 3.14159, -2.236e5; also exponential such as 2 ^ 8, 10e+24,
+                                   is used in case of Mathematical calculation, Statistical data, and some simulations.
+          
+          ・Which Types we should use, in these cases:
+            ・float:       When we do not warry about strictness or precision of the calculation.
+            ・double:      When we use Mathematics Function in C, or usually calculate Floating-Point Numbers.
+            ・long double: When we are interested in strictness or precision of the calculation.
 
-(Editing...)
+          ★【Notation】caluclation of Floating-Point Number
+          ・It is possible to happen Lack or Overflow of Binary Digits,
+            by calculating Floating-Point Numbers or changing the Types.
+          ・Don't use the Types in case to be neccesary nothing of subtle difference, 
+            such as caluculation of money deposit.
+
+          [Lack or Overflow of Binary Digits]: 
+          (Editing...)
+
+          [Kinds of Floating-Point Number Types] 
+          ＊float:       Single-Precision Floating-Point Number
+          ＊double:      Double-Precision Floating-Point Number
+          ＊long double: Extended-Precision Floating-Point Number
+
+          Precision Comparison: float <= double <= long double  |  Operator '<=': less or equal
+
+*         [Effective Precision and Value Range] (depending on Compiler) in general definition of IEC 60559 (= International Electrotechnical Commission) 〔C99YH p49, p67〕
+*         ＊float:       effective precision:  6 | value range: -3.4 * 10 ^ 38 ～ 3.4 * 10 ^ 38
+*         ＊double:      effective precision: 15 | value range: -1.7 * 10 ^ 308 ～ 1.7 * 10 ^ 308
+*         ＊long double: effective precision: 19 | value range: -1.1 * 10 ^ 4932 ～ 1.1 * 10 ^ 4932
+*
+          [Value Range] in [Clang of Visual Studio 2019]
+          => see 〔ReferenceDocument\Reference_NumericTypeRange.txt〕
+
+          [Expession] of fractional such as 3.14159 or exponential such as 2.236e5.
+          => see ◆Constant Value〔CAnsiYH p19〕〔CAnsiYH02_Basic\Reference_CAnsiYH02.txt〕
+          
+*@subject ◆Void Type 〔p48〕
+          ・void: The Type of expessing nothing, which have no value and cannot caluculate.
+           (In Pascal, it is called "Procedure". In Basic, "Sub-routine".)
+
+          ・Variable of 'void' Type cannot be defined.
+          ・But Pointer which indicate 'void' Type, can be defined. 〔for [Example]〕
+          
+          ・When Return Type of Function is defined as 'void' Type,
+            statement 'return xxxx;' cannot be used with expression or value, because 'void' means no return-value.
+            statement 'return;' can be done only without expression or value, to return Control of Program;
+
+          ・It is used in these cases:
+            ・When we express Argument Type of Function as nothing, 'void' means no argument.
+            ・When we express Return Type of Function as nothing, 'void' means no return-value.
+            ・When we define General Pointer. => 〔for [Example]〕
+
+           [Example]
+           int main(void) {  }
+           void showValue (int a, int b) { }
+
+           [Example] General Pointer case =>〔CAnsiYH Chapter 6, p118〕
+           void *alloc_money (size_t n) {
+               void *p;   // <- Here, Program get to own the space in Memory, as Pointer 'p'.
+
+               return p;
+           }
+
+*@subject ◆Pointer Type 〔p49〕=> more detail〔CAnsiYH Chapter 6〕
+          [Definition]
+          ・Pointer: The Type which indicate address of some Type value or the value.
+          ・address: The location in Memory, expressed by 'int' value.
+           (In Assembler, it corresponds to "Indirect-Reference".)
+
+          [Operator of Pointer]
+          ・Address Operator  [ & ]:  It means the adderss of Variable, expressed such as '&x'.
+          ・Indirect Operator [ * ]:  It means Indirect-Refernence value of Variable which Pointer indicate, 
+                                      expressed such as '*p'.
+          ・Assign Operator [ = ]:    When Pointer is assigned Address of some Variable, it is expressed such as 'p = &x;'
+          ・Arithmetic Operator [ + - ++ -- ]: 
+               To add or subtract value of Pointer, mean to navigate address of Variable value which Pointer indicate.
+               so that we can regard Memory as Array of Object (= Variable) by using Pointer.
+               Actually, These are the same meaning, incresing value of Pointer and specifing index of Pointer Array
+               expressed such as *(p + m) and p[m] (assuming p: Pointer, m: int value).
+
+               => more detial〔Relation of Array and Pointer | CAnsiYH p111〕
+
+          ・Compare Operator [ == < > ... ]: Pointer can be compared by using them.
+
+*@subject ◆Array Type 〔p50〕=> more detial〔CAnsiYH Chapter 5〕
+
 
 [EOF]
