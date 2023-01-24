@@ -1,6 +1,6 @@
 ﻿/**
 *【Notation】It is changed Character-Code only here. I don't know why.
-*            => see the Edited Version〔Reference_CAnsiYH02.txt〕
+*            => see the Edited Version〔Reference_CAnsiBasic.txt〕
 * 
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
 *@fileName  MainAsciiCharacterViewer.c
@@ -59,7 +59,7 @@
 *         
 *         In Chart case, Non-Characters don't show as well, so I replaced them to white-space.
 *
-*@copyTo  Reference_CAnsiYH02.txt
+*@copyTo  Reference_CAnsiBasic.txt
 *@author  shika
 *@date    2023-01-16
 */

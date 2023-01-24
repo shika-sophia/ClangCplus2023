@@ -115,8 +115,8 @@
 
 #include <stdio.h>
 
-int main(void) {
-//int mainPractice_CAnsiYH02(void) {
+//int main(void) {
+int mainPractice_CAnsiYH02(void) {
     //---- Practice 2 ----
     printf("The Character of Line Feed is expressed as \\n. \n"
         "Double Quote is expressed as \\\". \n");
