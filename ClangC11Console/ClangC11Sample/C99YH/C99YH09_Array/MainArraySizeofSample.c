@@ -7,38 +7,53 @@
 *
 *@content C99YH ëÊÇXèÕ îzóÒ | Chapter 9  Array / List 9-7 / p267
 *@summary MainArraySizeofSample
-*         ÅEInitialize Array
-*         ÅEoperator 'sizeof()'
+*         ÅüArray Definition
+*         (1) Array Definition
+*         (2) Array Definition with Initialize
 * 
-*@subject Initialize Array
-*         ÅE(1) need the argument of arrayLength.
-*         ÅE(2) can define initial elements of the same type as defined, when it is initialized only.
-*           It is automatically caluculated array length from the number of elements,
-*           so that '[]' can be empty still.
+*         ÅüOperator 'sizeof()'
+* 
+*@English [P] operator  (n):      ââéZéq
+*         [P] initializer (n):    èâä˙âªéq { }
+*         [P] Wide-Character (n): ëSäpï∂éö
+
+*@subject Åü Array Definition Åkp267Ål
+*         (1) [Array Definition]
+*             The definition of Array is required the argument of array length with bracket '[]'.
+*         
+*         (2) [Array Definition with Initialize]
+*             Array can be defined with initial elements of the same Type, when it is defined with using initializer '{ }' only.
+*             In this case, the array length is automatically caluculated from the number of elements,
+*             so that '[]' can be empty still.
+* 
 *         ÅEÅyDetail NotationÅz
-*            It need be put ';' after '{ ... }'.
-*            It can be delimited by ',' -- if elements are multiple.
+*            We need put ';' after '{ ... }'.
+*            We need delimit elemants by ',' -- if elements are multiple.
 * 
-*         [Format] Initialize Array
-*         (1) Type  (arrayName)[int  arrayLength]; 
-*         (2) Type  (arrayName)[] = { ... }; 
+*         [Format] Array Defininition
+*         (1) Type arrayName[int arrayLength]; 
+*         (2) Type arrayName[] = { ... }; 
 * 
 *         [Example]
-*         int  pointAry[] = { 65, 90, 72, };
+*         char name[NAME_MAX];               // asumming 'NAME_MAX' is defined as 'int' Type before there.
+*         int  pointAry[] = { 65, 90, 72, }; // Initialze case
 *
-*@subject operator 'sizeof()'
-*         int  sizeof( T )    return int how bytes the argument T has 
+*@subject ÅüOperator 'sizeof()' ÅkC99YH p267Ål
+*         int  sizeof( Type )    // It returns 'int' value of how bytes the argument Type have 
 * 
 *         ÅEArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
 * 
-*         ÅEÅyNotationÅzin the case of including 2 bytes character as like Japanese:
+*         ÅEÅyNotationÅzin the case of including Wide-Character such as Japanese:
 *            The size of one element can be variable.
 *            Therefore, Array Length cannot be calculated correctly by above expression.
 * 
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 * 
+*         => copy to ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+* 
 *@see MainArrayAverageSample.c
+*@see CAnsiYH03_Type\MainOperatorSizeofSample.c
 *@author shika
 *@date 2022-12-25
 */
