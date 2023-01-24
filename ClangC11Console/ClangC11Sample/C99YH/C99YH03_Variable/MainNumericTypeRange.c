@@ -35,7 +35,7 @@
           ÅyNotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
-           => copy from ÅkCAnsiYH03_Type\Reference_CAnsiYH03.txtÅl
+           => copy from ÅkCAnsiYH03_Type\Reference_Type.txtÅl
 
 *         <limits.h>
 *         #define
