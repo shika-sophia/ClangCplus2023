@@ -1,0 +1,477 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH03_Type
+*@fileName  Reference_Type.txt
+*@reference C99YH    Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [“ü–å•Ò] ‘æ‚R”ÅxSB Creative, 2019
+*@reference CAnsiYH  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
+*@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
+*
+*@content CAnsiYH Chapter 3  Type / p39-51
+*@summary Reference_Type.txt
+          [Summary]
+          ¡ Type  kp39l
+            –Type name
+
+          ŸPrimitive Types
+            –Integer Types
+            –Character Type
+            –String Text
+            –Enum
+            –Floating-Point Number Types
+            –Void
+
+          ŸDerived Types
+            –Array      => kCAnsiYH Chapter 5l
+            –Pointer    => kCAnsiYH Chapter 6l
+            –Struct     => kCAnsiYH Chapter 7l
+            –Union      => kCAnsiYH Chapter 7l
+            (–Function) => kCAnsiYH Chapter 10l
+
+          ŸPredefined-Keyword 'typedef'
+
+          (ŸOpreator 'sizeof()') => kMainOperatorSizeofSample.cl
+
+          (¡ Type-Change)         => kReference_TypeChange.txtl
+
+*@English [E] primitive (adj):    Œ´n“IAŠî–{“I
+          [E] derive    (v):      ”h¶‚·‚éA“±‚­A—R—ˆ‚·‚é
+          [E] specification (n):  w’èAd—lA‹KŠi
+          [E] implicitly (adv):   ˆÃ–Ù“I  <->  explicitly  –¾¦“I
+          [E] classify   (v):     •ª—Ş‚·‚éA‹æ•ª‚·‚éA‹C–§‚É•ª—Ş‚·‚é
+          [E] moderate  (adj):    “K“–, ‚â‚â, ŠÉ‚â‚©, ’†’ö“x, ’ö‚æ‚­
+          [E] strict    (adj):    Œµ–§, Œµ‚µ‚­, ŒÅ‚­, ŒµŠi, Œµd, ‚ ‚­‚Ü‚Å
+          [E] subtle    (adj):    ”÷–­, ‘@×, I–­, ±× subtlety (n)  subtly (adv)
+          [E] opportunity (n):    ‹@‰ï
+          [E] omit       (n/v):   ”²‚©‚·AÈ‚­
+          [E] abbreviate (v):     È—ª‚·‚éA’Zk‚·‚é  abbreviation (n) È—ªŒ`
+          [E] enumerate  (v):     ”‚¦‚éA—ñ‹“‚·‚é    enumeration  (n) —ñ‹“
+          [E] correspond (v):     ‘Š“–‚·‚éAˆê’v‚·‚éA‘Î‰‚·‚é
+                correspond to:    ˆê’v‚·‚é
+                correspond with:  ‘ŠŒİì—p‚ª‚ ‚é
+          [E] sequence   (n):     ˆê˜AA˜A‘±A”—ñA•¶š—ñA—ñA‡˜
+          [E] orthodox   (n):     ³“A³“”h
+          [E] conclusion (n):     Œ‹˜_  =:= consequence (n) Œ‹‰Ê
+          [E] grammar / grammour  (n) •¶–@   grammatical (adj)
+          [E] intention  (n):     ˆÓ}@@intend (v) | contemplate (v) ˆÓ}‚·‚éAŠé}‚·‚éAn‹‚·‚é
+          [E] appropriate (adj):  “K‚µ‚½A“KØ
+          [E] regard     (v):     “_, l‚¦‚Ä, ‚İ‚È‚·, Œ©‚È‚·, ‚ÉŠÖ‚µ‚Ä, ŒhˆÓ
+          [E] dimension  (n):     ŸŒ³
+          [E] arbitrary  (adj):   ”CˆÓ, ˆÓ, œ“ˆÓ“I
+          [E] dispatch   (n/v):   ”hŒ­A”­‘—A‹}”h   =:= allocate (v)
+          [E] allocate   (v):     Š„‚è“–‚Ä‚éA”z•ª‚·‚éAêŠ‚ğŒˆ‚ß‚é
+
+          –Programming
+          [P] define    (v):      ’è‹`‚·‚é
+          [P] declarate (v):      éŒ¾‚·‚é
+          [P] transplantable (adj):  ˆÚA«‚ª‚ ‚é  =:= portable  ‰^‚Ñ‚â‚·‚¢
+          [P] operator  (n):      ‰‰Zq
+          [P] qualifier (n):      Cüq
+          [P] identifier(n):      ¯•ÊqA–¼‘O
+          [P] initializer(n):     ‰Šú‰»q { }
+          [P] enumerator (n):     —ñ‹“q
+          [P] iterate   (v):      ŒJ‚è•Ô‚µˆ—‚·‚é
+          [P] alias     (n):      •Ê–¼AƒGƒCƒŠƒAƒX
+          [P] struct    (n):      \‘¢‘Ì  <- structure
+          [P] union     (n):      ‹¤“¯‘Ì
+          [p] Predefined keyword: w’èq / ‹L‰¯ƒNƒ‰ƒXw’èq
+
+          –Mathematics
+          [M] precision (n):      ¸“xAŒ…”   = digit (n)
+          [M] recursive (adj):    Ä‹A“I (= ©•ª©g‚Æ“¯‚¶\‘¢‚Ì‚à‚Ì‚ğŒJ‚è•Ô‚·‚±‚Æ) | recursion (n), recurse (v)
+          [M] dimension (n):      ŸŒ³
+          [M] numeric (n/adj):    ”’lA”š‚Ì
+          [M] set / subset (n):   W‡ / •”•ªW‡
+          [M] fraction  (n):      •ª”, Š„‡, ‚í‚¸‚©, ’[”, ¬”, ˆê•”•ª, •ª•Ê
+          [M] exponent  (n):      w”A—İæ
+          [M] Arithmetic (n):     Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È  arithmetical (adj)
+          [M] Statistics (n):     “ŒvŠw   Statistical (adj), stats (n)
+
+*@see     ReferenceDocument\Reference_NumericTypeRange.txt
+*@author  shika
+*@date    2023-01-20
+*/ 
+
+*@subject ¡ Type  kp39l
+          Type: EData kinds of Variable value
+                ECompiler decide how to operate the value by Type.
+                EWhen calculate different Types, Compiler do Type-Change implicitly (= automatically) in necessary.
+                EHow Bytes or Bits each Types have in Memory, depend on Comiler,
+                  They are moderately specified by C. more strictly by C++.
+
+          [Kinds of Types]
+          EPrimitive Type: Types default-defined by specification of C language; such as char, int, float, double, and void.
+          EDerived Type:   Types self-defined by programmer; such as Array, Function, Pointer, Struct, Union.
+
+*@subject <limits.h> kCAnsi p39, p272lkC99YH 10 | p49, p206l
+          EThis is a Standard Header File default-defined by specification of C language.
+          EIt define the maximum and minimum constant value of Primitive Types.
+          EBecause they depend on Compiler, they are sometimes different.
+          šBy using these constant values defined in it, a program is to be more transplantable.
+
+          yNotationzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+           It is no difference between 'int' and 'long'. (= the same range)
+
+          => see another Headers and more detail.kReferenceDocument\Reference_NumericTypeRange.txtl
+
+*@subject ŸType name
+          The opportunity of using Type name:
+          EWhen you declarate a Global Varianle.
+          EWhen you define a Local Variable.
+          EWhen you expilcitly change Type by using Operator Cast expressed as '(Type)'.
+          EWhen you use Operator 'sizeof(Type)', as its Argument.
+
+*@subject ŸPrimitive Types: default-defined by specification of C language
+          EWhole of Types in C is based on this and yielded from this.
+
+          –char:   Character
+          –int:    Integer
+          –float:  Single-Precision Floating-Point Number
+          –double: Double-Precision Floating-Point Number
+          –void:   Type expressing empty.
+
+*@subject ŸDerived Types: self-defined by programmer
+          –Array
+          (–Function) => more detail kCAnsiYH Chapter10l
+          –Pointer
+          –Struct
+          –Union
+          
+*@advance Recursive Definition kp41l
+          [Math] recursion (n):  To iterate as same structure as itself.
+                                 -> recurse (v), recursive (adj)
+
+          Derived Types is available recursively.
+          It is able to create many numbers of new Types, by recursively defining of Deriverd Type.
+
+          [Example]
+          T-Type:                    Asumming there were T-Type, T-Type is a new Type.
+          Array of T-Type:           If you define as a array 'T[]', it is created as a new Type more.
+          Array of Array of T-Type:  As same, this is created as a new Type too, it is called "2-Dimension Array" T[][].
+            :
+          (countless)
+
+*@subject ŸInteger Types kp41l
+          EThe specification of Compiler adjust each Types range to easily use for the device.
+          EDepending on Compiler, short or long sometimes don't have the range as below.
+
+          [Kinds of Integer Types]
+          Echar:              8 bit = 2 ^  8 = 256
+          Eshort [int]:      16 bit = 2 ^ 16 = 65536
+          Eint:              32 bit = 2 ^ 32 = 4294967296
+          Elong [int]:   
+          Elong long [int]:  64 bit = 2 ^ 64 = 18446744073709551617
+          ¦ [int] can be omited.
+
+          + signed:    The keyword is used by adding before Type above,
+                       to tell Compiler that the Type have signs, such as '+' or '-'.
+                       It is omittable, in that case (= no keyword), it means 'signed'.
+          + unsigned:  The keyword is used by adding before Type above,
+                       to tell Compiler that the Type have no signs, and plus value only.
+
+          => see Range of Integer TypeskReferenceDocument\Reference_NumericTypeRange.txtl
+
+*@subject ŸCharacter Types 'char' kp42l
+          E'char' storages one character code value as numeric value, expressed with single quote [ ' ' ].
+          Echar '0' is different from int 0. / '0' value is 48 as if ASCII.
+          Echar 'a' is different from "a". / 'a' is char constant value. / "a" is String text.
+          
+          EString text is defined as Array of 'char' Type. 
+            While [Java][C#] have String Type, but [C][C++] don't have it.
+          E'char' Type is a sort of Integer Types, because the value is storaged as numeric value in Memory.
+            Therefore 'char' can be calculated as like Integer.
+          E'char' can be added keywords 'signed' or 'unsigned' before Type.
+          
+          EIn case of input excepting chatacter, which the value is minus or not, depend on Compiler.
+          EIn case of wide-character, as same.
+          EIn case of comparing values high or low, it is important difference with 'signed' or 'unsigned'.
+          šProgrammer should describe 'signed' or 'unsigned' explicitly.
+          
+*@advance well-known Failure
+          EIn case of using Function 'getchar()', The value should be storaged in 'int' Type, not 'char';
+            because conatant value of 'EOF' which express end of file, is defined as -1,
+            it is important to ensurely operate 'EOF' gotton by 'getchar()'.
+          EThat is well-known Failure for programmer.
+     
+          [Example]
+          int c;   // <- Here, not 'char'.
+
+          while ((c == getchar()) != EOF) {
+              putchar(c);
+          }
+
+*@subject ŸString text kp44l
+          EString text is defined as Array of 'char' Type. 
+            While [Java][C#] have String Type, but [C][C++] don't have it.
+          EIt is expressed with double quote [ " " ].
+
+          [Example]
+          –These are the same meaning.
+          char  strAry[] = "ABC";                 // In this case, '\0' NULL Character is automatically inserted by Compiler.
+          char  strAry[] = {'A', 'B', 'C', '\0'}; // using Initializer '{ }' 
+
+          –These are the same behavior, which shows "ABC".
+          printf("%s\n", "ABC");
+          printf("%s\n", strAry);
+          printf("%s\n", &strAry[0]);    // [ & ] is Address Operetor of Pointerkbelowl
+
+*@subject ŸEnum Type kp45l
+          enum: The keyword of 'enum' Type, which enumerate constant Identifer (= called "Enumerator"), 
+                corresponding with the int value, and delimitted by [ , ].
+                It is used at declaration of 'enum' Type.
+                (In Pascal which is a prorgram language, the Partial Range Type is similar with this, because it is self-defined as a subset of Integer Types.
+                 But it of Pascal is defined with setting of ranges between maximum and minimum, it is different from 'enum' of C)
+
+          [Format] Declaration
+          enum tag_name { enumerator1, enumerator2, enumerator3 ... };
+
+          typedef enum tag_name  { 
+              enumerator1, enumerator2, enumerator3, ... 
+          } alias;
+
+          Etag_name:  It is Identifier of 'enum' name, and it is omitable.
+
+          Eenumerator1, enumerator2 ... :
+              The Enumerator name need be unique, and need be diffenent from any Identifiers in the same scope.
+              The sequece of Enumerator or 'enumerator = constant expression', is delimitted by [ , ].
+              By declaration, each Enumerator automatially have int value, such as 0, 1, 2 ... .
+              Or these enum 'int' values can be self-defined by describing 'enumerator = constant expression'. => seek–self-assign the valuel
+
+          Ealias:  Operator 'typedef' can define alias name to Type.
+
+          [Format] Definition and Assignment of enum value 
+          enum tag_name Variable_name = enum_value;
+
+          [Example]
+          -- Declaration and Definition --
+          enum EnumColorRGB {
+              RED, GREEN, BLUE
+          };
+
+          enum EnumColorRGB colorR = RED; 
+          enum EnumColorRGB colorG = GREEN; 
+          enum EnumColorRGB colorB = BLUE;
+          
+          -- Declaration and Definition at the same time --
+          enum EnumColorRGB { RED, GREEN, BLUE } colorR = RED;
+
+          -- Declaration and Definition using 'typedef' --
+          typedef enum EnumColorRGB {
+              RED, GREEN, BLUE
+          } Color;
+
+          Color colorR = RED;
+
+*@subject –'#define' instead of 'enum' definition
+          #define: One of Directive for Pre-processor, expressed by '#'.
+                   It define constant Identifier with the constant value.
+                   =>kCAnsiYH01_Introduction\Reference_CAnsiIntrodiction.txtl
+
+          ETo use '#define' instead of 'enum' definiition:
+            It is almost similar as orthodox 'enum' definition, but see below.
+
+          [Example]
+          #define RED 0
+          #define GREEN 1
+          #define BLUE 2
+          ----
+          int colorR = RED;
+
+         EThe "almost" means that: 
+         Using '#define', it define the Token as Identifier only.
+         Pre-processor operation will replace the Token to calling a Function which return the constant value.
+         Before Compiler will parse and grammatically validate by C language, the replacement will have been done;
+         so that Compiler cannot find out grammatical errors in the source code, and
+         so that Symbolic-Debuger cannot refer the Symbol name.
+   
+         š[Conclusion] 
+         Programmers had better use orthodox 'enum' definition than '#define' way.
+
+*@subject –'const' instead of 'enum' definition
+          const: The keyword which define consatant Identifier with the constant value,
+                 and after definition, It prevent to be assigned some values by user. 
+
+         EIt is almost similar as orthodox 'enum' definition.
+           But not using 'enum' definition, it is weaken with Programmer's intention that
+           these Identifiers are concerned each other, one value of the same symbol.
+
+         [Example]
+         const int RED = 0;
+         const int GREEN = 1;
+         const int BLUE = 2;
+
+*@subject –self-assign the int values 
+          EThe enum 'int' values can be self-defined by describing 'enumerator = constant expression'.
+          EThey are omitable, in this case, automatically assigned such as [ 0, 1, 2, ... ].
+          EThey can be assigned the same value with different Enumerators, 
+            so that you can express that different Enumerators do the same behavior, as Alias,
+            but so that it maybe not appropriate with 'enum' intention.
+
+          [Format]
+          enum tag_name { 
+              enumerator1 = constant_expression1,
+              enumerator2 = constant_expression2,
+              enumerator3 = constant_expression3,
+                :
+          };
+
+          [Example]
+          enum ErrorCode {
+              MEMBER_ERROE = 10,
+              CALC_ERROR = 11,
+              UNKOWN = 12,
+          };
+
+          EIf the values are incremental by +1, you can describe the first value only, as same meaning.
+          [Example]
+          enum ErrorCode {
+              MEMBER_ERROE = 10,
+              CALC_ERROR,
+              UNKOWN,
+          };
+
+*@subject ŸFloating-Point Number Typeskp47l
+          EFloating-Point Number: The Number of not only fractional such as 3.14159, -2.236e5; also exponential such as 2 ^ 8, 10e+24,
+                                   is used in case of Mathematical calculation, Statistical data, and some simulations.
+          
+          EWhich Types we should use, in these cases:
+            Efloat:       When we do not warry about strictness or precision of the calculation.
+            Edouble:      When we use Mathematics Function in C, or usually calculate Floating-Point Numbers.
+            Elong double: When we are interested in strictness or precision of the calculation.
+
+          šyNotationzcaluclation of Floating-Point Number
+          EIt is possible to happen Lack or Overflow of Binary Digits,
+            by calculating Floating-Point Numbers or changing the Types.
+          EDon't use the Types in case to be neccesary nothing of subtle difference, 
+            such as caluculation of money deposit.
+
+          [Lack or Overflow of Binary Digits]: 
+          (Editing...)
+
+          [Kinds of Floating-Point Number Types] 
+          –float:       Single-Precision Floating-Point Number
+          –double:      Double-Precision Floating-Point Number
+          –long double: Extended-Precision Floating-Point Number
+
+          Precision Comparison: float <= double <= long double  |  Operator '<=': less or equal
+
+*         [Effective Precision and Value Range] (depending on Compiler) in general definition of IEC 60559 (= International Electrotechnical Commission) kC99YH p49, p67l
+*         –float:       effective precision:  6 | value range: -3.4 * 10 ^ 38 ` 3.4 * 10 ^ 38
+*         –double:      effective precision: 15 | value range: -1.7 * 10 ^ 308 ` 1.7 * 10 ^ 308
+*         –long double: effective precision: 19 | value range: -1.1 * 10 ^ 4932 ` 1.1 * 10 ^ 4932
+*
+          [Value Range] in [Clang of Visual Studio 2019]
+          => see kReferenceDocument\Reference_NumericTypeRange.txtl
+
+          [Expession] of fractional such as 3.14159 or exponential such as 2.236e5.
+          => see ŸConstant ValuekCAnsiYH p19lkCAnsiYH02_Basic\Reference_CAnsiBasic.txtl
+          
+*@subject ŸVoid Type kp48l
+          Evoid: The Type of expessing nothing, which have no value and cannot caluculate.
+           (In Pascal, it is called "Procedure". In Basic, "Sub-routine".)
+
+          EVariable of 'void' Type cannot be defined.
+          EBut Pointer which indicate 'void' Type, can be defined. kfor [Example]l
+          
+          EWhen Return Type of Function is defined as 'void' Type,
+            statement 'return xxxx;' cannot be used with expression or value, because 'void' means no return-value.
+            statement 'return;' can be done only without expression or value, to return Control of Program;
+
+          EIt is used in these cases:
+            EWhen we express Argument Type of Function as nothing, 'void' means no argument.
+            EWhen we express Return Type of Function as nothing, 'void' means no return-value.
+            EWhen we define General Pointer. => kfor [Example]l
+
+           [Example]
+           int main(void) {  }
+           void showValue (int a, int b) { }
+
+           [Example] General Pointer case =>kCAnsiYH Chapter 6, p118l
+           void *alloc_money (size_t n) {
+               void *p;   // <- Here, Program get to own the space in Memory, as Pointer 'p'.
+
+               return p;
+           }
+
+*@subject ŸPointer Type kp49l=> more detailkCAnsiYH Chapter 6l
+          [Definition]
+          EPointer: The Type which indicate address of some Type value or the value.
+          Eaddress: The location in Memory, expressed by 'int' value.
+           (In Assembler, it corresponds to "Indirect-Reference".)
+
+          [Operator of Pointer]
+          EAddress Operator  [ & ]:  It means the adderss of Variable, expressed such as '&x'.
+          EIndirect Operator [ * ]:  It means Indirect-Refernence value of Variable which Pointer indicate, 
+                                      expressed such as '*p'.
+          EAssign Operator [ = ]:    When Pointer is assigned Address of some Variable, it is expressed such as 'p = &x;'
+          EArithmetic Operator [ + - ++ -- ]: 
+               To add or subtract value of Pointer, mean to navigate address of Variable value which Pointer indicate.
+               so that we can regard Memory as Array of Object (= Variable) by using Pointer.
+               Actually, These are the same meaning, incresing value of Pointer and specifing index of Pointer Array
+               expressed such as *(p + m) and p[m] (assuming p: Pointer, m: int value).
+
+               => more detialkRelation of Array and Pointer | CAnsiYH p111l
+
+          ECompare Operator [ == < > ... ]: Pointer can be compared by using them.
+
+*@subject ŸArray Type kp50l=> more detialkCAnsiYH Chapter 5l
+          EArray: The Type which have sequence of specific Type values.
+          EWe can define Array of any Type which we want, in C.
+          EArray size need be constant, when Compile.
+          EArray dimensions can be defined arbitrarily.
+          EArray of Function cannot be defined.
+            Instead of that, Array of Function Pointer can be defined.
+
+            [Dispatch Table]:
+            One of data structure which dispatch (= allocate) Function by functional index.
+            in this case, Array of Function Pointer often is defined.
+            => see kArray of Function Pointer| CAnsiYH p115l
+
+*@subject ŸStruct => more detail kCAnsiYH Chapter 7l
+          struct: The Type which include different multi Types, to put them together.
+                  It is one of Derived Types.
+
+*@subject ŸUnion  => more detail kCAnsiYH Chapter 7l
+          union:  The Type to be shared one Memory-space by different multi Types.
+                  It is one of Derived Types, too.
+
+*@subject ŸPredefined-Keyword 'typedef' kp52l
+          typedef: The Keyword to create arbitrary Type we want, to name arbitrary Alias.
+          EWe can name Alias to Types of default-defined or self-defined.
+          EThe Alias is called "typedef Name". 
+          EThe Alias defined by 'typedef', is recognized as same as default Types, by Compiler.
+            => see kDifferences of '#define' and 'typedef' | CAnsiYH p254l
+
+          E[Predefined-Keyword of Memory Class] =>kChapter4 Variable | CAnsiYH p75l
+            There are 'static', 'extern', 'auto', 'register'. 
+            The 'typedef' is one of this sorts, too.
+
+          šThe 'typedef' is often used, to write transplantable code: kas below [Example]l
+            such as 'BOOL' or 'ID' defiened by 'typedef' to make them obviously meaning, instead of multi 'int' or 'long Variables;
+            such as 'MATE' instead of 'struct SchoolMate' to be able to shorten the description as same meaning;
+            such as when Pointer 'void*' cannot be used because of older Compiler, and you will try to transplant Pointer there,
+            you write 'typedef char *PIOINTER;', so that it can be easy to modify the transplant.
+
+          [Format]
+          typedef Type [name-Tag] Alias;
+
+          [Eamaple] Declaration
+          typedef int BOOL;
+          typedef long ID;
+          typedef void *POINTER;
+          typedef short WORD, wordtype;  // Type 'WORD' and Variable 'wordtype' are defined as short-Type.
+          typedef BOOL YESNO;            // Alias can be defined as another Alias again.
+
+          typedef struct SchoolMate { 
+            ...
+          } MATE;
+
+          [Example] Definition or Declaration can be done after above.
+          –Variable Definition
+          BOOL isMember;                 // The Type is int as boolean.
+
+          –struct Definition
+          MATE member1 = { ... };        // instead of "struct SchoolMate member1 = { ... };"
+
+          –Function Declaration
+          POINTER alloc_memory(size-t);  // The Return Value is void*.
+
+[EOF]
