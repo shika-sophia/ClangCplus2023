@@ -3,7 +3,7 @@
  *@fileName  ReferenceNumericTypeRange.txt
  *@content   The Effective Range of Numeric Types
  *@copyFrom  ClangC11Sample\C99YH\C99YH03_Variable\MainNumericTypeRange.c
- *@copyFrom  ClangC11Sample\CAnsiYH\CAnsiYH03_Type\Reference_Type.txt
+ *@copyFrom  ClangC11Sample\CAnsiYH\CAnsiYH03_Type\Reference_CAnsiType.txt
  *@copyFrom
  *@author    shika
  *@date      2022-12-12, 2023-01-20
@@ -28,7 +28,7 @@
 *         Åñlong double: Extended-Precision Floating-Point Number: effective precision: 19 | value range: -1.1 * 10 ^ 4932 Å` 1.1 * 10 ^ 4932
 * 
 *         => copy to ÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
-*         => copy to ÅkCAnsiYH03_Type\Reference_Type.txtÅl
+*         => copy to ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
 *
 *@subject <limits.h> ÅkCAnsi p39, p272ÅlÅkC99YH 10 | p49, p206Ål
           ÅEThis is a Standard Header File default-defined by specification of C language.
@@ -39,7 +39,7 @@
           ÅyNotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
-           => copy from ÅkCAnsiYH03_Type\Reference_Type.txtÅl
+           => copy from ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
 
 *         <limits.h>
 *         #define
@@ -57,7 +57,7 @@
 *         Åñllong : -9223372036854775808 Å` 9223372036854775807
 *
 *         => copy to ÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
-*         => copy to ÅkCAnsiYH03_Type\Reference_Type.txtÅl
+*         => copy to ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
 *
 *@subject <stdint.h> ÅkC11DS p76Ål
 *         It define the maximum and minimum constant values of Integer Types,
