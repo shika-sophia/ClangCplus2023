@@ -13,9 +13,18 @@
 * 
 *         ŸOperator 'sizeof()'
 * 
-*@English [P] operator  (n):      ‰‰Zq
-*         [P] initializer (n):    ‰Šú‰»q { }
-*         [P] Wide-Character (n): ‘SŠp•¶š
+*@English [E] occupy    (v):      è‚ß‚é
+          [E] specification (n):  w’èAd—lA‹KŠi
+          [E] moderate  (adj):    “K“–, ‚â‚â, ŠÉ‚â‚©, ’†’ö“x, ’ö‚æ‚­ =:= arbitrary (adj) <-> strict (adj), subtle (adj)
+          [E] arbitrary (adj):    ”CˆÓ, ˆÓ, œ“ˆÓ“I
+          [E] strict    (adj):    Œµ–§, Œµ‚µ‚­, ŒÅ‚­, ŒµŠi, Œµd, ‚ ‚­‚Ü‚Å
+          [E] subtle    (adj):    ”÷–­, ‘@×, I–­, ±× subtlety (n)  subtly (adv)
+          [E] abbreviate (v):     È—ª‚·‚éA’Zk‚·‚é  abbreviation (n) È—ªŒ`
+          [E] allocate   (v):     Š„‚è“–‚Ä‚éA”z•ª‚·‚éAêŠ‚ğŒˆ‚ß‚é
+
+          [P] operator  (n):      ‰‰Zq
+          [P] initializer (n):    ‰Šú‰»q { }
+          [P] Wide-Character (n): ‘SŠp•¶š
 
 *@subject Ÿ Array Definition kp267l
 *         (1) [Array Definition]
@@ -36,21 +45,28 @@
 * 
 *         [Example]
 *         char name[NAME_MAX];               // asumming 'NAME_MAX' is defined as 'int' Type before there.
-*         int  pointAry[] = { 65, 90, 72, }; // Initialze case
+*         int  pointAry[] = { 65, 90, 72, }; // Initialize case
 *
-*@subject ŸOperator 'sizeof()' kC99YH p267l
-*         int  sizeof( Type )    // It returns 'int' value of how bytes the argument Type have 
-* 
+*@subject ŸOperator 'sizeof()' kC99YH p267lkCAnsiYH p53l
+*         Operator 'sizeof()': It returns 'int' value of how bytes the Variable given by argument 'Type' occupy in Memory.
+*         EHow bytes each Types occupy in Memory, is only moderately defined by specification of C language.
+*         ETherefore, it is necessary to use 'sizeof', when we must specify how bytes the Type occupy in Memory,
+*           such as a program of Memory management.
+*
+*         [Format]
+*         unsigned int  sizeof( expression )   // including Literal value.
+*         unsigned int  sizeof( Type )
+*
 *         EArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
-* 
+*
 *         EyNotationzin the case of including Wide-Character such as Japanese:
 *            The size of one element can be variable.
 *            Therefore, Array Length cannot be calculated correctly by above expression.
-* 
+*
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
-* 
-*         => copy to kCAnsiYH03_Type\MainOperatorSizeofSample.cl
+*
+*         => copy fromkCAnsiYH03_Type\MainOperatorSizeofSample.cl
 * 
 *@see MainArrayAverageSample.c
 *@see CAnsiYH03_Type\MainOperatorSizeofSample.c
