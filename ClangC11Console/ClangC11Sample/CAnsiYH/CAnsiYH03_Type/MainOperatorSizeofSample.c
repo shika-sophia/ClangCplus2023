@@ -9,11 +9,27 @@
 *@content CAnsiYH Chapter 3  Type | Operator 'sizeof()' / List - / p53
 *@summary MainOperatorSizeofSample.c
 * 
-*@English [P] operator  (n):      ââéZéq
-*         [P] Wide-Character (n): ëSäpï∂éö
+*@English [E] occupy    (v):      êËÇﬂÇÈ
+          [E] specification (n):  éwíËÅAédólÅAãKäi
+          [E] moderate  (adj):    ìKìñ, Ç‚Ç‚, ä…Ç‚Ç©, íÜíˆìx, íˆÇÊÇ≠ =:= arbitrary (adj) <-> strict (adj), subtle (adj)
+          [E] arbitrary (adj):    îCà”, êèà”, úìà”ìI
+          [E] strict    (adj):    åµñß, åµÇµÇ≠, å≈Ç≠, åµäi, åµèd, Ç†Ç≠Ç‹Ç≈
+          [E] subtle    (adj):    î˜ñ≠, ë@ç◊, çIñ≠, ç±ç◊ subtlety (n)  subtly (adv)
+          [E] abbreviate (v):     è»ó™Ç∑ÇÈÅAíZèkÇ∑ÇÈ  abbreviation (n) è»ó™å`
+          [E] allocate   (v):     äÑÇËìñÇƒÇÈÅAîzï™Ç∑ÇÈÅAèÍèäÇåàÇﬂÇÈ
+
+          [P] operator  (n):      ââéZéq
+          [P] Wide-Character (n): ëSäpï∂éö
+   
+*@subject ÅüOperator 'sizeof()' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
+*         Operator 'sizeof()': It returns 'int' value of how bytes the Variable given by argument 'Type' occupy in Memory.
+*         ÅEHow bytes each Types occupy in Memory, is only moderately defined by specification of C language.
+*         ÅETherefore, it is necessary to use 'sizeof', when we must specify how bytes the Type occupy in Memory,
+*           such as a program of Memory management.
 * 
-*@subject ÅüOperator 'sizeof()' ÅkC99YH p267Ål
-*         int  sizeof( Type )    // It returns 'int' value of how bytes the argument Type have
+*         [Format]
+*         unsigned int  sizeof( expression )   // including Literal value.
+*         unsigned int  sizeof( Type )   
 *
 *         ÅEArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
 *
@@ -24,11 +40,44 @@
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 *
-*         => copy from ÅkC99YH09_Array\MainArraySizeofSample.cÅl
+*         => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
 *
-*@subject ÅüOperator 'sizeof()' ÅkCAnsiYH p53Ål
+*@subject [Example 1] ÅkCAnsi p54Ål
+*         The program shows how bytes these Primitive Types occupy in Memory, as below code.
+*         The result depends on this Compiler [Clang-C11 of Visual Studio 2019].
 * 
-*
+*         //====== Result ====
+*         char : 1
+*         char*: 4
+*         short: 2
+*         int  : 4
+*         long : 4
+*         long long: 8
+* 
+*@subject [Example 2]
+*         The program is that measure the necessary size in Memory, by using 'sizeof',
+*         and give it to argument of Function 'malloc(size_t)'.
+*         
+*        ÅyMy ConsiderationÅz
+*         But according to Result below, the size of 'mateP' is 4,
+*         I cannot judge which the result is correct or wrong, yet.
+* 
+*         //====== Result ======
+*         MATE : 80
+*         MATE Memory: 800
+*         mateP: 4
+* 
+*@subject [Example 3] as similar as Array Length above.
+* 
+*@subject ÅüFunction malloc() => more detailÅkCAnsiYH p331Ål
+*         malloc(): The Function which allocate memory-space in Memory, as much as size given by argument,
+*                   and return General Pointer 'void*' to be used by Cast (= Type Change) to arbitrary Type.
+*         "malloc" = abbreviation of "Memory allocate" ?
+* 
+*         [Format]
+*         void* malloc(size_t)  // ÅkCAnsiYH p331Ål
+*        (int   malloc(void)    // ÅkVisual StudioÅl)
+* 
 *@see     C99YH09_Array\MainArraySizeofSample.c
 *@author  shika
 *@date    2023-01-24
@@ -36,8 +85,48 @@
 
 #include <stdio.h>
 
+typedef struct SchoolMate {
+    int id;
+    char name[50];
+    int scoreAry[5];
+    long totalIndividual;
+} MATE;
+
 int main(void) {
 //int mainXxxx(void) {
+    //---- [Example 1] ----
+    printf("char : %u \n", sizeof(char));
+    printf("char*: %u \n", sizeof(char*));
+    printf("short: %u \n", sizeof(short));
+    printf("int  : %u \n", sizeof(int));
+    printf("long : %u \n", sizeof(long));
+    printf("long long: %u \n", sizeof(long long));
+    printf("\n");
+
+    //---- [Example 2] ----
+    MATE *mateP;
+    mateP = (MATE*)malloc(sizeof(MATE) * 10);
+
+    printf("MATE : %u \n", sizeof(MATE));
+    printf("MATE Memory: %u \n", sizeof(MATE) * 10);
+    printf("mateP: %u \n", sizeof(mateP));
 
     return 0;
 }//main()
+
+/*
+//====== Result ======
+//---- [Example 1] ----
+char : 1
+char*: 4
+short: 2
+int  : 4
+long : 4
+long long: 8
+
+//---- [Example 2] ----
+MATE : 80
+MATE Memory: 800
+mateP: 4
+
+*/

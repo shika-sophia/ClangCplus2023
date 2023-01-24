@@ -37,7 +37,8 @@
           [E] specification (n):  指定、仕様、規格
           [E] implicitly (adv):   暗黙的  <->  explicitly  明示的
           [E] classify   (v):     分類する、区分する、気密に分類する
-          [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく
+          [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく =:= arbitrary (adj) <-> strict (adj), subtle (adj)
+          [E] arbitrary (adj):    任意, 随意, 恣意的
           [E] strict    (adj):    厳密, 厳しく, 固く, 厳格, 厳重, あくまで
           [E] subtle    (adj):    微妙, 繊細, 巧妙, 些細 subtlety (n)  subtly (adv)
           [E] opportunity (n):    機会
@@ -55,7 +56,6 @@
           [E] appropriate (adj):  適した、適切
           [E] regard     (v):     点, 考えて, みなす, 見なす, に関して, 敬意
           [E] dimension  (n):     次元
-          [E] arbitrary  (adj):   任意, 随意, 恣意的
           [E] dispatch   (n/v):   派遣、発送、急派   =:= allocate (v)
           [E] allocate   (v):     割り当てる、配分する、場所を決める
 
