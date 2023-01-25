@@ -1,0 +1,138 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH03_Type
+*@fileName  Reference_CAnsiTypeChange.txt
+*@reference C99YH    Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [“ü–å•Ò] ‘æ‚R”ÅxSB Creative, 2019
+*@reference CAnsiYH  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
+*@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
+*
+*@content CAnsiYH Chapter 3  Type | Typ-Change / p55-
+*@summary Reference_CAnsiTypeChange.txt
+
+*@English [E] cast      (n/v):     o‰‰, ’’‘¢   | [P] –¾¦“I‚ÈŒ^•ÏŠ·
+          [E] explicit  (adj):     –¾¦“I  <-> implicit ˆÃ–Ù“I
+          [E] prefer      (v):     —Dæ‚·‚é  =:= expedite (v), prioritize (v)@|  preferential (adj)  —Dæ“I 
+
+          [M] Arithmetic  (n):     Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È  | arithmetical (adj)
+          [P] Operator    (n):     ‰‰Zq
+          [p] Operand     (n):     ”í‰‰Z” (= ‰‰Zq‚É‚æ‚èŒvZ‚³‚ê‚é”’l)  | opeland (n)
+
+*@see 
+*@author  shika
+*@date    2023-01-25
+*/ 
+
+*@subject ¡ Type-Change kp55l
+          Type-Change: There is that Type can be changed from Type defined originally, 
+                       with the context or with necessary.
+                       It is done, explicitly (= enforcely) or implicitly (= automatically).
+
+          [Cause of Type-Change]
+          EBy Cast Operator'(Type)':  explicitly Type-change.
+          EBy Arithmetic Operator:    implicitly Type-change at the time of calucurate.
+          EBy Assign Operator:        implicitly Type-Change when Variable is assigned the value.
+          EBy Calling Function:       implicitly Type-Change when Function is called with giving the Argument, 
+                                       in case that Argument defined-Type is different from given parameter Type to Argument,
+                                       that is Assign Type-Change case, too.
+                                    
+*@subject ŸCast Type-Change (explicitly)
+          Cast: When we want, Type can be changed explicitly, by Cast Operator '(Type)' before the expression.
+                
+          [Format]
+          (Type) expression
+
+          [Example]
+          –char -> int
+          n = (int) c;   // assuming char c, int n.
+                         
+          In this case, It is Assign Operator implicitly Type-Change, too.
+          so that we can write that:
+
+          n = c;
+
+          –int -> long
+          long mega = (long) n;
+          long mega = 512L;
+          long mega = (long) 512 * 1024;
+
+          Though the priority of Operator is superior Arithmetic Operator '*' than Cast '(long).
+          because Type-Change is done before calculate, 
+          the expression ' (long) 512 * 1024' is Casted about '512' only. 
+          At first, Type-Change int 512 -> long 512, and they are calculated.
+
+          –void* -> struct SchoolMate*
+          typedef struct SchoolMate { ... } MATE;
+          ----
+          void *p;
+          MATE *mateP;
+
+          p = malloc(size);
+          mateP = (MATE*) p;
+
+          šHow to find Type name of Cast: kp56l
+          At first, imagine the definition expression of the Variable.
+          And then, delete the Variable name from it.
+
+          [Example] Pointer which indicate Variable 'result' as Function 'int func()' Return Value:
+          At first, imagine the definition expression.
+            int *result;
+             «
+          And then, delete the Variable name.         
+            int* 
+             «
+          This is Type name of Cast.
+            result = (int*) func();
+
+*@subject ŸArithmetic Type-Change (implicitly)
+          Arithmetic Type-Change: 
+            At the time of calculation, if Operand Types are different, 
+            Type-Change is done before culculation, and then calculation is done by same Types.
+
+            Operand / Opeland: The numeric value which is calculated by Operator.
+
+          [How to Type-Change] in specification of C language
+          This is described as 'if-statement' of C code in original. 
+          But I will write it by human language here, as following the Text Book kCAnsiYHl.
+            
+            [Summary]
+            The Type which has more wide range in Operands, is prefered.
+            Whole of Operands are changed to its Type. 
+            and the solution of calculation is its Type, too.
+            
+            [Superior Priority] Type which has more wide range
+            (superior)  long double -- double -- float -- unsigned long int -- unsigned int -- long int -- int  (inferior)
+            
+            [next Superior Priority] value than sign
+            (superior)   unsigned  -- signed   (inferior)
+
+            [if-statement] How to Type-Change is decided by this.
+
+                if ( Either Operands are 'long double' Type) {
+                   Whole of Operands are changed to 'long double' Type;
+                }
+                else if ( Either Operands are 'double' Type ) {
+                   Whole of Operands are changed to 'double' Type;
+                }
+                else if ( Either Operands are 'float' Type ) {
+                   Whole of Operands are changed to 'float' Type;
+                }
+                else if ( Either Operands are 'unsigned long int' Type ) {
+                   Whole of Operands are changed to 'unsigned long int' Type;
+                }
+                else if ( Either Operands are 'unsigned int' Type ) {
+                   Whole of Operands are changed to 'unsigned int' Type;
+                }
+                else if ( Either Operands are 'long int' Type ) {
+                   Whole of Operands are changed to 'long int' Type;
+                }
+                else if ( Either Operands are 'int' Type ) {
+                   Whole of Operands are changed to 'int' Type;
+                }
+
+             yNotationz'long int' and 'unsigned int'
+              Comparing the range of them in the Compiler,
+              the Type which has more wide range, is superior priority. 
+
+*@subject ŸAssign Type-Change (implicitly)
+
+
+
