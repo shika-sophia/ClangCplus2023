@@ -54,10 +54,13 @@
           long mega = 512L;
           long mega = (long) 512 * 1024;
 
-          Though the priority of Operator is superior Arithmetic Operator '*' than Cast '(long).
+          Though the priority of Operator is superior Arithmetic Operator '*' than Cast '(long)'.
           because Type-Change is done before calculate, 
-          the expression ' (long) 512 * 1024' is Casted about '512' only. 
-          At first, Type-Change int 512 -> long 512, and they are calculated.
+          the expression '(long) 512 * 1024' means to do Cast about '512' only. 
+          not only Type-Change int 512 -> long 512, also int 1024 -> long 1024, 
+          and they are calculated.
+
+          => more detail ŸAthemetic Type-Changekbelowl
 
           –void* -> struct SchoolMate*
           typedef struct SchoolMate { ... } MATE;
