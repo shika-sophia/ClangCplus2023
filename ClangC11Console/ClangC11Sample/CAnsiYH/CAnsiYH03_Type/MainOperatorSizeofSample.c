@@ -98,8 +98,8 @@ typedef struct SchoolMate {
     long totalIndividual;
 } MATE;
 
-int main(void) {
-//int mainOperatorSizeofSample(void) {
+//int main(void) {
+int mainOperatorSizeofSample(void) {
     //---- [Example 1] ----
     printf("char : %u \n", sizeof(char));
     printf("char*: %u \n", sizeof(char*));
