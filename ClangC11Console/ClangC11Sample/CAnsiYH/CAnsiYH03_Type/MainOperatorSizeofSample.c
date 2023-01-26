@@ -44,15 +44,21 @@
 *
 *@subject [Example 1] ÅkCAnsi p54Ål
 *         The program shows how bytes these Primitive Types occupy in Memory, as below code.
-*         The result depends on this Compiler [Clang-C11 of Visual Studio 2019].
 * 
 *         //====== Result ====
+*        ÅyNotationÅzThe result depends on this Compiler [Clang-C11 of Visual Studio 2019].
+*         The unit is 'Byte'.
+* 
 *         char : 1
 *         char*: 4
 *         short: 2
 *         int  : 4
 *         long : 4
 *         long long: 8
+* 
+*         float: 4
+*         double: 8
+*         long double: 8
 * 
 *@subject [Example 2]
 *         The program is that measure the necessary size in Memory, by using 'sizeof',
@@ -92,8 +98,8 @@ typedef struct SchoolMate {
     long totalIndividual;
 } MATE;
 
-//int main(void) {
-int mainOperatorSizeofSample(void) {
+int main(void) {
+//int mainOperatorSizeofSample(void) {
     //---- [Example 1] ----
     printf("char : %u \n", sizeof(char));
     printf("char*: %u \n", sizeof(char*));
@@ -101,8 +107,11 @@ int mainOperatorSizeofSample(void) {
     printf("int  : %u \n", sizeof(int));
     printf("long : %u \n", sizeof(long));
     printf("long long: %u \n", sizeof(long long));
+    printf("float: %u \n", sizeof(float));
+    printf("double: %u \n", sizeof(double));
+    printf("long double: %u \n", sizeof(long double));
     printf("\n");
-
+    
     //---- [Example 2] ----
     MATE *mateP;
     mateP = (MATE*)malloc(sizeof(MATE) * 10);
@@ -123,6 +132,9 @@ short: 2
 int  : 4
 long : 4
 long long: 8
+float: 4
+double: 8
+long double: 8
 
 //---- [Example 2] ----
 MATE : 80

@@ -7,14 +7,26 @@
 *
 *@content CAnsiYH Chapter 3  Type | Typ-Change / p55-
 *@summary Reference_CAnsiTypeChange.txt
+          [Summary]
+          ¡ Type-Change kp55l
+            ŸCast Type-Change             (explicitly)
+            ŸArithmetic Type-Change       (implicitly)
+            ŸAssign Type-Change           (implicitly)
+            ŸCalling Function Type-Change (implicitly)
+            ŸCompare Type-Change          (implicitly)
+
+          ŸType Qualifier 'const'
+          ŸType Qualifier 'volatile'
 
 *@English [E] cast      (n/v):     o‰‰, ’’‘¢   | [P] –¾¦“I‚ÈŒ^•ÏŠ·
-          [E] explicit  (adj):     –¾¦“I  <-> implicit ˆÃ–Ù“I
+          [E] explicit  (adj):     –¾¦“I  <->  implicit ˆÃ–Ù“I
           [E] prefer      (v):     —Dæ‚·‚é  =:= expedite (v), prioritize (v)@|  preferential (adj)  —Dæ“I 
-
+          [E] opposite  (adj):     ”½‘Î, ‹t, Œü‚©‚¢, ³”½‘Î, Œü‚©‚¢ ‘¤, ‘ÎŒü
           [M] Arithmetic  (n):     Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È  | arithmetical (adj)
+          
           [P] Operator    (n):     ‰‰Zq
-          [p] Operand     (n):     ”í‰‰Z” (= ‰‰Zq‚É‚æ‚èŒvZ‚³‚ê‚é”’l)  | opeland (n)
+          [P] Operand     (n):     ”í‰‰Z” (= ‰‰Zq‚É‚æ‚èŒvZ‚³‚ê‚é”’l)  | opeland (n)
+          [P] Qualifier   (n):     Cüq
 
 *@see 
 *@author  shika
@@ -26,14 +38,13 @@
                        with the context or with necessary.
                        It is done, explicitly (= enforcely) or implicitly (= automatically).
 
-          [Cause of Type-Change]
+          [Causes of Type-Change]
           EBy Cast Operator'(Type)':  explicitly Type-change.
           EBy Arithmetic Operator:    implicitly Type-change at the time of calucurate.
           EBy Assign Operator:        implicitly Type-Change when Variable is assigned the value.
-          EBy Calling Function:       implicitly Type-Change when Function is called with giving the Argument, 
-                                       in case that Argument defined-Type is different from given parameter Type to Argument,
-                                       that is Assign Type-Change case, too.
-                                    
+          EBy Calling Function:       implicitly Type-Change when Function is called with giving the Argument.                                        
+          EBy Compare Operator:       implicitly Type-Change when conditional expression is compared.
+
 *@subject ŸCast Type-Change (explicitly)
           Cast: When we want, Type can be changed explicitly, by Cast Operator '(Type)' before the expression.
                 
@@ -136,6 +147,86 @@
               the Type which has more wide range, is superior priority. 
 
 *@subject ŸAssign Type-Change (implicitly)
+          Assign Type-Change: 
+              Type-Change which is implicitly (= automatically) done, 
+              in the case that these are different Types, the left and right side of Assign Operator '=',
+              at the time of assignment.
+
+              [Java][C#]
+              Type-Change can be done, as addition above to that, 
+              in the case only that the left side Type as being assigned value, is more wide range than right side Type as expression or value.
+              In the opposite case that the left is more narrow range than the right, the Type-Change is not done implicitly,
+              or it is required to Cast explicitly, to tell Compiler that it is safe Type-Change.
+              The word "safe" means that Programmer know and can accept the possibility of Lack of Binary Digit, happen by Type-Change.
+              If you write the code without Cast explicitly in narrow assignment case, 
+              you will be thrown Compile Error, because of different-Types or unsafe of the range.
+
+              [Example]
+              int narrow = 0;
+              long wide = narrow;      // Type-Chage is done implicitly, int -> long.
+
+              long wide = 0L;
+              int narrow = wide;       // [C] No problem, still this.
+                                       // But it is possible to be happen Lack of Binary Digit by the Type-Change.
+                                          => see [Lack of Binary Digit] kReference_CAnsiType.txtl
+
+              int narrow = (int) wide; // [Java][C#] need Cast explicitly.
+
+*@subject ŸCalling Function Type-Change
+          [Definition]
+          formal argument: The Argument of Definition Function.
+                           The word "formal" means that actual value is un-determined yet.
+                           The actual value is determined at the time of Calling Function.
+          actual argument: The Argument which is given the value form origin of calling,
+                           at the time of Calling Function.
+
+          Calling Function Type-Change:
+              At the time of Calling Function, Caller-Function give some values (or nothing in case 'void') as Argument for Called-Function.
+              Then in Called-Function, Local Variables are initialized by the given Argument value,
+              so that the initialization means as same as Assigning the value to the defined Argument Type,
+              Therefore Calling Function bring on Assign Type-Change.
+
+              The Type-Change is done,
+              in the case only that formal Argument defined-Type is different from given actual Argument Type.
+
+          [Example]
+          –Definition Function
+          <string.h>
+            „¤ char* strcpy(char* to, const char* from)   // [~] C11 Compile Error because of "unsafe"
+
+          –Calling Function
+          char buffer[256];
+          strcpy(buffer, "Hello World");
+
+          In this case, Assign Type-Change is done impicitly such as:
+          strcpy((char*) buffer, (const char*)"Hello World");
+
+*@subject ŸCompare Type-Change (implicitly)
+          Compare Type-Change: The Type-Change which is done,
+                               before comparing conditional expression in 'if', 'switch', 'for', or 'while' statement.
+         
+          [Example] Failure Example about Compare Type-Change
+          unsigned int zero = 0;
+          int count = 10;
+
+          while (count >= zero) {
+            count--;
+          }
+
+          In this case, the program will behave eternal loop.
+          because when 'count' and 'zero' values are compared,
+          before comparision, these value are Type-Changed to more wide range Type (= unsigned int).
+          So when 'count == -1', before comparision, it is Type-Changed to 'unsigned int' and the value is to be 0.
+          Then compare in 'while (count >= zero)', '0 >= 0' is true, do next iteration 'count--;'.
+          When 'count == -2', as same ...
+          Consequently, the program will behave eternal loop.
+
+          That will be solved by that the 'zero' is defined as 'int'. 
+
+*@subject ŸType Qualifier 'const' 
+
+*@subject ŸType Qualifier 'volatile'
 
 
 
+[EOF]
