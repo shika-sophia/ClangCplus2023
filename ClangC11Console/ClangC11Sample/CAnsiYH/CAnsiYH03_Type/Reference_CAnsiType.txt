@@ -59,9 +59,11 @@
           [E] intention  (n):     意図　　intend (v) | contemplate (v) 意図する、企図する、熟視する
           [E] appropriate (adj):  適した、適切
           [E] regard     (v):     点, 考えて, みなす, 見なす, に関して, 敬意
-          [E] dimension  (n):     次元
+          [E] assign     (v):     割り当てる、代入する               | assignment (n)
+          [E] replace    (v):     置換する                          | replacement (n)
+          [E] substitute (v):     入れ替える、交代する、代入する      | substitution (n)
+          [E] allocate   (v):     割り当てる、配分する、場所を決める  | allocation (n)
           [E] dispatch   (n/v):   派遣、発送、急派   =:= allocate (v)
-          [E] allocate   (v):     割り当てる、配分する、場所を決める
 
           ＊Programming
           [P] define    (v):      定義する
@@ -76,17 +78,17 @@
           [P] alias     (n):      別名、エイリアス
           [P] struct    (n):      構造体  <- structure
           [P] union     (n):      共同体
-          [p] Predefined keyword: 指定子 / 記憶クラス指定子
+          [p] predefined keyword: 指定子 / 記憶クラス指定子
 
           ＊Mathematics
-          [M] precision (n):      精度、桁数   = digit (n)
+          [M] precision (n):      精度、桁数   = digit (n)  桁
           [M] recursive (adj):    再帰的 (= 自分自身と同じ構造のものを繰り返すこと) | recursion (n), recurse (v)
           [M] dimension (n):      次元
           [M] numeric (n/adj):    数値、数字の
           [M] set / subset (n):   集合 / 部分集合
           [M] fraction  (n):      分数, 割合, わずか, 端数, 小数, 一部分, 分別  =:= decimal  | fractional (adj)
           [M] exponent  (n):      指数、累乗
-          [M] Arithmetic (n):     算術, 演算, 算数, 算術演算, 算数科  arithmetical (adj)
+          [M] Arithmetic (n):     算術, 演算, 算数, 算術演算, 算数科  | Arithmetical (adj)
           [M] Statistics (n):     統計学   Statistical (adj), stats (n)
 
 *@see     ReferenceDocument\Reference_NumericTypeRange.txt
