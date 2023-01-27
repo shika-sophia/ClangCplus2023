@@ -5,7 +5,7 @@
 *@reference CAnsiYH  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
 *@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
-*@content CAnsiYH Chapter 3  Type | Typ-Change / p55-
+*@content CAnsiYH Chapter 3  Type | Type-Change / p55-65
 *@summary Reference_CAnsiTypeChange.txt
           [Summary]
           ¡ Type-Change kp55l
@@ -16,17 +16,45 @@
             ŸCompare Type-Change          (implicitly)
 
           ŸType Qualifier 'const'
+            [Difference of 'const' and '#define']
+          ['const' and Pointer]
+          ['const' and Pointer] with Cast
+
           ŸType Qualifier 'volatile'
 
 *@English [E] cast      (n/v):     o‰‰, ’’‘¢   | [P] –¾¦“I‚ÈŒ^•ÏŠ·
-          [E] explicit  (adj):     –¾¦“I  <->  implicit ˆÃ–Ù“I
-          [E] prefer      (v):     —Dæ‚·‚é  =:= expedite (v), prioritize (v)@|  preferential (adj)  —Dæ“I 
+          [E] explicit  (adj):     –¾¦“I  <->  implicit (adj)  ˆÃ–Ù“I
+          [E] prefer      (v):     —Dæ‚·‚é  =:=  expedite (v), prioritize (v)@|  preferential (adj)  —Dæ“I 
           [E] opposite  (adj):     ”½‘Î, ‹t, Œü‚©‚¢, ³”½‘Î, Œü‚©‚¢ ‘¤, ‘ÎŒü
-          [M] Arithmetic  (n):     Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È  | arithmetical (adj)
-          
-          [P] Operator    (n):     ‰‰Zq
-          [P] Operand     (n):     ”í‰‰Z” (= ‰‰Zq‚É‚æ‚èŒvZ‚³‚ê‚é”’l)  | opeland (n)
-          [P] Qualifier   (n):     Cüq
+          [E] conclusion  (n):     Œ‹˜_  =:=  consquence (n) Œ‹‰Ê, ‹AŒ‹
+          [E] regard      (v):     “_, l‚¦‚Ä, ‚İ‚È‚·, Œ©‚È‚·, ‚ÉŠÖ‚µ‚Ä, ŒhˆÓ
+          [E] omit      (n/v):     ”²‚©‚·AÈ‚­
+          [E] abbreviate  (v):     È—ª‚·‚éA’Zk‚·‚é   | abbreviation (n) È—ªŒ`
+          [E] complicate  (v):     •¡G‚É‚·‚é
+          [E] conflict  (n/v):     ‹£‡, •´‘ˆ, ‘Î—§, Õ“Ë, –µ‚, Š‹“¡
+          [E] immutable (adj):     •s•Ï  <->  mutable (adj) ‰Â•Ï 
+          [E] assign     (v):      Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é  | assignment (n)
+          [E] replace    (v):      ’uŠ·‚·‚é             | replacement (n)
+          [E] appropriate (adj):   “K‚µ‚½A“KØ
+          [E] restrict   (v):      §ŒÀ‚·‚é, ŒÀ’è‚·‚é, ‹K§‚·‚é | restriction (n) | restrictive (adj)
+          [E] constrain  (v):      §ŒÀ‚·‚é, §–ñ‚·‚é, S‘©‚·‚é, —}~, ‹­‚¢‚é  | constraint (n)
+          [E] moderate  (adj):     “K“–, ‚â‚â, ŠÉ‚â‚©, ’†’ö“x, ’ö‚æ‚­ =:= arbitrary (adj) <-> strict (adj), subtle (adj)
+          [E] arbitrary (adj):     ”CˆÓ, ˆÓ, œ“ˆÓ“I
+          [E] strict    (adj):     Œµ–§, Œµ‚µ‚­, ŒÅ‚­, ŒµŠi, Œµd, ‚ ‚­‚Ü‚Å
+          [E] intention  (n):      ˆÓ}    intend (v)  | contemplate (v) ˆÓ}‚·‚éAŠé}‚·‚éAn‹‚·‚é
+          [E] deprecated(adj):     ”ñ„§A”p~‚³‚ê‚½  <->  recommended (adj) „§‚³‚ê‚½
+          [E] optimize   (v):      Å“K‰»‚·‚é, Å‘åŒÀ  | optimization (n) | optimal (adj)
+          [E] suspend    (v):      ’â~‚·‚éA’†’f‚·‚é
+
+          –Programming
+          [P] definition  (n):     ’è‹`
+          [P] declaration (n):     éŒ¾, ƒvƒƒgƒ^ƒCƒvéŒ¾
+          [P] operator    (n):     ‰‰Zq
+          [P] operand     (n):     ”í‰‰Z” (= ‰‰Zq‚É‚æ‚èŒvZ‚³‚ê‚é”’l)  | opeland (n)
+          [P] qualifier   (n):     Cüq
+          [P] volatile  (adj):     •p”É‚É’l‚ª•Ï‰»‚·‚é  | [E] Šö”­«‚ÌA•Ï‚í‚è‚â‚·‚¢
+          –Mathematics
+          [M] Arithmetic  (n):     Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È  | Arithmetical (adj)
 
 *@see 
 *@author  shika
@@ -34,16 +62,16 @@
 */ 
 
 *@subject ¡ Type-Change kp55l
-          Type-Change: There is that Type can be changed from Type defined originally, 
+          Type-Change: Type can be changed from initially-defined Type, 
                        with the context or with necessary.
                        It is done, explicitly (= enforcely) or implicitly (= automatically).
 
           [Causes of Type-Change]
           EBy Cast Operator'(Type)':  explicitly Type-change.
           EBy Arithmetic Operator:    implicitly Type-change at the time of calucurate.
+          EBy Compare Operator:       implicitly Type-Change when conditional expression is compared.
           EBy Assign Operator:        implicitly Type-Change when Variable is assigned the value.
           EBy Calling Function:       implicitly Type-Change when Function is called with giving the Argument.                                        
-          EBy Compare Operator:       implicitly Type-Change when conditional expression is compared.
 
 *@subject ŸCast Type-Change (explicitly)
           Cast: When we want, Type can be changed explicitly, by Cast Operator '(Type)' before the expression.
@@ -86,7 +114,7 @@
           At first, imagine the definition expression of the Variable.
           And then, delete the Variable name from it.
 
-          [Example] Pointer which indicate Variable 'result' as Function 'int func()' Return Value:
+          [Example] Pointer which indicate Variable 'result' as  Return Value of Function 'int func()':
           At first, imagine the definition expression.
             int *result;
              «
@@ -146,63 +174,8 @@
               Comparing the range of them in the Compiler,
               the Type which has more wide range, is superior priority. 
 
-*@subject ŸAssign Type-Change (implicitly)
-          Assign Type-Change: 
-              Type-Change which is implicitly (= automatically) done, 
-              in the case that these are different Types, the left and right side of Assign Operator '=',
-              at the time of assignment.
-
-              [Java][C#]
-              Type-Change can be done, as addition above to that, 
-              in the case only that the left side Type as being assigned value, is more wide range than right side Type as expression or value.
-              In the opposite case that the left is more narrow range than the right, the Type-Change is not done implicitly,
-              or it is required to Cast explicitly, to tell Compiler that it is safe Type-Change.
-              The word "safe" means that Programmer know and can accept the possibility of Lack of Binary Digit, happen by Type-Change.
-              If you write the code without Cast explicitly in narrow assignment case, 
-              you will be thrown Compile Error, because of different-Types or unsafe of the range.
-
-              [Example]
-              int narrow = 0;
-              long wide = narrow;      // Type-Chage is done implicitly, int -> long.
-
-              long wide = 0L;
-              int narrow = wide;       // [C] No problem, still this.
-                                       // But it is possible to be happen Lack of Binary Digit by the Type-Change.
-                                          => see [Lack of Binary Digit] kReference_CAnsiType.txtl
-
-              int narrow = (int) wide; // [Java][C#] need Cast explicitly.
-
-*@subject ŸCalling Function Type-Change
-          [Definition]
-          formal argument: The Argument of Definition Function.
-                           The word "formal" means that actual value is un-determined yet.
-                           The actual value is determined at the time of Calling Function.
-          actual argument: The Argument which is given the value form origin of calling,
-                           at the time of Calling Function.
-
-          Calling Function Type-Change:
-              At the time of Calling Function, Caller-Function give some values (or nothing in case 'void') as Argument for Called-Function.
-              Then in Called-Function, Local Variables are initialized by the given Argument value,
-              so that the initialization means as same as Assigning the value to the defined Argument Type,
-              Therefore Calling Function bring on Assign Type-Change.
-
-              The Type-Change is done,
-              in the case only that formal Argument defined-Type is different from given actual Argument Type.
-
-          [Example]
-          –Definition Function
-          <string.h>
-            „¤ char* strcpy(char* to, const char* from)   // [~] C11 Compile Error because of "unsafe"
-
-          –Calling Function
-          char buffer[256];
-          strcpy(buffer, "Hello World");
-
-          In this case, Assign Type-Change is done impicitly such as:
-          strcpy((char*) buffer, (const char*)"Hello World");
-
 *@subject ŸCompare Type-Change (implicitly)
-          Compare Type-Change: The Type-Change which is done,
+          Compare Type-Change: The Type-Change which is implicitly done,
                                before comparing conditional expression in 'if', 'switch', 'for', or 'while' statement.
          
           [Example] Failure Example about Compare Type-Change
@@ -223,10 +196,162 @@
 
           That will be solved by that the 'zero' is defined as 'int'. 
 
+*@subject ŸAssign Type-Change (implicitly)
+          Assign Type-Change: 
+              Type-Change which is implicitly done, 
+              in the case that these are different Types, the left and right side of Assign Operator '=',
+              at the time of assignment.
+
+              [Java][C#]
+              Type-Change can be done, as addition above to that, 
+              in the case only that the left side Type as being assigned value, is more wide range than right side Type as expression or value.
+              In the opposite case that the left is more narrow range than the right, the Type-Change is not done implicitly,
+              or it is required to Cast explicitly, to tell Compiler that it is safe Type-Change.
+              The word "safe" means that Programmer know and can accept the possibility of Lack of Binary Digit, happened by Type-Change.
+              If you write the code without Cast explicitly in narrow assignment case, 
+              you will be thrown Compile Error, because of different-Types or unsafe of the range.
+
+              [Example]
+              int narrow = 0;
+              long wide = narrow;      // Type-Chage is done implicitly, int -> long.
+
+              long wide = 0L;
+              int narrow = wide;       // [C] No problem, still this.
+                                       // But it is possible to be happen Lack of Binary Digit by the Type-Change.
+                                          => see [Lack of Binary Digit] kReference_CAnsiType.txtl
+
+              int narrow = (int) wide; // [Java][C#] need Cast explicitly.
+
+*@subject ŸCalling Function Type-Change (implicitly)
+          [Definition]
+          formal argument: The Argument of Definition Function.
+                           The word "formal" means that actual value is un-determined yet.
+                           The actual value is determined at the time of Calling Function.
+          actual argument: The Argument which is given the value form origin of calling,
+                           at the time of Calling Function.
+
+          Calling Function Type-Change:
+              At the time of Calling Function, Caller-Function give some values (or nothing in case 'void') as Argument for Called-Function.
+              Then in Called-Function, Local Variables are initialized by value of the given-Argument,
+              so that the initialization means as same as Assignment the value to the defined-Argument Type,
+              Therefore Calling Function bring on Assign Type-Change.
+
+              The Type-Change is implicitly done,
+              only in the case that: Type defined by formal Argument, is different from Type given by actual Argument.
+
+          [Example]
+          –Definition Function
+          <string.h>
+            „¤ char* strcpy(char* to, const char* from)   // [~] C11 Compile Error because of "unsafe"
+
+          –Calling Function
+          char buffer[256];
+          strcpy(buffer, "Hello World");
+
+          In this case, Assign Type-Change is impicitly done such as:
+          strcpy((char*) buffer, (const char*)"Hello World");
+
 *@subject ŸType Qualifier 'const' 
+          Type Qualifier: The Qualifier which is used with Type Declaration and Definition,
+                          and which specify some sense to the qualified Type.
+          const: EThe keyword come from C++, it is abbreviation of "constant".
+                 EIt means to be not able to modify anything and assign again, excepting at the time of Definition with initialization.,
+                   so that the qualified Variable (= Type) can be regarded as like constant value.
+                   so that 'const' can protect expected-immutable Variable from unexpected-assignment, that is called "safe program".
+                   so that it is almost similar to '#define xxxx constant_value'.
+
+                 [Difference of 'const' and '#define']
+                   The word "almost" above means that:
+                   EIn '#define' case, the scope is automatically replaced the constant value from top to end of the file,
+                     but 'const' case,  the scope is within the Block only, such as Function or statement where it is defined, after there.
+                   EIn '#define' case, Address Operator '&' of Pointer is not available,
+                     but 'const' case, '&' is available.
+
+                 E'const' can be used by itself only, in this case, it means 'const int'.
+                 E'const' can be used with member in 'struct'.
+                 EThe qualified Type cannot be assign again, but can be initialized the value only.
+                 
+                 [Format]
+                 const Type Variable_name = Initial_value;
+
+                 [Example]
+                 const int no_good = -1;
+                 const char version[] = "Version 1.0";
+
+*@advance ['const' and Pointer]
+          EA program of which we use both 'const' and Pointer,
+            is to be safe from modify and conflict value, but complicated the definition.
+          EThe word "safe" means that:
+            'const' can protect expected-immutable Variable from unexpected-assignment, that is called "safe program".
+            We should add 'const' appropriately, so that Compiler can find out unexpected-assignment.
+
+          [Example]
+          –Integer Valiable
+          Three Variables are defined as 123, below. 
+          Though the location of 'const' is different, both are the same meaning.
+
+          int        i = 123;  //mutable Variable
+          const int ci = 123;  //immutable Variable as like constant value
+          int const ic = 123;  //immutable Variable as like constant value
+
+          –Pointer
+          Four Pointers below which indicate int Variable 'i', is initialized by address '&i' of 'i'.
+
+          int        *iP = &i;  // (1)
+          const int *ciP = &i;  // (2)
+          int const *icP = &i;  // (3)
+          int* const iPc = &i;  // (4)
+
+          The 'const' means that:
+          (1)    Variable 'iP' is not added 'const', so it is normal Pointer which indicate 'i'.
+          (2)(3) Variable 'ciP' and 'icP' are the same meaning, both are Pointer which indicate 'const int'.
+          so that both cannot be assigned and modified such as:
+              *ciP = 123;  // [~] invalid assignment of any other value, even if the value is the same.
+              (*icP)++;    // [~] invalid modification, because it is immutable, by being defined as 'const'.
+          Consequently, int value which Pointer indicate, cannot be modified.
+
+          But Pointer value can be modified such as:
+              ciP = &j;   // [Z] Pointer 'ciP' is assigned another address of 'int j'.
+              icP++;      // [Z] Address of Pointer 'icP' is incremented.
+
+          (4) Variable 'iPc' is 'const Pointer' which indicate int Variable 'i'.
+          The value which Pointer indicate, can be assigned and modified 
+          The Pointer value cannot be done, such as:
+              *iPc = 123;  // [Z] correct assignment
+              (*iPc)++;    // [Z] correct modification
+              iPc = &j;    // [~] invalid assignment
+              iPc++;       // [~] invalid modification
+          Threrefore, (4) is the opposite conclusion from (2)(3).
+
+          –Most complicated pattern:
+          [Example]
+          const int* const ciPc = &i; // (5)
+          int const* const icPc = &i; // (6)
+
+          (5)(6) Both are the same meaning, 'const Pointer' which indicate 'const int' Variable,
+          so that the value which Pointer indicate, cannot be assigned and modified,
+          so that Pointer value cannot be done, neither.
+
+*@advance ['const' and Pointer] with Cast
+          [Example]
+          const int ci = 123;   
+          const int ciP = &ci;  // It is Pointer which indicate const int Variable 'ci'.
+          int i = 456;
+          int *iP;              // It is normal Pointer which indicate int Variable 'i'.
+
+          ciP = iP;             // [Z] 'ciP' can be assigned more moderate restriction 'iP than itself.  
+          iP = ciP;             // [~]  'iP' cannot be assigned more strict restriction 'ciP' than itself.
+          iP = (int*) ciP;      // [Z]@By using Cast 'const int*' -> 'int*', that can be done.
+          
+          Consquently, 'const' protect Variable from unexpected-assignment,
+          Compiler cannot allow to break the restriciton of 'const'.
+          Though, by using Cast, it allow that,
+          but considering the original intention of 'const', the Cast as above is deprecated for program safety.
 
 *@subject ŸType Qualifier 'volatile'
+          volatile: the orignal sense as English is "frequently variable", and
+                    the specific sense as programming word is to suspend Compiler Optimization.
 
-
+          [Compiler Optimization]
 
 [EOF]
