@@ -127,8 +127,8 @@
 
 #include <stdio.h>
 
-int main(void) {
-//int mainPractice_CAnsiYH03(void) {
+//int main(void) {
+int mainPractice_CAnsiYH03(void) {
     //---- Practice 1 ----
     long long len = 100 * 1024;
     printf("len: %lld \n", len);
@@ -145,7 +145,7 @@ len2: 102400
 
 ÅyConsiderationÅz
  Because the '102400' is within int-range in this Compiler [Clang-C11 of Visual Studio 2019]: 
- 2e+8 = 32 bits = -2147483648 Å` 2147483647,
+ 2e8 = 32 bits = -2147483648 Å` 2147483647,
  it shows correctly without happening to be Overflow.
 
 */
