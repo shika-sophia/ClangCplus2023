@@ -4,7 +4,9 @@
 *@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
 *@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
-*
+*@reference MTYH     結城 浩 『Java言語で学ぶデザインパターン入力 [マルチスレッド編] 増補改訂版』SB Creative, 2012
+(meaning    YUUKI Hiroshi   『Primer of Design Patterns learned by Java language [Multi-Thread Book] Compensated Revision Edition』SB Creative, 2012)
+
 *@content CAnsiYH Chapter 3  Type | Type-Change / p55-65
 *@summary Reference_CAnsiTypeChange.txt
           [Summary]
@@ -21,6 +23,7 @@
           ◎['const' and Pointer] with Cast
 
           ◆Type Qualifier 'volatile'
+          [Compiler Optimization]
 
 *@English [E] cast      (n/v):     出演, 鋳造   | [P] 明示的な型変換
           [E] explicit  (adj):     明示的  <->  implicit (adj)  暗黙的
@@ -45,6 +48,7 @@
           [E] deprecated(adj):     非推奨、廃止された  <->  recommended (adj) 推奨された
           [E] optimize   (v):      最適化する, 最大限  | optimization (n) | optimal (adj)
           [E] suspend    (v):      停止する、中断する
+          [E] collective term:     総称, 一括, まとめ
 
           ＊Programming
           [P] definition  (n):     定義
@@ -352,6 +356,78 @@
           volatile: the orignal sense as English is "frequently variable", and
                     the specific sense as programming word is to suspend Compiler Optimization.
 
+                    By adding 'volatile', 
+                    operations which a program can read or write or modify a data, do as described by source code,
+                    so that a data can be read and written most recent value,
+                    but the operations are possible to delay more.
+
+                    'volatile' is used in the case of Multi-Thread Execution.
+
           [Compiler Optimization]
+          The operations which Compiler adjust original source code to optimize Memory management,
+          such as 're-order' which the order of expression is substituted former and later, 
+          such as 'visibility' which because Compiler modify the storage area as below,
+          the most recent value of a data is not always refered correctly in Multi-Thread Execution.
+
+          "Compiler modify the storage area" is that: (Refering [Memory Model in Java], below)
+             If a data is not modified anything in this source code,
+             the data is normally read from Cache Area by Compiler Optimization, 
+             but it is not always most recent value.
+
+             If the program is Single-Thread Execution case, that is no problem.
+             But Multi-Thread Execution case, that is possible to happen data-conflict (= called "Data Race").
+             Adding 'volatile' only, the data is read and written form/to Heap Area.
+            
+            [Memory Model in Java] =>〔JVM Memory Model | MTYH 51, p608〕
+            ・Heap Area = Shared Memory, Common Memory
+                Whole of Threads commonly use and share there.
+                It storage insatance, field (= global variable), and Array.
+                When Program execute 'new', Memory space of the instance is taken the place in this Memory.
+
+            ・Stack Area
+                Each Thread has the Memory space one by one, to storage the definition of local variable and formal argument.
+
+            ・Cache Area
+                It is the collective term of temporary memory, including CPU-cache, register-cache, Thread-cache.
+                The initial value is copied from Heap Area, and
+                the value which is modified in program and assigned again, is temporarily storaged here.
+                
+*@advance ◎Example of 'volatile'
+          [Example]
+          void wait_ready(void) {
+              volatile char *vp = (volatile char)(0x12345678);
+
+              for(;;) {
+                  if (*vp & 1) { break; }
+              }//for loop
+          }
+
+          The self-defined Function 'wait_ready()' continue to read I/O port "0x12345678" (= address) in Memory,
+          and though there is not expression which modify the value of '*vp' in this source code,
+          (probably, there is the expression in another source file, the judge only is done here.)
+          continue to wait until the most low bit of the read value is equal to 1. ('&' is Bit Caluculate Operator).
+
+          Not adding 'volatile',
+          the initialized value of '*vp' is storaged in register-cache,
+          and the initial value is continued to be read from register-cache in for-statement, by Compiler Optimization,
+          because the value is not modified in this source code,
+          even if the value could be modified in another source file.
+          Such as like that:
+
+              void wait_ready(void) {
+                  char tempChar = *vp;
+
+                  for(;;) {
+                      if (tempChar & 1) { break; }
+                  }//for loop
+              }
+
+           In this case, the program continue to read the initial value,
+           and for-statement is never finished, and to be eternal loop.
+
+           By adding 'volatile', 
+           we can tell Compiler to suspend "Compiler Optimization", and 
+           Compiler read the recent value from Heap Area, every times,
+           though Compiler has already known that value of '*vp' is not modified in this source code.
 
 [EOF]
