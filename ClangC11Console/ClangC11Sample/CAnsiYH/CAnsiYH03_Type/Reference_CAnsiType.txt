@@ -78,7 +78,8 @@
           [P] alias     (n):      別名、エイリアス
           [P] struct    (n):      構造体  <- structure
           [P] union     (n):      共同体
-          [p] predefined keyword: 指定子 / 記憶クラス指定子
+          [P] storage class:      記憶クラス
+          [p] predefined keyword: 指定子
 
           ＊Mathematics
           [M] precision (n):      精度、桁数   = digit (n)  桁
@@ -463,7 +464,7 @@
           ・The Alias defined by 'typedef', is recognized as same as default Types, by Compiler.
             => see 〔Differences of '#define' and 'typedef' | CAnsiYH p254〕
 
-          ・[Predefined-Keyword of Memory Class] =>〔Chapter4 Variable | CAnsiYH p75〕
+          ・[Predefined-Keyword of Storage Class] =>〔CAnsiYH p75 | CAnsiYH04_Variable\Reference_CAnsiVariable.txt〕
             There are 'static', 'extern', 'auto', 'register'. 
             The 'typedef' is one of this sorts, too.
 
