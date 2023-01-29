@@ -11,7 +11,57 @@
 */ 
 
 *@content CAnsiYH Chapter 2  Basic | ASCII Character / List 2-0 / p13
-*@summary MainAsciiCharacterViewer.c
+*@summary Reference_CAnsiBasic.txt
+          MainAsciiCharacterViewer.c
+          ■ Character
+          ◆ASCII Code Chart〔C99YH 0A | p435〕
+          ◆ASCII Code Chart (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
+          ◆Non-Characters   (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
+          ◆Character Code  〔C99YH p266〕〔MainAsciiCharacterViewer.c〕
+
+          Reference_CAnsiBasic.txt
+          ◆Not using characters in C language. 〔CAnsiYH p15〕
+          ◆White-Space: Compiler recognize these as white-space. 〔CAnsiYH p15〕
+          ◆Connector [ \ ] of two Lines 〔CAnsiYH p15〕
+          ◆Comment-out 〔CAnsiYH p6, p16〕
+          ◆Token 〔CAnsi p17〕
+          ◆Suffix (and Prefix) for expessing the Literal type 〔CAnsiYH p15〕, see below〔◆Constant Value〕
+
+          ■ Constant Value (= Literal)〔CAnsiYH p18〕
+          ＊[Integer constant]
+          ＊[Floating-point Number constant]
+          ＊[Chararcter constant]
+          ＊[Wide Extended Character constant] (depending on Comiler)
+          ◆Eacape-Sequence 〔CAnsiYH p20〕〔C99YH 0D | p436〕
+          ＊ASCII corresponding them:
+          ＊To express literal
+          ＊For decimal value
+          ◆Back-Space '\b' 〔CAnsiYH p21〕
+          ◆String text Litral 〔CAnsiYH p21〕
+          ◆Concat multi String texts
+          ◆Enumeration constant => 〔CAnsiYH p44 | Chapter 3〕
+
+          ■ Identifier 〔CAnsiYH p23〕
+          ◆Reserved Words (This is often called "Keyword" in C.) 〔CAnsiYH p25〕〔C99YH 0C | p442〕
+          
+          ■ Scope
+          ・File Scope
+          ・Block Scope
+          ・Prototype Scope
+          ・Function Scope
+          
+          ■ Linkage
+          External Linkage
+          Internal Linkage
+          [Qualifier]
+          "Unresolved externals"
+          
+          ■ Various Name
+          Label
+          Name-space:
+          ・Name of Variable, Function, Alius defined by 'typedef()', and constant value in enum.
+          ・Name of Label as the target place of 'go to' statement.
+          ・Name of Tag (struct, union, enum) and Member of 'struct', 'union'.
 
 *@English [M] exponent:   指数
           [M] integer:    整数
@@ -357,7 +407,9 @@ ASCII
           [Qualifier] The usage is to write this additionally, before Identifier or Return Type of Function.
           extern: qualifier expressed External Linkage, of cause out of the Block, even if in the Block.
 
-          static: qualifier expressed Internal Linkage. of cause in the Block, even if out of the Block.
+          static: qualifier expressed Internal Linkage. of cause in the Block, even if out of the Block,
+                  so that the Identifier cannot be seen from any other files.
+                  => see ◆static 〔CAnsiYH04_Variable\Reference_CAnsiVariable.txt〕
 
           (No Qualifier): 
             If the Identifier is defined out of the Block, it always has External Linkage, excepting 'static'.
