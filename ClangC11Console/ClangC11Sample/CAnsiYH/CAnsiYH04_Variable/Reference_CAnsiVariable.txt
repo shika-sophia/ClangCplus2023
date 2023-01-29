@@ -1,0 +1,126 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH04_Variable
+*@fileName  Reference_CAnsiVariable.txt
+*@reference C99YH    åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ì¸ñÂï“] ëÊÇRî≈ÅxSB Creative, 2019
+*@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
+*@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
+*
+*@content CAnsiYH Chapter 4  Variable / p73-
+*@summary Reference_CAnsiVariable.txt
+          Å° Variable ÅkCAnsiYH p73Ål
+            [Difference of Variable and Object]
+
+          ÅüRight Side Value ÅkCAnsiYH p74Ål
+          ÅEVariable
+          ÅEPointer
+          ÅEArray
+          ÅEStruct member
+          ÅEPointer indirect reference for Struct
+
+          ÅüAttribute of Variable ÅkCAnsiYH p74Ål
+          ÅñType       => ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+          ÅñStorage Class  (= Storage Duration)
+            ÅEtypedef  => ÅkCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtÅl
+            ÅEstatic
+            ÅEextern
+            ÅEauto
+            ÅEregister
+
+          Åüstatic ÅkCAnsiYH p77-78, p81Ål
+          ÅñInternal Linkage    ÅkCAnsiYH p77-78ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+          Åñstatic Storage ClassÅkCAnsiYH p81Ål
+
+*@English [E] assign      (v):     äÑÇËìñÇƒÇÈÅAë„ì¸Ç∑ÇÈ  | assignment (n)
+          [E] classification (n):  ï™óﬁ, ãÊï™, ÉNÉâÉXï™ÇØ, éØï , óﬁå^âª | classify (v)  =:= category (n) | categorize (v)
+          [E] restrict    (v):     êßå¿Ç∑ÇÈ, å¿íËÇ∑ÇÈ, ãKêßÇ∑ÇÈ | restriction (n) | restrictive (adj)
+
+          ÅñProgramming
+          [P] definition  (n):     íËã`
+          [P] declaration (n):     êÈåæ, ÉvÉçÉgÉ^ÉCÉvêÈåæ
+          [P] operator    (n):     ââéZéq
+          [P] operand     (n):     îÌââéZêî (= ââéZéqÇ…ÇÊÇËåvéZÇ≥ÇÍÇÈêîíl)  | opeland (n)
+          [P] qualifier   (n):     èCè¸éq
+          [P] identifier  (n):     éØï éqÅAñºëO
+          [P] storage class:       ãLâØÉNÉâÉX
+          [P] predefined keyword:  éwíËéq
+          [P] Object-Oriented:     ÉIÉuÉWÉFÉNÉgéwå¸
+
+*@subject Å° Variable ÅkCAnsiYH p73Ål
+          Variable: The named space in Memory, whose name is called "Variable-name". 
+          Object:   The origin sense is thing or target in English.
+                    There is to be called 'Object', instead of 'Variable'.
+
+          [Difference of Variable and Object]
+          They are not always the same thing.
+          If it is a named thing in Memory, it can be called "Variable".
+          Whichever named or not named in Memory, it can be called "Object in Memory", as general saying as a space in Memory.
+          such as Object which Pointer indicate:
+          the Object is including named 'Variable' or un-named a space in Memory.
+
+          By the way, we call the file which Compile yield, "Object File".
+          The 'Object' means a target, or is regarded a file as a thing.
+
+*@subject ÅüRight Side Value ÅkCAnsiYH p74Ål
+          Right Side Value or Expession: 
+            The Expessions as target of assinment.
+            In other word, the Opeland which is assigned by Assign Operator.
+            The symbol '=' only means 'assignment' in Program language, not means 'equal' in Mathematics.
+
+            So that we need distinguish Right or Left side of Assign Operetor '=', as like that:
+            Right side is Variable as target of assignment, 
+            Left  side is value    as origin of assignment.
+
+          [Kinds of Right Side Value or Expression]
+          ÅEVariable
+          ÅEPointer
+          ÅEArray
+          ÅEStruct member
+          ÅEPointer indirect reference for Struct
+
+          [Example]
+          int x = 1 + 2;   // Variable
+          int *p = &i;     // Pointer
+          a[i] = 100;      // Array
+          mate.id = 1;     // Struct member
+          mateP->id = 2;   // Pointer Indirect Reference for Struct
+
+*@subject ÅüAttribute of Variable ÅkCAnsiYH p74Ål
+          Attribute of Variable: The two specifications which Variable have, such as Type, Storage Class.
+          ÅñType: The data type which Variable can storage. 
+                  => see ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+
+          ÅñStorage Class: = Storage Duration:
+              The Predefined Keywords as a Qualifier which express the life length of Variable.
+
+            Class: It means "Classification of Storage Area in Memory", in C language.
+                   In this case, it does not mean "Class of Object-Oriented" in C++.
+
+          [Kings of Storage Class Predefined Keywords]
+          ÅEtypedef  => ÅkCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtÅl
+          ÅEstatic
+          ÅEextern
+          ÅEauto
+          ÅEregister
+
+*@subject Åüstatic ÅkCAnsiYH p77-78, p81Ål
+          static: The original sense in English is fixed, immutable, quiet, silent, gently; <-> as the opposite sense, 'dynamic'.
+            There are two senses in C language, as next.
+            (1) Variable or Function which is qualified 'static' at out of a Block, have Internal Linkage.
+            (2) Variable which is qualified 'static' in a Block, have static Storage Class, adding above.
+
+          ÅñInternal LinkageÅkCAnsiYH p77-78, p81Ål=> see ÅüLinkageÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+          An Identifier with 'static' always have Internal Linkage, of cause in a Block, even if out of a Block, 
+          so that the Identifier cannot be seen from any other files.
+
+          An Identifier of Function with 'static' always have Internal Linkage,
+          The Function can be seen and refered from this file only.
+
+          [Example] at out of a Block:
+          static int x;  // x which has Internal Linkage, cannot be seen from any other files.
+          int y;         // y which is not restricted anything, can be seen and refered from any files.
+
+          Åñstatic Storage ClassÅkCAnsiYH p81Ål
+*@see 
+*@author  shika
+*@date    2023-01-29
+*/ 
