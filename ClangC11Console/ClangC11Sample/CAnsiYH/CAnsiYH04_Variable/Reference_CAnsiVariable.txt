@@ -10,7 +10,7 @@
           Å° Variable ÅkCAnsiYH p73Ål
             [Difference of Variable and Object]
 
-          ÅüRight Side Value ÅkCAnsiYH p74Ål
+          ÅüLeft Side Value ÅkCAnsiYH p74Ål
           ÅEVariable
           ÅEPointer
           ÅEArray
@@ -60,17 +60,17 @@
           By the way, we call the file which Compile yield, "Object File".
           The 'Object' means a target, or is regarded a file as a thing.
 
-*@subject ÅüRight Side Value ÅkCAnsiYH p74Ål
-          Right Side Value or Expession: 
+*@subject ÅüLeft Side Value ÅkCAnsiYH p74Ål
+          Left Side Value or Expession: 
             The Expessions as target of assinment.
             In other word, the Opeland which is assigned by Assign Operator.
             The symbol '=' only means 'assignment' in Program language, not means 'equal' in Mathematics.
 
-            So that we need distinguish Right or Left side of Assign Operetor '=', as like that:
-            Right side is Variable as target of assignment, 
-            Left  side is value    as origin of assignment.
+            So that we need distinguish Left or Right side of Assign Operetor '=', as like that:
+            Left  side is Variable as target of assignment, 
+            Right side is value    as origin of assignment.
 
-          [Kinds of Right Side Value or Expression]
+          [Kinds of Left Side Value or Expression]
           ÅEVariable
           ÅEPointer
           ÅEArray
