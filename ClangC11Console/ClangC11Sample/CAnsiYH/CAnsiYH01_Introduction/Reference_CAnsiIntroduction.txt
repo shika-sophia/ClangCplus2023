@@ -110,11 +110,13 @@
           ・struct
           ・union
 
-          ＊Memory Class: qualifier to make storage where in Memory
+          ＊Storage Class: qualifier to make storage where in Memory
           ・static: internal of the Source File only
           ・extern: external of the Source File 
           ・auto:
           ・register:
+
+          =>〔CAnsiYH p75 | CAnsiYH04_Variable\Reference_CAnsiVariable.txt〕
 
 *@subject ◆Function
           ＊main(): specific Function meaning Entry Point of Execute.
