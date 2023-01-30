@@ -21,18 +21,27 @@
           ÅñType       => ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
           ÅñStorage Class  (= Storage Duration)
             ÅEtypedef  => ÅkCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtÅl
+            ÅEauto
             ÅEstatic
             ÅEextern
-            ÅEauto
             ÅEregister
-
-          Åüstatic ÅkCAnsiYH p77-78, p81Ål
+          ÅüPredefined Keyword 'auto'   ÅkCAnsiYH p75, p82Ål
+          ÅüStack Overflow ÅkCAnsiYH p76Ål
+         ÅyNotationÅz'go to' statement  ÅkCAsinYH p78Ål
+          ÅüPredefined Keyword 'static' ÅkCAnsiYH p77-78, p81Ål
           ÅñInternal Linkage    ÅkCAnsiYH p77-78ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
           Åñstatic Storage ClassÅkCAnsiYH p81Ål
+          ÅöConceal Function    ÅkCAnsiYH p79Ål
+          ÅüPredefined Keyword 'extern'   ÅkCAnsiYH p80, p123Ål
+          ÅüPredefined Keyword 'register' ÅkCAnsiYH p81Ål
 
 *@English [E] assign      (v):     äÑÇËìñÇƒÇÈÅAë„ì¸Ç∑ÇÈ  | assignment (n)
           [E] classification (n):  ï™óﬁ, ãÊï™, ÉNÉâÉXï™ÇØ, éØï , óﬁå^âª | classify (v)  =:= category (n) | categorize (v)
           [E] restrict    (v):     êßå¿Ç∑ÇÈ, å¿íËÇ∑ÇÈ, ãKêßÇ∑ÇÈ | restriction (n) | restrictive (adj)
+          [E] manners     (n):     É}ÉiÅ[, çÏñ@, çsãV, ïóèK, ïóë≠, çsãV çÏñ@  =:= etiquette (n) ÉGÉ`ÉPÉbÉg, É}ÉiÅ[, ãVóÁ, óÁãV çÏñ@, óÁãV, çÏñ@
+          [E] dispose     (v):     èàï™, îjä¸, îpä¸, éÃÇƒÇÈ  | disposal (n)
+          [E] sequential (adj):    èáéü, èáî‘, èá, íÄéü, éüÅX
+          [E] efficient  (adj):    å¯ó¶ìI  efficiency (n) å¯ó¶ | effective (adj) óLå¯Ç» 
 
           ÅñProgramming
           [P] definition  (n):     íËã`
@@ -44,6 +53,13 @@
           [P] storage class:       ãLâØÉNÉâÉX
           [P] predefined keyword:  éwíËéq
           [P] Object-Oriented:     ÉIÉuÉWÉFÉNÉgéwå¸
+          [P] Control   (n/v):     êßå‰ (= ÇªÇÃéûì_Ç≈ÅAÉvÉçÉOÉâÉÄÇ™èàóùÇµÇƒÇ¢ÇÈçsÇ‚èÍèä)
+          [P] concealment (n):     âBï¡ (= userÇ…ïKóvÇ»èÓïÒà»äOÅAå©ÇπÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈÇ±Ç∆) | conceal (v)
+
+*@see 
+*@author  shika
+*@date    2023-01-29
+*/ 
 
 *@subject Å° Variable ÅkCAnsiYH p73Ål
           Variable: The named space in Memory, whose name is called "Variable-name". 
@@ -97,12 +113,91 @@
 
           [Kings of Storage Class Predefined Keywords]
           ÅEtypedef  => ÅkCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtÅl
+          ÅEauto
           ÅEstatic
           ÅEextern
-          ÅEauto
           ÅEregister
 
-*@subject Åüstatic ÅkCAnsiYH p77-78, p81Ål
+*@subject ÅüPredefined Keyword 'auto'ÅkCAnsiYH p75Ål
+          Control: The row or place which a Program is operated in that time.
+                   Program is a text file which is described the order of operations.
+                   
+          auto Storage Class: 
+         ÅEThe life length of Identifier that:
+           An Identifier is defined in a Block, remained through while it is in the Block,
+           and automatically disposed when Control go out of the Block.
+
+         ÅEQualifier 'auto' is omitable and usually used with being omited,
+           in this case, a definition is automatically recognized as 'auto' Storage Class by Compiler.
+           of course, it can be explicitly qualified with 'auto'.
+
+         ÅEVariable with 'auto' Storage Class, is not initialized implicitly, 
+           in this case, the value is state of "not determined",
+           so that we should explicitly initialize it, as a Programming manner.
+          (On the other, Variable with 'static' Storage Class, 
+           is implicitly initalized as the value is 0, as next subsection,
+           nevertheless, we should explicitly initialize it, as a Programming manner.)
+               
+         ÅEVariable with 'auto' Storage Class, is disposed from Memory, 
+           when Control go out of the Block, as [Å~][Example] below.
+
+          [Example] in a Block
+          {
+              int x;   // or 'auto int x;'
+          }
+
+          [the Attributes of the 'x']
+          ÅEIdentifier:    x
+          ÅEType:          int
+          ÅEValue:         (not determined)
+          ÅEScope:         Block Scope
+          ÅELinkage:       Internal Linkage
+          ÅEStorage Class: auto
+
+          [Å~][Example] Pointer is a Block
+          {
+             int *p;
+             {
+                int x;
+                p = &x;
+             }
+             func(p);
+          }
+
+          In the above case:
+          Though Pointer 'p' is defined out of the inner Block,
+          Variable 'int x' is defined and 'p' is assigned address of 'x' in the inner Block.
+
+          When Control go out of the inner Block, 'x' is disposed from Memory.
+          Pointer 'p' of Function 'func(p)' is referred nothing (= the state is called "NULL"), in that time.
+          
+          Consequently, Variable with 'auto' Storage Class, is disposed from Memory, 
+          when Control go out of the Block.
+
+          [ÅZ][Example] Pointer is a Block
+          {
+             int x = 100;       
+                          // or 'int *p = &x;'
+             func(&x);    // or 'func(p);'
+          }
+
+*@subject ÅüStack Overflow ÅkCAnsiYH p76Ål
+          ÅEVariables with 'auto' Storage Class, is storaged in Stack Area in Memory.
+            Stack Area is usually more effeciant with reading and writing of Memory than Heap Area of 'static' Storage Class.
+           
+            => see [Memory Model in Java] ÅkCAnsiYH03_Type\Reference_CAnsiTypeChange.txtÅl
+
+          Stack Overflow:
+          If the Stack Area is too small to storage large amount of 'auto' Variables,Å@(the storage space depends on Compiler),
+          Compiler will throw Compile Error of "Stack Overflow", because Stack Area will be shotage of Memory space.
+
+*@subjectÅyNotationÅz'go to' statement ÅkCAsinYH p78Ål
+          Variable which is explicitly initialized in a Block, is certainly done,
+          when Control normally enter into the Block, such as sequencially operation or Calling Function.
+          But it is not always done,
+          when Control jump into the Block by using 'go to' statement.
+
+*@subject ÅüPredefined Keyword 'static' ÅkCAnsiYH p77-78, p81Ål
           static: The original sense in English is fixed, immutable, quiet, silent, gently; <-> as the opposite sense, 'dynamic'.
             There are two senses in C language, as next.
             (1) Variable or Function which is qualified 'static' at out of a Block, have Internal Linkage.
@@ -113,14 +208,77 @@
           so that the Identifier cannot be seen from any other files.
 
           An Identifier of Function with 'static' always have Internal Linkage,
-          The Function can be seen and refered from this file only.
+          The Function can be seen and referred from this file only.
 
           [Example] at out of a Block:
           static int x;  // x which has Internal Linkage, cannot be seen from any other files.
-          int y;         // y which is not restricted anything, can be seen and refered from any files.
+          int y;         // y which is not restricted anything, can be seen and referred from any files.
 
           Åñstatic Storage ClassÅkCAnsiYH p81Ål
-*@see 
-*@author  shika
-*@date    2023-01-29
-*/ 
+          static Storage Class: 
+            ÅEBefore starting a Program, Identifier is initialized as the value is 0, one time of first only.
+              While the Program is running, the Identifier is remained throughout. 
+          
+          [Example] at out of a Block
+          int a;
+
+          [the Attributes of the 'a']
+          ÅEIdentifier:    a
+          ÅEType:          int
+          ÅEValue:         0
+          ÅEScope:         File Scope
+          ÅELinkage:       External Linkage
+          ÅEStorage Class: static
+
+          [Example] in a Block
+          {
+             static int a;
+             ...
+          }
+
+          [the Attributes of the 'a']
+          ÅEIdentifier:    a
+          ÅEType:          int
+          ÅEValue:         0
+          ÅEScope:         Block Scope
+          ÅELinkage:       Internal Linkage
+          ÅEStorage Class: static
+
+          In the case of being defined 'in a Block', 
+          Storage space of the Identifier is ramained still, even if out of the Block
+          but the Identifier cannot be seen out of the Block, because its Scope is Block Scope.
+
+          An Identifier which has static Storage Class, is initialized as the value is 0, one time of first only.
+          ÅöAs Programming manners, we should explicitly intialize any Variables,
+          though some of them is automatically (= implicitly) initialized, we should not expect that.
+
+*@subject ÅöConceal Function ÅkCAnsiYH p79Ål
+          Concealment: Programmer should describe a source code with hidding the inner informations as possible, excepting necessary.
+                       It is called "Concealment".
+
+          Conceal Function: A Function with 'static' Storage Class, cannot be seen and called from any other files,
+                            so effective that we can conceal the Function.
+          
+*@subject ÅüPredefined Keyword 'extern' ÅkCAnsiYH p80Ål
+          extern: The prefifined keyword of Storage Class which means External Linkage.
+                  It is the abbreviation of "external".
+                  It can be used with adding Variable and Function, at the time of Declaration.
+                  It express that the Identifier is defined any other files or anywhere place.
+
+          ÅEVariable and Function with 'extern' Storage Class, can be seen and referred from any other files.
+
+          => 'extern' in case of being likely to mistake, see ÅkArray and Pointer / CAnsiYH Chapter 6 | p123Ål
+
+          [Example] Declaration
+          extern int global_id;
+          extren char global_buffer[];  // It is not set the size of Array, yet.
+                                        // it is set at the time of Definition.
+
+          [Example] Definition in somewhere other file.
+          int global_id;
+          char global_buffer[100];
+
+*@subject ÅüPredefined Keyword 'register' ÅkCAnsiYH p81Ål
+
+
+[EOF]
