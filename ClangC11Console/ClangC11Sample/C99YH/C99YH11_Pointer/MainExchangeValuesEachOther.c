@@ -25,7 +25,7 @@
 *          but [Function with Pointer Argument] is [Call by Reference] behavior.
 *
 *        ÅE[Call by Reference]: Though [Return] is 'void', operatation about Pointer in function, 
-*          can be refered from origin of calling this function. It is specification of [Call by Reference].
+*          can be referred from origin of calling this function. It is specification of [Call by Reference].
 *
 *         ÅEUsually a function can return only one value,
 *           but in this way, it can return operated-value as same number of Pointer inserted by argument,
