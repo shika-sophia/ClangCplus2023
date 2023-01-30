@@ -93,7 +93,7 @@
            "Don't write Definition of Function and Variable in Header File".
 
            Definition of them actually build (= make) the Memory.
-           Header File is refered from multi-files by using '#include'.
+           Header File is referred from multi-files by using '#include'.
            Therefore, we should not write Definiton of them in Header File to prevent Memory shortage.
 
 *@subject ŸVariable =>kC99YH03_Variable\MainNumericTypeRange.cl
