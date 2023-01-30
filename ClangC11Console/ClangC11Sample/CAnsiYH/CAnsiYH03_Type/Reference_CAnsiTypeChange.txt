@@ -24,6 +24,7 @@
 
           ÅüType Qualifier 'volatile'
           [Compiler Optimization]
+          [Memory Model in Java] =>ÅkJVM Memory Model | MTYH 51, p608Ål
 
 *@English [E] cast      (n/v):     èoââ, ííë¢   | [P] ñæé¶ìIÇ»å^ïœä∑
           [E] explicit  (adj):     ñæé¶ìI  <->  implicit (adj)  à√ñŸìI
@@ -140,7 +141,7 @@
           But I will write it by human language here, as following the Text Book ÅkCAnsiYHÅl.
             
             [Summary]
-            The Type which has more wide range in Operands, is prefered.
+            The Type which has more wide range in Operands, is preferred.
             Whole of Operands are changed to its Type. 
             and the solution of calculation is its Type, too.
             
@@ -367,7 +368,7 @@
           The operations which Compiler adjust original source code to optimize Memory management,
           such as 're-order' which the order of expression is substituted former and later, 
           such as 'visibility' which because Compiler modify the storage area as below,
-          the most recent value of a data is not always refered correctly in Multi-Thread Execution.
+          the most recent value of a data is not always referred correctly in Multi-Thread Execution.
 
           "Compiler modify the storage area" is that: (Refering [Memory Model in Java], below)
              If a data is not modified anything in this source code,
