@@ -376,9 +376,9 @@ ASCII
 
           [Kinds of Scope]
           ・File Scope:      The definition which be made out of Block, Function, Argument, 
-                             can be recognized and refered in whole file after there.
+                             can be recognized and referred in whole file after there.
           ・Block Scope:     The definition which be made in Block, Function, Argument,
-                             can be recognized and refered only in the Block after there;
+                             can be recognized and referred only in the Block after there;
                              expressed by bracket '{ }' as Block delimitter.
                              In nested Block as like '{ { } }' case, the definition in inner can do only inner after there,
                              for example: 'for', while', 'if', 'switch' statement.
@@ -401,7 +401,7 @@ ASCII
 
           [Kinds of Linkage]
           External Linkage: The Identifier of Variable and Function with qualifier of this, 
-                            can be recognized and refered in whole of Program (includeing another files).
+                            can be recognized and referred in whole of Program (includeing another files).
           Internal Linkage: They with this, can do in the File only.
 
           [Qualifier] The usage is to write this additionally, before Identifier or Return Type of Function.
@@ -442,7 +442,7 @@ ASCII
           Name-space: Group of namespace
                       If a Identifier is in the same scope and in different namespace,
                       you can use the same Identifier.
-                      Of cause, if it is in the same scope and namespace, you cannot use it.
+                      Of course, if it is in the same scope and namespace, you cannot use it.
 
           [Kinds of Namespace]
           ・Name of Variable, Function, Alius defined by 'typedef()', and constant value in enum.
