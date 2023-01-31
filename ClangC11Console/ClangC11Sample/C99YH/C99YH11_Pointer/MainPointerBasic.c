@@ -44,7 +44,7 @@
 *         printf("%d \n", x);   // show the value of int 'x'
 *         printf("%p \n", p);   // show the address value which Pointer is having. 
 *         printf("%d \n", *p);  // show the value of the variable which Pointer is having its address.
-*                               // ÅyNotationÅzthe format use '%d' because the variable 'x' ,indicated by Pointer, is int type.
+*                               // ÅyAnnotationÅzthe format use '%d' because the variable 'x' ,indicated by Pointer, is int type.
 * 
 *@subject ÅüNULL Pointer ÅkC99YH p364Ål
 *         <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl

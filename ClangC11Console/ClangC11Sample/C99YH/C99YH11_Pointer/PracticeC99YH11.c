@@ -85,7 +85,7 @@ int counter (char* stringP, int* lengthP)
      return upper;
 }
 
-@subjectyNotationz'(*length)++' and '*length++'
+@subjectyAnnotationz'(*length)++' and '*length++'
          They are different meanings, because of the priority.
          '(*length)++': increment int value 'length' which Pointer '*length' indicate.
          '*(length++)': At first, increment Pointer address '&length', and then get the value there.

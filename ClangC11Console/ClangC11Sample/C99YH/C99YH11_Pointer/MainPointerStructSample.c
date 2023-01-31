@@ -22,9 +22,9 @@
 *         mateP = &mate;
 *
 *         –Refer to member in struct 
-*         E'(*p).memberName': The brackets '()' cannot be omited, because of the priority of operator.
+*         E'(*p).memberName': The brackets '()' cannot be omitted, because of the priority of operator.
 *           The priority of Reference-operator '.' is more superior than Pointer's Redirect-operator '*',
-*           therefore omited '*p.memberName' is unexpectedly recognized as different meaning '*(p.memberName)' by Compiler.
+*           therefore omitted '*p.memberName' is unexpectedly recognized as different meaning '*(p.memberName)' by Compiler.
 *               ||
 *         E'p->memberName': Abbreviated description: It is not necessary to write with '*', '.', '()'.
 *           '(*p).memberName' and 'p->memberName' mean as same.
