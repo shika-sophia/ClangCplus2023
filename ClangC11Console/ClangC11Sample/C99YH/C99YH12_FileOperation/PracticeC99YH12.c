@@ -37,7 +37,7 @@
 *         given by Commnad Line Argument.
 *         It is called "Hexa-decimal Dump Prgram".
 * 
-*         [Notation]
+*         [Annotation]
 *         ÅEAt left side, it shows the number of lines as 16-decimal.
 *         ÅEIt usually insert white-space ' ' between values, 
 *           at center only, insert '-'.
