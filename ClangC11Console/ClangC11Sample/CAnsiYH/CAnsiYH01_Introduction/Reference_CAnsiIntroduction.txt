@@ -58,7 +58,7 @@
 *         ÅELinker:
 *             A program which yield Execute File with linkage Object File and Library File.
 *
-*         ÅyNotationÅz
+*         ÅyAnnotationÅz
 *          ANSI Standard does not describe about how to use Compiler and Linker,
 *          It do "Refer to the Specification Manual of Compiler" only.
 *          Actually, the usage is various, depending on Compiler.
@@ -87,7 +87,7 @@
           ÅEDeclaration and Definition of Function
           ÅEDeclaration and Definition of Variable
 
-          ÅyNotationÅz
+          ÅyAnnotationÅz
            Compiler does not distinguish to read Source File and Header File.
            But, as Programming Style or Custom, there is a protocol that
            "Don't write Definition of Function and Variable in Header File".
