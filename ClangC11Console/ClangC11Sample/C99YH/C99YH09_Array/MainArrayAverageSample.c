@@ -13,7 +13,7 @@
 *           It can be defined by directive '#xxxx' which is order to Pre-processor,
 *           for example '#define MAX 10'.
 * 
-*         ÅEÅyNotationÅzWhen '#define', you describe name of constant value, white-space ,and the value only,
+*         ÅEÅyAnnotationÅzWhen '#define', you describe name of constant value, white-space ,and the value only,
 *            it is not necessary to describe Type, '=', ';' neither. 
 * 
 *         ÅEIf name is none, other person won't understand the meaning of the number,
@@ -28,9 +28,9 @@
 *         [Example] in this case
 *         #define MAX_LENGTH 5
 * 
-*@subject Array Size -- operator 'sizeof' => ÅkList 9-7 | MainArraySizeofSample.cÅl
+*@subject Array Size -- operator 'sizeof()' => ÅkList 9-7 | MainArraySizeofSample.cÅl
           
-*@see
+*@see MainArraySizeofSample.c
 *@author shika
 *@date 2022-12-25
 */

@@ -35,7 +35,7 @@
 *             In this case, the array length is automatically caluculated from the number of elements,
 *             so that '[]' can be empty still.
 * 
-*         ÅEÅyDetail NotationÅz
+*         ÅEÅyDetail AnnotationÅz
 *            We need put ';' after '{ ... }'.
 *            We need delimit elemants by ',' -- if elements are multiple.
 * 
@@ -59,7 +59,7 @@
 *
 *         ÅEArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
 *
-*         ÅEÅyNotationÅzin the case of including Wide-Character such as Japanese:
+*         ÅEÅyAnnotationÅzin the case of including Wide-Character such as Japanese:
 *            The size of one element can be variable.
 *            Therefore, Array Length cannot be calculated correctly by above expression.
 *
