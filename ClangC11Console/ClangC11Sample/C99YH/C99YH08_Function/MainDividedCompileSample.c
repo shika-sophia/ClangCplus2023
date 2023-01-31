@@ -40,7 +40,7 @@
 *         >cl /c MainDividedCompileSample.c         //Divided Compile with option '/c', which yields [.obj] only.
 *         >cl MainDividedCompileSample.obj DividedCompile_consoleInputBody.obj 
 *                                                   //Integrated Compile each [.obj] files, which yields to [.exe] Execute File.
-*                                                   //yNotationzput 'Main.obj' before, which you want to be [.exe] name.
+*                                                   //yAnnotationzput 'Main.obj' before, which you want to be [.exe] name.
 * 
 *         >MainDividedCompileSample                 //Execute above [.exe].
 * 
