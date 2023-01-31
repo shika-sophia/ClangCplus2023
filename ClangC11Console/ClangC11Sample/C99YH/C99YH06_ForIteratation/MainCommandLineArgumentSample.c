@@ -27,7 +27,7 @@
 *                                      „¤ in this case: "This is command line argument."
 *         => [Execute without Debug] (Ctrl + F5)
 * 
-*        yNotationzAfter execution, Remove above setting argument for another executions.
+*        yAnnotationzAfter execution, Remove above setting argument for another executions.
 *
 *@subject [Windows Command Prompt for VS2019] Execution (= Visual Studio 2019 Developer Command Prompt)
 *         >cd (set current directory)                              //Change Directory
