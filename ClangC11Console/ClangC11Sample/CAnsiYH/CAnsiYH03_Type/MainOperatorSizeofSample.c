@@ -33,7 +33,7 @@
 *
 *         ÅEArray length:  calculated from '(whole array bytes) / (one element bytes)' as below [Example]
 *
-*         ÅEÅyNotationÅzin the case of including Wide-Character such as Japanese:
+*         ÅEÅyAnnotationÅzin the case of including Wide-Character such as Japanese:
 *            The size of one element can be variable.
 *            Therefore, Array Length cannot be calculated correctly by above expression.
 *
@@ -46,7 +46,7 @@
 *         The program shows how bytes these Primitive Types occupy in Memory, as below code.
 * 
 *         //====== Result ====
-*        ÅyNotationÅzThe result depends on this Compiler [Clang-C11 of Visual Studio 2019].
+*        ÅyAnnotationÅzThe result depends on this Compiler [Clang-C11 of Visual Studio 2019].
 *         The unit is 'Byte'.
 * 
 *         char : 1

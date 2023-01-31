@@ -175,7 +175,7 @@
                    Whole of Operands are changed to 'int' Type;
                 }
 
-             ÅyNotationÅz'long int' and 'unsigned int'
+             ÅyAnnotationÅz'long int' and 'unsigned int'
               Comparing the range of them in the Compiler,
               the Type which has more wide range, is superior priority. 
 

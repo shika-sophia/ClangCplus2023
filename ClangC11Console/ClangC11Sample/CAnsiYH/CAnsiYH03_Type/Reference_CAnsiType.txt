@@ -114,7 +114,7 @@
           ÅEBecause they depend on Compiler, they are sometimes different.
           ÅöBy using these constant values defined in it, a program is to be more transplantable.
 
-          ÅyNotationÅzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
+          ÅyAnnotationÅzin this Compiler case:  (Compiler is clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
           => see another Headers and more detail.ÅkReferenceDocument\Reference_NumericTypeRange.txtÅl
@@ -166,7 +166,7 @@
           ÅEint:              32 bit = 2 ^ 32 = 4294967296
           ÅElong [int]:   
           ÅElong long [int]:  64 bit = 2 ^ 64 = 18446744073709551617
-          Å¶ [int] can be omited.
+          Å¶ [int] can be omitted.
 
           + signed:    The keyword is used by adding before Type above,
                        to tell Compiler that the Type have signs, such as '+' or '-'.
@@ -344,7 +344,7 @@
             ÅEdouble:      When we use Mathematics Function in C, or usually calculate Floating-Point Numbers.
             ÅElong double: When we are interested in strictness or precision of the calculation.
 
-          ÅöÅyNotationÅzcaluclation of Floating-Point Number
+          ÅöÅyAnnotationÅzcaluclation of Floating-Point Number
           ÅEIt is possible to happen Lack of Binary Digit,
             by calculating Floating-Point Numbers or changing the Types.
           ÅEDon't use the Types in case to be neccesary nothing of subtle difference, 
