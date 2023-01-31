@@ -9,31 +9,30 @@
 *@summary Reference_CAnsiVariable.txt
           ¡ Variable kCAnsiYH p73l
             [Difference of Variable and Object]
-
           ŸLeft Side Value kCAnsiYH p74l
-          EVariable
-          EPointer
-          EArray
-          EStruct member
-          EPointer indirect reference for Struct
-
+           EVariable
+           EPointer
+           EArray
+           EStruct member
+           EPointer indirect reference for Struct
           ŸAttribute of Variable kCAnsiYH p74l
-          –Type       => kCAnsiYH03_Type\Reference_CAnsiType.txtl
-          –Storage Class  (= Storage Duration)
-            Etypedef  => kCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtl
-            Eauto
-            Estatic
-            Eextern
-            Eregister
+           –Type       => kCAnsiYH03_Type\Reference_CAnsiType.txtl
+           –Storage Class  (= Storage Duration)
+             Etypedef  => kCAnsiYH p52 | CAnsiYH03_Type\Reference_CAnsiType.txtl
+             Eauto
+             Estatic
+             Eextern
+             Eregister
           ŸPredefined Keyword 'auto'   kCAnsiYH p75, p82l
           ŸStack Overflow kCAnsiYH p76l
-         yNotationz'go to' statement  kCAsinYH p78l
+         yAnnotationz'go to' statement  kCAsinYH p78l
           ŸPredefined Keyword 'static' kCAnsiYH p77-78, p81l
-          –Internal Linkage    kCAnsiYH p77-78lkCAnsiYH02_Basic\Reference_CAnsiBasic.txtl
-          –static Storage ClasskCAnsiYH p81l
+           –Internal Linkage    kCAnsiYH p77-78lkCAnsiYH02_Basic\Reference_CAnsiBasic.txtl
+           –static Storage ClasskCAnsiYH p81l
           šConceal Function    kCAnsiYH p79l
           ŸPredefined Keyword 'extern'   kCAnsiYH p80, p123l
           ŸPredefined Keyword 'register' kCAnsiYH p81l
+          ŸDifferences of Declaration and Definition kCAnsiYH p82l
 
 *@English [E] assign      (v):     Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é  | assignment (n)
           [E] classification (n):  •ª—Ş, ‹æ•ª, ƒNƒ‰ƒX•ª‚¯, ¯•Ê, —ŞŒ^‰» | classify (v)  =:= category (n) | categorize (v)
@@ -42,6 +41,7 @@
           [E] dispose     (v):     ˆ•ª, ”jŠü, ”pŠü, Ì‚Ä‚é  | disposal (n)
           [E] sequential (adj):    ‡Ÿ, ‡”Ô, ‡, ’€Ÿ, ŸX
           [E] efficient  (adj):    Œø—¦“I  efficiency (n) Œø—¦ | effective (adj) —LŒø‚È 
+          [E] intuitive  (adj):    ’¼Š´“I, ’¼ŠÏ“I, ‚í‚©‚è‚â‚·‚¢ | intuition (n)   ’¼Š´, ’¼ŠÏ, Š¨
 
           –Programming
           [P] definition  (n):     ’è‹`
@@ -127,9 +127,14 @@
            An Identifier is defined in a Block, remained through while it is in the Block,
            and automatically disposed when Control go out of the Block.
 
-         EQualifier 'auto' is omitable and usually used with being omited,
+         EIt can be used only at the time of Definition in a Brock.
+
+         EQualifier 'auto' is omitable and usually used with being omitted,
            in this case, a definition is automatically recognized as 'auto' Storage Class by Compiler.
            of course, it can be explicitly qualified with 'auto'.
+
+           But it seems that we have almost never seen in source code of C, 
+           because it usually used with being omitted.
 
          EVariable with 'auto' Storage Class, is not initialized implicitly, 
            in this case, the value is state of "not determined",
@@ -191,7 +196,7 @@
           If the Stack Area is too small to storage large amount of 'auto' Variables,@(the storage space depends on Compiler),
           Compiler will throw Compile Error of "Stack Overflow", because Stack Area will be shotage of Memory space.
 
-*@subjectyNotationz'go to' statement kCAsinYH p78l
+*@subjectyAnnotationz'go to' statement kCAsinYH p78l
           Variable which is explicitly initialized in a Block, is certainly done,
           when Control normally enter into the Block, such as sequencially operation or Calling Function.
           But it is not always done,
@@ -279,6 +284,37 @@
           char global_buffer[100];
 
 *@subject ŸPredefined Keyword 'register' kCAnsiYH p81l
+          Eregister: EThe Predefined Keyword which means frequently to be accessed.
+                      EIt is used with Variable or Argument.
+                      EIt tell Programmer for Compiler to be going to use frequently,
+                        Compiler try to assgn space of Memory to it efficiently.
+                      EActually, Compiler will try to storage it to Register of CPU, not to Memory.
+                        It is not always determined how faster is Variable or Argument with 'register' operated, 
+                        because Register of CPU is limited available space.
 
+          [Example]
+          register int i;
+
+          for (i = 0; i < DATA_MAX; i++) {
+             ...
+          }
+
+*@subject ŸDifferences of Declaration and Definition kCAnsiYH p82l
+          (According to the Text BookkCAnsiYHl, 
+           this sub-section is not strictly grammatical explanation.
+           this is author's intuitive imagination.)
+          Declaration: It is infomation only.
+                       [Function] It is expressed Function as Return-Type, Argument-Type, and Identifier.
+                       [Array]    It need not be determined the size of Array.
+                       [Memory]   Any space of Memory is not ocuppied, yet.
+                       [Times]    It can be done however many times, excepting conflict each other.
+
+          Definition:  It is adding actual contents to above, too.
+                       [Function] It is expressed Function as adding actual operation to above, too.
+                       [Array]    It need be actually determined the size of Array.
+                       [Memory]   A space of Memory is taken a place, at the time of Definition.
+                       [Times]    It can be done only one time in a Block.
+                       Definition is including Declaration.
+                       Therefore to define become to declarate, though the opposite is not true.
 
 [EOF]
