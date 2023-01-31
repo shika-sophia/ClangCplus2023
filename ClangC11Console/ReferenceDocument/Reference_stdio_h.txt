@@ -183,7 +183,7 @@
 *         int _Character 
 *         FILE* fileP:   
 *            // Pointer of the file which has already opend by 'fopen()' with Mode "w" or "wb" as mean of writable.
-*            //ÅyNotationÅzfopen() with Mode "w' or "wb"
+*            //ÅyAnnotationÅzfopen() with Mode "w' or "wb"
 *            // If the same name file has already existed, the file contents will be deleted, exactly the file size is to be 0.
 *            // Be careful confirm if the same name file exist or not.
 *
@@ -291,7 +291,7 @@
 *         [Argument] const char* _FileName
 *         [Return]   int 0:     correctly delete the file
 *                        not 0: cannot delete because of not exist or else error.
-*        ÅyNotationÅzTo success returns false value '0'.
+*        ÅyAnnotationÅzTo success returns false value '0'.
 *                    To fail    retruns true value 'not 0'
 *
 *         [Example]
@@ -317,7 +317,7 @@
 *         int  0:     success
 *         not 0: failure
 *
-*        ÅyNotationÅz
+*        ÅyAnnotationÅz
 *         To success returns false value '0'.
 *         To fail    returns true value  'not 0'.
 *
