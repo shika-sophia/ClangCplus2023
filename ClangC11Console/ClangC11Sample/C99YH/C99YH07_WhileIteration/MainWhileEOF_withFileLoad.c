@@ -12,7 +12,7 @@
 *            „¤ #define EOF -1              kMainWhileIterationSample.cl
 * 
 *@subject ŸVisual Studio Execution 
-*        yNotationzIt need be finished by [Ctrl] + [C].
+*        yAnnotationzIt need be finished by [Ctrl] + [C].
 * 
 *@subject ŸCommand Prompt Execution with File Load and Save kC99YH p201l
 *         –Redirect of Standard IO

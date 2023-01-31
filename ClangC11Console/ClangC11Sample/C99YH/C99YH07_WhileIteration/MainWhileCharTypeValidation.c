@@ -22,7 +22,7 @@
 *            Ñ§ int  toupper(int c)   if lower case, change it to upper case
 *            Ñ§ int  tolower(int c)   if upper case, change it to lower case
 * 
-*         ÅyNotationÅz
+*         ÅyAnnotationÅz
 *         ÅEC99 defined ASCII character as 1 byte character only, not 2 byte character like Japanese.
 *           So the above functions can judge value [ 0 - 255 ] or EOF [-1] only.
 * 
@@ -40,7 +40,7 @@ int mainWhileCharTypeValidation(void) {
 
     printf("> ");
 
-    //ÅyNotationÅzThis need be finished by [Ctrl] + [C].
+    //ÅyAnnotationÅzThis need be finished by [Ctrl] + [C].
     while ((c = getchar()) != EOF) {
         if (isupper(c)) {
             c = tolower(c);
