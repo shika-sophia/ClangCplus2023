@@ -1,5 +1,5 @@
 ﻿/**
-*【Notation】It is changed Character-Code only here. I don't know why.
+*【Annotation】It is changed Character-Code only here. I don't know why.
 *            => see the Edited Version〔Reference_CAnsiBasic.txt〕
 * 
 *@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH02_Basic
