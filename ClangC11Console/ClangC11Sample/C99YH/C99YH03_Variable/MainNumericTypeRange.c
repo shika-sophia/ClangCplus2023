@@ -32,7 +32,7 @@
           ÅEBecause they depend on Compiler, they are sometimes different.
           ÅöBy using these constant values defined in it, a program is to be more transplantable.
 
-          ÅyNotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
+          ÅyAnnotationÅzin this Compiler case:  (Compiler is Clang-C11 of Visual Studio 2019)
            It is no difference between 'int' and 'long'. (= the same range)
 
            => copy from ÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
@@ -89,7 +89,7 @@
 *         It define the maximum and minimum constant values of Floating-Point Number Types,
 *         depending on Compiler.
 *
-*        ÅyNotationÅzIn this Compiler case: (Compiler is Clang-C11 of Visual Studio 2019)
+*        ÅyAnnotationÅzIn this Compiler case: (Compiler is Clang-C11 of Visual Studio 2019)
 *         It is no difference between 'double' and 'long double'. (= the same range)
 *
 *         <float.h>
