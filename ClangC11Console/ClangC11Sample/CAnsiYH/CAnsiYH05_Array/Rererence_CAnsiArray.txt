@@ -1,0 +1,107 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH05_Array
+*@fileName  Rererence_CAnsiArray.txt
+*@reference C99YH    åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ì¸ñÂï“] ëÊÇRî≈ÅxSB Creative, 2019
+*@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
+*@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
+*
+*@content CAnsiYH Chapter 5  Array | Text Reference / p91-
+*@summary Rererence_CAnsiArray.txt
+          Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
+          ÅüArray Size                         ÅkCAnsiYH p91Ål
+          ÅüDefinition Format of Array         ÅkCAnsiYH p91Ål
+          ÅüAssign and Refer array element     ÅkCAnsiYH p92Ål
+          ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+
+*@English [E] correspond (v):     ëäìñÇ∑ÇÈÅAàÍívÇ∑ÇÈÅAëŒâûÇ∑ÇÈ
+                correspond to:    àÍívÇ∑ÇÈ
+                correspond with:  ëäå›çÏópÇ™Ç†ÇÈ
+          [E] arbitrary (adj):    îCà”, êèà”, úìà”ìI
+          [E] specification (n):  éwíËÅAédólÅAãKäi
+*
+*@see 
+*@author  shika
+*@date    2023-02-01
+*/ 
+
+*@subject Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
+          Array: ÅEOne of data structure which can manage multi-Variable of the same Type, 
+                   with index as number of data, starting from 0, such as 0, 1, 2, ... . 
+                 ÅEIt is one of Derived Types which programmer define self-defined Type by using default-defined Type.
+                 ÅEIt is taken a space of Memory, corresponding to data size of the Type,
+                   at the time of Defininition.
+
+          array index: 
+            A number of array-elements-order from top, 
+            always starting from 0, that is called "0 origin",
+            expressed in bracket '[]'.
+
+          array elemement: 
+            An array value which is numbered as each array index.
+
+          array size: (= array length)
+            The maximum number of array elements which the Array can storage. 
+            => see ÅüArray Size Åkfollowing nextÅl
+
+*@subject ÅüArray Size ÅkCAnsiYH p91Ål
+          array size:
+          ÅEWhen Array is defined, the array size need be determined
+            as 'int' Type, over 0, and constant value fixed at the time of Compile.
+            So that Array cannot change the array size after that.
+        
+          ÅEEven if we use an index which is over array size or minus value,
+            Compiler does not throw Compile Error.
+            But at the time of executing, there is to be thrown Runtime Error, 
+            such as like 'ArrayIndexOutOfRangeException' in [Java][C#].
+
+          ÅEPointer of the next index over array size, is defined as 'NULL' Pointer
+            by specification of C language.
+
+          [Example]
+          int array[ARRAY_MAX];       // Definition of Array, assuming "#define ARRAY_MAX" as some array size.
+          int arraySize = ARRAY_MAX;  // Though it is unnecessary assignment, 
+                                      // in this case only, I substituted it for being understandable
+
+          array[0]              // first element
+          array[1]              // second element
+          array[2]              // third element
+            :                        :
+          array[arraySize - 1]  // last element
+          ---------------------------------------
+          array[arraySize]      // out of Array elements, defined as 'NULL' Pointer
+
+         ÅyAnnotationÅzArray Size in other Program languages
+          There are some Program languages which array index always start from 1.
+          There are some Program languages which Programmer can arbitrarily define the number of array index origin.
+
+*@subject ÅüDefinition Format of Array ÅkCAnsiYH p91Ål
+          ÅEDefinition of Array is required Type, Identifier as array name, and fixed array size of int Type.
+          ÅEAdding to above, it can be initialized intial elements of array, 
+            by using bracket '{ }' and using delimiter ','.
+          
+          [Format]
+          Type arrayName[int arraySize];
+          Type arrayName[int arraySize] = { element1, element2, ... };
+
+          [Example]
+          int a[5];
+          int a[5] = { 15, 30, 24, 0, 54 };
+          
+*@subject ÅüAssign and Refer array elementÅkCAnsiYH p92Ål
+          ÅETo assign and refer the array element,
+            we need give the index of data number which we want, in bracket '[]'.
+          ÅEArray index always start from 0 in C.
+            Array index always finish at (arraySize - 1).
+       
+          [Format] 
+          arrayName[index] = element;     // Assignment
+          arrayName[index]                // Reference
+
+          [Example]
+          a[0] = 15;                      // Assignment
+          printf("a[0] = %d \n", a[0]);   // Reference
+
+*@subject ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+
+
+[EOF]
