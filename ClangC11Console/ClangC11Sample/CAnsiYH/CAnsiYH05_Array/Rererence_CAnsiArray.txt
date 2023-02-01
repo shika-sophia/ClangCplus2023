@@ -37,7 +37,7 @@
             expressed in bracket '[]'.
 
           array elemement: 
-            An array value which is numbered as each array index.
+            An array value numbering as each array index.
 
           array size: (= array length)
             The maximum number of array elements which the Array can storage. 
