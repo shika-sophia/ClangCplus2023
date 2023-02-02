@@ -305,7 +305,7 @@
          const int GREEN = 1;
          const int BLUE = 2;
 
-*@subject Åñself-assign the int values 
+*@subject Åñself-defined the int values of enumerators
           ÅEThe enum 'int' values can be self-defined by describing 'enumerator = constant expression'.
           ÅEThey are omitable, in this case, automatically assigned such as [ 0, 1, 2, ... ].
           ÅEThey can be assigned the same value with different Enumerators, 
@@ -496,6 +496,9 @@
           MATE member1 = { ... };        // instead of "struct SchoolMate member1 = { ... };"
 
           ÅñFunction Declaration
-          POINTER alloc_memory(size-t);  // The Return Value is void*.
+          POINTER alloc_memory(size_t);  // The Return Value is void*.
+
+*@subject ÅüOperator 'sizeof' ÅkC99YH p267ÅlÅkCAnsiYH p53, p93Ål
+          => ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
 
 [EOF]

@@ -21,8 +21,10 @@
           [P] operator  (n):      ââéZéq
           [P] Wide-Character (n): ëSäpï∂éö
    
-*@subject ÅüOperator 'sizeof()' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
-*         Operator 'sizeof()': It returns 'int' value of how bytes the Variable given by argument 'Type' occupy in Memory.
+*@subject ÅüOperator 'sizeof()' ÅkC99YH p267ÅlÅkCAnsiYH p53, p93Ål
+*         Operator 'sizeof()': 
+*         ÅEIt returns 'int' value of how bytes the Variable given by argument 'Type' occupy in Memory.
+*         ÅEThe return-value is how bytes the Type is occuping, not the Pointer which indicate Variable of the Tyoe. ÅkCAnsiYH p93Ål
 *         ÅEHow bytes each Types occupy in Memory, is only moderately defined by specification of C language.
 *         ÅETherefore, it is necessary to use 'sizeof', when we must specify how bytes the Type occupy in Memory,
 *           such as a program of Memory management.
@@ -40,8 +42,17 @@
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 *
-*         => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
-*
+*         ÅñArray length  ÅkCAnsiYH p93Ål
+*         ÅEArgument of 'sizeof()' can be given whole of Array exceptionally,
+*           in this case, the return-value is how bytes the whole of Array is occuping in Memory.
+*         ÅEIdentifier of Array can be recognaized as
+*           constant value of Pointer which indicate first element of Array.
+*         ÅEThe return-value is how bytes the Type is occuping, 
+*           not the Pointer which indicate Variable of the Tyoe.
+* 
+*         => copy to   ÅkC99YH09_Array\MainArraySizeofSample.cÅl
+*         => copy from ÅkCAnsiYH05_Array\Rererence_CAnsiArray.txtÅl
+* 
 *@subject [Example 1] ÅkCAnsi p54Ål
 *         The program shows how bytes these Primitive Types occupy in Memory, as below code.
 * 
