@@ -66,7 +66,16 @@
 *         [Example]
 *         int length = sizeof(pointAry) / sizeof(pointAry[0]);
 *
-*         => copy fromÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+*         ÅñArray length  ÅkCAnsiYH p93Ål
+*         ÅEArgument of 'sizeof()' can be given whole of Array exceptionally,
+*           in this case, the return-value is how bytes the whole of Array is occuping in Memory.
+*         ÅEIdentifier of Array can be recognaized as
+*           constant value of Pointer which indicate first element of Array.
+*         ÅEThe return-value is how bytes the Type is occuping, 
+*           not the Pointer which indicate Variable of the Tyoe.
+* 
+*         => copy to ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+*         => copy to ÅkCAnsiYH05_Array\Rererence_CAnsiArray.txtÅl
 * 
 *@see MainArrayAverageSample.c
 *@see CAnsiYH03_Type\MainOperatorSizeofSample.c

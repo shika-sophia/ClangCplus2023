@@ -8,16 +8,20 @@
 *@content C99YH ‘æ‚XÍ ”z—ñ | Chapter 9  Array / List 9-8 / p270
 *@summary MainTwoDimensionArraySample.c
 *
-*@English [‰p] dimension:  ŸŒ³
+*@English [‰p] dimension:  ŸŒ³   =:= [P] rank
 *         [‰p] square:     ‚QŸŒ³
 *         [‰p] individual: ŒÂl“I‚È
 *         [‰p] row:        s
 *         [‰p] column:     —ñ
 * 
 *@subject 2-Dimention Array
+*         rank: the number of dimensions as a Program term,
+*               so that it can be called "2-Rank Array" instead of "2-Dimension Array".
 * 
+*         => see ŸMulti-Dimensions Array kCAnsiYH p94lkCAnsiYH05_Array\Rererence_CAnsiArray.txtl
+*         
 *         [Format]
-*         –Definition (Intialization)
+*         –Definition (with Intialization)
 *         Type  (arrayName)[int row][int column];
 *         Type  (arrayName)[int row][int column] = {
 *             { column0, column1,,, },  // row 0
