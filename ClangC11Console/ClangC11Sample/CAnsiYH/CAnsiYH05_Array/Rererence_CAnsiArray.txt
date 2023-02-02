@@ -9,16 +9,29 @@
 *@summary Rererence_CAnsiArray.txt
           Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
           ÅüArray Size                         ÅkCAnsiYH p91Ål
-          ÅüDefinition Format of Array         ÅkCAnsiYH p91Ål
+          ÅüDeclaration Format of Array        ÅkCAnsiYH p93Ål
+          ÅüDefinition  Format of Array        ÅkCAnsiYH p91Ål
           ÅüAssign and Refer array element     ÅkCAnsiYH p92Ål
           ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+             => ÅüOperator 'sizeof' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
+             => ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+           ÅñArray length                      ÅkCAnsiYH p93Ål
+             => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
+             => copy toÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+          Åüfor-statement and Array            ÅkCAnsiYH p93Ål
+          ÅüMulti-Dimension Array              ÅkCAnsiYH p94Ål
+             => see Åü2-Dimension Array ÅkC99YH09_Array\MainTwoDimensionArraySample.cÅl
+          ÅùRelation of index location in Array and memory space in Memory ÅkCAnsiYH p95Ål
 
 *@English [E] correspond (v):     ëäìñÇ∑ÇÈÅAàÍívÇ∑ÇÈÅAëŒâûÇ∑ÇÈ
                 correspond to:    àÍívÇ∑ÇÈ
                 correspond with:  ëäå›çÏópÇ™Ç†ÇÈ
           [E] arbitrary (adj):    îCà”, êèà”, úìà”ìI
           [E] specification (n):  éwíËÅAédólÅAãKäi
-*
+          [E] occupy     (v):     êËÇﬂÇÈ
+          [E] dimension  (n):     éüå≥   =:= [P] rank
+          [E] increment  (n):     ëùï™  |  [P] 1Ç∏Ç¬ëùÇ‚Ç∑
+
 *@see 
 *@author  shika
 *@date    2023-02-01
@@ -74,6 +87,14 @@
           There are some Program languages which array index always start from 1.
           There are some Program languages which Programmer can arbitrarily define the number of array index origin.
 
+*@subject ÅüDeclaration Format of Array       ÅkCAnsiYH p93Ål
+          ÅEIncomplete Type: Declaration of Array can be described without the array size,
+                             that is called "Incomplete Type".
+
+          [Format]
+          Type arrayName[];
+          Type arrayName[int arraySize];
+
 *@subject ÅüDefinition Format of Array ÅkCAnsiYH p91Ål
           ÅEDefinition of Array is required Type, Identifier as array name, and fixed array size of int Type.
           ÅEAdding to above, it can be initialized intial elements of array, 
@@ -102,6 +123,113 @@
           printf("a[0] = %d \n", a[0]);   // Reference
 
 *@subject ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+          To assign to whole of Array, cannot be done.
+          To refer  to whole of Array, cannot be done.
+          To give whole of Array to Argument of Function, cannot be done.
+          To return whole of Array from Function, cannot be done.
 
+          As an exception, to give Argument of Operator 'sizeof()' can be done only.
+          => ÅüOperator 'sizeof' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
+          => ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+
+*        ÅñArray length  ÅkCAnsiYH p93Ål
+*         ÅEArgument of 'sizeof()' can be given whole of Array exceptionally,
+*           in this case, the return-value is how bytes the whole of Array is occuping in Memory.
+*         ÅEIdentifier of Array can be recognaized as
+*           constant value of Pointer which indicate first element of Array.
+*         ÅEThe return-value is how bytes the Type is occuping, 
+*           not the Pointer which indicate Variable of the Tyoe.
+* 
+*         => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
+*         => copy toÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+
+*@subject Åüfor-statement and Array ÅkCAnsiYH p93Ål
+          ÅEA for-statement can efficently operate an Array,
+            because Array can be managed by index as int value.
+          ÅEOnly incresing the array index incrementally so that each elements of whole Array can be easily refered.
+
+          [Exmaple]
+          int findData(int data[], int dataMax, int value) {
+              int i
+
+              for (i = 0; i < dataMax; i++){
+                  if (data[i] == value) {
+                      return i;
+                  }
+              }//for
+
+              return -1;
+          }
+
+          The self-defined Function is given array, array size, taret value as Argument,
+          and return the index of element which match the target value, if there is one matched element,
+          or  return the lower index of first-matched element, if there are matched multi-elements,
+          or  return -1, if there is no matched element.
+
+          The Argument 'int data[]' means as same as 'int *data': Pointer which indicate the element of Array.
+
+*@subject ÅüMulti-Dimension Array ÅkCAnsiYH p94Ål
+          rank: the number of dimensions as a Program term,
+                so that it can be called "2-Rank Array", instead of "2-Dimension Array".
+  
+          Multi-Dimensions Array:
+          ÅEAn Array whose elements is Array too, can be defined in C language.
+            => see Åü2-Dimension Array ÅkC99YH09_Array\MainTwoDimensionArraySample.cÅl
+
+          [Format]
+          Åñ2-Rank Array
+          Type arrayName[int rows][int columns];
+          Type arrayName[int rows][int columns] = { {,,,}, {,,,},Å@ÅEÅEÅE };
+
+          Åñ3-Rank Array
+          Type arrayName[int i][int j][int k];
+
+          [Example] Multi-Rank Array
+          Åñ2-Rank Array
+          int multiSubArrayA[3][4] = {
+              { value0, value1, value2, value3 },  Ñ¢ <---------- array[4]    as one each element   
+              { value0, value1, value2, value3 },  | 3 rows  <-- array[3][4] as 3 elements 
+              { value0, value1, value2, value3 },  Ñ£
+          };
+               Ñ§Å[Å[Å[Å[Å[ 4 columns Å[Å[Å[Å[Å[Å[Ñ£
+
+          int multiSubArrayB[3][4] = {
+              { value0, value1, value2, value3 },  Ñ¢
+              { value0, value1, value2, value3 },  | 3 rows
+              { value0, value1, value2, value3 },  Ñ£
+          };
+               Ñ§Å[Å[Å[Å[Å[ 4 columns Å[Å[Å[Å[Å[Å[Ñ£
+
+          Åñ3-Rank Array
+          int multiArray[2][3][4] = {
+              multiSubArrayA, <-- Ñ¢ ------array[3][4]    as one element 
+              multiSubArrayB      Ñ£  <--- array[2][3][4] as 2 elements 
+          };
+
+          int multiArray[2][3][4] = {
+              { value000, value001, value002, value003 }, <-- Ñ¢ -- array[4] Ñ¢
+              { value010, value011, value012, value013 },     |-array[3][4] |  2 * 3 * 4 = 24 values
+              { value020, value021, value022, value023 },     Ñ£             |- [Format] array[2][3][4]
+              { value100, value101, value102, value103 },     Ñ¢             |  
+              { value110, value111, value112, value113 },     |-array[3][4] |  multiArray[1][2][3] = value123;
+              { value120, value121, value122, value123 },     Ñ£             Ñ£
+          };
+
+          ÅEIn this case, the space of Memory is (2 * 3 * 4 =) 24 places.
+          ÅEThe range of each indexes as Format "arrayName[int i][int j][int k]", are that:
+               0 <= i < 2
+               0 <= j < 3
+               0 <= k < 4
+
+*@advance ÅùRelation of index location in Array and memory space in Memory ÅkCAnsiYH p95Ål
+          The more right parts of index location is occuping the smaller Bytes in Memory,
+          such as that:
+          The amount of increase Bytes is 'sizeof(int)'         ,when array[i][j][0] -> array[i][j][1]. 
+          The amount of increase Bytes is 'sizeof(int) * 3 * 4' ,when array[0][j][k] -> array[1][j][k].
+
+*@subject ÅüInitialization of Array ÅkCAnsiYH p95Ål
+
+
+         
 
 [EOF]
