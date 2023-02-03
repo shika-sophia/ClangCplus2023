@@ -205,7 +205,7 @@
               putchar(c);
           }
 
-*@subject ŸString text kp44l
+*@subject ŸString text kp21, p44, p96l
           EString text is defined as Array of 'char' Type. 
             While [Java][C#] have String Type, but [C][C++] don't have it.
           EIt is expressed with double quote [ " " ].
@@ -221,7 +221,7 @@
           printf("%s\n", &strAry[0]);    // [ & ] is Address Operetor of Pointerkbelowl
 
 *@subject ŸEnum Type kp45l
-          enum: The keyword of 'enum' Type, which enumerate constant Identifer (= called "Enumerator"), 
+          enum: The keyword of 'enum' Type, which enumerate constant Identifier (= called "Enumerator"), 
                 corresponding with the int value, and delimitted by [ , ].
                 It is used at declaration of 'enum' Type.
                 (In Pascal which is a prorgram language, the Partial Range Type is similar with this, because it is self-defined as a subset of Integer Types.
