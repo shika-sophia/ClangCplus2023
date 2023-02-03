@@ -25,7 +25,7 @@
              ÅEregister
           ÅüPredefined Keyword 'auto'   ÅkCAnsiYH p75, p82Ål
           ÅüStack Overflow ÅkCAnsiYH p76Ål
-         ÅyAnnotationÅz'go to' statement  ÅkCAsinYH p78Ål
+         ÅyAnnotationÅz'goto' statement  ÅkCAsinYH p78Ål
           ÅüPredefined Keyword 'static' ÅkCAnsiYH p77-78, p81Ål
            ÅñInternal Linkage    ÅkCAnsiYH p77-78ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
            Åñstatic Storage ClassÅkCAnsiYH p81Ål
@@ -196,11 +196,11 @@
           If the Stack Area is too small to storage large amount of 'auto' Variables,Å@(the storage space depends on Compiler),
           Compiler will throw Compile Error of "Stack Overflow", because Stack Area will be shotage of Memory space.
 
-*@subjectÅyAnnotationÅz'go to' statement ÅkCAsinYH p78Ål
+*@subjectÅyAnnotationÅz'goto' statement ÅkCAsinYH p78Ål
           Variable which is explicitly initialized in a Block, is certainly done,
           when Control normally enter into the Block, such as sequencially operation or Calling Function.
           But it is not always done,
-          when Control jump into the Block by using 'go to' statement.
+          when Control jump into the Block by using 'goto' statement.
 
 *@subject ÅüPredefined Keyword 'static' ÅkCAnsiYH p77-78, p81Ål
           static: The original sense in English is fixed, immutable, quiet, silent, gently; <-> as the opposite sense, 'dynamic'.
@@ -209,7 +209,7 @@
             (2) Variable which is qualified 'static' in a Block, have static Storage Class, adding above.
 
           ÅñInternal LinkageÅkCAnsiYH p77-78, p81Ål=> see ÅüLinkageÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
-          An Identifier with 'static' always have Internal Linkage, of cause in a Block, even if out of a Block, 
+          An Identifier with 'static' always have Internal Linkage, of course in a Block, even if out of a Block, 
           so that the Identifier cannot be seen from any other files.
 
           An Identifier of Function with 'static' always have Internal Linkage,
