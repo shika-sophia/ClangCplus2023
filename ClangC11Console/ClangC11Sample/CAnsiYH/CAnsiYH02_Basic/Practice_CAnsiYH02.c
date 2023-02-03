@@ -13,7 +13,7 @@
 *         〇(a) A Function which shows "OK", is named "0k_print".
 *         -> Wrong, numeric character cannot be use at top of Identifier.
 * 
-*         〇(b) A Variable which strage size of File, is named "size".
+*         〇(b) A Variable which storage size of File, is named "size".
 *         -> Correct, the name is appreciate with sense of the Variable value.
 * 
 *         〇(c) A Function which insert data into Database, is named "register".
@@ -22,7 +22,7 @@
 *         〇(d) A Function which read data from file, is named "read-data".
 *         -> Wrong, character '-' cannot be use for Identifier.
 *
-*         〇(e) A Variable which strage calculated result, is named "integer".
+*         〇(e) A Variable which storage calculated result, is named "integer".
 *         -> Correct, 'int' is Reserved Word, but it is not and can be use for Identifier.
 *          
 *         〇(f) A Function which convert Yen ¥ to Doller $, is named "convert$'.

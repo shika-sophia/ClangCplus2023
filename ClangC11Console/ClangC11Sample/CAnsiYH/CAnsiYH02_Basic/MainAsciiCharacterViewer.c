@@ -17,12 +17,12 @@
 *@English
 *@subject ◆ASCII Code Chart〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
 *         I drew it as similar, below.
-*         It is opposite Horizontal and Vertical Axis to Chart of〔C99YH 0A〕
+*         It is the opposite Horizontal and Vertical Axis to Chart of〔C99YH 0A〕
 * 
 *         The usage of Chart that you can know this charater code value (16-decimal), 
-*         by adding both value of Horizontal and Vertical.
+*         by adding both values of Horizontal and Vertical.
 * 
-*         You can output to Console, by using 'printf()'
+*         We can output to Console, by using 'printf()'
 * 
 *         [Example]
 *         int c;             It should be defined as 'int', not 'char'.
@@ -34,20 +34,20 @@
 *         It is defined corresponding Binary which is recognizable for Machine, to Character which is recognizable for Human.
 *         There are some kinds of Character Code as below.
 * 
-*         ASCII: Character code default-defined by the specification of C language,
+*         ASCII: Character code which is default-defined by the specification of C language,
 *                depending on Compiler.
 * 
 *         UTF-8: (Unicode):
 *                Character code of most popular in the world,
 *                which almost supports main languages;
-*                including ASCII, 2 Bytes character (= wide character), Japanese, Arabic, Hebrew, Greek, or Kiril etc...
+*                including ASCII, Wide Character, Japanese, Arabic, Hebrew, Greek, or Kiril etc...
 * 
 *         ECU:   (Latin1): 
 *                Character code for UNIX: alphabet, numeric, symbol charater only, 
 *                but including pronounce-characters and accent-characters of European languages, Euro currency mark too.
-*                Probably, Git-Hub automatically may judge Character-Code as ECU. 
-*                It might change Non-Characters and Japanese to [?].
-*                Visual Studio (UTF-8) shows correctly.
+*                (Probably, Git-Hub automatically may judge Character-Code as ECU. 
+*                 It might change Non-Characters and Japanese to [?].
+*                 Visual Studio (UTF-8) shows correctly.)
 * 
 *         Shift-JIS: (windows-31J, CP932):
 *                Character code for Japanese, as Windows default in Japan.
