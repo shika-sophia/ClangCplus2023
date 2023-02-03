@@ -8,6 +8,13 @@
 
 *@summary Reference_CAnsiIntrodiction.txt
           Definition of words
+          ÅüCompile  ÅkCAnsiYH p2Ål
+          ÅüDivided Compile => ÅkC99YH08_Function\MainDividedCompileSample.cÅl
+          ÅüWhat describe in Source File and Header File
+          ÅüVariable =>ÅkC99YH03_Variable\MainNumericTypeRange.cÅl
+          ÅüFunction
+          ÅüStatement
+          ÅüExpression
 
 *@English [E] specification: édólÅAãKäi
           [E] standard:      ïWèÄÅAãKäi
@@ -21,34 +28,36 @@
 *@subject ÅüCompile  ÅkCAnsiYH p2Ål
 *         ÅñFile
 *         ÅESource File: extention [.c]: 
-*             A document file described with following C language grammer.
+*             A document file which is described with following C language grammer.
 *
 *         ÅEHeader File: extention [.h]: 
-*             A document file default or self-defined described the declaration and definition of some Functions.
+*             A document file default or self-defined which is described the declaration and definition of some Functions.
 *
 *         ÅEStandard Header File:
-*             Especally, Header Files default-defined by specification of C language Standard as like C-Ansi, C99, or C11.
+*             Especally, Header Files which is default-defined by specification of C language Standard, such as C-Ansi, C99, or C11.
 *
 *         ÅEObject File: extention [.obj] (for Windows) | [.o] (for UNIX) / These extentions depend on Compiler.
 *             A Binary File yielded by Compiler which convert Source File and Header File to Binary File.
-*             'Binary' means a signal expressed by 0 and 1. 
+*             'Binary' means signal which is expressed by 0 and 1. 
 *
 *         ÅELibrary File: extention [???]
-*             Files as like Header File, exclusive-defined file, or Functions.
+*             Files which is one of Header File.
+*             It is exclusive-defined files or Functions.
 *
 *         ÅEExecute File: extention [.exe] (for Windows)
-*
-*         ÅñCompile: (wide sense) These processes or to do these, below
+*             A File which is yielded by Compile with linking Object File and Library Files.
+
+*         ÅñCompile: (wide sense) These processes or to do these, such as that:
 *         ÅEPre-processor:
-*             A program which parse '#' Directive and do the order, before narrow-sense Compile below.
+*             A program which parse '#' Directive and do it in the order, before narrow-sense Compile as below.
 *             
-*             [Example]
+*             [Format]
 *             #include <xxxx.h> 
-*                Load the Header File and storage it on Memory.
+*                The directive of to load the Header File and storage it on Memory.
 *
 *             #define NAME 0
-*                Source File define self-defined string text as constant value.
-*                Preprocessor substitute it to constant value in whole of file after there.
+*                The directive of to define constant name (= self-defined string text) as constant value, at top of Source File.
+*                Preprocessor substitute constant name to constant value in whole of file after there.
 *
 *         ÅECompiler: (narrow sense)
 *             A program which parse Source File, Header File, and Standard Header File,
@@ -56,23 +65,25 @@
 *             convert them to Binary, and yield Object File.             
 *             
 *         ÅELinker:
-*             A program which yield Execute File with linkage Object File and Library File.
+*             A program which yield Execute File with linking Object File and Library File.
 *
 *         ÅyAnnotationÅz
 *          ANSI Standard does not describe about how to use Compiler and Linker,
-*          It do "Refer to the Specification Manual of Compiler" only.
+*          It does "Refer to the Specification Manual of Compiler" only.
 *          Actually, the usage is various, depending on Compiler.
 *
 *@subject ÅüDivided Compile => ÅkC99YH08_Function\MainDividedCompileSample.cÅl
-*         In C language, You can divide parts of Source File, can compile each files,
-*         and can link them to yield an integrated Execute File designed by necessary files only.
+*         In C language, we can divide parts of Source File.
+*         We can Compile each files one by one.
+*         We can link them to yield an integrated Execute File.
+*         We can design Execute File by linking necessary files only.
 *
 *         [more Merit] of Divided Compile
-*         ÅEcan share works
-*         ÅEcan be easy to read and manage Source File.
-*         ÅEcan partly compile modified-files only.
+*         ÅEWe can share works
+*         ÅEWe can be easy to read and manage Source Files.
+*         ÅEWe can partly compile modified-files only.
 *
-*@subject ÅüWhat describe in Source File and Header File
+*@subject ÅüWhat to describe in Source File and Header File
           ÅñBoth
           ÅE'#' Directive for Preprocessor
           ÅEDeclaration of Prototype
@@ -88,17 +99,19 @@
           ÅEDeclaration and Definition of Variable
 
           ÅyAnnotationÅz
-           Compiler does not distinguish to read Source File and Header File.
+           Compiler does not distinguish which a code is described in Source File or Header File.
            But, as Programming Style or Custom, there is a protocol that
            "Don't write Definition of Function and Variable in Header File".
 
-           Definition of them actually build (= make) the Memory.
-           Header File is referred from multi-files by using '#include'.
-           Therefore, we should not write Definiton of them in Header File to prevent Memory shortage.
+           Definition actually build (= take a space) in Memory.
+           Because Header File is referred from multi-files by using '#include', 
+           if there is Definition in Header File, Compiler take a space in Memory every times,
+           so that it is possible to be shotage of Memory.
+           Therefore, we should not write Definiton in Header File to prevent Memory shortage.
 
-*@subject ÅüVariable =>ÅkC99YH03_Variable\MainNumericTypeRange.cÅl
+*@subject ÅüVariable =>ÅkC99YH03_Variable\MainNumericTypeRange.cÅlÅkCAnsiYH Chapter 4Ål
           ÅñType
-          ÅEchar:  character, String text is defined as array of char 'char[]'.
+          ÅEchar:  character, (String text is defined as array of char 'char[]').
             char, signed char, unsigned char
             
           ÅEint   integer
@@ -110,7 +123,7 @@
           ÅEstruct
           ÅEunion
 
-          ÅñStorage Class: qualifier to make storage where in Memory
+          ÅñStorage Class: Pre-defined Keyword (= Qualifier)
           ÅEstatic: internal of the Source File only
           ÅEextern: external of the Source File 
           ÅEauto:
@@ -119,10 +132,10 @@
           =>ÅkCAnsiYH p75 | CAnsiYH04_Variable\Reference_CAnsiVariable.txtÅl
 
 *@subject ÅüFunction
-          Åñmain(): specific Function meaning Entry Point of Execute.
+          Åñmain(): specific Function which means Entry Point of Execute.
           ÅñArgument: 
-             A value, values, or nothing, which you give to a function, when call it.
-             In the Function, Argument define the Type and Identifer (= Variable name) of local Variable.
+             A value, values or nothing which we give to a Function, when call it.
+             In the Function, local Variables is defined the Type and Identifier by Argument.
 
           ÅñReturn-Type: Return-Value:
              A value as Return-Type which the Function operate and return to origin of calling itself.
@@ -131,8 +144,8 @@
                    
           ÅñDeclaration:
              A description which Program tell OS (= Operating System) to use a Function 
-             of Identifer (= Function name), Argument Type, number of Argument, and Return-Type.
-             (They are called "Signature of Function", because they is used to identify or distinguish Function)
+             of Identifier (= Function name), Argument Type, number of Argument, and Return-Type.
+             (They are called "Signature of Function", because they are used to identify or distinguish Function)
 
              It is required to be written, before Call.
 
@@ -151,9 +164,9 @@
           ÅñJump               -- goto, named-label
 
 *@subject ÅüExpression: A minimum unit of calculation
-          ÅñType-Change impicitly 
+          ÅñType-Change impicitly => ÅkCAnsiYH03_Type\Reference_CAnsiTypeChange.txtÅl
             
-          ÅñCalculation of Add, Subtract, Multiple, Divide,and Modulus (= rest of Divide calculation),
+          ÅñCalculation of Add, Subtract, Multiple, Divide, and Modulus (= rest of Divide calculation),
             expressed by Operator [ + ] [ - ] [ * ] [ / ] [ % ].
 
           ÅñCaluculation of Bit
