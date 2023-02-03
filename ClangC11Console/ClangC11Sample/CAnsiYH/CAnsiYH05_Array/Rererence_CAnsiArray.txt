@@ -228,8 +228,28 @@
           The amount of increase Bytes is 'sizeof(int) * 3 * 4' ,when array[0][j][k] -> array[1][j][k].
 
 *@subject ŸInitialization of Array kCAnsiYH p95l
+          Initialization of Array: 
+            EAt the same time of Defintion, we can initialize Array, expessed by '= { element1, element2, ... };'.
+            EIn this case, the array size in bracket '[]' can be omited, even if definition,
+              because the array size can be obviously found the number of elements from following bracket '{ }'.
+            EDelimiter ',' can be added after the last element, too.
+            ETermination of statement ';' need be put after bracket '{ }'. That is often forgotten.
 
+          Initialization of Multi Dimension Array: 
+            EThe array size of Defintion with initialization, can be omited only at most left part of bracket '[]'.
 
-         
+            [Example]
+            int multiAry[][3] = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+            };
+
+            int multiAry[][3][4] = { ... };
+
+*@subject ŸCharacter Array 
+          => ŸString text Literal kp21, p44, p96lkCAnsiYH02_Basic\Reference_CAnsiBasic.txtl
+          => ŸString text         kp21, p44, p96lkCAnsiYH03_Type\Reference_CAnsiType.txtl
+
+*@advance Array and Pointer kp96l
 
 [EOF]
