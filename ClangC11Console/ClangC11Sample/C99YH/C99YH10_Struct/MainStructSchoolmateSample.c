@@ -97,7 +97,7 @@
 *             { 17, "David", 45, 32, 67, 92, 12 },
 *         };
 *
-*@subject qualifier? 'typedef' = abbreviation of type defininition
+*@subject Predefined Keyword 'typedef' = abbreviation of type defininition
 *         ÅEIt can rename any type to self-defined alias,
 *           for not only 'struct' but also any other type.
 * 
@@ -134,7 +134,7 @@
 *         alice.name[2] = 'i';
 *         alice.name[3] = 'c';
 *         alice.name[4] = 'e';
-*         alice.name[5] = '\0';  NUL Character
+*         alice.name[5] = '\0';  NULL Character
 * 
 *@NOTE ÅyCompile ErrorÅzthrown ONLY by Visual Studio Execution.
 *       Error 'strcpy':
