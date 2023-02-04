@@ -5,7 +5,7 @@
 *@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
 *@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
 *
-*@content CAnsiYH Chapter 5  Array | Text Reference / p91-
+*@content CAnsiYH Chapter 5  Array | Text Reference / p91-98
 *@summary Rererence_CAnsiArray.txt
           Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
           ÅüArray Size                         ÅkCAnsiYH p91Ål
@@ -22,6 +22,14 @@
           ÅüMulti-Dimension Array              ÅkCAnsiYH p94Ål
              => see Åü2-Dimension Array ÅkC99YH09_Array\MainTwoDimensionArraySample.cÅl
           ÅùRelation of index location in Array and memory space in Memory ÅkCAnsiYH p95Ål
+          ÅüInitialization of Array ÅkCAnsiYH p95Ål
+          ÅüCharacter Array ÅkCAnsiYH p96Ål
+            => ÅüString text Literal ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+            => ÅüString text         ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+          ÅùArray and Pointer ÅkCAnsiYH p96Ål
+            ÅñDifference of Array and Pointer
+            ÅñSort by Array and Pointer ÅkCAnsiYH p98Ål
+          ÅüArray and Struct ÅkCAnsiYH p98Ål
 
 *@English [E] correspond (v):     ëäìñÇ∑ÇÈÅAàÍívÇ∑ÇÈÅAëŒâûÇ∑ÇÈ
                 correspond to:    àÍívÇ∑ÇÈ
@@ -246,10 +254,83 @@
 
             int multiAry[][3][4] = { ... };
 
-*@subject ÅüCharacter Array 
-          => ÅüString text Literal Åkp21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
-          => ÅüString text         Åkp21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+*@subject ÅüCharacter Array ÅkCAnsiYH p96Ål
+          => ÅüString text Literal ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+          => ÅüString text         ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
 
-*@advance ÅùArray and Pointer Åkp96Ål
+*@advance ÅùArray and Pointer ÅkCAnsiYH p96Ål
+          There are closely relationship between Array and Pointer.
+          Here is data structure of both only.
+          => more detail ÅkCAnsiYH Chapter 6 | p111Ål
+
+          ÅñDifference of Array and Pointer
+          Array 'aAry' and Pointer Array 'pAry' are similar way of Definition and Reference, as [Example] below.
+          But there are differece in Memory space occupied by both.
+
+          [Example]
+          char aAry[][6] = { "ABCDE", "FG", "HIJ", "" };
+          char *pAry[4]  = { "abcde", "fg", "hij", "" };
+
+          printf("%s\n", aAry[0]);  ->  ABCDE
+          printf("%s\n", pAry[0]);  ->  abcde
+
+          Each elements of Array 'aAry' storage the String text.
+          Each elements of Pointer Array 'pAry' storage the address for String text.
+          Therefore, Each elements of Array 'aAry' need occupy more wide space in Memory than Pointer Ary 'pAry',
+          because 'aAry' need storage whole characters of String text to the space, 
+          but 'pAry' need storage address only to the space, as below.
+
+          [Memory space of Array 'aAry']
+           aAry[0][0]  aAry[0][1]  aAry[0][2]  aAry[0][3]  aAry[0][4]  aAry[0][5]
+  aAry[0] | 'A'       | 'B'       | 'C'       | 'D'       | 'E'       | '\0'     |
+
+           aAry[1][0]  aAry[1][1]  aAry[1][2]  aAry[1][3]  aAry[1][4]  aAry[1][5]
+  aAry[1] | 'F'       | 'G'       | '\0'      | '\0'      | '\0'      | '\0'     |
+  
+           aAry[2][0]  aAry[2][1]  aAry[2][2]  aAry[2][3]  aAry[2][4]  aAry[2][5]
+  aAry[2] | 'H'       | 'I'       | 'J'       | '\0'      | '\0'      | '\0'     |
+
+           aAry[3][0]  aAry[3][1]  aAry[3][2]  aAry[3][3]  aAry[3][4]  aAry[3][5]
+  aAry[3] | '\0'      | '\0'      | '\0'      | '\0'      | '\0'      | '\0'     |
+
+          [Memory space of Pointer Array 'pAry']
+           pAry[0]   pAry[1]  pAry[2]  pAry[3]
+  pAry    | *      | *       | *      | *     |    // *: address for *pAry[]
+            Å´        :         :        :
+ *pAry[0] | 'a' | 'b' | 'c' | 'd' | 'e' | '\0' |
+                     :         :        :
+           *pAry[1]  Ñ§> | 'f' | 'g' | '\0' |
+                               :        :
+                    *pAry[2]   Ñ§> | 'h' | 'i' | 'j' | '\0' |
+                                        :
+                              *pAry[3]  Ñ§> | '\0' |
+          
+          Åñ<stdstr.h> -- strcpy()
+          Assuming to use Function 'strcpy()' for these Array, 
+          the both differences of Memory space look obviously, as [Example] below.
+          ('strcpy()' is the Function which copy String text to char Array elements,
+           => the usageÅkC99YH10_Struct\MainStructSchoolmateSample.cÅlÅkC99YH p300ÅlÅkCAnsiYH Chapter 12Ål)
+
+          [Example]
+          strcpy(pAry[0], "hello");  // OK
+          strcpy(pAry[1], "hello");  // break the Array itself
+          strcpy(aAry[0], "hello");  // OK
+          strcpy(aAry[1], "hello");  // OK
+
+          To copy and assign String text "hello" for 'pAry[1]' will break the Array itself,
+          because 'pAry[1]' has only 3 Bytes in Memory, such as { 'f', 'g', '\0' }.
+
+          To copy and assign String text "hello" for 'aAry[1]' will be well with no problem,
+          because 'aAry[1]' has only 6 Bytes in Memory, such as { 'f', 'g', '\0', '\0', '\0', '\0' }.
+
+*@subject ÅñSort by Array and Pointer ÅkCAnsiYH p98Ål
+            Sort by Array:   It need copy the elements and exchange them.
+            Sort by Pointer: It can exchange both Pointers only.
+
+*@subject ÅüArray and Struct ÅkCAnsiYH p98Ål
+          Array: The element sequence which is generated in the same Type, and storaged with numbering by index.
+          Struct: The member set which is generated by different Types and storaged with the name.
+
+          => more detail ÅkCAnsiYH Chapter 7 | p139Ål
 
 [EOF]
