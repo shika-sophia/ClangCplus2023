@@ -114,6 +114,24 @@ void count_dataCAnsiYH05(int* evenp, int* oddp, int* zerop) {
     }//for
 }//count_dataCAnsiYH05()
 
+
+
+/*
+//====== Result ======
+//---- Practice 1 ----
+Before Sort of data[]: 3, 5, 0, 9, 2,
+After  Sort of data[]: 0, 2, 3, 5, 9,
+
+//---- Practice 2 ----
+Even: 1
+Odd : 3
+Zero: 1
+
+//---- Practice 3 ----
+pAry (before): Sophia
+ClangC11Console.exe (プロセス 5388) は、コード -1073741819 で終了しました。
+
+(Give up the code as My Answer below) => [Book Answer]
 //---- Practice 3 ----
 void pAry_reverseCAnsiYH05() {
     char* pAryReversed[PA_SIZE] = { "" };
@@ -131,21 +149,5 @@ void pAry_reverseCAnsiYH05() {
     *pAryCAnsiYH05 = *pAryReversed;
 }//pAry_reverseCAnsiYH05
 
-/*
-//====== Result ======
-//---- Practice 1 ----
-Before Sort of data[]: 3, 5, 0, 9, 2,
-After  Sort of data[]: 0, 2, 3, 5, 9,
-
-//---- Practice 2 ----
-Even: 1
-Odd : 3
-Zero: 1
-
-//---- Practice 3 ----
-pAry (before): Sophia
-ClangC11Console.exe (プロセス 5388) は、コード -1073741819 で終了しました。
-
-(Give up)
 
 */
