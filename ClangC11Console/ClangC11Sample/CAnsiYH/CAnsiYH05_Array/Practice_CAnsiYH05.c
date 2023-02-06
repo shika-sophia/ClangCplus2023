@@ -5,17 +5,17 @@
 *@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
 *@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
 *
-*@content CAnsiYH Chapter 5  Array | Practice / List - / p99
+*@content CAnsiYH Chapter 5  Array | Practice / p99-103
 *@summary Practice_CAnsiYH05.c
 *@English
-*@subject Practice 1:
+*@subject Practice 1: Sort Ascending
 *         Define Function 'void sort_data(void)' which sort the elements of Array 'int data[MAX_DATA]' as ascending,
 *         asumming that '#define MAX_DATA' has already defined, and that the elements are different each other.
 *
 *         [My Answer] -> code below
 *         => Correct
 * 
-*@subject Practice 2:
+*@subject Practice 2: Even, odd Number
 *         Define Function 'void count_data(int *evenp, int *oddp, int *zerop)'
 *         which count each numbers 'even, odd, zero' of Array 'data[]' as same as above,
 *         however return them to each Pointer '*evenp *oddp, *zerop'.
@@ -27,7 +27,7 @@
 * 
 *         => Modified.
 * 
-*@subject Practice 3:
+*@subject Practice 3: Reverse
 *         Define Function 'void pAry_reverse(void)' 
 *         which reverse the order of characters in Array 'char *pAry[PA_SIZE]',
 *         assuming that '#define PA_SIZE' has already defined.
@@ -44,7 +44,7 @@
 * 
 *         => Give up and Comment out
 * 
-*@subject Practice 4:
+*@subject Practice 4: Matrix and Array
 *         2-Dimension Array can be regarded as Matrix in Mathematics.
 *         so that element of Array a[i][j] is assumed as aij of 2 * 2 Matrix, such as:
 *            ┌　        ┐
@@ -63,7 +63,10 @@
 * 
 *         [My Answer] -> code below
 * 
-*@subject Practice 5:
+*         => Correct, 
+*            though [My answer] is the opposite Axis row and column of [Book Answer].
+*      
+*@subject Practice 5: Matrix General
 *         Define Function as same as the previous, however for 5 * 5 Matrix.
 * 
 *         [My Answer] -> Apendix below -> Give up
