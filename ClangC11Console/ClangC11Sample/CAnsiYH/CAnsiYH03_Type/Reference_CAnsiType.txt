@@ -59,15 +59,16 @@
           [E] intention  (n):     à”ê}Å@Å@intend (v) | contemplate (v) à”ê}Ç∑ÇÈÅAäÈê}Ç∑ÇÈÅAènéãÇ∑ÇÈ
           [E] appropriate (adj):  ìKÇµÇΩÅAìKêÿ
           [E] regard     (v):     ì_, çlÇ¶Çƒ, Ç›Ç»Ç∑, å©Ç»Ç∑, Ç…ä÷ÇµÇƒ, åhà”
-          [E] assign     (v):     äÑÇËìñÇƒÇÈÅAë„ì¸Ç∑ÇÈ               | assignment (n)
+          [E] refer      (v):     éQè∆Ç∑ÇÈÅAílÇìæÇÈ    | reference (n)  | referred (v/adj)
+          [E] assign     (v):     äÑÇËìñÇƒÇÈÅAë„ì¸Ç∑ÇÈ  | assignment (n)
           [E] replace    (v):     íuä∑Ç∑ÇÈ                          | replacement (n)
           [E] substitute (v):     ì¸ÇÍë÷Ç¶ÇÈÅAåë„Ç∑ÇÈÅAë„ì¸Ç∑ÇÈ      | substitution (n)
           [E] allocate   (v):     äÑÇËìñÇƒÇÈÅAîzï™Ç∑ÇÈÅAèÍèäÇåàÇﬂÇÈ  | allocation (n)
           [E] dispatch   (n/v):   îhå≠ÅAî≠ëóÅAã}îh   =:= allocate (v)
 
           ÅñProgramming
-          [P] define    (v):      íËã`Ç∑ÇÈ
-          [P] declarate (v):      êÈåæÇ∑ÇÈ
+          [P] define    (v):      íËã`Ç∑ÇÈ   | defintion   (n) íËã`
+          [P] declarate (v):      êÈåæÇ∑ÇÈ   | declaration (n) êÈåæ  [P] ÉvÉçÉgÉ^ÉCÉvêÈåæ
           [P] transplantable (adj):  à⁄êAê´Ç™Ç†ÇÈ  =:= portable  â^Ç—Ç‚Ç∑Ç¢
           [P] operator  (n):      ââéZéq
           [P] qualifier (n):      èCè¸éq
@@ -415,7 +416,7 @@
                return p;
            }
 
-*@subject ÅüPointer Type Åkp49Ål=> more detailÅkCAnsiYH Chapter 6Ål
+*@subject ÅüPointer Type Åkp49Ål=> more detailÅkCAnsiYH Chapter 6 | p107ÅlÅkCAnsiYH06_Pointer\Reference_CAnsiPointer.txtÅl
           [Definition]
           ÅEPointer: The Type which indicate address of some Type value or the value.
           ÅEaddress: The location in Memory, expressed by 'int' value.
@@ -435,6 +436,8 @@
                => more detialÅkRelation of Array and Pointer | CAnsiYH p111Ål
 
           ÅECompare Operator [ == < > ... ]: Pointer can be compared by using them.
+
+          => copy to ÅkCAnsiYH06_Pointer\Reference_CAnsiPointer.txtÅl
 
 *@subject ÅüArray Type Åkp50Ål=> more detialÅkCAnsiYH Chapter 5Ål
           ÅEArray: The Type which have sequence of specific Type values.
