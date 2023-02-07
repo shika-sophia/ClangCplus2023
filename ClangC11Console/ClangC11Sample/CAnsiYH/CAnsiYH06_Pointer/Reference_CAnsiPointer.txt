@@ -1,0 +1,137 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH06_Pointer
+*@fileName  Reference_CAnsiPointer.txt
+*@reference C99YH    Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [“ü–å•Ò] ‘æ‚R”ÅxSB Creative, 2019
+*@reference CAnsiYH  Œ‹é _ wCŒ¾ŒêƒvƒƒOƒ‰ƒ~ƒ“ƒOƒŒƒbƒXƒ“ [•¶–@•Ò] V”Åx  SB Creative, 2006
+*@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
+*
+*@content CAnsiYH Chapter 6  Pointer |  / List - / p107-
+*@summary Reference_CAnsiPointer.txt
+          ŸPointer Type kp49l<= copy from kCAnsiYH03_Type\Reference_CAnsiType.txtl
+
+          ¡ Pointer kp107l
+          ŸDefinition of Pointer kp108l
+            –Pointer to Variable
+            –Pointer to Function
+          ŸAddress Operator [ & ]kp108l
+          ŸIndirect-Reference and Assignment by Pointer kp109l
+          ŸArithmetic caluclation of Pointer kp109l
+
+*@English [E] correspond (v):     ‘Š“–‚·‚éAˆê’v‚·‚éA‘Î‰‚·‚é
+                correspond to:    ˆê’v‚·‚é
+                correspond with:  ‘ŠŒİì—p‚ª‚ ‚é
+          [E] derive     (v):     ”h¶‚·‚éA“±‚­A—R—ˆ‚·‚é
+          [E] indirect (adj):     ŠÔÚ“I  <->  direct ’¼Ú“I
+          [E] refer      (v):     QÆ‚·‚éA’l‚ğ“¾‚é    reference (n) | referred (v/adj)
+          [E] assign     (v):     Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é  assignment (n)
+          [E] indicate   (v):     w‚µ¦‚·
+          [E] storage  (n/v):     Ši”[‚·‚éA‹L‰¯‚·‚éA’™‘ ‚·‚é
+          [E] strict   (adj):     Œµ–§, Œµ‚µ‚­, ŒÅ‚­, ŒµŠi, Œµd, ‚ ‚­‚Ü‚Å
+          [E] confuse    (v):     ¬“¯‚·‚é
+          [E] identify   (v):     “¯ˆê‹‚·‚é
+
+          [P] define     (v):     ’è‹`‚·‚é   | defintion   (n) ’è‹`
+          [P] declarate  (v):     éŒ¾‚·‚é   | declaration (n) éŒ¾  [P] ƒvƒƒgƒ^ƒCƒvéŒ¾
+          [P] operator   (n):     ‰‰Zq
+          [P] qualifier  (n):     Cüq
+          [P] identifier (n):     ¯•ÊqA–¼‘O
+          [P] initializer(n):     ‰Šú‰»q { }
+
+          [M] Arithmetic (n/adj): Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È
+
+*@see     CAnsiYH03_Type\Reference_CAnsiType.txt
+*@author  shika
+*@date    2023-02-07
+*/ 
+
+*@subject ŸPointer Type kp49l<= copy from kCAnsiYH03_Type\Reference_CAnsiType.txtl
+          [Definition]
+          EPointer: The Type which indicate address of some Type value or the value.
+          Eaddress: The location in Memory, expressed by 'int' value.
+           (In Assembler, it corresponds to "Indirect-Reference".)
+
+          [Operator of Pointer]
+          EAddress Operator  [ & ]:  It means the adderss of Variable, expressed such as '&x'.
+          EIndirect Operator [ * ]:  It means Indirect-Refernence value of Variable which Pointer indicate, 
+                                      expressed such as '*p'.
+          EAssign Operator [ = ]:    When Pointer is assigned Address of some Variable, it is expressed such as 'p = &x;'
+          EArithmetic Operator [ + - ++ -- ]: 
+               To add or subtract value of Pointer, mean to navigate address of Variable value which Pointer indicate.
+               so that we can regard Memory as Array of Object (= Variable) by using Pointer.
+               Actually, These are the same meaning, incresing value of Pointer and specifing index of Pointer Array
+               expressed such as *(p + m) and p[m] (assuming p: Pointer, m: int value).
+
+               => more detialkRelation of Array and Pointer | CAnsiYH p111l
+
+          ECompare Operator [ == < > ... ]: Pointer can be compared by using them.
+
+          => copy from kCAnsiYH03_Type\Reference_CAnsiType.txtl
+
+*@subject ¡ Pointer kp107l
+          Pointer: EA Type which indicate address of a Variable, Function, or Object such as Array.
+                   EPointer is one of Derived Types which can be self-defined by Programmer. 
+                     => Derived Types kCAnsiYH03_Type\Reference_CAnsiType.txtl
+                   EAssuming that there is a Type 'T', the Pointer to T is expressed as Type 'T*',
+                     which is called "Pointer to T Type" or "Pointer which indicate T Type".
+                   EWe can indirectly refer and assign to some Variables by using a Pointer. => Indirect-Referencekbelowl
+
+          Indirect-Reference: 
+                   When a Pointer indicate a Variable 'int i',
+                   we can refer to the value of 'i' and assign some value to 'i', by using the Pointer.
+                   => [Example] in "ŸIndirect-Reference and Assignment by Pointer". kmore belowl
+
+          Pointer Variable: Variable of Type T*
+          Pointer value:    value of Type T*
+          It is often complicated that "Pointer Variable" or "Pointer value" are simply called "Pointer".
+
+          [Example]
+          int i;    // Definition Variable of 'int' Type
+          int *ip;  // Definition Pointer which indicate address of 'int' Type.
+
+          ip = &i;  // Pointer 'ip' is assigned address of Variable 'int i', expressed by Adderss Operator [ & ].
+                    // Then the Pointer storage address in Memory of it.
+                    // In the other words, Conditional Expression 'ip == &i' is true.
+                    // When a Pointer 'ip' indicate a Variable 'int i',
+                    // we can refer to the value of 'i' and assign some value to 'i', by using the Pointer 'ip'.
+
+          int *ip = &i; // We can write that, as Definition and Intialization Pointer at the same time.
+                        // Though Indirect Operator [ * ] express the value of Variable which Pointer indicate,
+                        // the expression 'int *ip = &i;' means both of Definition Pointer 'int *ip;' and Intialization 'ip = &i;'. 
+
+*@subject ŸDefinition of Pointer kp108l
+          [Example]
+          –Pointer to Variable
+          int  *ip;                 // Definition Pointer 'ip' which indicate 'int' Type.
+          char *cp;                 // Definition Pointer 'cp' which indicate 'char' Type.
+          struct SchoolMate *mateP; // Definition Pointer 'mateP' which indicate 'struct SchoolMate'.
+          T    *tp                  // Generally, Definition Pointer 'tp' which indicate 'T' Type.
+
+          –Pointer to Function
+          int (*fp)(char);          // Definition Pointer 'fp' which indicate Function whose Argument is one 'char' Type and whose Return-Type is 'int' Type.
+
+*@subject ŸAddress Operator [ & ]kp108l
+          Address Operator [ & ]: 
+            EOperator which add '&' before Variable to express address of the Variable.
+              Strictly, the Variable which can be put as 'Left Side Value'.
+              => Left Side Value kCAnsiYH p74lkCAnsiYH04_Variable\Reference_CAnsiVariable.txtl
+            
+            EPointer is intialized or assigned address of Variable with '&', as [Examble] above.
+              
+            EThough the symbol '&' is as same as Bit Arithemetic Operator [ & ] or Logical Operator [ && ],
+              of course, it is different meaning from these.
+
+*@subject ŸIndirect-Reference and Assignment by Pointer kp109l
+          Indirect-Reference: kabovel
+
+          [Example] 
+          int i;
+          int *ip = &i;
+
+          *ip = 10;     // The assignment change value of Variable 'i' to 10 and Pointer value '*ip' to 10,
+                        // but Pointer 'ip' is no change, still.
+                        // Therefore, Don't confuse or identify Pointer value '*ip' and Pointer Variable 'ip',
+                        // which are different.
+
+*@subject ŸArithmetic caluclation of Pointer kp109l
+          
+[EOF]
