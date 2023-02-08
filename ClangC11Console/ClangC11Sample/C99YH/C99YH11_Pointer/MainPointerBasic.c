@@ -7,15 +7,16 @@
 *
 *@content C99YH ‘æ11Í Pointer | Chapter 11 / List - / p343
 *@summary MainPointerBasic.c
-*@English [‰p] assign:     Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é
-*         [‰p] substitute: ‘ã“ü‚·‚éA“ü‚ê‘Ö‚¦‚é
+*@English [E] assign:     Š„‚è“–‚Ä‚éA‘ã“ü‚·‚é
+*         [E] substitute: ‘ã“ü‚·‚éA“ü‚ê‘Ö‚¦‚é
+*         [E] indicate:   w‚µ¦‚·
 * 
 *@subject ¡ Pointer
-*         pointer: The variable which has address of the other variable.
+*         Pointer: The variable which indicate address of the other variable.
 *                  Therefore, it called "pointer" which indicates something.
 *
 *         –Define
-*         E'*': Pointer is defined by adding '*' to the variable name.
+*         E'*': Pointer is defined by adding '*' before the Variable name.
 * 
 *         [Example]
 *         int  x;      // definition of int type 
@@ -24,11 +25,11 @@
 * 
 *         [~] int  *p, q  // Unexpected Result: this expression means "Define Pointer '*p' and int 'q'."
 *         
-*         –Substitute
+*         –Assignment
 *         E'&': <Address operator>: Get the address (not the value) of following variable.
-*                Pointer is expressed to substitute address by adding '&' to the value.
+*                Pointer is expressed to assign address by adding '&' to the value.
 *         E'*': <Redirect operator>: Set the value to the variable which Pointer is having its address.
-*                Pointer is expressed to substitute the value to the variable of the having its address by adding '*' to the variable name.
+*                Pointer is expressed to assgn the value to the variable of the having its address by adding '*' to the variable name.
 * 
 *         [Example]
 *         x = 123;  // substitute value '123' to variable 'x'.
@@ -36,8 +37,8 @@
 *         *p = 123; // <=>  [ p = &x  ->  x = 123 ]
 *                   //substitute value '123' to the variable which Pointer is having its address. 
 *                      
-*         [~] p = x;    //Compile Error: this espression means "Substitute the value of int variable 'x' to Pointer variable 'x' ".
-*         [~] p = 123;  //Compile Error: this espression means "Substitute int value '123' to Pointer variable 'x' ".
+*         [~] p = x;    //Compile Error: this expression means "Assign the value of int variable 'x' to Pointer variable 'x' ".
+*         [~] p = 123;  //Compile Error: this expression means "Assgin int value '123' to Pointer variable 'x' ".
 * 
 *         –Refer
 *         [Example] 
@@ -46,35 +47,59 @@
 *         printf("%d \n", *p);  // show the value of the variable which Pointer is having its address.
 *                               // yAnnotationzthe format use '%d' because the variable 'x' ,indicated by Pointer, is int type.
 * 
-*@subject ŸNULL Pointer kC99YH p364l
-*         <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
-*            „¤ #define NULL 0
-*
-*         E'NULL': A symbol meaning "nothing of reference".
-*         ENULL Pointer: Pointer can be assigned '0'.  0 means NULL.
-*         ENULL Pointer is used to express end of link, when Liner List or Tree Data Structure.
-*         EYou can assign NULL to any Pointer.
-*         EYou cannot assign any value to NULL Pointer
-*         EYou cannot refer to value of NULL Pointer.
-*         ENULL Check: Before operate 'p', it is necessary to check if p is NULL or not.
-* 
-*         [Example]
-*         int *p;
-*         p = NULL;
-* 
-*         [~] *p = 123;  -> Compile Error: NULL pointer assignment,
-*                          -> or output unexpected value, or do unexpeted behavior,
-*                          -> or enforcely exited by OS.
-* 
-*         [~] printf("%p \n", p);  // when 'p = NULL'
-* 
-*         [Example] NULL Check
-*         if (p != NULL) {
-*             // write operation: assginment or reference, about 'p' here.
-*         }
-* 
-*         => copy tokC99YH12_FileOperation/MainFileOpenInputSample.cl
-* 
+*@subject ŸNULL Pointer kC99YH p364lkCAnsi p110lkCAnsiYH06_Pointer\Reference_CAnsiPointer.txtl
+          <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
+             „¤ #define NULL 0
+
+          NULL Pointer:
+           EThe constant value which indicate nowhere. It means no reference.
+           EThe constant value is often defined as '0', depending on Compiler,
+             so that Conditional Expression 'if(NULL)' is false.
+
+             [Example]
+             FILE *fp = fopen(...);
+             if(!fp) { ... }         // as same as 'if(fp == NULL)'
+             if(fp)  { ... }         // as same as 'if(fp != NULL)'
+
+           EWe cannot refer and assign to address of NULL Pointer.
+             If we would do, we will be thrown Runtime Error,
+             because Compiler cannot find address which NULL Pointer indicate,
+             as like NullPointerException in [Java][C#].
+
+           EWe can assign NULL to any Pointer, that means no reference or to delete the already reference.
+           EWe can assign 0    to any Pointer, that means to assgin NULL.
+           ENULL Check: Before we operate 'p', it is necessary to check if p is NULL or not.
+
+            [Example]
+            int *p;
+            p = NULL;
+
+            [~] *p = 123;  -> Runtime Error: NULL pointer assignment,
+                           -> or output unexpected value, or do unexpeted behavior,
+                           -> or enforcely exited by OS.
+
+            [~] printf("%p \n", p);  // when 'p = NULL'
+
+            [Example] NULL Check
+            if (p != NULL) {
+                // write operation: assginment or reference, about 'p' here.
+            }
+
+         EThe reason why NULL Pointer is necessary:
+             Because Compiler can tell Error of Function to Programmer, as NULL Pointer,
+             when we use Function whose Return-Type is Pointer Type, such as that:
+               Function 'FILE* fopen( ... )' which open a file of argument, whose Return-Type is FILE Pointer 'FILE*',
+               if 'fopen()' cannot open the file, it return NULL Pointer.
+               Function 'void* malloc()' which take a space in Memory, whose Return-Value is General Pointer 'void*',
+               if 'malloc()' cannot take a space in Memory, it return NULL Pointer.
+            Because NULL Pointer is used to express end of link,
+            when we use Liner List or Tree Data Structure.
+
+           EDon't confuse and identify NULL Pointer, Empty-String "" and NULL Character '\0',
+             these are different things.
+
+          => copy to/from kCAnsiYH06_Pointer\Reference_CAnsiPointer.txtl
+
 *@subject <string.h>
 *            „¤ int  strlen(char*)
 * 
