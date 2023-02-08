@@ -1,0 +1,336 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / CAnsiYH05_Array
+*@fileName  Rererence_CAnsiArray.txt
+*@reference C99YH    åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ì¸ñÂï“] ëÊÇRî≈ÅxSB Creative, 2019
+*@reference CAnsiYH  åãèÈ ç_ ÅwCåæåÍÉvÉçÉOÉâÉ~ÉìÉOÉåÉbÉXÉì [ï∂ñ@ï“] êVî≈Åx  SB Creative, 2006
+*@reference C11DS    arton  Åwì∆èK C êVî≈Åx„ƒâjé–, 2018
+*
+*@content CAnsiYH Chapter 5  Array | Text Reference / p91-98
+*@summary Rererence_CAnsiArray.txt
+          Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
+          ÅüArray Size                         ÅkCAnsiYH p91Ål
+          ÅüDeclaration Format of Array        ÅkCAnsiYH p93Ål
+          ÅüDefinition  Format of Array        ÅkCAnsiYH p91Ål
+          ÅüAssign and Refer array element     ÅkCAnsiYH p92Ål
+          ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+             => ÅüOperator 'sizeof' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
+             => ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+           ÅñArray length                      ÅkCAnsiYH p93Ål
+             => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
+             => copy toÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+          Åüfor-statement and Array            ÅkCAnsiYH p93Ål
+          ÅüMulti-Dimension Array              ÅkCAnsiYH p94Ål
+             => see Åü2-Dimension Array ÅkC99YH09_Array\MainTwoDimensionArraySample.cÅl
+          ÅùRelation of index location in Array and memory space in Memory ÅkCAnsiYH p95Ål
+          ÅüInitialization of Array ÅkCAnsiYH p95Ål
+          ÅüCharacter Array ÅkCAnsiYH p96Ål
+            => ÅüString text Literal ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+            => ÅüString text         ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+          ÅùArray and Pointer ÅkCAnsiYH p96Ål
+            ÅñDifference of Array and Pointer
+            ÅñSort by Array and Pointer ÅkCAnsiYH p98Ål
+          ÅüArray and Struct ÅkCAnsiYH p98Ål
+
+*@English [E] correspond (v):     ëäìñÇ∑ÇÈÅAàÍívÇ∑ÇÈÅAëŒâûÇ∑ÇÈ
+                correspond to:    àÍívÇ∑ÇÈ
+                correspond with:  ëäå›çÏópÇ™Ç†ÇÈ
+          [E] arbitrary (adj):    îCà”, êèà”, úìà”ìI
+          [E] specification (n):  éwíËÅAédólÅAãKäi
+          [E] occupy     (v):     êËÇﬂÇÈ
+          [E] dimension  (n):     éüå≥   =:= [P] rank
+          [E] increment  (n):     ëùï™  |  [P] 1Ç∏Ç¬ëùÇ‚Ç∑
+
+*@see 
+*@author  shika
+*@date    2023-02-01
+*/ 
+
+*@subject Å° Array ÅkCAnsiYH p91ÅlÅkC99YH Chapter 9 Array | p249Ål
+          Array: ÅEOne of data structure which can manage multi-Variable of the same Type, 
+                   with index as number of data, starting from 0, such as 0, 1, 2, ... . 
+                 ÅEIt is one of Derived Types which programmer define self-defined Type by using default-defined Type.
+                 ÅEIt is taken a space of Memory, corresponding to data size of the Type,
+                   at the time of Defininition.
+
+          array index: 
+            A number of array-elements-order from top, 
+            always starting from 0, that is called "0 origin",
+            expressed in bracket '[]'.
+
+          array elemement: 
+            An array value numbering as each array index.
+
+          array size: (= array length)
+            The maximum number of array elements which the Array can storage. 
+            => see ÅüArray Size Åkfollowing nextÅl
+
+*@subject ÅüArray Size ÅkCAnsiYH p91Ål
+          array size:
+          ÅEWhen Array is defined, the array size need be determined
+            as 'int' Type, over 0, and constant value fixed at the time of Compile.
+            So that Array cannot change the array size after that.
+        
+          ÅEEven if we use an index which is over array size or minus value,
+            Compiler does not throw Compile Error.
+            But at the time of executing, there is to be thrown Runtime Error, 
+            such as like 'ArrayIndexOutOfRangeException' in [Java][C#].
+
+          ÅEPointer of the next index over array size, is defined as 'NULL' Pointer
+            by specification of C language.
+
+          [Example]
+          int array[ARRAY_MAX];       // Definition of Array, assuming "#define ARRAY_MAX" as some array size.
+          int arraySize = ARRAY_MAX;  // Though it is unnecessary assignment, 
+                                      // in this case only, I substituted it for being understandable
+
+          array[0]              // first element
+          array[1]              // second element
+          array[2]              // third element
+            :                        :
+          array[arraySize - 1]  // last element
+          ---------------------------------------
+          array[arraySize]      // out of Array elements, defined as 'NULL' Pointer
+
+         ÅyAnnotationÅzArray Size in other Program languages
+          There are some Program languages which array index always start from 1.
+          There are some Program languages which Programmer can arbitrarily define the number of array index origin.
+
+*@subject ÅüDeclaration Format of Array       ÅkCAnsiYH p93Ål
+          ÅEIncomplete Type: Declaration of Array can be described without the array size,
+                             that is called "Incomplete Type".
+
+          [Format]
+          Type arrayName[];
+          Type arrayName[int arraySize];
+
+*@subject ÅüDefinition Format of Array ÅkCAnsiYH p91Ål
+          ÅEDefinition of Array is required Type, Identifier as array name, and fixed array size of int Type.
+          ÅEAdding to above, it can be initialized intial elements of array, 
+            by using bracket '{ }' and using delimiter ','.
+          
+          [Format]
+          Type arrayName[int arraySize];
+          Type arrayName[int arraySize] = { element1, element2, ... };
+
+          [Example]
+          int a[5];
+          int a[5] = { 15, 30, 24, 0, 54 };
+          
+*@subject ÅüAssign and Refer array elementÅkCAnsiYH p92Ål
+          ÅETo assign and refer the array element,
+            we need give the index of data number which we want, in bracket '[]'.
+          ÅEArray index always start from 0 in C.
+            Array index always finish at (arraySize - 1).
+       
+          [Format] 
+          arrayName[index] = element;     // Assignment
+          arrayName[index]                // Reference
+
+          [Example]
+          a[0] = 15;                      // Assignment
+          printf("a[0] = %d \n", a[0]);   // Reference
+
+*@subject ÅüAssign and Refer to whole of Array ÅkCAnsiYH p92Ål
+          To assign to whole of Array, cannot be done.
+          To refer  to whole of Array, cannot be done.
+          To give whole of Array to Argument of Function, cannot be done.
+          To return whole of Array from Function, cannot be done.
+
+          As an exception, to give Argument of Operator 'sizeof()' can be done only.
+          => ÅüOperator 'sizeof' ÅkC99YH p267ÅlÅkCAnsiYH p53Ål
+          => ÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+
+*        ÅñArray length  ÅkCAnsiYH p93Ål
+*         ÅEArgument of 'sizeof()' can be given whole of Array exceptionally,
+*           in this case, the return-value is how bytes the whole of Array is occuping in Memory.
+*         ÅEIdentifier of Array can be recognaized as
+*           constant value of Pointer which indicate first element of Array.
+*         ÅEThe return-value is how bytes the Type is occuping, 
+*           not the Pointer which indicate Variable of the Tyoe.
+* 
+*         => copy toÅkC99YH09_Array\MainArraySizeofSample.cÅl
+*         => copy toÅkCAnsiYH03_Type\MainOperatorSizeofSample.cÅl
+
+*@subject Åüfor-statement and Array ÅkCAnsiYH p93Ål
+          ÅEA for-statement can efficently operate an Array,
+            because Array can be managed by index as int value.
+          ÅEOnly incresing the array index incrementally so that each elements of whole Array can be easily refered.
+
+          [Exmaple]
+          int findData(int data[], int dataMax, int value) {
+              int i
+
+              for (i = 0; i < dataMax; i++){
+                  if (data[i] == value) {
+                      return i;
+                  }
+              }//for
+
+              return -1;
+          }
+
+          The self-defined Function is given array, array size, taret value as Argument,
+          and return the index of element which match the target value, if there is one matched element,
+          or  return the lower index of first-matched element, if there are matched multi-elements,
+          or  return -1, if there is no matched element.
+
+          The Argument 'int data[]' means as same as 'int *data': Pointer which indicate the element of Array.
+
+*@subject ÅüMulti-Dimension Array ÅkCAnsiYH p94Ål
+          rank: the number of dimensions as a Program term,
+                so that it can be called "2-Rank Array", instead of "2-Dimension Array".
+  
+          Multi-Dimensions Array:
+          ÅEAn Array whose elements is Array too, can be defined in C language.
+            => see Åü2-Dimension Array ÅkC99YH09_Array\MainTwoDimensionArraySample.cÅl
+
+          [Format]
+          Åñ2-Rank Array
+          Type arrayName[int rows][int columns];
+          Type arrayName[int rows][int columns] = { {,,,}, {,,,},Å@ÅEÅEÅE };
+
+          Åñ3-Rank Array
+          Type arrayName[int i][int j][int k];
+
+          [Example] Multi-Rank Array
+          Åñ2-Rank Array
+          int multiSubArrayA[3][4] = {
+              { value0, value1, value2, value3 },  Ñ¢ <---------- array[4]    as one each element   
+              { value0, value1, value2, value3 },  | 3 rows  <-- array[3][4] as 3 elements 
+              { value0, value1, value2, value3 },  Ñ£
+          };
+               Ñ§Å[Å[Å[Å[Å[ 4 columns Å[Å[Å[Å[Å[Å[Ñ£
+
+          int multiSubArrayB[3][4] = {
+              { value0, value1, value2, value3 },  Ñ¢
+              { value0, value1, value2, value3 },  | 3 rows
+              { value0, value1, value2, value3 },  Ñ£
+          };
+               Ñ§Å[Å[Å[Å[Å[ 4 columns Å[Å[Å[Å[Å[Å[Ñ£
+
+          Åñ3-Rank Array
+          int multiArray[2][3][4] = {
+              multiSubArrayA, <-- Ñ¢ ------array[3][4]    as one element 
+              multiSubArrayB      Ñ£  <--- array[2][3][4] as 2 elements 
+          };
+
+          int multiArray[2][3][4] = {
+              { value000, value001, value002, value003 }, <-- Ñ¢ -- array[4] Ñ¢
+              { value010, value011, value012, value013 },     |-array[3][4] |  2 * 3 * 4 = 24 values
+              { value020, value021, value022, value023 },     Ñ£             |- [Format] array[2][3][4]
+              { value100, value101, value102, value103 },     Ñ¢             |  
+              { value110, value111, value112, value113 },     |-array[3][4] |  multiArray[1][2][3] = value123;
+              { value120, value121, value122, value123 },     Ñ£             Ñ£
+          };
+
+          ÅEIn this case, the space of Memory is (2 * 3 * 4 =) 24 places.
+          ÅEThe range of each indexes as Format "arrayName[int i][int j][int k]", are that:
+               0 <= i < 2
+               0 <= j < 3
+               0 <= k < 4
+
+*@advance ÅùRelation of index location in Array and memory space in Memory ÅkCAnsiYH p95Ål
+          The more right parts of index location is occuping the smaller Bytes in Memory,
+          such as that:
+          The amount of increase Bytes is 'sizeof(int)'         ,when array[i][j][0] -> array[i][j][1]. 
+          The amount of increase Bytes is 'sizeof(int) * 3 * 4' ,when array[0][j][k] -> array[1][j][k].
+
+*@subject ÅüInitialization of Array ÅkCAnsiYH p95Ål
+          Initialization of Array: 
+            ÅEAt the same time of Defintion, we can initialize Array, expessed by '= { element1, element2, ... };'.
+            ÅEIn this case, the array size in bracket '[]' can be omited, even if definition,
+              because the array size can be obviously found the number of elements from following bracket '{ }'.
+            ÅEDelimiter ',' can be added after the last element, too.
+            ÅETermination of statement ';' need be put after bracket '{ }'. That is often forgotten.
+
+          Initialization of Multi Dimension Array: 
+            ÅEThe array size of Defintion with initialization, can be omited only at most left part of bracket '[]'.
+
+            [Example]
+            int multiAry[][3] = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+            };
+
+            int multiAry[][3][4] = { ... };
+
+*@subject ÅüCharacter Array ÅkCAnsiYH p96Ål
+          => ÅüString text Literal ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
+          => ÅüString text         ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
+
+*@advance ÅùArray and Pointer ÅkCAnsiYH p96Ål
+          There are closely relationship between Array and Pointer.
+          Here is data structure of both only.
+          => more detail ÅkCAnsiYH Chapter 6 | p111Ål
+
+          ÅñDifference of Array and Pointer
+          Array 'aAry' and Pointer Array 'pAry' are similar way of Definition and Reference, as [Example] below.
+          But there are differece in Memory space occupied by both.
+
+          [Example]
+          char aAry[][6] = { "ABCDE", "FG", "HIJ", "" };
+          char *pAry[4]  = { "abcde", "fg", "hij", "" };
+
+          printf("%s\n", aAry[0]);  ->  ABCDE
+          printf("%s\n", pAry[0]);  ->  abcde
+
+          Each elements of Array 'aAry' storage the String text.
+          Each elements of Pointer Array 'pAry' storage the address for String text.
+          Therefore, Each elements of Array 'aAry' need occupy more wide space in Memory than Pointer Ary 'pAry',
+          because 'aAry' need storage whole characters of String text to the space, 
+          but 'pAry' need storage address only to the space, as below.
+
+          [Memory space of Array 'aAry']
+           aAry[0][0]  aAry[0][1]  aAry[0][2]  aAry[0][3]  aAry[0][4]  aAry[0][5]
+  aAry[0] | 'A'       | 'B'       | 'C'       | 'D'       | 'E'       | '\0'     |
+
+           aAry[1][0]  aAry[1][1]  aAry[1][2]  aAry[1][3]  aAry[1][4]  aAry[1][5]
+  aAry[1] | 'F'       | 'G'       | '\0'      | '\0'      | '\0'      | '\0'     |
+  
+           aAry[2][0]  aAry[2][1]  aAry[2][2]  aAry[2][3]  aAry[2][4]  aAry[2][5]
+  aAry[2] | 'H'       | 'I'       | 'J'       | '\0'      | '\0'      | '\0'     |
+
+           aAry[3][0]  aAry[3][1]  aAry[3][2]  aAry[3][3]  aAry[3][4]  aAry[3][5]
+  aAry[3] | '\0'      | '\0'      | '\0'      | '\0'      | '\0'      | '\0'     |
+
+          [Memory space of Pointer Array 'pAry']
+           pAry[0]   pAry[1]  pAry[2]  pAry[3]
+  pAry    | *      | *       | *      | *     |    // *: address for *pAry[]
+            Å´        :         :        :
+ *pAry[0] | 'a' | 'b' | 'c' | 'd' | 'e' | '\0' |
+                     :         :        :
+           *pAry[1]  Ñ§> | 'f' | 'g' | '\0' |
+                               :        :
+                    *pAry[2]   Ñ§> | 'h' | 'i' | 'j' | '\0' |
+                                        :
+                              *pAry[3]  Ñ§> | '\0' |
+          
+          Åñ<stdstr.h> -- strcpy()
+          Assuming to use Function 'strcpy()' for these Array, 
+          the both differences of Memory space look obviously, as [Example] below.
+          ('strcpy()' is the Function which copy String text to char Array elements,
+           => the usageÅkC99YH10_Struct\MainStructSchoolmateSample.cÅlÅkC99YH p300ÅlÅkCAnsiYH Chapter 12Ål)
+
+          [Example]
+          strcpy(pAry[0], "hello");  // OK
+          strcpy(pAry[1], "hello");  // break the Array itself
+          strcpy(aAry[0], "hello");  // OK
+          strcpy(aAry[1], "hello");  // OK
+
+          To copy and assign String text "hello" for 'pAry[1]' will break the Array itself,
+          because 'pAry[1]' has only 3 Bytes in Memory, such as { 'f', 'g', '\0' }.
+
+          To copy and assign String text "hello" for 'aAry[1]' will be well with no problem,
+          because 'aAry[1]' has only 6 Bytes in Memory, such as { 'f', 'g', '\0', '\0', '\0', '\0' }.
+
+*@subject ÅñSort by Array and Pointer ÅkCAnsiYH p98Ål
+            Sort by Array:   It need copy the elements and exchange them.
+            Sort by Pointer: It can exchange both Pointers only.
+
+*@subject ÅüArray and Struct ÅkCAnsiYH p98Ål
+          Array: The element sequence which is generated in the same Type, and storaged with numbering by index.
+          Struct: The member set which is generated by different Types and storaged with the name.
+
+          => more detail ÅkCAnsiYH Chapter 7 | p139Ål
+
+[EOF]
