@@ -239,7 +239,7 @@
 
 *@subject ŸArray and Pointerkp96, p111l
  
-          see kCAnsiYH05_Array\Rererence_CAnsiArray.txtl
+          see kCAnsiYH05_Array\Reference_CAnsiArray.txtl
           Array and Pointer kCAnsiYH p96l
             –Difference of Array and Pointer
             –Sort by Array and Pointer kCAnsiYH p98l
