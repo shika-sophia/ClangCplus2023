@@ -40,6 +40,7 @@
           [M] Arithmetic (n/adj): Zp, ‰‰Z, Z”, Zp‰‰Z, Z”‰È
 
 *@see     CAnsiYH03_Type\Reference_CAnsiType.txt
+*@see     C99YH11_Pointer\MainPointerBasic.c
 *@author  shika
 *@date    2023-02-07
 */ 
@@ -132,6 +133,118 @@
                         // Therefore, Don't confuse or identify Pointer value '*ip' and Pointer Variable 'ip',
                         // which are different.
 
-*@subject ŸArithmetic caluclation of Pointer kp109l
+*@subject ŸArithmetic caluclation of Pointer kp109, p154l
+          EAdd, Subtract Integer value: Add or Subtract of Pointer Variable move address which Pointer indicate, to later or former.
+          EConsequently, To Add +m' or to subtract '-n' move address to (p + m) or (p - n).
+          EBy that, Programmer can move address, while one need not consider about Memory size of Object, expressed by 'sizeof(Object)'.
           
+          [Example]
+          long a[10];
+          long *p = &a[3];
+
+          When Array 'a[]' and Pointer 'p' is defined, expression (p + 1) means '&a[4]',
+          so that expression *(p + 1) means value of 'a[4]'.
+          Therefore, Addition +1 of Pointer Variable move address which Pointer indicate, to next array index,
+          Subtraction -1 of Pointer Variable move address which Pointer indicate, to previous array index.
+          Consequently, To Add +m' or to subtract '-n' move address to (p + m) or (p - n).
+
+@subject ŸCompare Pointers as same Type both kp109, p154l
+         Difference of Pointers as same Type both:
+           Assuming Poiter 'p' and Pointer 'q' as same Type both, 
+           Expression 'p - q' means the numbers of Pointer between 'p' and 'q',
+           so that the value can be plus, minus, or 0.
+
+         Pointers as same Type both can be compared such as that:
+           if Subtract 'p - q' is plus value,  'p > q'  is true.
+           if Subtract 'p - q' is minus value, 'p > q'  is false.
+           if Subtract 'p - q' is 0 value,     'p == q' is true.
+
+         –<stddef.h> -- ptrdiff_t Type
+         ptrdiff_t: Type which express Difference of Pointers as same Type both, as subtract,
+                    default-defined in <stddef.h>. =>kCAnsiYH Chapter 12 | p288l
+
+*@subject ŸNULL Pointer kp109lkC99YH p364lkC99YH11_Pointer\MainPointerBasic.cl
+          <stdio.h> => INDEXkC99YH12_FileOperation/MainFileOpenInputSample.cl
+             „¤ #define NULL 0
+
+          NULL Pointer: 
+           EThe constant value which indicate nowhere. It means no reference.
+           EThe constant value is often defined as '0', depending on Compiler,
+             so that Conditional Expression 'if(NULL)' is false.
+
+             [Example]
+             FILE *fp = fopen(...);
+             if(!fp) { ... }         // as same as 'if(fp == NULL)'
+             if(fp)  { ... }         // as same as 'if(fp != NULL)'
+
+           EWe cannot refer and assign to address of NULL Pointer.
+             If we would do, we will be thrown Runtime Error,
+             because Compiler cannot find address which NULL Pointer indicate,
+             as like NullPointerException in [Java][C#].
+
+           EWe can assign NULL to any Pointer, that means no reference or to delete the already reference.
+           EWe can assign 0    to any Pointer, that means to assgin NULL.
+           ENULL Check: Before we operate 'p', it is necessary to check if p is NULL or not.
+ 
+            [Example]
+            int *p;
+            p = NULL;
+  
+            [~] *p = 123;  -> Runtime Error: NULL pointer assignment,
+                           -> or output unexpected value, or do unexpeted behavior,
+                           -> or enforcely exited by OS.
+  
+            [~] printf("%p \n", p);  // when 'p = NULL'
+  
+            [Example] NULL Check
+            if (p != NULL) {
+                // write operation: assginment or reference, about 'p' here.
+            }
+  
+
+           EThe reason why NULL Pointer is necessary:
+             Because Compiler can tell Error of Function to Programmer, as NULL Pointer,
+             when we use Function whose Return-Type is Pointer Type, such as that:
+               Function 'FILE* fopen( ... )' which open a file of argument, whose Return-Type is FILE Pointer 'FILE*',
+               if 'fopen()' cannot open the file, it return NULL Pointer. 
+               Function 'void* malloc()' which take a space in Memory, whose Return-Value is General Pointer 'void*',
+               if 'malloc()' cannot take a space in Memory, it return NULL Pointer.
+            Because NULL Pointer is used to express end of link,
+            when we use Liner List or Tree Data Structure.
+
+           EDon't confuse and identify NULL Pointer, Empty-String "" and NULL Character '\0',
+             these are different things.
+
+           => copy to/fromkC99YH12_FileOperation/MainFileOpenInputSample.cl
+
+*@subject ŸInvalid Pointer kp110l
+          Invalid Pointer: 
+            EIt is not "NULL Pointer", but Pointer which indicate Invalid Object, such as below.
+            EThere is a case of Runtime Errorõ, if we refer to Invalid Object by Pointer.
+            
+          Invalid Object
+            Edifferent Type Literal ??
+            EArray whose index is out of range.
+            E'auto' Variable which has not been initialized yet.
+            EThe 'p' value, when we disposed Object once by using Function 'free(p)'.
+
+          [Example]
+          char *cp = (char*) 123;  // different Type Literal ??
+          int  *iP = &a[-1];       // The Pointer which indicate address of Array whose index is out of range
+
+          õyAnnotationz"There is a case of Runtime Error":
+          EThere is a case that Compiler cannot find the indirect-reference of "Invalid" Pointer, depending on environment of PC.
+          EThere is a case that "Invalid" Pointer accidentally indicate the other address of value entirely without relationship, too.
+          In these cases, Runtime Error is not thrown, that is unexpected behavior.
+
+*@subject ŸArray and Pointerkp96, p111l
+ 
+          see kCAnsiYH05_Array\Rererence_CAnsiArray.txtl
+          Array and Pointer kCAnsiYH p96l
+            –Difference of Array and Pointer
+            –Sort by Array and Pointer kCAnsiYH p98l
+
+          
+
+
 [EOF]
