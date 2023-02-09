@@ -29,6 +29,9 @@
           [E] strict   (adj):     Œµ–§, Œµ‚µ‚­, ŒÅ‚­, ŒµŠi, Œµd, ‚ ‚­‚Ü‚Å
           [E] confuse    (v):     ¬“¯‚·‚é
           [E] identify   (v):     “¯ˆê‹‚·‚é
+          [E] omit       (n/v):   ”²‚©‚·AÈ‚­
+          [E] abbreviate (v):     È—ª‚·‚éA’Zk‚·‚é  abbreviation (n) È—ªŒ`
+          [E] specification (n):  w’èAd—lA‹KŠi
 
           [P] define     (v):     ’è‹`‚·‚é   | defintion   (n) ’è‹`
           [P] declarate  (v):     éŒ¾‚·‚é   | declaration (n) éŒ¾  [P] ƒvƒƒgƒ^ƒCƒvéŒ¾
@@ -207,7 +210,7 @@
              when we use Function whose Return-Type is Pointer Type, such as that:
                Function 'FILE* fopen( ... )' which open a file of argument, whose Return-Type is FILE Pointer 'FILE*',
                if 'fopen()' cannot open the file, it return NULL Pointer. 
-               Function 'void* malloc()' which take a space in Memory, whose Return-Value is General Pointer 'void*',
+               Function 'void* malloc()' which take a space in Memory, whose Return-Value is Generic Pointer 'void*',
                if 'malloc()' cannot take a space in Memory, it return NULL Pointer.
             Because NULL Pointer is used to express end of link,
             when we use Liner List or Tree Data Structure.
@@ -237,14 +240,94 @@
           EThere is a case that "Invalid" Pointer accidentally indicate the other address of value entirely without relationship, too.
           In these cases, Runtime Error is not thrown, that is unexpected behavior.
 
-*@subject ŸArray and Pointerkp96, p111l
+*@subject ŸArray and Pointerkp96, p111, p113l
  
           see kCAnsiYH05_Array\Reference_CAnsiArray.txtl
           Array and Pointer kCAnsiYH p96l
-            –Difference of Array and Pointer
+            –Difference of Memory structure about Array and Pointer
             –Sort by Array and Pointer kCAnsiYH p98l
 
-          
+          Array and Pointer are closely related such as that:
+          EArray name is recognized as Pointer value which indicate first element of the Array, such as that:
+            
+            [Example]
+            int a[10];
+            int *P = a;   // <=>  int *p = &a[0];
 
+            Array name 'a' and address of Array first element '&a[0]' are the same value,
+            so that Conditional Expression 'if(a == &a[0])' is true,
+            so that Expression 'a[i]' is equal to '*(a + i)'.
+
+           yAnnotationzOperator 'sizeof()'
+            There is a exception of the specification 'if(a == &a[0])' above.
+            When we use Operator 'sizeof()',
+            Memory size of Array name 'sizeof(a)' which means size of whole Array, and
+            Memory size of address 'sizeof(&a[0])' which means size of Array first element, are usually different value.
+           
+          –Array of Function Argument kp113l
+          EWe cannot give whole of Array to Argument of Function,            
+            so that we can only give Pointer which indicate address of Array first element to Argument.
+
+            [Example] Calling Function
+            char buffer[BUFFER_SIZE];
+            gets(buffer);  
+            
+            The Calling Function 'gets(buffer);' is given not whole of Array 'buffer[]' as Argument,
+            but address '&buffer[0]' of Array first element only,
+            remembering Array name 'a' means address '&a[0]' of Array first element, as above.
+
+          EArray of Function Argument actually means Pointer to the Array, such as that:
+            [Example] Declaration
+            int count(char a[]);
+                         ||  the same meaning
+            int count(char *a);
+
+          yAnnotationz"Value-Giving" of Function Argument
+           If we could give whole of Array to Argument,
+           nevertheless, because Functions in C language is done "Value-Giving", 
+           some operations in the Function cannot effect any influences to the Array local-defined in origin of Calling Function.
+           
+           => "Value-Giving" and "Refernce-Giving" kCAnsiYH Chapter 10 Function | p220l
+
+*@subject ŸString text and Pointer kp112l
+          constant value of String text "Hello" is equal to 'char' Array such as that:
+            char a[] = { 'H', 'e', 'l', 'l', 'o', '.', '\0' };
+
+          So that 'char' Pointer can be initialized by String text "Hello", such as that:
+            char *cp = "Hello.";
+
+          In this case, the value '*cp' which Pointer indicate, is 'H',
+          so that Conditional Expression 'if(*cp == 'H')' is true.
+
+*@subject ŸStruct and Pointer kp112l
+          –Reference of Pointer 'mateP' which indicate 'struct SchoolMate'
+          –Reference of Union is as same.
+
+          [Example] Declaration
+          sturct SchoolMate {
+              int id;
+              char name[10];
+          }
+
+          struct Schoolmate *mateP;
+
+          [Example] Reference
+          (*mateP).id  // The expression means to refer to the member of Struct which Pointer indicate.
+                       // The Priority-bracket '()' cannot be omited, because of Operator priority.
+                       // If it were omited such as '*mateP.id', the expression means '*(mateP.id)' as different meaning.
+          
+          mateP -> id  // Operator '->' is an abbreviation of above, 
+                       // which is one Operator of two characters '-' and '>',
+                       // so that two characters cannot be inserted white-space between both.
+
+          mateP->xp->value  // When member of Struct which Pointer 'mateP' indicate, is another Pointer 'xp',
+                            // the Operators '->' can be used combinedly.
+
+*@subject ŸFunction and Pointer kp113l
+          => ŸArray and Pointer 
+             –Array of Function Argumentkabovel
+
+*@subject –Struct of Function Argument kp114l
+          
 
 [EOF]
