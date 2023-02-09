@@ -99,6 +99,7 @@ void multipleMatrixGeneral(int formerAry[RANK][RANK], int laterAry[RANK][RANK], 
 //====== Global Variable ======
 int dataCAsiYH05[MAX_DATA] = { 3, 5, 0, 9, 2 };
 //char *pAryCAnsiYH05[PA_SIZE] = { 'S', 'o', 'p', 'h', 'i', 'a', '\0' };
+//char *pAryCAnsiYH05 = "Sophia";
 int c[2][2] = { {0, 0}, {0, 0} };
 int resultAry[RANK][RANK];
 
@@ -133,11 +134,11 @@ int mainPractice_CAnsiYH05(void) {
     printf("\n");
 
     ////---- Practice 3 ----
-    //printf("pAry (before): %s \n", *pAryCAnsiYH05);
+    //printf("pAry (before): %s \n", pAryCAnsiYH05);
 
     //pAry_reverseCAnsiYH05();
 
-    //printf("pAry (after) : %s \n", *pAryCAnsiYH05);
+    //printf("pAry (after) : %s \n", pAryCAnsiYH05);
     //printf("\n");
 
     //---- Practice 4 ----

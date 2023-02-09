@@ -27,7 +27,7 @@
             => ÅüString text Literal ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH02_Basic\Reference_CAnsiBasic.txtÅl
             => ÅüString text         ÅkCAnsiYH p21, p44, p96ÅlÅkCAnsiYH03_Type\Reference_CAnsiType.txtÅl
           ÅùArray and Pointer ÅkCAnsiYH p96Ål
-            ÅñDifference of Array and Pointer
+            ÅñDifference of Memory structure about Array and Pointer
             ÅñSort by Array and Pointer ÅkCAnsiYH p98Ål
           ÅüArray and Struct ÅkCAnsiYH p98Ål
 
@@ -263,7 +263,7 @@
           Here is data structure of both only.
           => more detail ÅkCAnsiYH Chapter 6 | p111Ål
 
-          ÅñDifference of Array and Pointer
+          ÅñDifference of Memory structure about Array and Pointer
           Array 'aAry' and Pointer Array 'pAry' are similar way of Definition and Reference, as [Example] below.
           But there are differece in Memory space occupied by both.
 
