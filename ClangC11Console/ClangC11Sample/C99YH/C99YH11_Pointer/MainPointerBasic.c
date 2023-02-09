@@ -90,7 +90,7 @@
              when we use Function whose Return-Type is Pointer Type, such as that:
                Function 'FILE* fopen( ... )' which open a file of argument, whose Return-Type is FILE Pointer 'FILE*',
                if 'fopen()' cannot open the file, it return NULL Pointer.
-               Function 'void* malloc()' which take a space in Memory, whose Return-Value is General Pointer 'void*',
+               Function 'void* malloc()' which take a space in Memory, whose Return-Value is Generic Pointer 'void*',
                if 'malloc()' cannot take a space in Memory, it return NULL Pointer.
             Because NULL Pointer is used to express end of link,
             when we use Liner List or Tree Data Structure.
