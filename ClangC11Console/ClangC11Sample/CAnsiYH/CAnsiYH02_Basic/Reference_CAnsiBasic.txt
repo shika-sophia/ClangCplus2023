@@ -59,7 +59,7 @@
           ■ Various Name
           Label
           Name-space:
-          ・Name of Variable, Function, Alius defined by 'typedef()', and constant value in enum.
+          ・Name of Variable, Function, Alias defined by 'typedef()', and constant value in enum.
           ・Name of Label as the target place of 'goto' statement.
           ・Name of Tag (struct, union, enum) and Member of 'struct', 'union'.
 
@@ -81,13 +81,13 @@
 
 *@subject ■ Character
 *         ◆ASCII Code Chart〔C99YH 0A | p435〕
-*         I drew it as similar, below.
+*         I drew it as similar as ASCII Code Chart〔C99YH 0A | p435〕, below.
 *         It is the opposite Horizontal and Vertical Axis to Chart of〔C99YH 0A〕
 * 
-*         The usage of Chart that you can know this charater code value (16-decimal), 
+*         The usage of Chart that we can know this charater code value (16-decimal), 
 *         by adding both values of Horizontal and Vertical.
 * 
-*         We can do output to Console, by using 'printf()'.
+*         We can output to Console, by using 'printf()'.
 * 
 *         [Example]
 *         int c;             It should be defined as 'int', not 'char'.
@@ -111,8 +111,9 @@
 
 ◆Non-Characters (Edited) 〔C99YH 0A | p435〕〔MainAsciiCharacterViewer.c〕
   〔ReferenceDocument\Article_AsciiCode_Clanguage.txt〕
+
 ASCII
-[16-decimal] (10-decimal) Abbreviation: Meaning [''] Escape-Sequence
+[16-decimal] (10-decimal) Abbreviation: meaning [''] Escape-Sequence
 [00] (  0) NUL: NULL Character '\0'
 [01] (  1) SOH: Start of Header
 [02] (  2) STX: Start of Text
@@ -120,7 +121,7 @@ ASCII
 [04] (  4) EOT: End of Transfer
 [05] (  5) ENQ: End of Quote (= Reference from others)
 [06] (  6) ACK: Accept OK
-[07] (  7) BEL: Bell (= Beep)  '\a'
+[07] (  7) BEL: Bell (= Beep)  '\a' alarm, alert
 [08] (  8) BS:  Back Space     '\b'
 [09] (  9) HT:  Horizontal Tab '\t'
 [0A] ( 10) LF:  Line Feed      '\n' (new line)
@@ -174,23 +175,24 @@ ASCII
 
 *@content CAnsiYH Chapter 2  Basic / p13-p32
 *@summary Reference_CAnsiBasic.txt
-*@subject ◆Not using characters in C language. 〔CAnsiYH p15〕
-          $, @, ` (back Quate)
+*@subject ◆Not used characters in C language. 〔CAnsiYH p15〕
+          $, @, ` (back Quote)
           @: It is sometimes used to express an unique extended specification of C.
 
-*@subject ◆White-Space: Compiler recognize these as white-space. 〔CAnsiYH p15〕
+*@subject ◆White-Space: Compiler recognize these as white-space, such as that: 〔CAnsiYH p15〕
           ・white-space
           ・Line Feeds  '\n', '\r', '\f'
           ・Tab         '\t', '\v'
           ・Comment-out /* */, //
 
-          (Excluding white-space in constant value of 'char', it is used as delimiter.)
+          (Excluding white-space in constant value of 'char', it is used as a delimiter.)
           (Excliding white-space in String text expressed with "")
-          (Excluding "　" Blank of 2 Bytes character (= wide character))
+          (Excliding white-space in Command Line Argument, it is used as a delimiter.)
+          (Excluding "　" Blank of wide character)
 
 *@subject ◆Connector [ \ ] of two Lines (Windows: [ ¥ ]) 〔CAnsiYH p15〕
-          If we write with '\' at termination of the line,
-          Compiler recognize two lines of previous and next of '\', as one line.
+          If we write with '\' at termination of line,
+          Compiler recognize two lines of previous and next with '\', as one line.
           
           [Example] 〔CAnsiYH p253〕
           #define DPRINT(x) \
@@ -204,11 +206,11 @@ ASCII
 
 *@subject ◆Comment-out 〔CAnsiYH p6, p16〕
           ・Compiler recognize comment as white-space.
-          ・It do not '/*' or '*/' or '//' in char constant value and String text, as comment. 
+          ・It don't do '/*' or '*/' or '//' in char constant value and String text, as comment. 
           ・Don't nest comments, it do '*/' as end of comment.
           ・By using '#if' Directive, you can make them out of program, even including comment-out.
             In this way, Pre-processor replase them from #if to #endif, to white-space.
-          ・Don't forget terminating comment '*/', that sometimes can be serious bug as like eternal-loop.
+          ・Don't forget terminating comment '*/', that sometimes can happen serious bug as like eternal-loop.
 
           [Format]
           /* (multi-lines) */            // before [C ANCI]
@@ -216,37 +218,36 @@ ASCII
           #if 0  (multi-lines)  #endif   
 
           [×] /* 123 /* 456 */ 789 */   Because first '*/' means end of comment, the '789' is out of comment,
-                                        second '*/' is thrown Compile Error.
+                                        second '*/' will be thrown Compile Error.
 
 *@subject ◆Token 〔CAnsi p17〕
-          Token: A minimum unit, 
-          which Compiler divide source code of program to the unit
+          Token: A minimum unit which Compiler divide source code of program to the unit
           and it operate the unit one by one. 
 
-          Token categorize them:
+          [Kinds of Token]
           ・Operator such as [+ - * / % += &&] etc..
           ・Delimiter such as () {} . ; etc..
           ・Constant Value such as 123, '\n'.
           ・String Literal such as "Hello".
-          ・Identifier as name of Function, Variable and Struct. 〔below〕
-          ・Reserved words by specification of C language.    => 〔below〕〔C99YH 0C | p442〕
+          ・Identifier as name of Function or Variable. 〔below〕
+          ・Reserved Words by specification of C language.    => 〔below〕〔C99YH 0C | p442〕
 
 *@subject ◆Suffix (and Prefix) for expessing the Literal type 〔CAnsiYH p15〕, see below〔◆Constant Value〕
-          f, F:  Floating-point numbers (10-decimal Expression),  such as '3.1415'.
-          e, E:  Floating-point numbers (Exponential Expression), such as '1,17e+306'.
-          l, L:  'long int' with integer, 'long double' with fruction.  (※ below)
+          f, F:  Floating-Point Numbers (10-decimal Expression),  such as '3.1415'.
+          e, E:  Floating-Point Numbers (Exponential Expression, Floating-Point Number Format), such as '1,17e+306'.
+          l, L:  'long int' with integer, 'long double' with fraction.  (※ below)
           u, U:  unsigned (= not defined '+', '-' )
-          (Prefix) L: wide-character 'wchar_t' as like 2 Bytes character (= wide character), such as L'漢', L'字'.
+          (Prefix) L: wide-character 'wchar_t' as like wide character, such as L'漢', L'字'.
 
-          [×] d, D:  (not existed for double suffix). It should be defined as like 'double d = 0.0;'
+          [×] d, D:  ('double' Type suffix is not existed). It should be defined with nothing, such as 'double d = 0.0;'
 
           ※ "l, 1, I, i, | " are likely to be confused. So we should use 'L', not 'l'.
 
-          ※ Font [ Consolas ] in Windows default Font, can obviously distiguish these confusable characters,
+          ※ Font [ Consolas ] in Windows default Fonts, can obviously distiguish these confusable characters,
              such as [0 o O] [l 1 I i |] [. , ; :].  ( <- After changing Font of your environment, See here.)
              It seems for me to be appropriate for a Programmer Font, I usually use this.
-             But if you use [Consolas] with 2 Bytes characters (= wide character), because it is based on ECU (Latin1),
-             2 Bytes characters (= wide character) are expressed as MS-Gothic, which cannot distinguish wide-characters of [0 O] [０ Ｏ] as well.
+             But if you use [Consolas] with wide character, because it is based on ECU (Latin1),
+             wide character are expressed as MS-Gothic, which cannot distinguish wide-characters of [0 O] [０ Ｏ] as well.
 
 *@subject ■ Constant Value (= Literal)〔CAnsiYH p18〕
           ＊[Integer Literal]
@@ -259,20 +260,20 @@ ASCII
           ・Therefore, '0' always expess 8-decimal.
           ・In 16-decimal case, we can write with extra-'0' before value,
             for expressing some sense or being readable, such as 0x001C.
-          ・But in 10-decimal case, if you write with extra-'0' before value, the Literal change its value,
+          ・But in 10-decimal case, if we write with extra-'0' before value, the Literal change its value,
             because Prefix '0' means 8-decimal as above.
           ・Suffix 'U' or 'L' means 'unsigned' or 'long' as above 〔◆Suffix〕
 
-          ＊[Floating-point Number Literal]
-          ・Integer part or Fraction part can be omitted either one of them.
-          ・[ . ] or [ e ] can be ommited either one of them.
+          ＊[Floating-Point Number Literal]
+          ・Integer part or Fraction part can be omitted one of either.
+          ・[ . ] or [ e ] can be omited one of either.
           ・Suffix express each types: (and see above 〔◆Suffix〕)
             f, F:        float
             (no Suffix): double
             l, L:        long double
-            e, E:        Floating-Point Number Fromat (Exponential Expression), such as '1,17e+306
+            e, E:        Floating-Point Number Format (Exponential Expression), such as '1,17e+306'.
 
-          [Format] Floating-Point Number Fromat
+          [Format] Floating-Point Number Format
           (integer part) . (fraction part) e (exponent part) [Suffix]
 
           [Example] Their values express the same value.
@@ -280,7 +281,7 @@ ASCII
 
           ＊[Chararcter Literal]
           ・One character Literal is expressed enclosing by single quote [' '] .
-          ・Multi-character Literal as String text is expressed enclosing by double quote [" "]. (see below〔◆String text〕)
+          ・Multi-characters Literal as String text is expressed enclosing by double quote [" "]. (see below〔◆String text〕)
           ・Eacape-Sequence are char Literal below, too.
 
           ＊[Wide Extended Character Literal] (depending on Comiler)
@@ -290,7 +291,7 @@ ASCII
 *@subject ◆Eacape-Sequence 〔CAnsiYH p20〕〔C99YH 0D | p436〕
           Escape-Sequence: 
             By adding '\' (Windows: '¥'), the character can express especial meanings.
-            or can suspend the especial meanings to express the character Literal of itself.
+            or can suspend the especial meanings to express the character Literal itself.
 
           ＊ASCII corresponding them:
           [0x00] (  0) NUL: NULL Character   '\0'
@@ -303,32 +304,32 @@ ASCII
           [0x0D] ( 13) CR:  Carrige Return   '\r' (return left)
           [0x1B] ( 27) ESC: Escape Character '\'  (UNIX) or '¥' (Windows) | 033 (8-decimal)
 
-          ＊To express Literal
+          ＊To express character itself
           ASCII
           [0x5C] \\: back slash as one character literal (Windows: ¥¥)
           [0x27] \': single quote as literal
-          [0x22] \": double quate as literal, especially used in format string of 'printf()'.
-          [0x3F] \?: question mark as literal, which often use for operator at another context.
+          [0x22] \": double quate as literal, especially used in format string of 'printf("")'.
+          [0x3F] \?: question mark as literal, because '?' is often used as Operator.
          
           ＊For decimal value
-          \ooo: Number from one digit to three digits with Escape-Character '\', express 8-decimal Literal.
+          \ooo: Number from one to three digit with Escape-Character '\', express 8-decimal Literal.
           \x00: 16-decimal Literal
 
 *@subject ◆Back-Space '\b' 〔CAnsiYH p21〕
-          If you push [Backspace] on Keyboard, Cursol delete one character before there and go back.
+          If we push [Backspace] on Keyboard, Cursol delete one character before there and go back.
           But if we want to express backspace by using '\b' in Program, Cursol go back only, often do not delete yet,
           depending on our PC environment.
           In this case, author of CAnsiYH, YUUKI Hiroshi said, "Try to write "\b \b", and may do well".
           
 *@subject ◆String text Literal 〔CAnsiYH p21, p44, p96〕
-          ・Multi-character Literal as String text is expressed enclosing by double quote [" "].
+          ・Multi-characters Literal as String text is expressed enclosing by double quote [" "].
           ・String Type in [Java][C#], is not existed in C.
           ・String text is defined as static char array in C, for example below.
           ・'\0' NULL Character express the end of String text, 
-            if we define it by using "", '\0' is automatically inserted into the termination of text by Compiler.
+            if we define it by using "", '\0' is automatically inserted at the termination of text by Compiler.
 
           [Example] These express the same sense Literal.
-          char* nameP = "Sophia";
+          char *nameP = "Sophia";
           static char name = "Sophia";
           static char name[] = { 'S', 'o', 'p', 'h', 'i', 'a', '\0' };
 
@@ -336,7 +337,7 @@ ASCII
           char* str = "She is a girl.\n";
           char* str2 = "She is a girl whose name is \"Sophia\".\n";
 
-*@subject ◆Concat multi String texts
+*@subject ◆To concat multi String texts
           ・We can concat two String texts by " " or doing line feed only. 
           ・Compiler concat a String Literal and the neighbour String Literal, and recognize them as one.
           ・It is not necessary to write with '\' as ◆Connector [ \ ] of two Lines (Windows: [ ¥ ]) as above.
@@ -351,8 +352,10 @@ ASCII
 *@subject ◆Enumeration => 〔CAnsiYH p44 | Chapter 3〕
 
 *@subject ■ Identifier 〔CAnsiYH p23〕
-          ・Identifier: name of Function, Variable, or Struct
-          ・These are available characters to Identifier:
+          ・Identifier: name of Function or Variable
+                        (name of Struct, Union or Enum is not Identifier, but it is called "Tag".)
+
+          ・These are available characters as Identifier:
           |  A |  B |  C |  D |  E |  F |  G |  H |  I |  J |  K |  L |  M |
           |  N |  O |  P |  Q |  R |  S |  T |  U |  V |  W |  X |  Y |  Z |
           |  a |  b |  c |  d |  e |  f |  g |  h |  i |  j |  k |  l |  m |
@@ -360,14 +363,14 @@ ASCII
           |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |
           |  _ |
 
-          ・Numeric characters cannot be used at top of Identifier, but can do middle or bottom.
+          ・Numeric characters cannot be used at top of Identifier, but can be done middle or bottom.
           ・[ _ ] under-score should not be used at top of Identifier, 
             because it is often used as Reserved Words of external library or extending specification of C;
-            at middle, it can be used as delimiter of word for being readable.
-          ・That the first 31 characters (96 Bytes?) can be identified at least, is ensured by specification of C.
-            The maximum character number of Identifier depends on Compiler which we use.
+            at middle, it can be done as delimiter of word for being readable.
+          ・That the first 31 characters can be identified at least, is ensured by specification of C.
+            The maximum character number of Identifier depends on Compiler.
 
-          ★As a Programming custom, name of Function and Variable is often written by lower-case first.
+          ★As a Programming custom, name of Function or Variable is often written by lower-case first.
           ★As same, name of constant value (defined by '#define' Directive) is often written by upper-case whole.
           ★Identifier should be named obviously to make sense of storaging type or value.
 
@@ -380,8 +383,8 @@ ASCII
           ・Scope: A recognizable and referable range of Identifier.
           ・It is the range about name (= Identifier), not about value of Variable.
           ・If the same names are conflicted, the priority of Variable is superior of inner than outer.
-            The inner Variable cover and hide outer, it is called "concealment".
-            so that the consealment can be easy to manage the program, but be worse readable.
+            The inner Variable cover and hide outer, it is called "Concealment".
+            so that the Consealment can be easy to manage the program, but be worse readable.
           ★Therefore, as a basic art of programming, it is told that "Define as inner as possible",
             to prevent to be consealed by else Variable.
 
@@ -405,20 +408,21 @@ ASCII
           ・Linkage: A qualifier which express the relation between Variable or Function names,
                      to prevent to conflict them across files, such as 'main.c' and 'print.c'.
 
-          ・When each files are compiled, linked other files, and yielded one Execute File;
+          ・When each files are compiled one by one, linked other files, and yielded one Execute File;
             A Variable 'foo' used in them, need be indicated as the same 'foo'. 
             For that, Identifier 'foo' in each files, need have External Linkage,
             If either of them have Internal Linkage, these 'foo's are different Variables, even if these names are the same.
 
           [Kinds of Linkage]
-          External Linkage: The Identifier of Variable and Function with qualifier of this, 
+          External Linkage: The Identifier of Variable or Function with Qualifier 'extern', 
                             can be recognized and referred in whole of Program (= including another files).
-          Internal Linkage: They with this, can be done in the File only.
+          Internal Linkage: It with 'static' can be done in the File only.
 
-          [Qualifier] The usage is to write this additionally, before Identifier or Return Type of Function.
-          extern: qualifier expressed External Linkage, of course out of the Block, even if in the Block.
+          [Qualifier] > Pre-defined Keyword of Storage Class
+                      The usage is to write additionally, before Type of Variable or Return Type of Function.
+          extern: qualifier which express External Linkage, of course out of the Block, even if in the Block.
 
-          static: qualifier expressed Internal Linkage. of course in the Block, even if out of the Block,
+          static: qualifier which express Internal Linkage, of course in the Block, even if out of the Block,
                   so that the Identifier cannot be seen from any other files.
                   => see ◆static 〔CAnsiYH04_Variable\Reference_CAnsiVariable.txt〕
 
@@ -426,13 +430,13 @@ ASCII
             If the Identifier is defined out of the Block, it always has External Linkage.
             If it is done in the Block, it has usually Internal Linkage, excepting 'extern' or next.
 
-            Though it is declarated as 'extern' somewhere, if the definition with No Qualifier in the Block,
+            Though it is declarated as 'extern' somewhere, if the definition with (No Qualifier) in the Block,
             it has no Linkage, and it will be thrown Compile Error, because of "Unresolved externals" below.
 
             "Unresolved externals":
-            Declaration is done as 'extern', so that you tell Compiler to use the Identifier which is defined somewhere out of there.
+            Declaration is done as 'extern', so that we tell Compiler to use the Identifier which is defined somewhere out of there.
             Nevertheless, when Linker in Compiler do link to the Definition, there is it nowhere.
-            So Liker said "The Declaration 'extern' is unreloved, where is the Definition ? ".
+            So Linker said "The Declaration 'extern' is unreloved, where is the Definition ? ".
 
             The often reason of "Unresolved externals":
             ・Because we mistake the spelling of Identifier.
@@ -442,7 +446,7 @@ ASCII
 *@subject ■ Various Name
           Label: A named Label expressed by 'xxxx:', is the target place of 'goto' statement.
                  Label need add with statement.
-                 if we want to jump to before '}', named Label put empty statement.
+                 if we want to jump to before '}', Label should be put empty statement before there.
 
                  [Example]
                  void function() {
@@ -457,12 +461,12 @@ ASCII
 
           [Kinds of Namespace]
           ・Name of Variable, Function or constant value in enum.
-          ・Alias defined by 'typedef()'.
+          ・Alias defined by 'typedef' Keyword.
           ・Name of Label as the target place of 'goto' statement.
           ・Name of Tag (struct, union, enum) and Member of 'struct', 'union'.
-             └ In addition, 
-               Tag and Tag need be different names, even if these type are different such as 'struct' and 'union'.
-               Tag and Member need be different names, even which these Block are same or different.
-               Only Member and Member of different Block, can be the same name.
+             └【Annotation】 
+               Tag and Tag need be used different names, even if these type are different such as 'struct' and 'union'.
+               Tag and Member need be used different names, even which these Block are same or different.
+               Only Member and Member of different Block, can be used the same name.
 
-    [EOF]
+[EOF]
