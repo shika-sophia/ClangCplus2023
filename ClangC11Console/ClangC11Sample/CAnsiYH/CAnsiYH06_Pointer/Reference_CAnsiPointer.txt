@@ -324,10 +324,55 @@
                             // the Operators '->' can be used combinedly.
 
 *@subject ÅüFunction and Pointer Åkp113Ål
-          => ÅüArray and Pointer 
-             ÅñArray of Function ArgumentÅkaboveÅl
+          ÅñArray of Function Argument
+            => ÅüArray and Pointer 
+               ÅñArray of Function ArgumentÅkaboveÅl
 
 *@subject ÅñStruct of Function Argument Åkp114Ål
-          
+          We can give Struct to Function Argument in C language,
+          generally, we often give Pointer of Struct to there.
+
+          [Example]
+          int buffer[BUFFER_SIZE];
+          FILE *fp;
+
+          fgets(buffer, BUFFER_SIZE, fp);
+
+          The Argument 'fp' is Pointer 'FILE*' of Struct 'struct FILE'.
+
+          In general, Function about Graphics often has many Arguments,
+          Because the more Argument is written by us often is the more mistakes which we are likely to,
+          Åöwe should give a Struct which is packed many Variables as the Members of 'struct', to Argument one struct.
+
+*@subject Åümulti Return-Value of Function by using Pointer Åkp114Ål
+          Function can return only one value by using 'return' statement in C language.
+          In that case, by using Pointer, Function can be return multi values actually.
+
+          [Example]
+          int x = 100;
+          int y = 3;
+          int divideP;
+          int restP;
+
+          calcDivide(x, y, &divideP, &restP);
+
+          -------------------
+          void calcDivide(int x, int y, int *divideP, int *restP) {
+              *divideP = x / y;
+              *restP = x % y;
+          }
+
+          By that, the origin of calling Function is actually returned two values, such as divideP = 33, restP = 1.
+          The '&divideP, &restP' is called "Reference Giving" to Argument.
+
+          Function is generally "Value Giving" to Argument in C language.
+          In this case, Function cannot return two values by "Value Giving", such as that:
+             
+             void calcDivide(int x, int y, int divide, int rest)  { ... }
+
+          Therefore, "Reference Giving" to Argument by using Pointer, can return multi values.
+
+*@subject ÅüPointer of Function Åkp115Ål
+
 
 [EOF]
