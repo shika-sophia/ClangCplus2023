@@ -7,35 +7,38 @@
 *
 *@content C99YH ëÊ11èÕ Pointer | Chapter 11  Pointer of Pointer / List - / p362
 *@summary MainPointerOfPointerSample.c
-*@English [âp] define:      íËã`Ç∑ÇÈ
-*         [âp] substitute:  ë„ì¸Ç∑ÇÈ
-*         [âp] refer:       éQè∆Ç∑ÇÈ
-*         [âp] storage:     äiî[Ç∑ÇÈ
-*         [âp] indicate:    éwÇµé¶Ç∑
+*@English [E] define:      íËã`Ç∑ÇÈ
+*         [E] substitute:  åë„Ç∑ÇÈÅAë„ì¸Ç∑ÇÈ
+*         [E] assign:      ë„ì¸Ç∑ÇÈÅAäÑÇËìñÇƒÇÈ
+*         [E] refer:       éQè∆Ç∑ÇÈ
+*         [E] storage:     äiî[Ç∑ÇÈ
+*         [E] indicate:    éwÇµé¶Ç∑
 * 
 *@subject Pointer of Pointer
-*         ÅñDefine
 *         [Example]
+*         ÅñDefinition
 *         int x;     define int type variable 'x'.
 *         int *p;    define Pointer 'p' which storage the address of int type variable 'x'.
 *         int **pp;  define Pointer 'pp' which storage the address of Pointer 'p' which storage the address of int type variable 'x'.
 *
-*         ÅñSubstitute
 *         [Example]
-*         x = 100;   substitute value '100' to 'x'.
-*         p = &x;    substitute address of 'x' to 'p'.
-*         pp = &p;   substitute address of 'p' to 'pp'.
-* 
-*         ÅñRefer
+*         ÅñAssignment
+*         x = 100;   // It assign value '100' to 'x'.
+*         p = &x;    // It assign address of 'x' to 'p'.
+*         pp = &p;   // It assign address of 'p' to 'pp'.
+*
 *         [Example]
-*         printf("x:    %d \n", x);    // show value of variable 'x'.
-*         printf("p:    %p \n", p);    // show address of variable which Pointer 'p' is storaging.
-*         printf("*p:   %d \n", *p);   // show value of variable which Pointer 'p' indicate.
-*         printf("pp:   %p \n", pp);   // show address of Pointer which Pointer of Pointer 'pp' is storaging.
-*         printf("*pp:  %p \n", *pp);  // show address of variable which Pointer 'p' is storaging, which Pointer of Pointer 'pp' is storaging.
-*         printf("**pp: %d \n", **pp); // show value of variable which Pointer 'p' indicate, which Pointer of Pointer 'pp' is storaging.
+*         ÅñReference
+*         printf("x:    %d \n", x);    // It show value of variable 'x'.
+*         printf("p:    %p \n", p);    // It show address of variable which Pointer 'p' is storaging.
+*         printf("*p:   %d \n", *p);   // It show value of variable which Pointer 'p' indicate.
+*         printf("pp:   %p \n", pp);   // It show address of Pointer which Pointer of Pointer 'pp' is storaging.
+*         printf("*pp:  %p \n", *pp);  // It show address of variable which Pointer 'p' is storaging, which Pointer of Pointer 'pp' is storaging.
+*         printf("**pp: %d \n", **pp); // It show value of variable which Pointer 'p' indicate, which Pointer of Pointer 'pp' is storaging.
+*
+*         => copy to ÅkCAnsiYH06_Pointer\Reference_CAnsiPointer.txtÅl
 * 
-*@see
+*@seeÅ@CAnsiYH06_Pointer\Reference_CAnsiPointer.txt
 *@author shika
 *@date 2023-01-01
 */
