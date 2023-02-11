@@ -16,6 +16,25 @@
           ÅüAddress Operator [ & ]Åkp108Ål
           ÅüIndirect-Reference and Assignment by Pointer Åkp109Ål
           ÅüArithmetic caluclation of Pointer Åkp109Ål
+          ÅüCompare Pointers as same Type both Åkp109, p154Ål
+          ÅüNULL Pointer Åkp109ÅlÅkC99YH p364ÅlÅkC99YH11_Pointer\MainPointerBasic.cÅl
+          <stdio.h> => INDEXÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
+             Ñ§ #define NULL 0
+          ÅüNULL Pointer as end of String text Åkp118Ål
+          ÅüInvalid Pointer Åkp110Ål
+          ÅüArray and PointerÅkp96, p111, p113Ål
+          ÅüString text and Pointer Åkp112Ål
+          ÅüStruct and Pointer Åkp112Ål
+          ÅüFunction and Pointer Åkp113Ål
+            ÅñArray of Function Argument
+            ÅñStruct of Function Argument Åkp114Ål
+          Åümulti Return-Value of Function by using Pointer Åkp114Ål
+          ÅüPointer of Function Åkp115Ål
+          ÅùCommand Table by using Pointer of Function Åkp116Ål
+          ÅùHandler Åkp116, p282Ål
+          ÅüPointer of Pointer Åkp117Ål ÅkC99YH11_Pointer\MainPointerOfPointerSample.cÅl
+          Åü<stdlib.h> -- strtol()  Åkp117, p329Ål
+          ÅüGeneric Pointer 'void*' Åkp118Ål
 
 *@English [E] correspond (v):     ëäìñÇ∑ÇÈÅAàÍívÇ∑ÇÈÅAëŒâûÇ∑ÇÈ
                 correspond to:    àÍívÇ∑ÇÈ
@@ -32,6 +51,7 @@
           [E] omit       (n/v):   î≤Ç©Ç∑ÅAè»Ç≠
           [E] abbreviate (v):     è»ó™Ç∑ÇÈÅAíZèkÇ∑ÇÈ  abbreviation (n) è»ó™å`
           [E] specification (n):  éwíËÅAédólÅAãKäi
+          [E] generic  (adj):     îƒóp (= àÍî Ç…í ópÇ∑ÇÈ)  =:=  general (adj): àÍî ìIÇ»
 
           [P] define     (v):     íËã`Ç∑ÇÈ   | defintion   (n) íËã`
           [P] declarate  (v):     êÈåæÇ∑ÇÈ   | declaration (n) êÈåæ  [P] ÉvÉçÉgÉ^ÉCÉvêÈåæ
@@ -41,6 +61,7 @@
           [P] initializer(n):     èâä˙âªéq { }
 
           [M] Arithmetic (n/adj): éZèp, ââéZ, éZêî, éZèpââéZ, éZêîâ»
+          [M] recursive (adj):    çƒãAìI (= é©ï™é©êgÇ∆ìØÇ∂ç\ë¢ÇÃÇ‡ÇÃÇåJÇËï‘Ç∑Ç±Ç∆) | recursion (n), recurse (v)
 
 *@see     CAnsiYH03_Type\Reference_CAnsiType.txt
 *@see     C99YH11_Pointer\MainPointerBasic.c
@@ -110,8 +131,8 @@
           struct SchoolMate *mateP; // Definition Pointer 'mateP' which indicate 'struct SchoolMate'.
           T    *tp                  // Generally, Definition Pointer 'tp' which indicate 'T' Type.
 
-          ÅñPointer to Function
-          int (*fp)(char);          // Definition Pointer 'fp' which indicate Function whose Argument is one 'char' Type and whose Return-Type is 'int' Type.
+          ÅñPointer to Function   Åkp115, belowÅl
+          int (*fp)(char);         // Definition Pointer 'fp' which indicate Function whose Argument is one 'char' Type and whose Return-Type is 'int' Type.
 
 *@subject ÅüAddress Operator [ & ]Åkp108Ål
           Address Operator [ & ]: 
@@ -219,6 +240,18 @@
              these are different things.
 
            => copy to/fromÅkC99YH12_FileOperation/MainFileOpenInputSample.cÅl
+
+*@subject ÅüNULL Pointer as end of String text Åkp118Ål
+          [Example]
+          char *usage[] = {
+              "Usage:",
+              "    cmd file1 file2",
+              "Description:",
+              "    The Program compare two files, file1 and file2.",
+              "    and then ... ",
+              "    ... ",
+              NULL,
+          };
 
 *@subject ÅüInvalid Pointer Åkp110Ål
           Invalid Pointer: 
@@ -366,13 +399,148 @@
           The '&divideP, &restP' is called "Reference Giving" to Argument.
 
           Function is generally "Value Giving" to Argument in C language.
-          In this case, Function cannot return two values by "Value Giving", such as that:
-             
+          In this case, Function cannot return two values by "Value Giving", such as below.
+          When Control is returned from the Function, the local values of 'divid' and 'rest is disposed,
+          though they are assigned in there.
+
              void calcDivide(int x, int y, int divide, int rest)  { ... }
 
           Therefore, "Reference Giving" to Argument by using Pointer, can return multi values.
 
 *@subject ÅüPointer of Function Åkp115Ål
+          Pointer of Function: Pointer which indicate a Function can be defined.
+
+          [Example] 
+          int (*fp) (char);  
+
+          It is Definition of Pointer 'fp' which indicate Function whose Argument is one 'char' Type and whose Return-Type is 'int' Type.
+          It is annotation that the brackets '()' are different meanings.
+          The former express priority bracket, and the later express Argument of Function.
+          
+          [Consideration Procedure of Definition or Declaration]
+          1. We want to define Pointer 'fp'.
+          2. It is Pointer which indicate Function. 
+             Then we write with Indirect Operator '*', 
+             so that it can be a Pointer which indicate Function '*fp'.
+
+          3. The Priority of Indirect Operator '*' is inferior than bracket '()' as Argument of Function,
+             so that we should write with Priority bracket '()'.
+             It is a Function '(*fp)' still.
+
+          4. Because it is a Function, it is written with bracket '()' of Argument, such as that:
+               (*fp)(char c)
+
+          5. Because it is a Function, we should write Return-Type before that.
+               int (*fp)(char c)
+
+          6. Because Definition is a statement, we should write with Termination ';'.
+               int (*fp)(char c);
+
+          7. Then Variable name of Argument be omited, so that it has just been completed.
+               int (*fp)(char);
+
+*@advance ÅùCommand Table by using Pointer of Function Åkp116Ål
+          [Example]
+          typedef struct CommandTable {
+              char *name;           // Command name
+              void (*func)(void);   // Function which is called.
+          } COMMAND;
+          -----------
+          COMMAND tableAry[] = {     // <- Initalizer of Array
+              {"list", cmd_list },   // <- Initalizers of Struct
+              {"help", cmd_help },   // each 'cmd_xxxx' are Function name.
+              {"bomb", cmd_bomb },   // It is not necessary to write such as '&cmd_xxxx'.
+              {"exit", cmd_exit },   // It express Pointer only by writing Function name.
+          };
+
+          int tableArySize = sizeof(tableAry) / sizeof(COMMAND);  
+                                     // The Number of Array elements can be caluculated,
+                                     // by dividing 'Memory Size of whole tableAry[] / Memory Size of COMMAND as one element of Array tableAry[0]'
+
+          for (int i = 0; i < tableArySize; i++) {
+              if (strcmp(str, table[i].name) == 0) {
+                  (*table[i].func)();   // call Function
+                  break;
+              }
+          }//for
+
+*@advance ÅùHandler Åkp116, p282Ål
+          Handler: The other example as Pointer of Function is Handler, which is called "Call Back Funtion".
+                   It is a system of Event Handler, such as that:
+                     While we registered self-defined Pointer of Function somewhere,
+                     when an Event is happend, Event Handler will call the Pointer of Function.
+
+          => more detail is to see Function 'signal' in Standard LibraryÅkCAnsiYH Chapter 12 | p282Ål
+
+*@subject ÅüPointer of Pointer Åkp117Ål ÅkC99YH11_Pointer\MainPointerOfPointerSample.cÅl
+          Pointer of Pointer: Pointer which indicate address of another Pointer.
+            ÅEBecause Pointer is one of Variables, of course, there is an address of itself,
+              so that we can define Pointer of Pointer, which indicate address of another Pointer.
+            ÅEIt can be done recursively, such as 'Pointer of Pointer of Pointer of Pointer ... ',
+              so that we can do by adding more '**** ... '.
+              The word "recursive" means to operate the thing of same structure with oneself repeatedly.
+
+          [Format]
+          T  *tp;    // Defintion Pointer which indicate Variable of T Type.
+          T  **tpp;  // Defintion Pointer of Ponter, which indicate Pointer which indicate Variable of T Type.
+
+          tpp = &tp; // Assignment address of Pointer 'tp' to Pointer of Pointer 'tpp'.
+
+*         [Example]
+*         ÅñDefinition
+*         int x;     define int type variable 'x'.
+*         int *p;    define Pointer 'p' which storage the address of int type variable 'x'.
+*         int **pp;  define Pointer 'pp' which storage the address of Pointer 'p' which storage the address of int type variable 'x'.
+*
+*         [Example]
+*         ÅñAssignment
+*         x = 100;   // It assign value '100' to 'x'.
+*         p = &x;    // It assign address of 'x' to 'p'.
+*         pp = &p;   // It assign address of 'p' to 'pp'.
+* 
+*         [Example] 
+*         ÅñReference
+*         printf("x:    %d \n", x);    // It show value of variable 'x'.
+*         printf("p:    %p \n", p);    // It show address of variable which Pointer 'p' is storaging.
+*         printf("*p:   %d \n", *p);   // It show value of variable which Pointer 'p' indicate.
+*         printf("pp:   %p \n", pp);   // It show address of Pointer which Pointer of Pointer 'pp' is storaging.
+*         printf("*pp:  %p \n", *pp);  // It show address of variable which Pointer 'p' is storaging, which Pointer of Pointer 'pp' is storaging.
+*         printf("**pp: %d \n", **pp); // It show value of variable which Pointer 'p' indicate, which Pointer of Pointer 'pp' is storaging.
+* 
+*         => copy from ÅkC99YH11_Pointer\MainPointerOfPointerSample.cÅl
+* 
+
+*@subject Åü<stdlib.h> -- strtol() Åkp117, p329Ål
+            A Function which convert String text to numeric value.
+
+            [Format]
+            long  strtol(const char *s, char **endpp, int base)
+
+            --------
+            It convert String text '*s' to 'long' Type numeric value, and return the value.
+
+            The second Argument is Pointer of Pointer '**endpp',
+            which '*endpp' is the location of String at the time that the conversion has just finished,
+            and '**endpp' can be returned too, because of "Reference Giving" by Pointer.
+            If '**endpp' is NULL, '*endpp' is assigned nothing.
+
+            The third Argument 'int base' express the base of how-decimal.
+
+            [Example] ÅkCAnsiYH p118Ål
+            char *endptr;
+            long li;
+            char valueString[] = "12345,67890";
+
+            li = strtol(valueString, &endptr, 10)
+            -------
+
+            When it finished, Valiable 'li' is assigned '12345' as 'long' Type,
+            and Pointer 'endptr' is assigned the location ',' in String.
+
+            Consequently, when we want to assign Pointer address,
+            we need give Pointer of Pointer to Argument of Function.
+
+*@subject ÅüGeneric Pointer 'void*': Åkp118Ål
 
 
-[EOF]
+[EOF] 
