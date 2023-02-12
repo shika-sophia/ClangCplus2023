@@ -52,7 +52,12 @@
           [E] abbreviate (v):     省略する、短縮する  abbreviation (n) 省略形
           [E] specification (n):  指定、仕様、規格
           [E] generic  (adj):     汎用 (= 一般に通用する)  =:=  general (adj): 一般的な
-
+          [E] moderate  (adj):    適当, やや, 緩やか, 中程度, 程よく =:= arbitrary (adj) <-> strict (adj), subtle (adj)
+          [E] arbitrary (adj):    任意, 随意, 恣意的
+          [E] strict    (adj):    厳密, 厳しく, 固く, 厳格, 厳重, あくまで
+          [E] subtle    (adj):    微妙, 繊細, 巧妙, 些細  | subtlety (n) | subtly (adv)
+          [E] collective term:    総称, 一括, まとめ
+          [E] mutual entry:       相互乗り入れ
           [P] define     (v):     定義する   | defintion   (n) 定義
           [P] declarate  (v):     宣言する   | declaration (n) 宣言  [P] プロトタイプ宣言
           [P] operator   (n):     演算子
@@ -79,7 +84,7 @@
           ・Address Operator  [ & ]:  It means the adderss of Variable, expressed such as '&x'.
           ・Indirect Operator [ * ]:  It means Indirect-Refernence value of Variable which Pointer indicate, 
                                       expressed such as '*p'.
-          ・Assign Operator [ = ]:    When Pointer is assigned Address of some Variable, it is expressed such as 'p = &x;'
+          ・Assign Operator   [ = ]:  When Pointer is assigned Address of some Variable, it is expressed such as 'p = &x;'
           ・Arithmetic Operator [ + - ++ -- ]: 
                To add or subtract value of Pointer, mean to navigate address of Variable value which Pointer indicate.
                so that we can regard Memory as Array of Object (= Variable) by using Pointer.
@@ -541,6 +546,25 @@
             we need give Pointer of Pointer to Argument of Function.
 
 *@subject ◆Generic Pointer 'void*': 〔p118〕
+          Type 'void*': ・Pointer which indicate Object of arbitrary Type,
+                          so that it can express the general Pointer which is free from binding by Type. 
+                        ・It is usually called "Generic Pointer", or "Ponter as Collective Term",
+                        ・There is not Generic Pointer which indicate general Function.
+                        
+                        ＊To be able to do:
+                        ・Generic Pointer can assgin each other without Cast Expression,
+                          and can compare with another Pointer without Cast Expression,
+                          then, there is not to lost any informations
+                         
+                         ＊Not to be able to do:
+
+                       【Annotation】
+                        As a Generic Type, 'char*' was used in past time.
+
+                       【Annotation】
+                        Generally, in the case of comparing different Types, it is necessary to compare them with Cast Expression,
+                        but in the case of Generic Pointer 'void*', it is retransable with any other Type of Pointer.
+                        Therefore, Generic Pointer can be mutual entry.
 
 
-[EOF] 
+[EOF]                   
