@@ -58,6 +58,8 @@
           [E] subtle    (adj):    ”÷–­, ‘@×, I–­, ±×  | subtlety (n) | subtly (adv)
           [E] collective term:    ‘Ì, ˆêŠ‡, ‚Ü‚Æ‚ß
           [E] mutual entry:       ‘ŠŒİæ‚è“ü‚ê
+          [E] allocate   (v):     Š„‚è“–‚Ä‚éA”z•ª‚·‚éAêŠ‚ğŒˆ‚ß‚é  | allocation (n)
+
           [P] define     (v):     ’è‹`‚·‚é   | defintion   (n) ’è‹`
           [P] declarate  (v):     éŒ¾‚·‚é   | declaration (n) éŒ¾  [P] ƒvƒƒgƒ^ƒCƒvéŒ¾
           [P] operator   (n):     ‰‰Zq
@@ -552,19 +554,116 @@
                         EThere is not Generic Pointer which indicate general Function.
                         
                         –To be able to do:
-                        EGeneric Pointer can assgin each other without Cast Expression,
+                        EGeneric Pointer can assgin another Pointer each other without Cast Expression,
                           and can compare with another Pointer without Cast Expression,
                           then, there is not to lost any informations
                          
                          –Not to be able to do:
+                          Generic Pointer cannot be referred and assigned to the value which Pointer indicate.
+                          Assuming that Generic Pointer 'void* vp' is defined, we cannot refer and assign to *vp, also 'vp[i]' either.
+                          If we want to refer and assign to the value which Genric Pointer indicate, we need use with Cast Expression to appropriate Type.
+
+                         yAnnotationz
+                          Though The former said "can assign and compare without Cast Expression", but the later said "need use with Cast Expression",
+                          In case of 'void*' as a Pointer, we can assign and compare without Cast Expression,
+                          In case of 'void*' as a value which Pointer indicate, we need use with Cast Expression".
+                          That is natural, because Memory space is defined by unique-size of specific-Type, but 'void' which is Type of nothing, and therefore 'void' cannot be existed in Memory, 
+                          we need tell Compiler what of Type when we want to operate Memory space.
+
+                         yAnnotationz
+                          Generic Pointer 'void*' can assign to arbitrary Pointer without Cast Expression in C language.
+                          But need use with Cast Expression in C++.
 
                        yAnnotationz
-                        As a Generic Type, 'char*' was used in past time.
+                        As a Generic Type, 'char*' was used in past time of C.
 
                        yAnnotationz
                         Generally, in the case of comparing different Types, it is necessary to compare them with Cast Expression,
                         but in the case of Generic Pointer 'void*', it is retransable with any other Type of Pointer.
                         Therefore, Generic Pointer can be mutual entry.
 
+*@subject Ÿ<stdlib.h>--malloc()kp119, p331l
+          Funcion malloc(): Eabbreviation of "Memory allocate"
+                            EIt is defined in Standard Library <stdlib.h> by specification of C Language.
+                            Emalloc() whose Argument is size of Object, take a space in Memory enough to storage, and return Generic Pointer 'void*' which indicate the first Memory space.
+                            EIf Argument is given '0', return NULL Pointer or specific-defined value by the Compiler.
+                              in this case, the Memory space which is allocated, is not initialized.
+                              so that we can decide the Memory space what to use by using Cast Expression to arbitrary Type which we want.
+          [Format]
+          void* malloc(size_t size)
+                        „¤ the Return-Type of Operator 'sizeof()'
+          [Example]
+          T *tp;
+          tp = (T*)malloc(sizeof(T) * 100);
 
+          The [Example] take a space enough to storage 100 spaces of T Type in Memory
+          Return-value 'tp' of Function 'malloc() is Pointer which storage address of the first space above.
+
+*@subject ŸNULL Pointer Assignment kp120l
+          When a Pointer is NULL, we cannot assign the value which NULL Pointer indicate.
+          If we would do, we will be thrown  "NULL Pointer Assignment" by Compiler.
+          [Example]
+          char *p = NULL;
+          *p = 'A';
+
+*@subject ŸInValid Assignment kp120l
+          There is a more case that we cannot assign the value which Pointer indicate, even if it is not NULL Pointer.
+          that is 'auto' case, address of 'auto' Variable cannot bring out of the Function Block.
+
+          [~][Example] Wrong case
+          char *get_name(void){               
+            char buffer[BUFFER_SIZE];
+            printf("Enter your name. \n");
+            gets(buffer);
+
+            return buffer;
+          }
+
+          ------
+          The Function 'get_name()' which ask user name, get string text of the input,
+          and return buffer to origin of Calling Function.
+          But it don't expectedly behaved, because value of 'auto' Variable 'buffer' is disposed when Control leave out of Function Block.
+
+          [Z][Example] Modified case
+          char *get_name(void){               
+            static char buffer[BUFFER_SIZE];
+            printf("Enter your name. \n");
+            gets(buffer);
+
+            return buffer;
+          }
+          ------
+          By modifing 'auto' -> 'staric' explicitly, it can behave expectedly as above,
+          because 'static' Variable is not disposed at the time to return.
+          But Be attention that if the Function is called over twice, the former String text of input is substituted new one.
+
+*@subject The reason Why Pointer is confusable.kP121l
+          Because we are likely to confuse value of Pointer (=address of Variable which Pointer indicate), and value of Variable which Pointer indicate.
+
+          [Example]
+          int n;   // Variable of 'int' Type
+          int *np; // value of 'int' Type Variable which Pointer indicate.
+          int **np;// Pointer of Pointer which indicate'int' Type Variable.
+
+          Though three definitions are similar on literal, but they are completely different things.
+          The differencr that Indirect Operator '*' is one or two, means completely different things.
+
+          [Example] Correct Assignment or Wrong Assignment
+          n = 123;  //Correct Assignment
+          np = 123; //Wrong Assignment -> np = &n;   //Correct Assignment
+          npp = 123 //Wrong Assignment -> nnp = &n;  //Wrong Assignment
+                                       -> nnp = &np; //Correct Assignment
+          ---------
+          Pointer 'np' which indicate address of 'int' Type Variable
+          so that 'np = &n' should be Correct Assignment,
+          Then '*np == n' is always true.
+          Pointer of Poiner 'nnp' cannot be assigned address of 'int' Type Variable,
+          but 'nnp' cann be assigned address of Pointer
+          Then '**npp == np is always true , and '**nnp = *np' is always true, too.
+
+          yAnnotationz
+          multi-Indirect Operatorsuch as '**' can be allowed, but multi-Address Operator '&&n' cannot be allowed,
+          becuase the expression is not Left Side Expression.
+
+*@subject Ÿconfusion of Array and Pointerkp121l
 [EOF]                   
