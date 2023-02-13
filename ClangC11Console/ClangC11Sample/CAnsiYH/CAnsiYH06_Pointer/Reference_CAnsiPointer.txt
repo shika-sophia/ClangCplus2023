@@ -59,6 +59,8 @@
           [E] collective term:    総称, 一括, まとめ
           [E] mutual entry:       相互乗り入れ
           [E] allocate   (v):     割り当てる、配分する、場所を決める  | allocation (n)
+          [E] confusion  (n):     混同       | confuse     (v) 混同する
+          [E] identification(n):  同一視、識別| identify    (v) 同一視する
 
           [P] define     (v):     定義する   | defintion   (n) 定義
           [P] declarate  (v):     宣言する   | declaration (n) 宣言  [P] プロトタイプ宣言
@@ -666,4 +668,38 @@
           becuase the expression is not Left Side Expression.
 
 *@subject ◆confusion of Array and Pointer〔p121〕
+          Assuming that Array 'big_buffer' is defined in a file.
+          [Example]
+          char big_buffer[100];
+
+          And when we intend to refer the Array from another external file, we write with 'extern' such as that:
+            extern char* big-buffer; // Wrong
+
+
+          Don't define as Pointer while the 'big-buffer' has already been defined as Array in another file.
+          that is an example of confusion of Array and Pointer
+
+          Correctly, we should write suxh as that:
+            extern char* big-buffer[]; // Correct
+
+          Wrong Expression "extern char* big-buffer;" means that there is Pointer 'big-buffer' somewhere external.
+          But our target 'big-buffer' is Array name as a constant value. 
+          Compiler cannot recognize as Variable instead of constant value by using 'extern'.
+
+          Indeed, we can be assign Array name to Pointer, such as that:
+
+          char big_buffer[100];
+          char *ptr = big_buffer // Correct 
+
+          That means: that Array name char big_buffer is as same value address of '&big_buffer[0]';
+          Therefore, It is correct that we assign Pointer to address of the Array first element such as that:
+          <=>  char *ptr = &big_buffer[0];
+
+          [Example] as above
+            int a[10];
+            int *P = a;   // <=>  int *p = &a[0];
+
+          in this case, that is not confusion and identification of Array and Pointer.
+
+
 [EOF]                   
