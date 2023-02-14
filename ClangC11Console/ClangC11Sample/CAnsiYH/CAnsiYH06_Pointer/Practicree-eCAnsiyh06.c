@@ -22,7 +22,7 @@
 *      MATE **data[10];
 * @subject Practice 2:
     Declarate Function 'qsort' whose Return-Type is 'void', whose Arguments are  four such as Pointer which indicate 'void' Type, size-t Type, size_t Type, and Pointer which indicate Function whose Return-type is 'int' Type,is void'.
-    Howevere Argument name is omitable.
+    However Argument name maty be s omitted
 
     [My Answer]
     void qsort(void, Size_t, size_t, int*  (func));
