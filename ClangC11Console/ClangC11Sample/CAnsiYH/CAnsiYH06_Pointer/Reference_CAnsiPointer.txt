@@ -691,7 +691,7 @@
           char big_buffer[100];
           char *ptr = big_buffer // Correct 
 
-          That means: that Array name char big_buffer is as same value address of '&big_buffer[0]';
+          That means: Array name char 'big_buffer' is as same value address of '&big_buffer[0]';
           Therefore, It is correct that we assign Pointer to address of the Array first element such as that:
           <=>  char *ptr = &big_buffer[0];
 
