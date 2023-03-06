@@ -1,6 +1,8 @@
 # ClangCplus2023
 Practices of C11, C++17 Console/Desktop Application compiled by Clang with Visual Studio // (CONTENTS) C language basic <br />
-I suspended to uploadhethis reposityry becuse I stay a  hospital sinse Feb 15, 2023<br />
+(I suspended to upload this reposityry becuse I stay a  hospital sinse Feb 15, 2023)<br />
+(I re-start to upload this repsitory sinse March 10,2023)<br />
+
 *@reference C99YH  結城 浩 『C言語プログラミングレッスン (入門編) 第３版』SB Creative, 2019 <br />
 (meaning) YUUKI Hiroshi 『C Language Programming Lesson (Beginner Book) 3rd Edition』 SB Creative, 2019 <br />
 <br />                 
