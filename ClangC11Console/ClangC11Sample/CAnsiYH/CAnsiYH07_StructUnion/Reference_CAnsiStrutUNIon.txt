@@ -7,22 +7,24 @@
 *
 *@content CAnsiYH Chapter 7 Structunion   |  / List - / p131
 *@summary ÅüStruct
-*@English Struct:One of most important data structure in C language  which is things to put togheter multi-Type members to one Type.
-          Union: One of most important data structure in C language  which can share one Memory-space with multi-Types.
+*@English Struct:One of most important data structure in C language which is things to put togheter multi-Type members to one name.
+          Union: One of most important data structure in C language which can share one Memory-space with multi-Types.
           ÅyAnnotationÅz
-          Struct in C iscorresponding to ""Record" in Pascal(= one of Programming languagea).
+          Struct in C is corresponding to "Record" in Pascal(= one of Programming language).
 
-          [Example]Decalation
-          struct ScoolMate {
-          int id;
-          char name[20];
-          int Japanese;
-          int Mathematicas;
-          int English;
+          [Example] Decalation
+
+          struct ScoolMate { //The name of this Strct 'SchoolMate' is called "Struct Tag"
+            int id;
+            char name[20];
+            int Japanese;
+            int Mathematicas;
+            int English;
           }
-nion
-*@subject 
-*
+
+Union
+*@subject Struct Tag: the name of Struct which can be defined any name by programmer, as long as its name is not appropriate with Identifier protocol of C language.
+*                     Identifier protocol ÅkCAnsiYH02_BasicÅl
 *@see 
 *@author  shika
 *@date    2023-02-17
