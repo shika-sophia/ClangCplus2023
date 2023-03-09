@@ -6,7 +6,7 @@
 *@reference C11DS    arton  w“ÆK C V”ÅxãÄ‰jĞ, 2018
 *
 *@content CAnsiYH Chapter 7 Structunion   |  / List - / p131
-*@summary ŸStruct
+*@summary ŸStruct kp131l
 *@English Struct:One of most important data structure in C language which is things to put togheter multi-Type members to one name.
           Union: One of most important data structure in C language which can share one Memory-space with multi-Types.
           yAnnotationz
