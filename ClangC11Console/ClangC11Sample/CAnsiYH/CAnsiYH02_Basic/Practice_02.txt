@@ -1,0 +1,21 @@
+/**
+*@directory ClangC11Console / ClanC11Sample / CAnsiYH / 
+*@fileName  Practice_02.txt
+*@copyFrom  MainAsciiCharacterViewer.c
+*@copyFrom 
+*@reference C99YH    結城 浩 『C言語プログラミングレッスン [入門編] 第３版』SB Creative, 2019
+*@reference CAnsiYH  結城 浩 『C言語プログラミングレッスン [文法編] 新版』  SB Creative, 2006
+*@reference C11DS    arton  『独習 C 新版』翔泳社, 2018
+*@author    shika
+*@date      2024-02-14
+*/ 
+
+第２章　練習問題　p33
+１
+（１）名前をOk＿printと付けた　〇
+（２）sizeという名前を付けた　〇
+（３）registerという名前を付けた　×予約語
+（４）read-dataという名前を付けた　×記号は_のみ
+２
+printf("改行文字は\\nと表記しダブルクォートは\\\"")
+
