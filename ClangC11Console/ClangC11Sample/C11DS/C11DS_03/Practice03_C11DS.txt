@@ -1,0 +1,44 @@
+/*
+ *@directory ClangC11Sample/C11DS/C11DS_02
+ *@file Practice02_C11DS.txt
+ *@reference C11DS arton 『独習 C』翔泳社,2018
+ *@subject 第３章 練習問題
+ *@page p58-
+ *@author shika
+ *@date 2024-03-20
+ */
+ /*
+ ◆前章の復習　p58
+ 1.〇(1) 7
+   〇(2) 8
+   〇(3)16
+
+ 2.〇
+  int main(void)
+  {
+      puts("C is nice!");
+      return 0;
+  }
+ 
+ 3.〇
+ #include <stdio.h>
+ int main(void)
+ {
+     puts("hello!");
+     return 0;
+ }
+
+◆練習問題3.1 p60
+〇1. 正しい単項式は？
+a,b,c //dはデクリメントと認識される
+
+◆練習問題3.2 p63
+〇1. コマンドライン引数の差を表示するプログラム
+=>別紙 ch03_02q_01.c
+
+〇2. コマンドライン引数の積を表示するプログラム
+=>別紙 ch03_02q_02.c
+
+〇3. コマンドライン引数の商と剰余を表示するプログラム
+=>別紙 ch03_02q_03.c
+*/
