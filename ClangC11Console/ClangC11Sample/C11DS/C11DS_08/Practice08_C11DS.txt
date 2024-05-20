@@ -67,3 +67,13 @@
 ・ポインター変数の加算は、配列の次の要素を指すプログラム。
 *(p + i) = array[i]
 =>別紙 ch08_07.c
+
+8.4 関数ポインター p210
+・関数ポインター culc(int, int)に add(int, int)か mul(int, int)を代入するプログラム。
+=>別紙 ch08_11.c
+
+・ソート関数 qsort()を利用したプログラム。
+qsort(void* base, size_t nmemb, size_t size,
+      int(*compare)(const void*, const void*));
+=> 別紙 ch08_12.c
+
