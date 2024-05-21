@@ -12,3 +12,8 @@ int main(void)
     *xp += 4;
     printf("x = %i, xp = %p\n", *xp, xp);
 }//main
+
+/*
+>ch08_01q_01
+x = 1238, xp = 004FFA74
+*/

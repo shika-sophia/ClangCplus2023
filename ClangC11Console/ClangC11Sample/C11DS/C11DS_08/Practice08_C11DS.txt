@@ -77,3 +77,35 @@ qsort(void* base, size_t nmemb, size_t size,
       int(*compare)(const void*, const void*));
 => 別紙 ch08_12.c
 
+
+◆練習問題8.3 p208
+1. 〇sizeof(int8_t) => 1
+   ×sizeof(int16_t)=> 4　-> 2
+   ×sizeof(long long)=> 64　-> 8
+
+2.〇a. for(int32_t i = 0; i < sizeof a /sizeof a[0]; i++){
+
+  b.？ -> }
+
+3. ？
+
+？4. コマンドライン引数で与えられる文字列を逆順で表示するプログラム。
+=>別紙 ch08_03q_03.c
+
+◆練習問題8.4 p214
+1. ×a. int32_t *a = add;
+   -> int32_t (*a)(int32_t, int32_t, int32_t);
+   ×b. double *b = add;
+   -> double (*b)(double, double);
+   ×c. char** c = select;
+   -> char* (*c)(...)
+   ×d. main のポインターは宣言不可
+   ×e. void *e = change;
+   ×f. int *f = run;
+
+2. 〇a. void a (void)
+   〇b. in32_t b (int32_t, [])
+   〇c. char* c(const char *p0, const char *p1)
+
+？3. コマンドライン引数で与えられた単語をソートして表示するプログラム。
+=>別紙 ch08_04q_01.c
