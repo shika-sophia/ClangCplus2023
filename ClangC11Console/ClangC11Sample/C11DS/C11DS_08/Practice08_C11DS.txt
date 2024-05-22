@@ -109,3 +109,22 @@ qsort(void* base, size_t nmemb, size_t size,
 
 ？3. コマンドライン引数で与えられた単語をソートして表示するプログラム。
 =>別紙 ch08_04q_01.c
+
+■章末問題　p215
+〇1. b, c, e
+
+2. 〇a. int *p = x;
+   〇b. *(p + 2)
+
+〇3. int32_tのメモリが4バイトだから
+
+4.〇 a. sizeof(int16_t) -> 2
+   ×b. sizeof x -> 2　-> 8
+   〇c. *xp -> 12345
+   〇d. **xpp -> 12345
+   〇e. sizeof y -> 1
+   〇f. sizeof array / sizeof (array[0]) -> 16
+   ×g. arrayから &array[3]　を除いた配列　-> 3
+
+5. コマンドライン引数で与えられた数を降順でソートして表示するプログラム。
+=> 別紙 ch08_05q_01.c
