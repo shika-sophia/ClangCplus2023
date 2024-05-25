@@ -1,0 +1,38 @@
+/*
+ *@directory ClangC11Sample/C11DS/C11DS_09
+ *@file Practice09_C11DS.txt
+ *@reference C11DS arton w“ÆK CxãÄ‰jŽÐ,2018
+ *@subject ‘æ‚XÍ —ûK–â‘è
+ *@page P218-
+ *@author shika
+ *@date 2024-05-22
+ */
+
+ ‘OÍ‚Ì•œK p218
+ 1. Za. int32_t *ap
+    Zb. char* ap
+
+2. Za. *ap -> 0x12345678
+   ~b. H (int16_t)*ap -> 0x5678
+   ~c. H (int8_t)*ap -> ox78
+
+3. Za. a
+   Zb. b
+   Zc. d
+   Zd. e
+
+4. ~a. sizeof(int_64) -> 4 ->8
+   ~b. sizeof a -> 11 -> 13
+   ~c. sizeof p -> 1 -> 64bit
+   Zd. sizeof a2 / sizeof a2[0] -> 5
+
+5.~(1) int (*fp)(int*) -> int (*fp)(int*, int*)
+  ~(2) void (*fp)(char*) -> void (*fp)(char**)
+  ~(3) H -> int (*fp)(int(*)(int))
+
+9.1 ŠÖ”‚Ì’è‹`
+Eextern‚Ì—p–@
+=> •ÊŽ† ch09_01.c
+=> •ÊŽ† ch09_02.c
+
+
